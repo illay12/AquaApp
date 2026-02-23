@@ -9,7 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $anunturi = Anunt::orderBy('created_at','desc')->take(5)->get();
-        return view('index', compact('anunturi'));
+        $anunturi = Anunt::latest()->take(6)->get();
+
+        return view('pages.home', compact('anunturi'));
     }
 }
