@@ -11,7 +11,7 @@
 <body>
     <header style="background: #0077b6; color: #fff; padding: 1rem;">
         <h1>Companie Apă</h1>
-        <nav>
+        <nav> 
             <a href="{{ url('/') }}" style="color:white; margin-right: 1rem;">Acasă</a>
             <a href="{{ url('/anunturi') }}" style="color:white; margin-right: 1rem;">Anunțuri</a>
             <a href="{{ url('/contact') }}" style="color:white;">Contact</a>
