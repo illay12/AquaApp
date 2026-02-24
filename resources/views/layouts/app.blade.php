@@ -367,7 +367,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/informatii/anunturi') }}">Anunțuri</a></li>
                             <li><a class="dropdown-item" href="{{ url('/informatii/calitatea-apei') }}">Calitatea apei</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/informatii/tarife') }}">Tarife</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/informatii/tarife') }}">Tarife și Taxe</a></li>
                             <li><a class="dropdown-item" href="{{ url('/informatii/legislatie') }}">Legislație</a></li>
                             <li><a class="dropdown-item" href="{{ url('/informatii/formulare') }}">Formulare utile</a></li>
                         </ul>

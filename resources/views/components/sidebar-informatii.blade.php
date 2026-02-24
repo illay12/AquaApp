@@ -4,7 +4,7 @@
     <div class="card-header"><i class="bi bi-grid me-2"></i> Informații publice</div>
     <div class="list-group list-group-flush">
         @foreach([
-            ['/informatii/tarife','bi-cash-coin','Tarife'],
+            ['/informatii/tarife','bi-cash-coin','Tarife și Taxe'],
             ['/informatii/calitatea-apei','bi-droplet-half','Calitatea apei'],
             ['/informatii/legislatie','bi-book','Legislație'],
             ['/informatii/formulare','bi-file-earmark-arrow-down','Formulare utile'],
