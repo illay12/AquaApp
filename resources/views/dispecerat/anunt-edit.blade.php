@@ -28,7 +28,8 @@
                     </span>
                 </div>
 
-                <form action="{{ route('dispecerat.anunturi.update', $anunt->id) }}" method="POST" enctype="multipart/form-data">
+                {{-- FORMULAR PRINCIPAL --}}
+                <form id="form-editare" action="{{ route('dispecerat.anunturi.update', $anunt->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -116,18 +117,16 @@
                                 <div style="font-size:0.75rem;color:#94a3b8;">{{ $fisier->marime_fomatata }}</div>
                             </div>
                             <a href="{{ $fisier->url }}" target="_blank"
-                               class="btn btn-sm btn-light" title="Descarcă">
-                                <i class="bi bi-download"></i>
+                               class="btn btn-sm btn-light" title="Vizualizează">
+                                <i class="bi bi-eye"></i>
                             </a>
-                            <form action="{{ route('dispecerat.fisiere.sterge', $fisier->id) }}"
-                                  method="POST"
-                                  onsubmit="return confirm('Ștergi fișierul {{ $fisier->nume_original }}?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-outline-danger" title="Șterge fișierul">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                            {{-- Buton sterge – trimite formularul ascuns din afara formularului principal --}}
+                            <button type="button"
+                                    class="btn btn-sm btn-outline-danger"
+                                    title="Șterge fișierul"
+                                    onclick="stergeFisierExistent({{ $fisier->id }}, '{{ addslashes($fisier->nume_original) }}')">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </div>
                         @endforeach
                     </div>
@@ -156,36 +155,48 @@
                         <input type="file" id="fisiere-input" name="fisiere[]"
                                multiple accept=".pdf,.docx,.xlsx"
                                class="d-none" onchange="afiseazaFisiere(this.files)">
-
                         @error('fisiere.*')
                             <div class="text-danger mt-1" style="font-size:0.875rem;">{{ $message }}</div>
                         @enderror
-
                         <div id="fisiere-preview" class="mt-2"></div>
                     </div>
 
-                    {{-- BUTOANE --}}
-                    <div class="d-flex gap-2 justify-content-between pt-3" style="border-top:1px solid #e2e8f0;">
-                        <form action="{{ route('dispecerat.anunturi.destroy', $anunt->id) }}"
-                              method="POST"
-                              onsubmit="return confirm('Ești sigur că vrei să ștergi definitiv acest anunț și toate fișierele atașate?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                <i class="bi bi-trash me-1"></i> Șterge anunțul
-                            </button>
-                        </form>
-
-                        <div class="d-flex gap-2">
-                            <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary">
-                                Anulează
-                            </a>
-                            <button type="submit" class="btn btn-primary-aqua">
-                                <i class="bi bi-check-lg me-1"></i> Salvează modificările
-                            </button>
-                        </div>
+                    {{-- BUTOANE SALVARE --}}
+                    <div class="d-flex gap-2 justify-content-end pt-3" style="border-top:1px solid #e2e8f0;">
+                        <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary">
+                            Anulează
+                        </a>
+                        <button type="submit" class="btn btn-primary-aqua">
+                            <i class="bi bi-check-lg me-1"></i> Salvează modificările
+                        </button>
                     </div>
                 </form>
+                {{-- SFARSIT FORMULAR PRINCIPAL --}}
+
+                {{-- STERGE ANUNT – formular separat, in afara celui principal --}}
+                <div class="mt-3 pt-3" style="border-top:1px solid #fee2e2;">
+                    <form id="form-sterge-anunt"
+                          action="{{ route('dispecerat.anunturi.destroy', $anunt->id) }}"
+                          method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger btn-sm"
+                                onclick="return confirm('Ești sigur că vrei să ștergi definitiv acest anunț și toate fișierele atașate?')">
+                            <i class="bi bi-trash me-1"></i> Șterge anunțul
+                        </button>
+                    </form>
+                </div>
+
+                {{-- FORMULARE ASCUNSE pentru stergere fisiere individuale --}}
+                @foreach($anunt->fisiere as $fisier)
+                <form id="form-sterge-fisier-{{ $fisier->id }}"
+                      action="{{ route('dispecerat.fisiere.sterge', $fisier->id) }}"
+                      method="POST"
+                      style="display:none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
+                @endforeach
 
             </div>
         </div>
@@ -206,6 +217,13 @@ tinymce.init({
     branding: false, promotion: false,
 });
 
+// Sterge fisier individual
+function stergeFisierExistent(id, nume) {
+    if (!confirm('Ștergi fișierul "' + nume + '"?')) return;
+    document.getElementById('form-sterge-fisier-' + id).submit();
+}
+
+// Preview fisiere noi
 const iconeTip = {
     pdf:  { icon: 'bi-file-earmark-pdf',   color: '#dc2626' },
     docx: { icon: 'bi-file-earmark-word',  color: '#1d4ed8' },
@@ -221,7 +239,6 @@ function afiseazaFisiere(files) {
         const marime = file.size < 1048576
             ? (file.size / 1024).toFixed(1) + ' KB'
             : (file.size / 1048576).toFixed(1) + ' MB';
-
         preview.innerHTML += `
             <div class="d-flex align-items-center gap-2 p-2 mb-1"
                  style="background:#f0f8ff;border-radius:8px;border:1px solid #caf0f8;font-size:0.875rem;">

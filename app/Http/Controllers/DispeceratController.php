@@ -6,48 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Anunt;
 use App\Models\AnuntFisier;
+use App\Models\BuletinAnaliza;
 use App\Models\DispeceratUser;
 
 class DispeceratController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | HELPER
+    | HELPERS
     |--------------------------------------------------------------------------
     */
 
     private function categoriiPermise(): array
     {
         $categorie = session('dispecerat_categorie');
-
         return match($categorie) {
             'avarie' => ['avarie', 'anunturi'],
             default  => [$categorie],
         };
-    }
-
-    private function validareComuna(): array
-    {
-        return [
-            'titlu'                  => 'required|string|min:5|max:500',
-            'continut'               => 'required|string|min:10',
-            'categorie'              => 'required|string|in:' . implode(',', $this->categoriiPermise()),
-            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx|max:10240',
-        ];
-    }
-
-    private function mesajeValidare(): array
-    {
-        return [
-            'titlu.required'         => 'Titlul este obligatoriu.',
-            'titlu.min'              => 'Titlul trebuie să aibă cel puțin 5 caractere.',
-            'continut.required'      => 'Conținutul este obligatoriu.',
-            'continut.min'           => 'Conținutul trebuie să aibă cel puțin 10 caractere.',
-            'categorie.required'     => 'Categoria este obligatorie.',
-            'categorie.in'           => 'Nu aveți acces la categoria selectată.',
-            'fisiere.*.mimes'        => 'Sunt permise doar fișiere PDF, Word (.docx) și Excel (.xlsx).',
-            'fisiere.*.max'          => 'Fiecare fișier poate avea maxim 10 MB.',
-        ];
     }
 
     private function salveazaFisiere(Anunt $anunt, Request $request): void
@@ -57,13 +33,12 @@ class DispeceratController extends Controller
         foreach ($request->file('fisiere') as $fisier) {
             if (!$fisier->isValid()) continue;
 
-            $extensie    = strtolower($fisier->getClientOriginalExtension());
-            $numeOriginal = $fisier->getClientOriginalName();
-            $cale         = $fisier->store('anunturi/fisiere', 'public');
+            $extensie = strtolower($fisier->getClientOriginalExtension());
+            $cale     = $fisier->store('anunturi/fisiere', 'public');
 
             AnuntFisier::create([
                 'anunt_id'      => $anunt->id,
-                'nume_original' => $numeOriginal,
+                'nume_original' => $fisier->getClientOriginalName(),
                 'cale'          => $cale,
                 'tip'           => $extensie,
                 'marime'        => $fisier->getSize(),
@@ -103,6 +78,8 @@ class DispeceratController extends Controller
                 'dispecerat_username'  => $user->username,
                 'dispecerat_nume'      => $user->nume,
                 'dispecerat_categorie' => $user->categorie,
+                'dispecerat_token'     => $user->token,
+                'dispecerat_expires'   => $user->token_expires_at->format('H:i'),
             ]);
 
             return redirect()->route('dispecerat.dashboard')
@@ -116,11 +93,17 @@ class DispeceratController extends Controller
 
     public function logout(Request $request)
     {
+        // Invalidează token-ul în baza de date
+        $userId = session('dispecerat_user');
+        if ($userId) {
+            $user = \App\Models\DispeceratUser::find($userId);
+            if ($user) $user->invalideazaToken();
+        }
+
         $request->session()->forget([
-            'dispecerat_user',
-            'dispecerat_username',
-            'dispecerat_nume',
-            'dispecerat_categorie',
+            'dispecerat_user', 'dispecerat_username',
+            'dispecerat_nume', 'dispecerat_categorie',
+            'dispecerat_token', 'dispecerat_expires',
         ]);
 
         return redirect()->route('dispecerat.login')
@@ -154,12 +137,27 @@ class DispeceratController extends Controller
         $anunturi = $query->paginate(15)->withQueryString();
         $total    = Anunt::whereIn('categorie', $categorii)->count();
 
-        return view('dispecerat.dashboard', compact('anunturi', 'total', 'categorie', 'categorii'));
+        // Buletine pentru laborator
+        $buletine = null;
+        if ($categorie === 'calitate') {
+            $ordineLuni = BuletinAnaliza::ordineLuni();
+            $buletine = BuletinAnaliza::groupatPeAni()
+                            ->get()
+                            ->groupBy('an')
+                            ->sortKeysDesc()
+                            ->map(function($grupAn) use ($ordineLuni) {
+                                return $grupAn
+                                    ->groupBy('luna')
+                                    ->sortByDesc(fn($_, $luna) => $ordineLuni[$luna] ?? 0);
+                            });
+        }
+
+        return view('dispecerat.dashboard', compact('anunturi', 'total', 'categorie', 'categorii', 'buletine'));
     }
 
     /*
     |--------------------------------------------------------------------------
-    | CRUD
+    | CRUD ANUNTURI
     |--------------------------------------------------------------------------
     */
 
@@ -172,7 +170,22 @@ class DispeceratController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate($this->validareComuna(), $this->mesajeValidare());
+        $categorii = $this->categoriiPermise();
+
+        $validated = $request->validate([
+            'titlu'     => 'required|string|min:5|max:500',
+            'continut'  => 'required|string|min:10',
+            'categorie' => 'required|string|in:' . implode(',', $categorii),
+            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx|max:10240',
+        ], [
+            'titlu.required'     => 'Titlul este obligatoriu.',
+            'titlu.min'          => 'Titlul trebuie să aibă cel puțin 5 caractere.',
+            'continut.required'  => 'Conținutul este obligatoriu.',
+            'continut.min'       => 'Conținutul trebuie să aibă cel puțin 10 caractere.',
+            'categorie.required' => 'Categoria este obligatorie.',
+            'fisiere.*.extensions' => 'Sunt permise doar PDF, Word (.docx) și Excel (.xlsx).',
+            'fisiere.*.max'      => 'Fiecare fișier poate avea maxim 10 MB.',
+        ]);
 
         $anunt = Anunt::create([
             'titlu'     => $validated['titlu'],
@@ -203,11 +216,22 @@ class DispeceratController extends Controller
     {
         $categorii = $this->categoriiPermise();
 
-        $anunt = Anunt::whereIn('categorie', $categorii)
-                      ->where('id', $id)
-                      ->firstOrFail();
+        $anunt = Anunt::whereIn('categorie', $categorii)->where('id', $id)->firstOrFail();
 
-        $validated = $request->validate($this->validareComuna(), $this->mesajeValidare());
+        $validated = $request->validate([
+            'titlu'     => 'required|string|min:5|max:500',
+            'continut'  => 'required|string|min:10',
+            'categorie' => 'required|string|in:' . implode(',', $categorii),
+            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx|max:10240',
+        ], [
+            'titlu.required'       => 'Titlul este obligatoriu.',
+            'titlu.min'            => 'Titlul trebuie să aibă cel puțin 5 caractere.',
+            'continut.required'    => 'Conținutul este obligatoriu.',
+            'continut.min'         => 'Conținutul trebuie să aibă cel puțin 10 caractere.',
+            'categorie.required'   => 'Categoria este obligatorie.',
+            'fisiere.*.extensions' => 'Sunt permise doar PDF, Word (.docx) și Excel (.xlsx).',
+            'fisiere.*.max'        => 'Fiecare fișier poate avea maxim 10 MB.',
+        ]);
 
         $anunt->update([
             'titlu'     => $validated['titlu'],
@@ -225,26 +249,18 @@ class DispeceratController extends Controller
     {
         $categorii = $this->categoriiPermise();
 
-        $anunt = Anunt::with('fisiere')
-                      ->whereIn('categorie', $categorii)
-                      ->where('id', $id)
-                      ->firstOrFail();
+        $anunt = Anunt::with('fisiere')->whereIn('categorie', $categorii)->where('id', $id)->firstOrFail();
 
-        // Șterge fișierele din storage
         foreach ($anunt->fisiere as $fisier) {
             Storage::disk('public')->delete($fisier->cale);
         }
 
-        $anunt->delete(); // cascade șterge și din anunt_fisiere
+        $anunt->delete();
 
         return redirect()->route('dispecerat.dashboard')
-            ->with('success', 'Anunțul și fișierele atașate au fost șterse cu succes.');
+            ->with('success', 'Anunțul și fișierele atașate au fost șterse.');
     }
 
-    /**
-     * Șterge un fișier individual
-     * DELETE /dispecerat/fisiere/{id}
-     */
     public function stergeFisier(int $id)
     {
         $categorii = $this->categoriiPermise();
@@ -256,6 +272,65 @@ class DispeceratController extends Controller
         Storage::disk('public')->delete($fisier->cale);
         $fisier->delete();
 
-        return back()->with('success', 'Fișierul a fost șters cu succes.');
+        return back()->with('success', 'Fișierul a fost șters.');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | BULETINE ANALIZĂ – doar pentru laborator
+    |--------------------------------------------------------------------------
+    */
+
+    public function buletinCreate()
+    {
+        if (session('dispecerat_categorie') !== 'calitate') abort(403);
+
+        $luni = ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie',
+                 'Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
+        $ani  = range(date('Y'), 2020);
+
+        return view('dispecerat.buletin-create', compact('luni', 'ani'));
+    }
+
+    public function buletinStore(Request $request)
+    {
+        if (session('dispecerat_categorie') !== 'calitate') abort(403);
+
+        $request->validate([
+            'luna'    => 'required|string|in:Ianuarie,Februarie,Martie,Aprilie,Mai,Iunie,Iulie,August,Septembrie,Octombrie,Noiembrie,Decembrie',
+            'an'      => 'required|integer|min:2000|max:' . (date('Y') + 1),
+            'fisier'  => 'required|file|extensions:pdf|max:20480',
+        ], [
+            'luna.required'   => 'Luna este obligatorie.',
+            'an.required'     => 'Anul este obligatoriu.',
+            'fisier.required' => 'Fișierul PDF este obligatoriu.',
+            'fisier.extensions' => 'Buletinul trebuie să fie în format PDF.',
+            'fisier.max'      => 'Fișierul poate avea maxim 20 MB.',
+        ]);
+
+        $fisier = $request->file('fisier');
+        $cale   = $fisier->store('buletine', 'public');
+
+        BuletinAnaliza::create([
+            'luna'          => $request->luna,
+            'an'            => $request->an,
+            'cale'          => $cale,
+            'nume_original' => $fisier->getClientOriginalName(),
+            'marime'        => $fisier->getSize(),
+        ]);
+
+        return redirect()->route('dispecerat.dashboard')
+            ->with('success', 'Buletinul ' . $request->luna . ' ' . $request->an . ' a fost încărcat!');
+    }
+
+    public function buletinDestroy(int $id)
+    {
+        if (session('dispecerat_categorie') !== 'calitate') abort(403);
+
+        $buletin = BuletinAnaliza::findOrFail($id);
+        Storage::disk('public')->delete($buletin->cale);
+        $buletin->delete();
+
+        return back()->with('success', 'Buletinul a fost șters.');
     }
 }

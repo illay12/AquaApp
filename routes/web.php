@@ -11,6 +11,11 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DispeceratController;
 use App\Http\middleware\DispeceratAuth;
 use App\Http\Controllers\FisierController;
+use App\Http\Controllers\CalitateaApeiController;
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | PAGINI PRINCIPALE
@@ -62,9 +67,10 @@ Route::prefix('anunturi')->name('anunturi.')->group(function () {
 
 Route::prefix('informatii')->name('informatii.')->group(function () {
     Route::get('/tarife',         [InformatiiController::class, 'tarife'])->name('tarife');
-    Route::get('/calitatea-apei', [InformatiiController::class, 'calitateaApei'])->name('calitatea-apei');
+    Route::get('/calitatea-apei', [CalitateaApeiController::class, 'index'])->name('calitatea-apei');
     Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
     Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
+    
 });
 
 /*
@@ -134,8 +140,13 @@ Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
         Route::put('/anunturi/{id}',            [DispeceratController::class, 'update'])->name('anunturi.update');
         Route::delete('/anunturi/{id}',         [DispeceratController::class, 'destroy'])->name('anunturi.destroy');
         Route::delete('/fisiere/{id}', [DispeceratController::class, 'stergeFisier'])->name('fisiere.sterge');
+        Route::get('/dispecerat/buletin/create', [DispeceratController::class, 'buletinCreate'])->name('buletin.create');
+        Route::post('/dispecerat/buletin', [DispeceratController::class, 'buletinStore'])->name('buletin.store');
+        Route::delete('/dispecerat/buletin/{id}', [DispeceratController::class, 'buletinDestroy'])->name('buletin.destroy');
         });
 
 });
 
+// --- DOWNLOAD fisiere ---
 Route::get('/fisiere/{id}/download', [FisierController::class, 'download'])->name('fisiere.download');
+Route::get('/fisiere/buletin/{id}/download', [FisierController::class, 'downloadBuletin'])->name('fisiere.buletin.download');

@@ -199,7 +199,14 @@
 <div class="main-content">
     <div class="topbar">
         <span class="topbar-title">@yield('page_title', 'Dashboard')</span>
-        <span class="topbar-badge"><i class="bi bi-shield-check me-1"></i> Dispecerat autentificat</span>
+        <div class="d-flex align-items-center gap-2">
+            <span class="topbar-badge">
+                <i class="bi bi-person-fill me-1"></i> {{ session('dispecerat_nume') }}
+            </span>
+            <span class="topbar-badge" id="session-timer" style="background:#fff8e1;color:#b45309;border-color:#fde68a;">
+                <i class="bi bi-clock me-1"></i> <span id="timer-text">Sesiune activă</span>
+            </span>
+        </div>
     </div>
 
     <div class="page-body">
@@ -221,6 +228,53 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Timer sesiune – expiră fix la ora setată
+(function() {
+    @php
+    $userId = session('dispecerat_user');
+    $user   = $userId ? \App\Models\DispeceratUser::find($userId) : null;
+    $minute = $user ? $user->minuteRamase() : 0;
+    @endphp
+
+    let minuteRamase = {{ $minute ?? 0 }};
+    let secunde = minuteRamase * 60;
+
+    function actualizeazaTimer() {
+        if (secunde <= 0) {
+            document.getElementById('timer-text').textContent = 'Sesiune expirată';
+            document.getElementById('session-timer').style.background = '#fee2e2';
+            document.getElementById('session-timer').style.color = '#dc2626';
+            document.getElementById('session-timer').style.borderColor = '#fecaca';
+            setTimeout(() => { window.location.href = '{{ route("dispecerat.login") }}'; }, 2000);
+            return;
+        }
+
+        const ore = Math.floor(secunde / 3600);
+        const min = Math.floor((secunde % 3600) / 60);
+        const sec = secunde % 60;
+
+        let text = '';
+        if (ore > 0) text = ore + 'h ' + String(min).padStart(2,'0') + 'm';
+        else         text = String(min).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+
+        document.getElementById('timer-text').textContent = text;
+
+        // Roșu în ultimele 5 minute
+        if (secunde <= 300) {
+            document.getElementById('session-timer').style.background = '#fee2e2';
+            document.getElementById('session-timer').style.color      = '#dc2626';
+            document.getElementById('session-timer').style.borderColor= '#fecaca';
+        }
+
+        secunde--;
+        setTimeout(actualizeazaTimer, 1000);
+    }
+
+    if (minuteRamase > 0) actualizeazaTimer();
+})();
+</script>
+
 @stack('scripts')
 </body>
 </html>

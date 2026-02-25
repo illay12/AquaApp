@@ -64,9 +64,9 @@
                                     {{ strtoupper($fisier->tip) }} &bull; {{ $fisier->marime_fomatata }}
                                 </div>
                             </div>
-                            <span style="background:var(--aqua-primary);color:#fff;border-radius:6px;padding:0.3rem 0.75rem;font-size:0.78rem;font-weight:700;flex-shrink:0;">
+                            <!-- <span style="background:var(--aqua-primary);color:#fff;border-radius:6px;padding:0.3rem 0.75rem;font-size:0.78rem;font-weight:700;flex-shrink:0;">
                                 <i class="bi bi-download me-1"></i> Descarcă
-                            </span>
+                            </span> -->
                         </a>
                         @endforeach
                     </div>
