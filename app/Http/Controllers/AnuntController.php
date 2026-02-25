@@ -37,7 +37,7 @@ class AnuntController extends Controller
      */
     public function show(string $slug)
     {
-        $anunt = Anunt::where('slug', $slug)->firstOrFail();
+        $anunt = Anunt::with('fisiere')->where('slug', $slug)->firstOrFail();
 
         $anunturiRecente = Anunt::latest()
             ->where('id', '!=', $anunt->id)

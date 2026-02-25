@@ -57,8 +57,8 @@
                                 {{ $anunt->titlu }}
                             </a>
                         </h5>
-                        <p class="text-muted mb-2" style="font-size:0.875rem;">{{ Str::limit($anunt->continut, 160) }}</p>
-                        <a href="{{ url('/anunturi/'.$anunt->slug) }}" class="btn btn-sm btn-outline-aqua">
+                        <p class="text-muted mb-2" style="font-size:0.875rem;">{{ Str::limit(strip_tags($anunt->continut), 160) }}</p>
+                        <a href="{{ url('/anunturi/' . $anunt->slug) }}" class="btn btn-sm btn-outline-aqua">
                             Citește mai mult <i class="bi bi-arrow-right ms-1"></i>
                         </a>
                     </div>

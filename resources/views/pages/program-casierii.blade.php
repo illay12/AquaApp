@@ -15,41 +15,56 @@
 @section('content')
 <section style="padding:3.5rem 0;">
     <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-8">
+        <div class="row">
+            <div class="col-12">
                 <h2 class="section-title">Program de lucru cu publicul</h2>
 
                 <div class="alert-band mb-4" style="border-radius:8px;">
                     <i class="bi bi-info-circle-fill me-2"></i>
                     Plata facturilor se poate efectua și <strong>online</strong> prin portalul Zona Clienți, 24/7.
-                    <a href="{{ url('/client/factura') }}" class="ms-2 fw-bold">Plătește online →</a>
+                    <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="ms-2 fw-bold">Plătește online →</a>
                 </div>
 
                 <div class="row g-4">
                     @foreach([
-                        ['Sediu central – Tulcea','Str. Principală nr. 1, Tulcea','Lun–Vin','08:00 – 14:30','0240 511 111'],
-                        ['Agenție Măcin','Str. Dunării nr. 5, Măcin','Lun–Vin','08:00 – 12:00','0240 512 222'],
-                        ['Agenție Babadag','Str. Republicii nr. 10, Babadag','Lun–Mie','08:00 – 12:00','0240 513 333'],
-                        ['Agenție Sulina','Str. nr. 1, nr. 20, Sulina','Lun, Mie, Vin','08:00 – 12:00','0240 514 444'],
-                        ['Agenție Isaccea','Str. Calea Macin nr. 3, Isaccea','Mar, Joi','08:00 – 12:00','0240 515 555'],
-                    ] as [$denumire, $adresa, $zile, $ore, $tel])
-                    <div class="col-md-6">
+                        ['Caserie Tulcea','Str. Tudor Vladimirescu, nr. 2','Luni–Vineri','09:00 – 17:00','Sâmbătă–Duminică','ÎNCHIS','0240 511 369','contractare.facturare@aquaservtulcea.ro'],
+                        ['Caserie Isaccea','','Luni–Vineri','07:00 – 18:00','Sâmbătă','07:00 – 12:00','0240 540 302','centru.isaccea@aquaservtulcea.ro'],
+                        ['Caserie Măcin','','Luni–Vineri','07:00 – 18:00','Sâmbătă','07:00 – 12:00','0240 571 180','centru.macin@aquaservtulcea.ro'],
+                        ['Caserie Sulina','','Luni–Vineri','07:00 – 18:00','Sâmbătă','07:00 – 12:00','0240 543 147','centru.sulina@aquaservtulcea.ro'],
+                        ['Caserie Babadag','','Luni–Vineri','07:00 – 18:00','Sâmbătă','07:00 – 12:00','0240 562 340','centru.babadag@aquaservtulcea.ro'],
+                    ] as [$denumire, $adresa, $zile1, $ore1, $zile2, $ore2, $tel, $email])
+                    <div class="col-md-6 col-lg-4">
                         <div class="card p-4 h-100">
                             <h6 class="fw-bold text-aqua mb-3">
-                                <i class="bi bi-geo-alt-fill me-2"></i>{{ $denumire }}
+                                <i class="bi bi-building me-2"></i>{{ $denumire }}
                             </h6>
                             <ul class="list-unstyled mb-0" style="font-size:0.875rem;">
+                                @if($adresa)
                                 <li class="mb-2"><i class="bi bi-map text-muted me-2"></i>{{ $adresa }}</li>
+                                @endif
                                 <li class="mb-2">
                                     <i class="bi bi-calendar3 text-muted me-2"></i>
-                                    <strong>{{ $zile }}</strong>
+                                    <strong>{{ $zile1 }}</strong>
                                 </li>
                                 <li class="mb-2">
                                     <i class="bi bi-clock text-muted me-2"></i>
-                                    <strong style="color:var(--aqua-primary);">{{ $ore }}</strong>
+                                    <strong style="color:var(--aqua-primary);">{{ $ore1 }}</strong>
                                 </li>
-                                <li><i class="bi bi-telephone text-muted me-2"></i>
-                                    <a href="tel:{{ $tel }}">{{ $tel }}</a>
+                                <li class="mb-2">
+                                    <i class="bi bi-calendar3 text-muted me-2"></i>
+                                    <strong>{{ $zile2 }}</strong>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="bi bi-clock text-muted me-2"></i>
+                                    <strong style="color:{{ $ore2 === 'ÎNCHIS' ? '#dc3545' : 'var(--aqua-primary)' }};">{{ $ore2 }}</strong>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-telephone text-muted me-2"></i>
+                                    <a href="tel:{{ str_replace(' ', '', $tel) }}">{{ $tel }}</a>
+                                </li>
+                                <li>
+                                    <i class="bi bi-envelope text-muted me-2"></i>
+                                    <a href="mailto:{{ $email }}" style="font-size:0.8rem;">{{ $email }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -57,21 +72,6 @@
                     @endforeach
                 </div>
 
-                <div class="card mt-4 p-4" style="border-color:#f8d7da;background:#fff5f5;">
-                    <h6 class="fw-bold" style="color:#dc3545;">
-                        <i class="bi bi-telephone-fill me-2"></i> Modalități de plată
-                    </h6>
-                    <ul style="font-size:0.875rem;line-height:2;padding-left:1.2rem;margin:0;">
-                        <li>La ghișeul casieriei – numerar sau card bancar</li>
-                        <li>Online prin portalul <a href="{{ url('/client/factura') }}">Zona Clienți</a></li>
-                        <li>Prin virament bancar (IBAN indicat pe factură)</li>
-                        <li>La orice oficiu poștal din județ</li>
-                        <li>Prin aplicații de mobile banking (Ghișeul.ro)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                @include('components.sidebar-informatii')
             </div>
         </div>
     </div>

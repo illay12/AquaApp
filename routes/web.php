@@ -8,7 +8,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiciiController;
 use App\Http\Controllers\InformatiiController;
 use App\Http\Controllers\ClientController;
-
+use App\Http\Controllers\DispeceratController;
+use App\Http\middleware\DispeceratAuth;
+use App\Http\Controllers\FisierController;
 /*
 |--------------------------------------------------------------------------
 | PAGINI PRINCIPALE
@@ -49,6 +51,7 @@ Route::prefix('servicii')->name('servicii.')->group(function () {
 Route::prefix('anunturi')->name('anunturi.')->group(function () {
     Route::get('/',       [AnuntController::class, 'index'])->name('index');
     Route::get('/{slug}', [AnuntController::class, 'show'])->name('show');
+    Route::get('/anunturi/{slug}', [AnuntController::class, 'show'])->name('anunturi.show');
 });
 
 /*
@@ -105,3 +108,34 @@ Route::prefix('client')->name('client.')->group(function () {
         Route::post('/logout',            [ClientController::class, 'logout'])->name('logout');
     });
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| DISPECERAT – rute publice (login/logout)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
+
+    Route::get('/login',  [DispeceratController::class, 'loginForm'])->name('login');
+    Route::post('/login', [DispeceratController::class, 'login'])->name('login.post');
+    Route::post('/logout',[DispeceratController::class, 'logout'])->name('logout');
+
+    /*
+    |--------------------------------------------------------------------------
+    | DISPECERAT – rute protejate (necesită autentificare)
+    |--------------------------------------------------------------------------
+    */
+    Route::middleware(DispeceratAuth::class)->group(function () {
+        Route::get('/',                         [DispeceratController::class, 'dashboard'])->name('dashboard');
+        Route::get('/anunturi/create',          [DispeceratController::class, 'create'])->name('anunturi.create');
+        Route::post('/anunturi',                [DispeceratController::class, 'store'])->name('anunturi.store');
+        Route::get('/anunturi/{id}/edit',       [DispeceratController::class, 'edit'])->name('anunturi.edit');
+        Route::put('/anunturi/{id}',            [DispeceratController::class, 'update'])->name('anunturi.update');
+        Route::delete('/anunturi/{id}',         [DispeceratController::class, 'destroy'])->name('anunturi.destroy');
+        Route::delete('/fisiere/{id}', [DispeceratController::class, 'stergeFisier'])->name('fisiere.sterge');
+        });
+
+});
+
+Route::get('/fisiere/{id}/download', [FisierController::class, 'download'])->name('fisiere.download');

@@ -13,132 +13,154 @@
 @endsection
 
 @section('content')
-
-{{-- INTRO --}}
 <section style="padding:3.5rem 0;">
     <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-7">
-                <h2 class="section-title">Cine suntem</h2>
-                <p>
-                    <strong>AquaServ S.A.</strong> este operatorul regional de servicii de alimentare cu apă potabilă
-                    și de canalizare, autorizat de Autoritatea Națională de Reglementare pentru Serviciile Comunitare
-                    de Utilități Publice (A.N.R.S.C.), care deservește populația și agenții economici din județul nostru.
-                </p>
-                <p>
-                    Compania are ca obiect principal de activitate captarea, tratarea și distribuția apei potabile,
-                    precum și colectarea și epurarea apelor uzate, asigurând servicii de calitate pentru peste
-                    <strong>50.000 de abonați</strong> din peste <strong>150 de localități</strong>.
-                </p>
-                <p>
-                    Ne angajăm să furnizăm apă potabilă care îndeplinește toți parametrii de calitate impuși
-                    de legislația națională și europeană, punând siguranța și sănătatea comunității pe primul loc.
+        <div class="row">
+
+            {{-- CONTINUT PRINCIPAL --}}
+            <div class="col-12">
+
+                <h2 class="section-title">Scurt istoric</h2>
+
+                <p style="font-size:0.95rem;line-height:1.85;">
+                    În municipiul Tulcea, nevoia alimentării cu apă potabilă trebuie să se fi resimțit de mult timp
+                    înainte, dar abia în anul 1897, s-a întocmit un proiect în acest scop de către inginerul șef
+                    <strong>Scarlat Varnav</strong>. Acest proiect prevedea alimentarea cu apă luată din Dunăre.
+                    Apa, după tratare în decantoare și filtre, se distribuia în rețeaua de distribuție prin refulare.
+                    O uzină cu motoare cu aburi furniza forța necesară pompelor de aspirația apei din Dunăre și a
+                    celor de refulare. Deși proiectul a fost aprobat, nu s-a pus în execuție până la 1906, desigur
+                    din lipsă de fonduri. Până la apariția Uzinei de apă locuitorii orașului Tulcea se aprovizionau
+                    cu apă direct din Dunăre, pe care, fie și-o luau singuri, fie o cumpărau de la săcagii.
                 </p>
 
-                <div class="row g-3 mt-2">
-                    <div class="col-6">
-                        <div class="p-3 text-center" style="background:var(--aqua-bg);border-radius:12px;border:1.5px solid var(--aqua-border);">
-                            <div style="font-size:2rem;font-weight:800;color:var(--aqua-primary);">1897</div>
-                            <div style="font-size:0.82rem;color:var(--aqua-gray);font-weight:600;">Anul înființării primei uzine</div>
+                {{-- TIMELINE --}}
+                <div class="mt-5" style="position:relative;">
+
+                    {{-- Linie verticala --}}
+                    <div class="d-none d-md-block" style="position:absolute;left:72px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--aqua-primary),var(--aqua-light));border-radius:3px;"></div>
+
+                    @php
+                    $etape = [
+                        [
+                            '1906',
+                            'Reluarea proiectului',
+                            'În <strong>anul 1906</strong> problema apei a fost reluată și proiectul a fost din nou prezentat Consiliului Tehnic Superior, care și-a menținut avizul, cu observația că motoarele cu aburi pot fi înlocuiți cu folos prin motoare cu titei sistem Diesel, ca fiind mai economici și putând fi întrebuințați și pentru dinamurile electrice care s-ar instala în cazul când s-ar înființa iluminatul electric al orașului.'
+                        ],
+                        [
+                            '1907–1908',
+                            'Regulamentul de distribuție',
+                            'În perioada <strong>1907 – 1908</strong> Consiliul Tehnic Superior a examinat și aprobat regulamentul pentru distribuirea apei potabile în oraș și proiectul privitor la sporirea rețelei de distribuție.'
+                        ],
+                        [
+                            '1910–1912',
+                            'Înființarea Uzinei de apă',
+                            'În <strong>aprilie 1910</strong>, locuitorii orașului Tulcea sărbătoreau reușita obținerii unui împrumut în scopul rezolvării situației alimentării cu apă din oraș.<br><br>
+                            <strong>Uzina de apă Tulcea</strong> s-a înființat în <strong>anul 1911</strong>. Pe același amplasament s-a realizat un an mai târziu, în 1912, și uzina electrică, amândouă funcționând împreună.'
+                        ],
+                        [
+                            '1927–1953',
+                            'Extinderea rețelei',
+                            '<strong>În 1927</strong> s-au executat lucrări de sporire a rețelei care s-au continuat până la 1934. După Primul Război Mondial, s-au folosit și conducte de fier cu diametrul 52 – 57 mm.<br>
+                            <strong>În 1929</strong> se renunță la țevile de fier și încep lucrările cu tuburi de fontă de 60 mm.<br>
+                            <strong>În 1953</strong> rețeaua de distribuție era alcătuită dintr-o arteră cu două ramificații și avea lungimea totală de peste 52 km.'
+                        ],
+                        [
+                            '1998',
+                            'Înființarea S.C. ACET S.A.',
+                            'Prin reorganizarea Regiei Autonome de Prestări Servicii Publice Tulcea, se înființează Societatea Comercială <strong>"APA, CANAL, ENERGIE TERMICĂ" Tulcea (S.C. ACET S.A.)</strong> având acționar unic Consiliul Local al Municipiului Tulcea.<br><br>
+                            Obiectul principal de activitate al societății – exploatarea sistemelor de producere și distribuție a energiei termice, a celor de captare, tratare, transport și distribuție a apei potabile și de canalizare, în municipiul Tulcea.'
+                        ],
+                        [
+                            '2003–2014',
+                            'Înființarea AQUASERV S.A. și regionalizarea',
+                            '<strong>2003</strong> – S.C. ACET S.A. Tulcea își încetează activitatea, operarea sistemului public de alimentare cu apă și de canalizare pe de-o parte și furnizarea energiei termice pe de altă parte fiind preluate de două direcții separate în subordinea Consiliului Local Tulcea. Administrarea și gestionarea serviciilor publice de alimentare cu apă și canalizare sunt preluate în gestiune directă de Direcția Apă-Canal, ca serviciu public cu personalitate juridică în subordinea Consiliului Local Tulcea.<br><br>
+                            <strong>2004</strong> – se înființează societatea comercială <strong>S.C. AQUASERV S.A. TULCEA</strong> care preia activitățile de captare, tratare, distribuție apă potabilă, colectarea și transportul apelor uzate menajere de la Consiliul Local Tulcea – Direcția Apă-Canal.<br><br>
+                            <strong>2006</strong> începe procesul de regionalizare a serviciilor de apă și apă uzată:
+                            <ol style="margin-top:0.5rem;line-height:2;">
+                                <li>primul pas – se înființează Asociația Intercomunitară (ADI) <strong>„Dezvoltarea durabilă a serviciilor de apă și de canalizare din județul Tulcea"</strong></li>
+                                <li>al doilea pas – SC AQUASERV S.A. Tulcea devine operator regional</li>
+                                <li>al treilea pas – (2007) încheierea contractului de delegare a gestiunii prin care municipalitățile membre ADI deleagă gestiunea serviciilor de apă și apă uzată operatorului regional AQUASERV S.A. Tulcea</li>
+                            </ol>
+                            <strong>2012</strong> – completarea Asociației Intercomunitare (ADI) cu orașul Babadag, localitatea Mineri.'
+                        ],
+                        [
+                            '2015',
+                            '105 ani de alimentare cu apă',
+                            '<strong>În 2015</strong>, noi, tulcenii, am sărbătorit 105 ani de punerea pietrei de temelie a începerii alimentării cu apă în orașul Tulcea, ocazie cu care au fost amplasate mai multe plăci comemorative.<br><br>
+                            <strong>2015</strong> – pentru accesarea de fonduri pentru aplicația 2014-2020 și-au exprimat intenția de a adera la Asociației Intercomunitare (ADI) mai multe localități din județul Tulcea.'
+                        ],
+                    ];
+                    @endphp
+
+                    @foreach($etape as [$an, $titlu, $continut])
+                    <div class="d-flex gap-4 mb-5" style="position:relative;">
+                        {{-- Bulina an --}}
+                        <div class="flex-shrink-0 text-center" style="width:145px;">
+                            <div style="
+                                display:inline-flex;
+                                align-items:center;
+                                justify-content:center;
+                                background:var(--aqua-primary);
+                                color:#fff;
+                                font-weight:800;
+                                font-size:0.85rem;
+                                border-radius:30px;
+                                padding:0.4rem 0.9rem;
+                                white-space:nowrap;
+                                box-shadow:0 4px 12px rgba(0,119,182,0.3);
+                                position:relative;
+                                z-index:1;
+                            ">{{ $an }}</div>
+                        </div>
+                        {{-- Continut --}}
+                        <div class="flex-grow-1 pb-2" style="border-bottom:1px dashed var(--aqua-border);">
+                            <h5 style="font-family:'Merriweather',serif;font-size:1rem;color:var(--aqua-dark);margin-bottom:0.75rem;">
+                                {{ $titlu }}
+                            </h5>
+                            <div style="font-size:0.9rem;line-height:1.85;color:#333;">
+                                {!! $continut !!}
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="p-3 text-center" style="background:var(--aqua-bg);border-radius:12px;border:1.5px solid var(--aqua-border);">
-                            <div style="font-size:2rem;font-weight:800;color:var(--aqua-primary);">24/7</div>
-                            <div style="font-size:0.82rem;color:var(--aqua-gray);font-weight:600;">Dispecerat avarii activ</div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
-            </div>
-            <div class="col-lg-5">
-                <div style="background:linear-gradient(135deg,var(--aqua-dark),var(--aqua-primary));border-radius:16px;padding:2.5rem;color:#fff;text-align:center;">
-                    <i class="bi bi-droplet-fill" style="font-size:4rem;opacity:0.8;"></i>
-                    <h4 style="font-family:'Merriweather',serif;margin-top:1rem;">Misiunea noastră</h4>
-                    <p style="opacity:0.9;font-size:0.95rem;line-height:1.75;margin:0;">
-                        Să asigurăm servicii de alimentare cu apă și canalizare sigure, accesibile și de calitate,
-                        contribuind la sănătatea și bunăstarea comunității, cu respect față de mediu.
+
+                {{-- CERTIFICARI --}}
+                <div class="mt-5">
+                    <h2 class="section-title">Certificări</h2>
+                    <p style="font-size:0.9rem;" class="mb-4">
+                        S.C. AQUASERV S.A. Tulcea deține multiple certificări naționale și internaționale care atestă
+                        calitatea serviciilor și conformitatea cu standardele în vigoare.
                     </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-{{-- VALORI --}}
-<section style="background:var(--aqua-bg);padding:3.5rem 0;">
-    <div class="container">
-        <h2 class="section-title">Valorile noastre</h2>
-        <div class="row g-4">
-            @foreach([
-                ['bi-shield-check','Calitate','Furnizăm apă potabilă care respectă toate normele naționale și europene de calitate.'],
-                ['bi-people-fill','Comunitate','Suntem dedicați comunității pe care o servim, punând nevoile cetățenilor pe primul loc.'],
-                ['bi-leaf','Mediu','Acționăm responsabil față de mediu, minimizând impactul activității noastre.'],
-                ['bi-graph-up','Transparență','Comunicăm deschis cu cetățenii, partenerii și autoritățile despre activitatea noastră.'],
-            ] as [$icon, $titlu, $desc])
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 text-center p-4">
-                    <div style="width:64px;height:64px;background:var(--aqua-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.8rem;color:#fff;">
-                        <i class="bi {{ $icon }}"></i>
+                    <div class="row g-3">
+                        @foreach([
+                            ['A.N.R.S.C.', 'Licență emisă de Autoritatea Națională de Reglementare pentru Serviciile Comunitare de Utilități Publice', 'bi-award'],
+                            ['Membru A.R.A.', 'Asociația Română a Apei – membri activi în rețeaua națională a operatorilor de apă', 'bi-people'],
+                            ['ISO 27001', 'Sistem de Management al Securității Informației', 'bi-shield-lock'],
+                            ['ISO 9001', 'Sistem de Management al Calității', 'bi-patch-check'],
+                            ['ISO 14001', 'Sistem de Management de Mediu', 'bi-leaf'],
+                            ['ISO 18001', 'Sistem de Management al Sănătății și Securității Ocupaționale', 'bi-heart-pulse'],
+                            ['ISO 22000', 'Sistem de Management al Siguranței Alimentare', 'bi-droplet-half'],
+                            ['SR EN ISO', 'Alte standarde române și europene aplicabile', 'bi-file-earmark-check'],
+                        ] as [$titlu, $desc, $icon])
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 text-center p-3" style="border-color:var(--aqua-border);">
+                                <div style="width:52px;height:52px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.4rem;color:var(--aqua-primary);border:2px solid var(--aqua-border);">
+                                    <i class="bi {{ $icon }}"></i>
+                                </div>
+                                <div class="fw-bold" style="font-size:0.9rem;color:var(--aqua-dark);">{{ $titlu }}</div>
+                                <div class="text-muted mt-1" style="font-size:0.75rem;line-height:1.4;">{{ $desc }}</div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
-                    <h5 style="font-family:'Merriweather',serif;font-size:1rem;">{{ $titlu }}</h5>
-                    <p class="text-muted mb-0" style="font-size:0.875rem;">{{ $desc }}</p>
                 </div>
+
             </div>
-            @endforeach
+
         </div>
     </div>
 </section>
-
-{{-- CONDUCERE --}}
-<section style="padding:3.5rem 0;">
-    <div class="container">
-        <h2 class="section-title">Conducerea societății</h2>
-        <div class="row g-4">
-            @foreach([
-                ['Director General','Ion Popescu','ion.popescu@aquaserv.ro'],
-                ['Director Tehnic','Maria Ionescu','maria.ionescu@aquaserv.ro'],
-                ['Director Economic','Gheorghe Radu','gheorghe.radu@aquaserv.ro'],
-                ['Director Comercial','Ana Constantin','ana.constantin@aquaserv.ro'],
-            ] as [$functie, $nume, $email])
-            <div class="col-md-6 col-lg-3">
-                <div class="card text-center p-4">
-                    <div style="width:72px;height:72px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2rem;color:var(--aqua-primary);border:2px solid var(--aqua-border);">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                    <h6 class="fw-bold mb-1">{{ $nume }}</h6>
-                    <p class="text-muted mb-2" style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;">{{ $functie }}</p>
-                    <a href="mailto:{{ $email }}" style="font-size:0.8rem;color:var(--aqua-primary);">{{ $email }}</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- CENTRE OPERATIONALE --}}
-<section style="background:var(--aqua-bg);padding:3.5rem 0;">
-    <div class="container">
-        <h2 class="section-title">Centre operaționale</h2>
-        <div class="row g-4">
-            @foreach([
-                ['Centru Operațional Tulcea','Str. Principală nr. 1, Tulcea','0240 511 111','Lun–Vin: 08:00–16:30'],
-                ['Centru Operațional Măcin','Str. Dunării nr. 5, Măcin','0240 512 222','Lun–Vin: 08:00–14:00'],
-                ['Centru Operațional Babadag','Str. Republicii nr. 10, Babadag','0240 513 333','Lun–Vin: 08:00–14:00'],
-                ['Centru Operațional Sulina','Str. nr. 1, nr. 20, Sulina','0240 514 444','Lun–Vin: 08:00–14:00'],
-            ] as [$centru, $adresa, $tel, $program])
-            <div class="col-md-6">
-                <div class="card p-4">
-                    <h6 class="fw-bold text-aqua mb-3"><i class="bi bi-geo-alt-fill me-2"></i>{{ $centru }}</h6>
-                    <ul class="list-unstyled mb-0" style="font-size:0.875rem;">
-                        <li class="mb-1"><i class="bi bi-map me-2 text-muted"></i>{{ $adresa }}</li>
-                        <li class="mb-1"><i class="bi bi-telephone me-2 text-muted"></i><a href="tel:{{ $tel }}">{{ $tel }}</a></li>
-                        <li><i class="bi bi-clock me-2 text-muted"></i>{{ $program }}</li>
-                    </ul>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
 @endsection
