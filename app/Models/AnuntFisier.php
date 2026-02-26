@@ -62,6 +62,8 @@ class AnuntFisier extends Model
      */
     public function getCuloareIconAttribute(): string
     {
+
+    
         return match($this->tip) {
             'pdf'  => '#dc2626',
             'docx' => '#1d4ed8',

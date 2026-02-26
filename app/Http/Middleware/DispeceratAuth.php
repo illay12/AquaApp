@@ -10,6 +10,7 @@ class DispeceratAuth
 {
     public function handle(Request $request, Closure $next)
     {
+        
         $userId = session('dispecerat_user');
         $token  = session('dispecerat_token');
 
