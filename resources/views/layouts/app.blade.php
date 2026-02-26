@@ -329,7 +329,7 @@
                     <i class="bi bi-droplet-half text-white" style="font-size:1.85rem;"></i>
                 </div>
                 <div>
-                    <span>AquaServ S.A.</span>
+                    <span>AquaServ Tulcea</span>
                     <small>Servicii apă și canal</small>
                 </div>
             </a>
@@ -366,7 +366,6 @@
                         <a class="nav-link dropdown-toggle {{ request()->is('informatii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Informații publice</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/informatii/anunturi') }}">Anunțuri</a></li>
                             <li><a class="dropdown-item" href="{{ url('/informatii/calitatea-apei') }}">Calitatea apei</a></li>
                             <li><a class="dropdown-item" href="{{ url('/informatii/tarife') }}">Tarife și Taxe</a></li>
                             <li><a class="dropdown-item" href="{{ url('/informatii/legislatie') }}">Legislație</a></li>
@@ -380,8 +379,8 @@
                         <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('/contact') }}">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-2 d-flex align-items-center">
-                        <a href="{{ url('/client/login') }}" class="btn btn-aqua btn-sm">
-                            <i class="bi bi-person-circle me-1"></i> Cont client
+                        <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="btn btn-aqua btn-sm">
+                            <i class="bi bi-person-circle me-1"></i> Cont MyApa
                         </a>
                     </li>
                 </ul>
@@ -412,10 +411,10 @@
                     {{-- Butoane rapide --}}
                     <div style="padding:1rem 1.25rem;background:#f0f8ff;border-bottom:1px solid #e2e8f0;display:flex;gap:0.75rem;">
                         <a href="{{ url('/client/index-contor') }}" style="flex:1;background:#0077b6;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
-                            <i class="bi bi-speedometer2 d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Contor
+                            <i class="bi bi-speedometer2 d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Trimite Index
                         </a>
-                        <a href="{{ url('/client/login') }}" style="flex:1;background:#023e8a;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
-                            <i class="bi bi-person-circle d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Cont
+                        <a href="{{ url('https://my.aquaservtulcea.ro/') }}" style="flex:1;background:#023e8a;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
+                            <i class="bi bi-person-circle d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Cont Myapa
                         </a>
                     </div>
 
@@ -459,9 +458,6 @@
                                 <i class="bi bi-chevron-down" id="iconInfo" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
                             </button>
                             <div id="subInfo" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
-                                <a href="{{ url('/informatii/anunturi') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-megaphone text-aqua"></i> Anunțuri
-                                </a>
                                 <a href="{{ url('/informatii/calitatea-apei') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-droplet-half text-aqua"></i> Calitatea apei
                                 </a>

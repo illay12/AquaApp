@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row g-2 justify-content-center">
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/client/factura') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
+                    <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-receipt"></i></div>
                         <h6 style="font-size:0.75rem;margin:0;">Plătește factura</h6>
                     </a>
@@ -49,7 +49,7 @@
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/client/avarie') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
+                    <a href="{{ url('/anunturi?q=&categorie=avarie') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-tools"></i></div>
                         <h6 style="font-size:0.75rem;margin:0;">Avarie</h6>
                     </a>
@@ -131,25 +131,17 @@
                     </div>
 
                     {{-- Program casierii --}}
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="bi bi-clock me-2"></i> Program casierii
-                        </div>
-                        <div class="card-body p-3">
-                            <table class="table table-sm mb-0" style="font-size:0.875rem;">
-                                <tbody>
-                                    <tr>
-                                        <td class="fw-bold">Sediu central</td>
-                                        <td>Lun–Vin: 08:00–14:30</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Agenție Măcin</td>
-                                        <td>Lun–Vin: 08:00–12:00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="{{ url('/program-casierii') }}" class="btn btn-sm btn-aqua mt-2 w-100">
-                                Program complet
+                    <div class="card mb-4" style="border-color:var(--aqua-border);">
+                        <div class="card-body p-3 text-center">
+                            <div style="width:48px;height:48px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.3rem;color:var(--aqua-primary);">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <h6 class="fw-bold mb-1" style="color:var(--aqua-dark);">Program casierii</h6>
+                            <p style="font-size:0.82rem;color:#6c757d;margin-bottom:1rem;">
+                                Consultați orarul complet al casieriilor și agențiilor din județ.
+                            </p>
+                            <a href="{{ url('/program-casierii') }}" class="btn btn-aqua btn-sm w-100">
+                                <i class="bi bi-arrow-right-circle me-1"></i> Vezi programul complet
                             </a>
                         </div>
                     </div>
@@ -177,11 +169,11 @@
         <div class="container">
             <div class="row g-4 text-center">
                 <div class="col-6 col-md-3">
-                    <div style="font-size:2.5rem;font-weight:800;color:#90e0ef;">150+</div>
+                    <div style="font-size:2.5rem;font-weight:800;color:#90e0ef;">25+</div>
                     <div style="font-size:0.875rem;opacity:0.85;">Localități deservite</div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div style="font-size:2.5rem;font-weight:800;color:#90e0ef;">50.000+</div>
+                    <div style="font-size:2.5rem;font-weight:800;color:#90e0ef;">25.000+</div>
                     <div style="font-size:0.875rem;opacity:0.85;">Abonați</div>
                 </div>
                 <div class="col-6 col-md-3">
