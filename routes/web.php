@@ -9,7 +9,7 @@ use App\Http\Controllers\ServiciiController;
 use App\Http\Controllers\InformatiiController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DispeceratController;
-use App\Http\middleware\DispeceratAuth;
+use App\Http\Middleware\DispeceratAuth;
 use App\Http\Controllers\FisierController;
 use App\Http\Controllers\CalitateaApeiController;
 
