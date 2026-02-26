@@ -5,30 +5,23 @@
 @section('content')
 
     {{-- HERO SECTION --}}
-    <section style="background:linear-gradient(135deg, #023e8a 0%, #0077b6 60%, #00b4d8 100%); color:#fff; padding:5rem 0 4rem; position:relative; overflow:hidden;">
+    <section style="background:linear-gradient(135deg, #023e8a 0%, #0077b6 60%, #00b4d8 100%); color:#fff; padding:2rem 0 1.5rem; position:relative; overflow:hidden;">
         <div style="position:absolute;inset:0;background:url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'40\' cy=\'40\' r=\'8\'/%3E%3C/g%3E%3C/svg%3E');"></div>
         <div class="container position-relative">
             <div class="row align-items-center g-5">
                 <div class="col-lg-7">
-                    <span class="badge" style="background:rgba(255,255,255,0.18);color:#fff;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;padding:0.45em 1em;border-radius:20px;margin-bottom:1rem;display:inline-block;">
+                    <span class="badge" style="background:rgba(255,255,255,0.18);color:#fff;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;padding:0.45em 1em;border-radius:20px;margin-bottom:0.6rem;display:inline-block;">
                         <i class="bi bi-shield-check me-1"></i> Operator autorizat A.N.R.S.C.
                     </span>
-                    <h1 style="font-family:'Merriweather',serif;font-size:2.6rem;font-weight:700;line-height:1.3;margin-bottom:1.2rem;">
-                        Servicii de calitate pentru<br>
-                        <span style="color:#90e0ef;">apă și canalizare</span>
+                    <h1 style="font-family:'Merriweather',serif;font-size:clamp(1.35rem,5vw,2.1rem);font-weight:700;line-height:1.3;margin-bottom:0.8rem;">
+                        Împreună pentru apă sigură
+                        <span style="color:#90e0ef;display:block;">și mediu curat</span>
                     </h1>
-                    <p style="font-size:1.1rem;opacity:0.9;max-width:540px;line-height:1.75;margin-bottom:2rem;">
+                    <p style="font-size:clamp(0.85rem,3vw,1rem);opacity:0.9;max-width:540px;line-height:1.6;margin-bottom:0;">
                         Furnizăm și prestăm servicii de alimentare cu apă potabilă și de canalizare
                         pentru cetățenii și mediul de afaceri din județ.
                     </p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="{{ url('/client/factura') }}" class="btn btn-light fw-bold" style="border-radius:8px;padding:0.7rem 1.8rem;color:#0077b6;">
-                            <i class="bi bi-credit-card-2-front me-2"></i> Plătește factura
-                        </a>
-                        <a href="{{ url('/client/avarie') }}" class="btn fw-bold" style="background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.4);border-radius:8px;padding:0.7rem 1.8rem;">
-                            <i class="bi bi-exclamation-triangle me-2"></i> Raportează avarie
-                        </a>
-                    </div>
+
                 </div>
                 <div class="col-lg-5 d-none d-lg-flex justify-content-center">
                     <div style="width:280px;height:280px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);">
@@ -40,43 +33,43 @@
     </section>
 
     {{-- QUICK ACCESS --}}
-    <section style="background:#f0f8ff;padding:2.5rem 0;">
+    <section style="background:#f0f8ff;padding:1rem 0;">
         <div class="container">
-            <div class="row g-3 justify-content-center">
-                <div class="col-6 col-md-3 col-lg-2">
-                    <a href="{{ url('/client/factura') }}" class="quick-access-card">
+            <div class="row g-2 justify-content-center">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="{{ url('/client/factura') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-receipt"></i></div>
-                        <h6>Plătește factura</h6>
+                        <h6 style="font-size:0.75rem;margin:0;">Plătește factura</h6>
                     </a>
                 </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <a href="{{ url('/client/index-contor') }}" class="quick-access-card">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="{{ url('/client/index-contor') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-speedometer2"></i></div>
-                        <h6>Index contor</h6>
+                        <h6 style="font-size:0.75rem;margin:0;">Index contor</h6>
                     </a>
                 </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <a href="{{ url('/client/avarie') }}" class="quick-access-card">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="{{ url('/client/avarie') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-tools"></i></div>
-                        <h6>Avarie</h6>
+                        <h6 style="font-size:0.75rem;margin:0;">Avarie</h6>
                     </a>
                 </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <a href="{{ url('/informatii/calitatea-apei') }}" class="quick-access-card">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="{{ url('/informatii/calitatea-apei') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-droplet-half"></i></div>
-                        <h6>Calitatea apei</h6>
+                        <h6 style="font-size:0.75rem;margin:0;">Calitatea apei</h6>
                     </a>
                 </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <a href="{{ url('/informatii/tarife') }}" class="quick-access-card">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="{{ url('/informatii/tarife') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-cash-coin"></i></div>
-                        <h6>Tarife</h6>
+                        <h6 style="font-size:0.75rem;margin:0;">Tarife</h6>
                     </a>
                 </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <a href="{{ url('/informatii/formulare') }}" class="quick-access-card">
+                <div class="col-4 col-md-3 col-lg-2">
+                    <a href="{{ url('/informatii/formulare') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-file-earmark-arrow-down"></i></div>
-                        <h6>Formulare</h6>
+                        <h6 style="font-size:0.75rem;margin:0;">Formulare</h6>
                     </a>
                 </div>
             </div>

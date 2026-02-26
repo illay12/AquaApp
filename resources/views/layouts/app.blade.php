@@ -58,17 +58,17 @@
             box-shadow: 0 2px 12px rgba(0,119,182,0.10);
             padding: 0;
         }
-        .navbar-brand img { height: 52px; }
+        .navbar-brand img { height: 64px; }
         .navbar-brand span {
             font-family: 'Merriweather', serif;
-            font-size: 1.15rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--aqua-dark);
             line-height: 1.2;
         }
         .navbar-brand small {
             font-family: 'Nunito', sans-serif;
-            font-size: 0.72rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: var(--aqua-gray);
             display: block;
@@ -77,9 +77,9 @@
         }
         .navbar-nav .nav-link {
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             color: var(--aqua-text) !important;
-            padding: 1.2rem 0.9rem !important;
+            padding: 1.5rem 1.05rem !important;
             letter-spacing: 0.02em;
             transition: color 0.2s, border-bottom 0.2s;
             border-bottom: 3px solid transparent;
@@ -325,8 +325,8 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}">
                 {{-- Înlocuiește cu logo-ul tău: <img src="{{ asset('images/logo.png') }}" alt="Logo"> --}}
-                <div style="width:48px;height:48px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-                    <i class="bi bi-droplet-half text-white" style="font-size:1.5rem;"></i>
+                <div style="width:60px;height:60px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <i class="bi bi-droplet-half text-white" style="font-size:1.85rem;"></i>
                 </div>
                 <div>
                     <span>AquaServ S.A.</span>
