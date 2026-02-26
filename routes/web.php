@@ -112,6 +112,9 @@ Route::prefix('client')->name('client.')->group(function () {
         Route::get('/date-personale',     [ClientController::class, 'datePersonale'])->name('date-personale');
         Route::put('/date-personale',     [ClientController::class, 'updateDatePersonale'])->name('date-personale.update');
         Route::post('/logout',            [ClientController::class, 'logout'])->name('logout');
+
+
+        
     });
 });
 
