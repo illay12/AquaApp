@@ -307,7 +307,7 @@
                 <a href="tel:0240511111">0240 511 111</a>
                 <span class="mx-2">|</span>
                 <i class="bi bi-envelope-fill me-1"></i>
-                <a href="mailto:office@aquaserv.ro">office@aquaserv.ro</a>
+                <a href="/cdn-cgi/l/email-protection#4a252c2c23292f0a2b3b3f2b392f383c643825"><span class="__cf_email__" data-cfemail="a2cdc4c4cbc1c7e2c3d3d7c3d1c7d0d48cd0cd">[email&#160;protected]</span></a>
                 <span class="mx-2">|</span>
                 <i class="bi bi-clock-fill me-1"></i> Lun–Vin: 08:00 – 16:30
             </div>
@@ -334,11 +334,12 @@
                 </div>
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+            <button class="navbar-toggler border-0 d-lg-none" type="button" onclick="deschideMeniu()" style="padding:0.4rem 0.6rem;">
                 <i class="bi bi-list" style="font-size:1.8rem;color:var(--aqua-primary);"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarMain">
+            {{-- DESKTOP menu --}}
+            <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarMain">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Acasă</a>
@@ -385,6 +386,116 @@
                     </li>
                 </ul>
             </div>
+
+            {{-- MOBIL: overlay drawer --}}
+            <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:2000;">
+                {{-- Backdrop --}}
+                <div onclick="inchideMeniu()" style="position:absolute;inset:0;background:rgba(2,62,138,0.5);backdrop-filter:blur(4px);"></div>
+                {{-- Drawer --}}
+                <div id="mobileDrawer" style="position:absolute;top:0;right:0;width:85%;max-width:320px;height:100%;background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 40px rgba(0,0,0,0.15);">
+                    {{-- Header drawer --}}
+                    <div style="padding:1.25rem 1.5rem;background:linear-gradient(135deg,#023e8a,#0077b6);display:flex;align-items:center;justify-content:space-between;">
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div style="width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                <i class="bi bi-droplet-half text-white" style="font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="color:#fff;font-weight:800;font-size:0.95rem;line-height:1.1;">AquaServ S.A.</div>
+                                <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;">Servicii apă și canal</div>
+                            </div>
+                        </div>
+                        <button onclick="inchideMeniu()" style="background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:1.1rem;">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+
+                    {{-- Butoane rapide --}}
+                    <div style="padding:1rem 1.25rem;background:#f0f8ff;border-bottom:1px solid #e2e8f0;display:flex;gap:0.75rem;">
+                        <a href="{{ url('/client/index-contor') }}" style="flex:1;background:#0077b6;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
+                            <i class="bi bi-speedometer2 d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Contor
+                        </a>
+                        <a href="{{ url('/client/login') }}" style="flex:1;background:#023e8a;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
+                            <i class="bi bi-person-circle d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Cont
+                        </a>
+                    </div>
+
+                    {{-- Navigatie --}}
+                    <nav style="flex:1;overflow-y:auto;padding:0.75rem 0;">
+                        <a href="{{ url('/') }}" style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;text-decoration:none;color:#1a1a2e;font-weight:700;font-size:0.9rem;border-left:3px solid {{ request()->is('/') ? '#0077b6' : 'transparent' }};background:{{ request()->is('/') ? '#f0f8ff' : 'transparent' }};">
+                            <i class="bi bi-house" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i> Acasă
+                        </a>
+                        <a href="{{ url('/despre') }}" style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;text-decoration:none;color:#1a1a2e;font-weight:700;font-size:0.9rem;border-left:3px solid {{ request()->is('despre*') ? '#0077b6' : 'transparent' }};background:{{ request()->is('despre*') ? '#f0f8ff' : 'transparent' }};">
+                            <i class="bi bi-info-circle" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i> Despre noi
+                        </a>
+
+                        {{-- Servicii expandabil --}}
+                        <div>
+                            <button onclick="toggleSubmeniu('subServicii')" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('servicii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                                <i class="bi bi-droplet" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
+                                <span style="flex:1;">Servicii</span>
+                                <i class="bi bi-chevron-down" id="iconServicii" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
+                            </button>
+                            <div id="subServicii" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
+                                <a href="{{ url('/servicii/alimentare-apa') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-droplet text-aqua"></i> Alimentare cu apă
+                                </a>
+                                <a href="{{ url('/servicii/canalizare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-filter-circle text-aqua"></i> Canalizare
+                                </a>
+                                <a href="{{ url('/servicii/epurare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-recycle text-aqua"></i> Epurare ape uzate
+                                </a>
+                                <a href="{{ url('/servicii/avize') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-file-earmark-check text-aqua"></i> Avize și autorizații
+                                </a>
+                            </div>
+                        </div>
+
+                        {{-- Informatii expandabil --}}
+                        <div>
+                            <button onclick="toggleSubmeniu('subInfo')" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('informatii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                                <i class="bi bi-newspaper" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
+                                <span style="flex:1;">Informații publice</span>
+                                <i class="bi bi-chevron-down" id="iconInfo" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
+                            </button>
+                            <div id="subInfo" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
+                                <a href="{{ url('/informatii/anunturi') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-megaphone text-aqua"></i> Anunțuri
+                                </a>
+                                <a href="{{ url('/informatii/calitatea-apei') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-droplet-half text-aqua"></i> Calitatea apei
+                                </a>
+                                <a href="{{ url('/informatii/tarife') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-cash-coin text-aqua"></i> Tarife și Taxe
+                                </a>
+                                <a href="{{ url('/informatii/legislatie') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-journal-text text-aqua"></i> Legislație
+                                </a>
+                                <a href="{{ url('/informatii/formulare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-file-earmark-arrow-down text-aqua"></i> Formulare utile
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="{{ url('/anunturi') }}" style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;text-decoration:none;color:#1a1a2e;font-weight:700;font-size:0.9rem;border-left:3px solid {{ request()->is('anunturi*') ? '#0077b6' : 'transparent' }};background:{{ request()->is('anunturi*') ? '#f0f8ff' : 'transparent' }};">
+                            <i class="bi bi-megaphone" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i> Anunțuri
+                        </a>
+                        <a href="{{ url('/contact') }}" style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;text-decoration:none;color:#1a1a2e;font-weight:700;font-size:0.9rem;border-left:3px solid {{ request()->is('contact*') ? '#0077b6' : 'transparent' }};background:{{ request()->is('contact*') ? '#f0f8ff' : 'transparent' }};">
+                            <i class="bi bi-envelope" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i> Contact
+                        </a>
+                    </nav>
+
+                    {{-- Footer drawer --}}
+                    <div style="padding:1rem 1.5rem;border-top:1px solid #e2e8f0;background:#f8fafc;">
+                        <div style="font-size:0.75rem;color:#6c757d;margin-bottom:0.3rem;">
+                            <i class="bi bi-telephone-fill me-1" style="color:#0077b6;"></i> 0240 511 111
+                            <span class="mx-2">·</span>
+                            <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0340 131 111
+                        </div>
+                        <div style="font-size:0.72rem;color:#9ca3af;">Lun–Vin: 08:00–16:30</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -425,7 +536,7 @@
                     <ul>
                         <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Exemple nr. 1, Tulcea</a></li>
                         <li><a href="tel:0240511111"><i class="bi bi-telephone-fill"></i> 0240 511 111</a></li>
-                        <li><a href="mailto:office@aquaserv.ro"><i class="bi bi-envelope-fill"></i> office@aquaserv.ro</a></li>
+                        <li><a href="/cdn-cgi/l/email-protection#dcb3babab5bfb99cbdada9bdafb9aeaaf2aeb3"><i class="bi bi-envelope-fill"></i> <span class="__cf_email__" data-cfemail="96f9f0f0fff5f3d6f7e7e3f7e5f3e4e0b8e4f9">[email&#160;protected]</span></a></li>
                         <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 08:00 – 16:30</a></li>
                     </ul>
                 </div>
@@ -481,9 +592,32 @@
         </div>
     </footer>
 
-    {{-- Bootstrap 5 JS CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     @stack('scripts')
+
+    <script>
+    function deschideMeniu() {
+        const menu = document.getElementById('mobileMenu');
+        const drawer = document.getElementById('mobileDrawer');
+        menu.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => { drawer.style.transform = 'translateX(0)'; }, 10);
+    }
+    function inchideMeniu() {
+        const menu = document.getElementById('mobileMenu');
+        const drawer = document.getElementById('mobileDrawer');
+        drawer.style.transform = 'translateX(100%)';
+        document.body.style.overflow = '';
+        setTimeout(() => { menu.style.display = 'none'; }, 300);
+    }
+    function toggleSubmeniu(id) {
+        const sub = document.getElementById(id);
+        const iconId = id === 'subServicii' ? 'iconServicii' : 'iconInfo';
+        const icon = document.getElementById(iconId);
+        const isOpen = sub.style.display === 'block';
+        sub.style.display = isOpen ? 'none' : 'block';
+        icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+    </script>
 </body>
 </html>

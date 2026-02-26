@@ -19,7 +19,7 @@
                     </h1>
                     <p style="font-size:clamp(0.85rem,3vw,1rem);opacity:0.9;max-width:540px;line-height:1.6;margin-bottom:0;">
                         Furnizăm și prestăm servicii de alimentare cu apă potabilă și de canalizare
-                        pentru cetățenii și mediul de afaceri din județ.
+                        pentru cetățenii și afacerile din județ.
                     </p>
 
                 </div>
