@@ -11,7 +11,7 @@
         </ol>
     </nav>
 @endsection
-
+    
 @section('content')
 <section style="padding:3.5rem 0;">
     <div class="container">

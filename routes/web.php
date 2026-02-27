@@ -90,16 +90,18 @@ Route::prefix('contact')->name('contact.')->group(function () {
 |--------------------------------------------------------------------------
 */
 
+
 Route::prefix('client')->name('client.')->group(function () {
     Route::get('/login',         [ClientController::class, 'loginForm'])->name('login');
     Route::post('/login',        [ClientController::class, 'login'])->name('login.post');
     Route::get('/factura',       [ClientController::class, 'factura'])->name('factura');
+    Route::get('/contoare',      [ClientController::class, 'getContoare'])->name('client.contoare');
     Route::get('/index-contor',  [ClientController::class, 'indexContor'])->name('index-contor');
     Route::post('/index-contor', [ClientController::class, 'trimiteIndex'])->name('index-contor.post');
     Route::get('/avarie',        [ClientController::class, 'avarie'])->name('avarie');
     Route::post('/avarie',       [ClientController::class, 'trimiteAvarie'])->name('avarie.post');
     Route::get('/contract',      [ClientController::class, 'contract'])->name('contract');
-
+    Route::get('/contoare', [ClientController::class, 'getContoare'])->name('contoare');
     /*
     |--------------------------------------------------------------------------
     | ZONA CLIENȚI – protejată (necesită autentificare)
