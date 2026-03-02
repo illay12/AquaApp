@@ -125,13 +125,29 @@ class ClientController extends Controller
 
         $contor = Contor::find($validated['contor_id']);
 
-        if ((float) $validated['index_nou'] < (float) $contor->index_vechi) {
+        // Validam doar fata de index_vechi (originalul), nu fata de cel trimis anterior
+        if ((int) $validated['index_nou'] < (int) $contor->index_vechi) {
             return back()->withInput()->withErrors([
                 'index_nou' => "Indexul nou ({$validated['index_nou']}) nu poate fi mai mic decât indexul anterior ({$contor->index_vechi}).",
             ]);
         }
 
         $contor->update(['index_nou' => $validated['index_nou']]);
+
+        // Actualizam telefonul si emailul clientului cu datele introduse
+        Client::gasesteDupaCod(strtoupper(trim($validated['cod_client'])))
+              ?->update([
+                  'telefon' => $validated['telefon'] ?? null,
+                  'email'   => $validated['email']   ?? null,
+              ]);
+
+        // Daca e cerere AJAX returnam JSON
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'mesaj'   => "Indexul {$validated['index_nou']} m³ a fost transmis cu succes pentru contorul {$contor->serie_contor}. Vă mulțumim!",
+            ]);
+        }
 
         return redirect()->route('client.index-contor')
             ->with('success', "Indexul {$validated['index_nou']} m³ a fost transmis cu succes pentru contorul {$contor->serie_contor}. Vă mulțumim!");
