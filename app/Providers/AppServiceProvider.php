@@ -10,6 +10,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Folosește view-ul nostru custom pentru paginare
-        Paginator::defaultView('\pagination\pagination-aquaserv');
+        Paginator::defaultView('pagination.pagination-aquaserv');
     }
 }
