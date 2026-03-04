@@ -12,8 +12,8 @@ use App\Http\Controllers\DispeceratController;
 use App\Http\Middleware\DispeceratAuth;
 use App\Http\Controllers\FisierController;
 use App\Http\Controllers\CalitateaApeiController;
-
-
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminAuth;
 
 
 /*
@@ -57,23 +57,23 @@ Route::prefix('anunturi')->name('anunturi.')->group(function () {
     Route::get('/',       [AnuntController::class, 'index'])->name('index');
     Route::get('/{slug}', [AnuntController::class, 'show'])->name('show');
     Route::get('/anunturi/{slug}', [AnuntController::class, 'show'])->name('anunturi.show');
-});
-
-/*
-|--------------------------------------------------------------------------
-| INFORMAȚII PUBLICE
-|--------------------------------------------------------------------------
-*/
-
-Route::prefix('informatii')->name('informatii.')->group(function () {
-    Route::get('/tarife',         [InformatiiController::class, 'tarife'])->name('tarife');
-    Route::get('/calitatea-apei', [CalitateaApeiController::class, 'index'])->name('calitatea-apei');
-    Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
-    Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
+    });
     
-});
-
-/*
+    /*
+    |--------------------------------------------------------------------------
+    | INFORMAȚII PUBLICE
+    |--------------------------------------------------------------------------
+    */
+    
+    Route::prefix('informatii')->name('informatii.')->group(function () {
+        Route::get('/tarife',         [InformatiiController::class, 'tarife'])->name('tarife');
+        Route::get('/calitatea-apei', [CalitateaApeiController::class, 'index'])->name('calitatea-apei');
+        Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
+        Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
+        
+        });
+        
+        /*
 |--------------------------------------------------------------------------
 | CONTACT
 |--------------------------------------------------------------------------
@@ -82,17 +82,17 @@ Route::prefix('informatii')->name('informatii.')->group(function () {
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/',       [ContactController::class, 'index'])->name('index');
     Route::post('/trimite',[ContactController::class, 'trimite'])->name('trimite');
-});
-
-/*
-|--------------------------------------------------------------------------
-| ZONA CLIENȚI – publică (fără autentificare)
-|--------------------------------------------------------------------------
-*/
-
-
-Route::prefix('client')->name('client.')->group(function () {
-    Route::get('/login',         [ClientController::class, 'loginForm'])->name('login');
+    });
+    
+    /*
+    |--------------------------------------------------------------------------
+    | ZONA CLIENȚI – publică (fără autentificare)
+    |--------------------------------------------------------------------------
+    */
+    
+    
+    Route::prefix('client')->name('client.')->group(function () {
+        Route::get('/login',         [ClientController::class, 'loginForm'])->name('login');
     Route::post('/login',        [ClientController::class, 'login'])->name('login.post');
     Route::get('/factura',       [ClientController::class, 'factura'])->name('factura');
     Route::get('/contoare',      [ClientController::class, 'getContoare'])->name('client.contoare');
@@ -114,24 +114,24 @@ Route::prefix('client')->name('client.')->group(function () {
         Route::get('/date-personale',     [ClientController::class, 'datePersonale'])->name('date-personale');
         Route::put('/date-personale',     [ClientController::class, 'updateDatePersonale'])->name('date-personale.update');
         Route::post('/logout',            [ClientController::class, 'logout'])->name('logout');
-
-
         
-    });
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| DISPECERAT – rute publice (login/logout)
-|--------------------------------------------------------------------------
-*/
-Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
-
+        
+        
+        });
+        });
+        
+        
+        /*
+        |--------------------------------------------------------------------------
+        | DISPECERAT – rute publice (login/logout)
+        |--------------------------------------------------------------------------
+        */
+        Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
+            
     Route::get('/login',  [DispeceratController::class, 'loginForm'])->name('login');
     Route::post('/login', [DispeceratController::class, 'login'])->name('login.post');
     Route::post('/logout',[DispeceratController::class, 'logout'])->name('logout');
-
+    
     /*
     |--------------------------------------------------------------------------
     | DISPECERAT – rute protejate (necesită autentificare)
@@ -149,9 +149,29 @@ Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
         Route::post('/dispecerat/buletin', [DispeceratController::class, 'buletinStore'])->name('buletin.store');
         Route::delete('/dispecerat/buletin/{id}', [DispeceratController::class, 'buletinDestroy'])->name('buletin.destroy');
         });
+        
+        
+    // --- DOWNLOAD fisiere ---
+    Route::get('/fisiere/{id}/download', [FisierController::class, 'download'])->name('fisiere.download');
+    Route::get('/fisiere/buletin/{id}/download', [FisierController::class, 'downloadBuletin'])->name('fisiere.buletin.download');
+    });
+    
+    // --- ADMIN Fisiere ---
+    Route::prefix('admin')->name('admin.')->group(function () {
 
-});
+        // Login (public)
+        Route::get('/login',  [AdminController::class, 'loginForm'])->name('login');
+        Route::post('/login', [AdminController::class, 'login'])->name('login.post');
 
-// --- DOWNLOAD fisiere ---
-Route::get('/fisiere/{id}/download', [FisierController::class, 'download'])->name('fisiere.download');
-Route::get('/fisiere/buletin/{id}/download', [FisierController::class, 'downloadBuletin'])->name('fisiere.buletin.download');
+        // Protejate
+        Route::middleware(AdminAuth::class)->group(function () {
+            Route::get('/',                   [AdminController::class, 'dashboard'])->name('dashboard');
+            Route::post('/logout',            [AdminController::class, 'logout'])->name('logout');
+            Route::get('/export/indecsi',     [AdminController::class, 'exportIndecsi'])->name('export.indecsi');
+            Route::post('/import/indecsi',    [AdminController::class, 'importIndecsi'])->name('import.indecsi');
+            Route::post('/compara',           [AdminController::class, 'comparaExporturi'])->name('compara');
+        });
+
+    }); 
+
+    Route::get('/gdpr', fn() => view('pages.gdpr'))->name('gdpr');

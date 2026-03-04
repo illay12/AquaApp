@@ -378,6 +378,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }}" href="{{ url('/contact') }}">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('gdpr*') ? 'active' : '' }}" href="{{ url('/gdpr') }}">GDPR</a>
+                    </li>
                     <li class="nav-item ms-lg-2 d-flex align-items-center">
                         <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="btn btn-aqua btn-sm">
                             <i class="bi bi-person-circle me-1"></i> Cont MyApa

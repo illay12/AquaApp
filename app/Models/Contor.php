@@ -16,14 +16,11 @@ class Contor extends Model
         'index_nou',
     ];
 
-    public function indecsi()
+    public function client()
     {
-        return $this->hasMany(IndexContor::class, 'contor_id');
+        return $this->belongsTo(Client::class, 'cod_client', 'cod_client');
     }
 
-    /**
-     * Returnează contoarele pentru un cod client
-     */
     public static function pentruClient(string $codClient): \Illuminate\Database\Eloquent\Collection
     {
         return static::where('cod_client', strtoupper(trim($codClient)))->get();
