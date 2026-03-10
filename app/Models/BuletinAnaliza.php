@@ -21,7 +21,7 @@ class BuletinAnaliza extends Model
      */
     public function getUrlAttribute(): string
     {
-        return route('fisiere.buletin.download', $this->id);
+        return url('/fisiere/buletin/' . $this->id . '/download');
     }
 
     /**

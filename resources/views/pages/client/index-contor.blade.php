@@ -320,7 +320,6 @@ function afiseazaContoare(contoare) {
         const trimis = c.index_nou !== null;
         const card   = document.createElement('div');
 
-        // Stocam datele pe card pentru actualizare ulterioara
         card.setAttribute('data-id',    c.id);
         card.setAttribute('data-serie',  c.serie_contor);
         card.setAttribute('data-adresa', c.adresa);
@@ -481,7 +480,6 @@ async function trimiteAjax(indexNou) {
         const data = await resp.json();
 
         if (data.success) {
-            // Banner succes
             const banner = document.getElementById('bannerSuccess');
             banner.style.cssText = 'display:flex;align-items:start;gap:1rem;padding:1rem 1.25rem;margin-bottom:0.75rem;background:#dcfce7;border:1px solid #86efac;border-radius:14px;border-left:5px solid #16a34a;';
             banner.innerHTML =
@@ -490,7 +488,6 @@ async function trimiteAjax(indexNou) {
                 '<div style="color:#166534;font-size:0.875rem;margin-top:0.25rem;">' + data.mesaj + '</div></div>';
             banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-            // Actualizam cardul in lista
             const card = document.querySelector('[data-id="' + dateCurente.contorId + '"]');
             if (card) {
                 const serie  = card.getAttribute('data-serie');
@@ -501,10 +498,7 @@ async function trimiteAjax(indexNou) {
                 card.classList.remove('activ');
             }
 
-            // Actualizam dateCurente pentru eventuale retrimiteri
             dateCurente.indexNouExistent = indexNou;
-
-            // Ascundem pasul 3
             document.getElementById('pas3').style.display = 'none';
 
         } else {
@@ -526,6 +520,14 @@ async function trimiteAjax(indexNou) {
 
 // ── Events ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll automat la formular
+    const card = document.querySelector('.card');
+    if (card) {
+        setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+    }
+
     document.getElementById('inputIndexNou').addEventListener('input', function () {
         const val = parseInt(this.value);
         const div = document.getElementById('consumEstimat');

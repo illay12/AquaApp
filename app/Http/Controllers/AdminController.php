@@ -197,6 +197,212 @@ class AdminController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | SINCRONIZARE LUNARA CSV
+    |--------------------------------------------------------------------------
+    */
+
+    public function sincronizareForm()
+    {
+        // Redirectam la dashboard cu ancora
+        return redirect()->route('admin.dashboard')->with('scroll', 'sectiuneSincronizare');
+    }
+
+    public function sincronizare(Request $request)
+    {
+        $request->validate([
+            'fisier_sync' => 'required|file|mimes:csv,txt|max:10240',
+        ], [
+            'fisier_sync.required' => 'Selectati un fisier CSV.',
+            'fisier_sync.mimes'    => 'Fisierul trebuie sa fie de tip CSV.',
+            'fisier_sync.max'      => 'Fisierul nu poate depasi 10MB.',
+        ]);
+
+        $file   = $request->file('fisier_sync');
+        $handle = fopen($file->getRealPath(), 'r');
+
+        // Sarim BOM UTF-8
+        $bom = fread($handle, 3);
+        if ($bom !== chr(0xEF) . chr(0xBB) . chr(0xBF)) {
+            rewind($handle);
+        }
+
+        // Citim si validam headerul
+        $header = fgetcsv($handle, 0, ',');
+        if (!$header) {
+            fclose($handle);
+            return back()->withErrors(['fisier_sync' => 'Fisierul este gol sau invalid.']);
+        }
+
+        // Normalizam headerul (lowercase, trim)
+        $header = array_map(fn($h) => strtolower(trim($h)), $header);
+
+        // Verificam coloanele obligatorii
+        $obligatorii = ['serie_contor', 'index_vechi', 'adresa', 'cod_client', 'nume'];
+        $lipsa = array_diff($obligatorii, $header);
+        if (!empty($lipsa)) {
+            fclose($handle);
+            return back()->withErrors(['fisier_sync' => 'Coloane lipsa: ' . implode(', ', $lipsa)]);
+        }
+
+        // Mapam coloanele la indecsi
+        $idx = array_flip($header);
+
+        // Detectam encoding-ul fisierului si convertim la UTF-8
+        $continutFisier = file_get_contents($file->getRealPath());
+        $encoding = mb_detect_encoding($continutFisier, ['UTF-8', 'Windows-1252', 'ISO-8859-2', 'ISO-8859-1'], true);
+        $esteUtf8 = ($encoding === 'UTF-8');
+
+        $clientiBulk  = [];
+        $contoareBulk = [];
+        $erori        = [];
+        $duplicate    = [];
+        $linie        = 1;
+
+        while (($row = fgetcsv($handle, 0, ',')) !== false) {
+            $linie++;
+
+            if (count($row) < count($obligatorii)) {
+                $erori[] = "Linia {$linie}: numar insuficient de coloane";
+                continue;
+            }
+
+            $conv = fn($s) => $esteUtf8 ? trim($s) : mb_convert_encoding(trim($s), 'UTF-8', $encoding ?? 'Windows-1252');
+
+            $serie      = strtoupper($conv($row[$idx['serie_contor']]));
+            $indexVechi = trim($row[$idx['index_vechi']]);
+            $adresa     = $conv($row[$idx['adresa']]);
+            $codClient  = strtoupper($conv($row[$idx['cod_client']]));
+            $nume       = $conv($row[$idx['nume']]);
+
+            if ($serie === '' || $codClient === '') {
+                $erori[] = "Linia {$linie}: serie_contor sau cod_client gol";
+                continue;
+            }
+
+            if ($indexVechi !== '' && (!is_numeric($indexVechi) || (int)$indexVechi < 0)) {
+                $erori[] = "Linia {$linie}: index_vechi '{$indexVechi}' invalid";
+                continue;
+            }
+
+            $now = now()->toDateTimeString();
+
+            $clientiBulk[$codClient] = [
+                'cod_client'  => $codClient,
+                'nume'        => $nume,
+                'created_at'  => $now,
+                'updated_at'  => $now,
+            ];
+
+            if (isset($contoareBulk[$serie])) {
+                $duplicate[$serie] = ($duplicate[$serie] ?? 1) + 1;
+            }
+
+            $contoareBulk[$serie] = [
+                'serie_contor' => $serie,
+                'cod_client'   => $codClient,
+                'adresa'       => $adresa,
+                'index_vechi'  => $indexVechi !== '' ? (int)$indexVechi : 0,
+                'index_nou'    => null,
+                'created_at'   => $now,
+                'updated_at'   => $now,
+            ];
+        }
+
+        fclose($handle);
+
+        // ── INSERT/UPDATE in bulk (cate 500) ──────────────────────────
+        $chunkSize = 500;
+
+        // Clienti: inseram doar cei noi (ignoram daca exista)
+        $clientiNoi = 0;
+        foreach (array_chunk(array_values($clientiBulk), $chunkSize) as $chunk) {
+            $clientiNoi += \Illuminate\Support\Facades\DB::table('clienti')->insertOrIgnore($chunk);
+        }
+
+        // Contoare: identificam ce exista deja inainte de upsert
+        $seriiDinFisier   = array_keys($contoareBulk);
+        $seriiExistente   = \Illuminate\Support\Facades\DB::table('contoare')
+                                ->whereIn('serie_contor', $seriiDinFisier)
+                                ->pluck('serie_contor')
+                                ->flip()
+                                ->all();
+
+        $contoareNoi        = 0;
+        $contoareActualizate = 0;
+        foreach ($seriiDinFisier as $serie) {
+            if (isset($seriiExistente[$serie])) {
+                $contoareActualizate++;
+            } else {
+                $contoareNoi++;
+            }
+        }
+
+        // Upsert contoare
+        foreach (array_chunk(array_values($contoareBulk), $chunkSize) as $chunk) {
+            \Illuminate\Support\Facades\DB::table('contoare')->upsert(
+                $chunk,
+                ['serie_contor'],
+                ['index_vechi', 'index_nou', 'adresa', 'cod_client', 'updated_at']
+            );
+        }
+
+        // Stergem contoarele care nu mai sunt in fisier (scoase din uz)
+        // Folosim tabel temporar pentru a evita limita MySQL la NOT IN cu multe valori
+        \Illuminate\Support\Facades\DB::statement('CREATE TEMPORARY TABLE IF NOT EXISTS tmp_serii_active (serie_contor VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci PRIMARY KEY)');
+        \Illuminate\Support\Facades\DB::table('tmp_serii_active')->truncate();
+
+        foreach (array_chunk($seriiDinFisier, 500) as $chunk) {
+            \Illuminate\Support\Facades\DB::table('tmp_serii_active')->insert(
+                array_map(fn($s) => ['serie_contor' => $s], $chunk)
+            );
+        }
+
+        $contoareSterse = \Illuminate\Support\Facades\DB::statement(
+            'SELECT COUNT(*) FROM contoare WHERE serie_contor NOT IN (SELECT serie_contor FROM tmp_serii_active)'
+        );
+        $contoareSterse = \Illuminate\Support\Facades\DB::select(
+            'SELECT COUNT(*) as total FROM contoare WHERE serie_contor NOT IN (SELECT serie_contor FROM tmp_serii_active)'
+        )[0]->total;
+
+        \Illuminate\Support\Facades\DB::statement(
+            'DELETE FROM contoare WHERE serie_contor NOT IN (SELECT serie_contor FROM tmp_serii_active)'
+        );
+
+        \Illuminate\Support\Facades\DB::statement('DROP TEMPORARY TABLE IF EXISTS tmp_serii_active');
+
+        $totalDuplicate = array_sum($duplicate) - count($duplicate);
+
+        $mesaj  = "Sincronizare finalizata: ";
+        $mesaj .= "<strong>{$contoareNoi}</strong> contoare noi adaugate, ";
+        $mesaj .= "<strong>{$contoareActualizate}</strong> contoare actualizate, ";
+        $mesaj .= "<strong>{$clientiNoi}</strong> clienti noi adaugati";
+        if ($contoareSterse > 0) {
+            $mesaj .= ", <strong>{$contoareSterse}</strong> contoare scoase din uz sterse.";
+        } else {
+            $mesaj .= ".";
+        }
+        if ($totalDuplicate > 0) {
+            $mesaj .= " <strong>{$totalDuplicate}</strong> randuri duplicate in fisier (aceeasi serie de mai multe ori) — s-a pastrat ultima aparitie.";
+        }
+        if (count($erori) > 0) {
+            $mesaj .= " <strong>" . count($erori) . "</strong> erori de format.";
+        }
+
+        // Adaugam duplicatele in log-ul de erori
+        foreach ($duplicate as $serie => $count) {
+            $erori[] = "Serie duplicata in fisier: '{$serie}' apare de {$count} ori — s-a importat ultima aparitie";
+        }
+
+        $tip = (($contoareNoi + $contoareActualizate) > 0) ? 'success' : 'warning';
+
+        return redirect()->route('admin.dashboard')
+            ->with('sync_mesaj', $mesaj)
+            ->with('sync_tip', $tip)
+            ->with('sync_erori', $erori);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | COMPARARE EXPORTURI
     |--------------------------------------------------------------------------
     */
@@ -204,79 +410,117 @@ class AdminController extends Controller
     public function comparaExporturi(Request $request)
     {
         $request->validate([
-            'fisier_1' => 'required|file|mimes:csv,txt|max:5120',
-            'fisier_2' => 'required|file|mimes:csv,txt|max:5120',
-            'format'   => 'required|in:csv,xlsx',
+            'fisier_sync'   => 'required|file|mimes:csv,txt|max:10240',
+            'fisier_export' => 'required|file|mimes:csv,txt|max:10240',
+            'format'        => 'required|in:csv,xlsx',
         ], [
-            'fisier_1.required' => 'Selectați primul fișier.',
-            'fisier_2.required' => 'Selectați al doilea fișier.',
+            'fisier_sync.required'   => 'Selectati fisierul de sincronizare lunara.',
+            'fisier_export.required' => 'Selectati fisierul export din dashboard.',
         ]);
 
-        $date1 = $this->parseazaExport($request->file('fisier_1'));
-        $date2 = $this->parseazaExport($request->file('fisier_2'));
+        // Fisier 1 - sincronizare lunara: serie_contor, INDEX_VECHI, adresa, COD_CLIENT, NUME
+        $dateSync = $this->parseazaFisierSync($request->file('fisier_sync'));
 
-        // Gasim contorii unde index_nou difera intre cele 2 exporturi
+        // Fisier 2 - export dashboard: Cod Client, Nume, Telefon, Email, Serie Contor, Adresa Contor, Index Vechi, Index Nou, Data Trimiterii
+        $dateExport = $this->parseazaFisierExport($request->file('fisier_export'));
+
+        // Gasim contorii unde index_vechi difera intre fisierul de sync si exportul din dashboard
         $diferente = [];
 
-        foreach ($date1 as $serie => $rand1) {
-            if (isset($date2[$serie])) {
-                $rand2 = $date2[$serie];
-                if ((int)$rand1['index_nou'] !== (int)$rand2['index_nou']) {
+        foreach ($dateSync as $serie => $sync) {
+            if (isset($dateExport[$serie])) {
+                $exp = $dateExport[$serie];
+                if ((int)$sync['index_vechi'] !== (int)$exp['index_nou']) {
                     $diferente[] = [
-                        'cod_client'   => $rand1['cod_client'],
-                        'nume'         => $rand1['nume'],
-                        'telefon'      => $rand1['telefon'],
-                        'email'        => $rand1['email'],
-                        'serie_contor' => $serie,
-                        'adresa'       => $rand1['adresa'],
-                        'index_nou_1'  => $rand1['index_nou'],
-                        'index_nou_2'  => $rand2['index_nou'],
-                        'data_1'       => $rand1['data'],
-                        'data_2'       => $rand2['data'],
+                        'cod_client'        => $exp['cod_client'],
+                        'nume'              => $exp['nume'],
+                        'email'             => $exp['email'],
+                        'telefon'           => $exp['telefon'],
+                        'serie_contor'      => $serie,
+                        'adresa'            => $exp['adresa'],
+                        'index_vechi_sync'  => $sync['index_vechi'],
+                        'index_nou_export'  => $exp['index_nou'],
+                        'index_vechi_export'=> $exp['index_vechi'],
+                        'data_trimiterii'   => $exp['data'],
                     ];
                 }
             }
         }
 
-        $prefix = 'diferente_' . now()->format('Y_m_d_His');
+        $prefix = 'diferente_index_vechi_' . now()->format('Y_m_d_His');
 
         if ($request->format === 'xlsx') {
             return $this->exportDiferenteXlsx($diferente, $prefix,
-                $request->file('fisier_1')->getClientOriginalName(),
-                $request->file('fisier_2')->getClientOriginalName()
+                $request->file('fisier_sync')->getClientOriginalName(),
+                $request->file('fisier_export')->getClientOriginalName()
             );
         }
 
         return $this->exportDiferenteCsv($diferente, $prefix);
     }
 
-    private function parseazaExport($file): array
+    private function parseazaFisierSync($file): array
     {
-        $handle = fopen($file->getRealPath(), 'r');
+        $continut = file_get_contents($file->getRealPath());
+        $encoding = mb_detect_encoding($continut, ['UTF-8', 'Windows-1252', 'ISO-8859-2', 'ISO-8859-1'], true);
+        $esteUtf8 = ($encoding === 'UTF-8');
+        $conv     = fn($s) => $esteUtf8 ? trim($s) : mb_convert_encoding(trim($s), 'UTF-8', $encoding ?? 'Windows-1252');
 
-        // Sarim BOM
+        $handle = fopen($file->getRealPath(), 'r');
         $bom = fread($handle, 3);
         if ($bom !== chr(0xEF) . chr(0xBB) . chr(0xBF)) {
             rewind($handle);
         }
 
-        // Sarim header
+        // Citim headerul si normalizam (lowercase)
+        $header = fgetcsv($handle, 0, ',');
+        $header = array_map(fn($h) => strtolower(trim($h)), $header);
+        $idx    = array_flip($header);
+
+        $date = [];
+        while (($row = fgetcsv($handle, 0, ',')) !== false) {
+            if (count($row) < 2) continue;
+            $serie = strtoupper($conv($row[$idx['serie_contor'] ?? 0]));
+            if ($serie === '') continue;
+            $date[$serie] = [
+                'index_vechi' => trim($row[$idx['index_vechi'] ?? 1]),
+                'adresa'      => $conv($row[$idx['adresa'] ?? 2] ?? ''),
+                'cod_client'  => strtoupper($conv($row[$idx['cod_client'] ?? 3] ?? '')),
+                'nume'        => $conv($row[$idx['nume'] ?? 4] ?? ''),
+            ];
+        }
+
+        fclose($handle);
+        return $date;
+    }
+
+    private function parseazaFisierExport($file): array
+    {
+        $handle = fopen($file->getRealPath(), 'r');
+
+        // BOM
+        $bom = fread($handle, 3);
+        if ($bom !== chr(0xEF) . chr(0xBB) . chr(0xBF)) {
+            rewind($handle);
+        }
+
+        // Header fix: Cod Client,Nume,Telefon,Email,Serie Contor,Adresa Contor,Index Vechi,Index Nou,Data Trimiterii
         fgetcsv($handle, 0, ',');
 
         $date = [];
         while (($row = fgetcsv($handle, 0, ',')) !== false) {
             if (count($row) < 9) continue;
-            $serie = trim($row[4]); // Serie Contor e coloana 5 (index 4)
+            $serie = trim($row[4]); // Serie Contor = coloana 5
             if ($serie === '') continue;
             $date[$serie] = [
-                'cod_client'   => trim($row[0]),
-                'nume'         => trim($row[1]),
-                'telefon'      => trim($row[2]),
-                'email'        => trim($row[3]),
-                'adresa'       => trim($row[5]),
-                'index_vechi'  => trim($row[6]),
-                'index_nou'    => trim($row[7]),
-                'data'         => trim($row[8]),
+                'cod_client'  => trim($row[0]),
+                'nume'        => trim($row[1]),
+                'telefon'     => trim($row[2]),
+                'email'       => trim($row[3]),
+                'adresa'      => trim($row[5]),
+                'index_vechi' => trim($row[6]),
+                'index_nou'   => trim($row[7]),
+                'data'        => trim($row[8]),
             ];
         }
 
@@ -299,18 +543,16 @@ class AdminController extends Controller
             fprintf($handle, chr(0xEF) . chr(0xBB) . chr(0xBF));
 
             fputcsv($handle, [
-                'Cod Client', 'Nume', 'Telefon', 'Email',
+                'Cod Client', 'Nume', 'Email', 'Telefon',
                 'Serie Contor', 'Adresa',
-                'Index Nou (fisier 1)', 'Data (fisier 1)',
-                'Index Nou (fisier 2)', 'Data (fisier 2)',
+                'Index (online)', 'Index (citire)',
             ], ',');
 
             foreach ($diferente as $r) {
                 fputcsv($handle, [
-                    $r['cod_client'], $r['nume'], $r['telefon'], $r['email'],
+                    $r['cod_client'], $r['nume'], $r['email'], $r['telefon'],
                     $r['serie_contor'], $r['adresa'],
-                    $r['index_nou_1'], $r['data_1'],
-                    $r['index_nou_2'], $r['data_2'],
+                    $r['index_nou_export'], $r['index_vechi_sync'],
                 ], ',');
             }
 
@@ -336,14 +578,12 @@ class AdminController extends Controller
         $headers = [
             'A1' => 'Cod Client',
             'B1' => 'Nume',
-            'C1' => 'Telefon',
-            'D1' => 'Email',
+            'C1' => 'Email',
+            'D1' => 'Telefon',
             'E1' => 'Serie Contor',
             'F1' => 'Adresa',
-            'G1' => 'Index (' . $numeFisier1 . ')',
-            'H1' => 'Data (' . $numeFisier1 . ')',
-            'I1' => 'Index (' . $numeFisier2 . ')',
-            'J1' => 'Data (' . $numeFisier2 . ')',
+            'G1' => 'Index (online)',
+            'H1' => 'Index (citire)',
         ];
 
         foreach ($headers as $cell => $label) {
@@ -352,36 +592,34 @@ class AdminController extends Controller
         }
         $sheet->getRowDimension(1)->setRowHeight(22);
 
-        $styleData    = ['borders' => ['allBorders' => ['borderStyle' => 'thin', 'color' => ['argb' => 'FFE2E8F0']]], 'font' => ['size' => 10]];
-        $styleAlt     = array_merge($styleData, ['fill' => ['fillType' => 'solid', 'startColor' => ['argb' => 'FFFFF3CD']]]);
+        $styleData = ['borders' => ['allBorders' => ['borderStyle' => 'thin', 'color' => ['argb' => 'FFE2E8F0']]], 'font' => ['size' => 10]];
+        $styleAlt  = array_merge($styleData, ['fill' => ['fillType' => 'solid', 'startColor' => ['argb' => 'FFFFF3CD']]]);
 
         $row = 2;
         foreach ($diferente as $r) {
             $sheet->setCellValue('A' . $row, $r['cod_client']);
             $sheet->setCellValue('B' . $row, $r['nume']);
-            $sheet->setCellValue('C' . $row, $r['telefon']);
-            $sheet->setCellValue('D' . $row, $r['email']);
+            $sheet->setCellValue('C' . $row, $r['email']);
+            $sheet->setCellValue('D' . $row, $r['telefon']);
             $sheet->setCellValue('E' . $row, $r['serie_contor']);
             $sheet->setCellValue('F' . $row, $r['adresa']);
-            $sheet->setCellValue('G' . $row, (int) $r['index_nou_1']);
-            $sheet->setCellValue('H' . $row, $r['data_1']);
-            $sheet->setCellValue('I' . $row, (int) $r['index_nou_2']);
-            $sheet->setCellValue('J' . $row, $r['data_2']);
-            $sheet->getStyle('A' . $row . ':J' . $row)->applyFromArray($row % 2 === 0 ? $styleAlt : $styleData);
+            $sheet->setCellValue('G' . $row, $r['index_nou_export'] !== '' ? (int) $r['index_nou_export'] : '');
+            $sheet->setCellValue('H' . $row, (int) $r['index_vechi_sync']);
+            $sheet->getStyle('A' . $row . ':H' . $row)->applyFromArray($row % 2 === 0 ? $styleAlt : $styleData);
             $row++;
         }
 
-        $latimi = ['A'=>14,'B'=>22,'C'=>16,'D'=>28,'E'=>18,'F'=>28,'G'=>16,'H'=>18,'I'=>16,'J'=>18];
+        $latimi = ['A'=>14,'B'=>26,'C'=>28,'D'=>16,'E'=>18,'F'=>32,'G'=>18,'H'=>18];
         foreach ($latimi as $col => $w) {
             $sheet->getColumnDimension($col)->setWidth($w);
         }
 
         $sheet->setCellValue('A' . $row, 'TOTAL diferente: ' . count($diferente));
-        $sheet->getStyle('A' . $row . ':J' . $row)->applyFromArray([
+        $sheet->getStyle('A' . $row . ':H' . $row)->applyFromArray([
             'font' => ['bold' => true],
             'fill' => ['fillType' => 'solid', 'startColor' => ['argb' => 'FFDBEAFE']],
         ]);
-        $sheet->mergeCells('A' . $row . ':J' . $row);
+        $sheet->mergeCells('A' . $row . ':H' . $row);
         $sheet->freezePane('A2');
 
         $writer   = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);

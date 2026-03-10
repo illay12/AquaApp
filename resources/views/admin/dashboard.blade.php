@@ -70,6 +70,11 @@
                 <i class="bi bi-subtract"></i> Compară Exporturi
             </a>
         </li>
+        <li class="nav-item">
+            <a href="#sectiuneSincronizare" onclick="document.getElementById('sectiuneSincronizare').scrollIntoView({behavior:'smooth'});return false;">
+                <i class="bi bi-arrow-repeat"></i> Sincronizare Lunară
+            </a>
+        </li>
     </ul>
     <div style="position:absolute;bottom:1.5rem;left:0;right:0;padding:0 1.25rem;">
         <form method="POST" action="{{ route('admin.logout') }}">
@@ -262,34 +267,49 @@
     <div class="section-card mt-4" id="sectiuneCompara">
         <div class="section-header">
             <i class="bi bi-subtract" style="color:#0077b6;font-size:1.1rem;"></i>
-            <h6>Comparare Exporturi</h6>
+            <h6>Comparare Index Vechi</h6>
         </div>
         <div class="section-body">
 
             <p style="font-size:0.85rem;color:#6c757d;margin-bottom:1.25rem;">
-                Încarcă două fișiere CSV exportate anterior și obține un fișier cu
-                doar contorii la care <strong>indexul nou diferă</strong> între cele două exporturi.
+                Compară <strong>fișierul de sincronizare lunară</strong> cu un <strong>export din dashboard</strong>
+                și obții doar contorii la care <strong>index_vechi diferă</strong> între cele două fișiere.
             </p>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:0.75rem 1rem;font-size:0.8rem;">
+                        <div style="font-weight:700;color:#0369a1;margin-bottom:0.25rem;"><i class="bi bi-1-circle me-1"></i>Fișier sincronizare lunară</div>
+                        <code style="color:#0369a1;">serie_contor, INDEX_VECHI, adresa, COD_CLIENT, NUME</code>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.75rem 1rem;font-size:0.8rem;">
+                        <div style="font-weight:700;color:#15803d;margin-bottom:0.25rem;"><i class="bi bi-2-circle me-1"></i>Fișier export din dashboard</div>
+                        <code style="color:#15803d;">Cod Client, Nume, Telefon, Email, Serie Contor, Adresa, Index Vechi, Index Nou, Data</code>
+                    </div>
+                </div>
+            </div>
 
             <form method="POST" action="{{ route('admin.compara') }}" enctype="multipart/form-data" class="row g-3 align-items-end">
                 @csrf
 
                 <div class="col-md-4">
                     <label class="form-label fw-bold" style="font-size:0.82rem;">
-                        <i class="bi bi-file-earmark-text me-1" style="color:#0077b6;"></i>Fișier 1 (referință)
+                        <i class="bi bi-file-earmark-text me-1" style="color:#0077b6;"></i>Fișier sincronizare lunară
                     </label>
-                    <input type="file" name="fisier_1" class="form-control @error('fisier_1') is-invalid @enderror" accept=".csv,.txt">
-                    @error('fisier_1')
+                    <input type="file" name="fisier_sync" class="form-control @error('fisier_sync') is-invalid @enderror" accept=".csv,.txt">
+                    @error('fisier_sync')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label fw-bold" style="font-size:0.82rem;">
-                        <i class="bi bi-file-earmark-text me-1" style="color:#16a34a;"></i>Fișier 2 (comparație)
+                        <i class="bi bi-file-earmark-text me-1" style="color:#16a34a;"></i>Fișier export din dashboard
                     </label>
-                    <input type="file" name="fisier_2" class="form-control @error('fisier_2') is-invalid @enderror" accept=".csv,.txt">
-                    @error('fisier_2')
+                    <input type="file" name="fisier_export" class="form-control @error('fisier_export') is-invalid @enderror" accept=".csv,.txt">
+                    @error('fisier_export')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -315,18 +335,95 @@
                 <div class="col-md-2">
                     <button type="submit" class="btn w-100 fw-bold"
                             style="background:#0077b6;color:#fff;border-radius:8px;padding:0.65rem;">
-                        <i class="bi bi-intersect me-2"></i>Compară
+                        <i class="bi bi-search me-1"></i>Compară
                     </button>
                 </div>
 
                 <div class="col-12">
-                    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:0.6rem 1rem;font-size:0.78rem;color:#0369a1;">
+                    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:0.6rem 1rem;font-size:0.78rem;color:#64748b;">
                         <i class="bi bi-info-circle me-1"></i>
-                        Ambele fișiere trebuie să fie exporturi generate din acest panou (format CSV cu separator <strong>,</strong>).
-                        Rezultatul conține doar contorii unde <strong>Index Nou</strong> diferă între cele două fișiere.
+                        Rezultatul va conține doar contorii unde <strong>index_vechi din fișierul de sync</strong> diferă față de <strong>index_vechi din export</strong>.
                     </div>
                 </div>
+            </form>
+        </div>
+    </div>
 
+    <div class="section-card mt-4" id="sectiuneSincronizare">
+        <div class="section-header">
+            <i class="bi bi-arrow-repeat" style="color:#0077b6;font-size:1.1rem;"></i>
+            <h6>Sincronizare Lunară Contoare</h6>
+        </div>
+        <div class="section-body">
+
+            @if(session('sync_mesaj'))
+                <div class="alert alert-{{ session('sync_tip') === 'success' ? 'success' : 'warning' }} d-flex align-items-start gap-2 mb-3"
+                     style="border-radius:10px;font-size:0.875rem;">
+                    <i class="bi bi-{{ session('sync_tip') === 'success' ? 'check-circle-fill' : 'exclamation-triangle-fill' }} mt-1 flex-shrink-0"></i>
+                    <div>{!! session('sync_mesaj') !!}</div>
+                </div>
+
+                @if(session('sync_erori') && count(session('sync_erori')) > 0)
+                <div style="background:#fff;border:1px solid #fca5a5;border-radius:10px;overflow:hidden;margin-bottom:1.25rem;">
+                    <div style="background:#fef2f2;padding:0.65rem 1rem;border-bottom:1px solid #fca5a5;display:flex;align-items:center;gap:0.5rem;">
+                        <i class="bi bi-bug-fill" style="color:#dc2626;"></i>
+                        <strong style="font-size:0.82rem;color:#dc2626;">{{ count(session('sync_erori')) }} erori de format detectate</strong>
+                    </div>
+                    <div style="max-height:200px;overflow-y:auto;padding:0.75rem 1rem;">
+                        @foreach(session('sync_erori') as $eroare)
+                        <div style="font-size:0.78rem;font-family:monospace;color:#7f1d1d;padding:0.25rem 0;border-bottom:1px solid #fee2e2;">
+                            <i class="bi bi-x-circle me-1" style="color:#dc2626;"></i>{{ $eroare }}
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+            @endif
+
+            <p style="font-size:0.85rem;color:#6c757d;margin-bottom:1.25rem;">
+                Încarcă fișierul CSV lunar cu datele contorelor și clienților.
+                Contoarele și clienții noi vor fi <strong>adăugați</strong> automat,
+                cei existenți vor avea <strong>index_vechi actualizat</strong> și <strong>index_nou resetat la null</strong>.
+            </p>
+
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem;margin-bottom:1.5rem;font-size:0.82rem;">
+                <div style="font-weight:700;color:#0f172a;margin-bottom:0.5rem;">
+                    <i class="bi bi-table me-1" style="color:#0077b6;"></i>Format așteptat CSV:
+                </div>
+                <code style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.4rem 0.75rem;display:inline-block;color:#0369a1;">
+                    serie_contor,index_vechi,adresa,cod_client,nume<br>
+                    MBR-2021-00123,1650,Str. Pacii nr. 5,100001,Ion Popescu<br>
+                    ITR-2021-00654,720,Str. Libertatii nr. 12,100002,Maria Ionescu
+                </code>
+                <div style="color:#6c757d;margin-top:0.5rem;">
+                    Separator: <strong>,</strong> &nbsp;·&nbsp;
+                    Prima linie = header &nbsp;·&nbsp;
+                    Encoding: UTF-8
+                </div>
+            </div>
+
+            <form method="POST" action="{{ route('admin.sincronizare') }}" enctype="multipart/form-data" class="row g-3 align-items-end">
+                @csrf
+                <div class="col-md-5">
+                    <label class="form-label fw-bold" style="font-size:0.82rem;">Fișier CSV lunar</label>
+                    <input type="file" name="fisier_sync" class="form-control @error('fisier_sync') is-invalid @enderror" accept=".csv,.txt">
+                    @error('fisier_sync')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn w-100 fw-bold"
+                            style="background:#0077b6;color:#fff;border-radius:8px;padding:0.65rem;"
+                            onclick="return confirm('Ești sigur? Această operațiune va adăuga/actualiza contoare și clienți și va reseta index_nou pentru toate înregistrările din fișier.')">
+                        <i class="bi bi-arrow-repeat me-2"></i>Sincronizează
+                    </button>
+                </div>
+                <div class="col-12">
+                    <div style="background:#fff8ed;border:1px solid #fde68a;border-radius:8px;padding:0.6rem 1rem;font-size:0.78rem;color:#92400e;">
+                        <i class="bi bi-exclamation-triangle me-1"></i>
+                        <strong>Atenție:</strong> Contoarele care <strong>nu există în fișier</strong> vor fi <strong>șterse</strong> din baza de date (scoase din uz). Verificați fișierul înainte de import.
+                    </div>
+                </div>
             </form>
         </div>
     </div>

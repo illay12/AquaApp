@@ -156,22 +156,29 @@ Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/fisiere/buletin/{id}/download', [FisierController::class, 'downloadBuletin'])->name('fisiere.buletin.download');
     });
     
-    // --- ADMIN Fisiere ---
+    // ADMIN
     Route::prefix('admin')->name('admin.')->group(function () {
 
-        // Login (public)
-        Route::get('/login',  [AdminController::class, 'loginForm'])->name('login');
-        Route::post('/login', [AdminController::class, 'login'])->name('login.post');
+    // Login (public)
+    Route::get('/login',  [AdminController::class, 'loginForm'])->name('login');
+    Route::post('/login', [AdminController::class, 'login'])->name('login.post');
 
-        // Protejate
-        Route::middleware(AdminAuth::class)->group(function () {
-            Route::get('/',                   [AdminController::class, 'dashboard'])->name('dashboard');
-            Route::post('/logout',            [AdminController::class, 'logout'])->name('logout');
-            Route::get('/export/indecsi',     [AdminController::class, 'exportIndecsi'])->name('export.indecsi');
-            Route::post('/import/indecsi',    [AdminController::class, 'importIndecsi'])->name('import.indecsi');
-            Route::post('/compara',           [AdminController::class, 'comparaExporturi'])->name('compara');
-        });
+    // Protejate
+    Route::middleware(AdminAuth::class)->group(function () {
+        Route::get('/',                   [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::post('/logout',            [AdminController::class, 'logout'])->name('logout');
+        Route::get('/export/indecsi',     [AdminController::class, 'exportIndecsi'])->name('export.indecsi');
+        Route::post('/import/indecsi',    [AdminController::class, 'importIndecsi'])->name('import.indecsi');
+        Route::post('/sincronizare',      [AdminController::class, 'sincronizare'])->name('sincronizare');
+        Route::post('/compara',           [AdminController::class, 'comparaExporturi'])->name('compara');
+    });
+    });
 
-    }); 
-
+    
     Route::get('/gdpr', fn() => view('pages.gdpr'))->name('gdpr');
+
+    Route::get('/despre/centre-operationale', fn() => view('pages.despre.centre-operationale'))
+    ->name('despre.centre-operationale');
+
+    Route::get('/despre/structura-organizationala', fn() => view('pages.despre.structura-organizationala'))
+    ->name('despre.structura-organizationala');

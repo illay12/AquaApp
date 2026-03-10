@@ -7,13 +7,8 @@
     <title>@yield('title', config('app.name', 'AquaServ')) | Servicii Apă și Canal</title>
     <meta name="description" content="@yield('meta_description', 'Operator regional de servicii de alimentare cu apă și canalizare')">
 
-    {{-- Bootstrap 5 CSS CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    {{-- Bootstrap Icons --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-
-    {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -27,268 +22,74 @@
             --aqua-gray:      #6c757d;
             --aqua-border:    #caf0f8;
         }
-
         * { box-sizing: border-box; }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            color: var(--aqua-text);
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
+        body { font-family: 'Nunito', sans-serif; color: var(--aqua-text); background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
         main { flex: 1; }
-
-        /* ── TOP BAR ── */
-        .topbar {
-            background: var(--aqua-dark);
-            color: rgba(255,255,255,0.85);
-            font-size: 0.8rem;
-            padding: 6px 0;
-        }
+        .topbar { background: var(--aqua-dark); color: rgba(255,255,255,0.85); font-size: 0.8rem; padding: 6px 0; }
         .topbar a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .topbar a:hover { color: #fff; }
-
-        /* ── NAVBAR ── */
-        .navbar {
-            background: #ffffff;
-            border-bottom: 3px solid var(--aqua-primary);
-            box-shadow: 0 2px 12px rgba(0,119,182,0.10);
-            padding: 0;
-        }
+        .navbar { background: #ffffff; border-bottom: 3px solid var(--aqua-primary); box-shadow: 0 2px 12px rgba(0,119,182,0.10); padding: 0; }
         .navbar-brand img { height: 64px; }
-        .navbar-brand span {
-            font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--aqua-dark);
-            line-height: 1.2;
+        .navbar-brand span { font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700; color: var(--aqua-dark); line-height: 1.2; }
+        .navbar-brand small { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--aqua-gray); display: block; letter-spacing: 0.04em; text-transform: uppercase; }
+        .navbar-nav .nav-link { font-weight: 700; font-size: 0.92rem; color: var(--aqua-text) !important; padding: 1.5rem 1.05rem !important; letter-spacing: 0.02em; transition: color 0.2s, border-bottom 0.2s; border-bottom: 3px solid transparent; text-transform: uppercase; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--aqua-primary) !important; border-bottom-color: var(--aqua-primary); }
+        .navbar-nav .dropdown-menu { border: none; border-top: 3px solid var(--aqua-primary); box-shadow: 0 8px 24px rgba(0,0,0,0.12); border-radius: 0 0 8px 8px; margin-top: 0; }
+        @media (min-width: 992px) {
+            .navbar-nav .nav-item.dropdown .dropdown-menu {
+                display: block !important;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(6px);
+                pointer-events: none;
+                transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            }
+            .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
         }
-        .navbar-brand small {
-            font-family: 'Nunito', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--aqua-gray);
-            display: block;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        .navbar-nav .nav-link {
-            font-weight: 700;
-            font-size: 0.92rem;
-            color: var(--aqua-text) !important;
-            padding: 1.5rem 1.05rem !important;
-            letter-spacing: 0.02em;
-            transition: color 0.2s, border-bottom 0.2s;
-            border-bottom: 3px solid transparent;
-            text-transform: uppercase;
-        }
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            color: var(--aqua-primary) !important;
-            border-bottom-color: var(--aqua-primary);
-        }
-        .navbar-nav .dropdown-menu {
-            border: none;
-            border-top: 3px solid var(--aqua-primary);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            border-radius: 0 0 8px 8px;
-        }
-        .navbar-nav .dropdown-item {
-            font-size: 0.875rem;
-            font-weight: 600;
-            padding: 0.55rem 1.2rem;
-            color: var(--aqua-text);
-        }
-        .navbar-nav .dropdown-item:hover {
-            background-color: var(--aqua-bg);
-            color: var(--aqua-primary);
-        }
-
-        /* ── PAGE HERO ── */
-        .page-hero {
-            background: linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%);
-            color: #fff;
-            padding: 3rem 0 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 1;
-        }
-        .page-hero h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-        }
+        .navbar-nav .dropdown-item { font-size: 0.875rem; font-weight: 600; padding: 0.55rem 1.2rem; color: var(--aqua-text); }
+        .navbar-nav .dropdown-item:hover { background-color: var(--aqua-bg); color: var(--aqua-primary); }
+        .page-hero { background: linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color: #fff; padding: 3rem 0 2.5rem; position: relative; overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 1; }
+        .page-hero h1 { font-family: 'Merriweather', serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
         .breadcrumb-item a { color: var(--aqua-light); }
         .breadcrumb-item.active { color: rgba(255,255,255,0.75); }
         .breadcrumb-item+.breadcrumb-item::before { color: rgba(255,255,255,0.5); }
-
-        /* ── CARDS ── */
-        .card {
-            border: 1px solid var(--aqua-border);
-            border-radius: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+        .card { border: 1px solid var(--aqua-border); border-radius: 12px; transition: transform 0.2s, box-shadow 0.2s; }
         .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,119,182,0.12); }
-        .card-header {
-            background: linear-gradient(90deg, var(--aqua-dark), var(--aqua-primary));
-            color: #fff;
-            border-radius: 11px 11px 0 0 !important;
-            font-weight: 700;
-        }
-
-        /* ── QUICK ACCESS ICONS ── */
-        .quick-access-card {
-            text-align: center;
-            padding: 1.8rem 1rem;
-            border-radius: 14px;
-            background: #fff;
-            border: 1.5px solid var(--aqua-border);
-            transition: all 0.25s;
-            text-decoration: none;
-            color: var(--aqua-text);
-            display: block;
-        }
-        .quick-access-card:hover {
-            background: var(--aqua-primary);
-            border-color: var(--aqua-primary);
-            color: #fff;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 28px rgba(0,119,182,0.2);
-        }
-        .quick-access-card .icon-wrap {
-            width: 64px; height: 64px;
-            border-radius: 50%;
-            background: var(--aqua-bg);
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.8rem;
-            color: var(--aqua-primary);
-            transition: all 0.25s;
-        }
-        .quick-access-card:hover .icon-wrap {
-            background: rgba(255,255,255,0.2);
-            color: #fff;
-        }
+        .card-header { background: linear-gradient(90deg, var(--aqua-dark), var(--aqua-primary)); color: #fff; border-radius: 11px 11px 0 0 !important; font-weight: 700; }
+        .quick-access-card { text-align: center; padding: 1.8rem 1rem; border-radius: 14px; background: #fff; border: 1.5px solid var(--aqua-border); transition: all 0.25s; text-decoration: none; color: var(--aqua-text); display: block; }
+        .quick-access-card:hover { background: var(--aqua-primary); border-color: var(--aqua-primary); color: #fff; transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,119,182,0.2); }
+        .quick-access-card .icon-wrap { width: 64px; height: 64px; border-radius: 50%; background: var(--aqua-bg); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; color: var(--aqua-primary); transition: all 0.25s; }
+        .quick-access-card:hover .icon-wrap { background: rgba(255,255,255,0.2); color: #fff; }
         .quick-access-card h6 { font-weight: 700; font-size: 0.9rem; margin: 0; }
-
-        /* ── ANUNTURI / NEWS ── */
-        .news-item {
-            border-left: 4px solid var(--aqua-primary);
-            padding: 0.9rem 1rem;
-            margin-bottom: 1rem;
-            background: var(--aqua-bg);
-            border-radius: 0 8px 8px 0;
-            transition: border-color 0.2s;
-        }
+        .news-item { border-left: 4px solid var(--aqua-primary); padding: 0.9rem 1rem; margin-bottom: 1rem; background: var(--aqua-bg); border-radius: 0 8px 8px 0; transition: border-color 0.2s; }
         .news-item:hover { border-left-color: var(--aqua-accent); }
-        .news-item .date {
-            font-size: 0.75rem;
-            color: var(--aqua-gray);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .news-item .date { font-size: 0.75rem; color: var(--aqua-gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
         .news-item h6 { font-weight: 700; margin: 0.2rem 0 0; font-size: 0.9rem; }
         .news-item h6 a { color: var(--aqua-text); text-decoration: none; }
         .news-item h6 a:hover { color: var(--aqua-primary); }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--aqua-dark);
-            color: rgba(255,255,255,0.8);
-            padding-top: 3rem;
-        }
-        footer h5 {
-            font-family: 'Merriweather', serif;
-            font-size: 1rem;
-            color: #fff;
-            border-bottom: 2px solid var(--aqua-accent);
-            padding-bottom: 0.6rem;
-            margin-bottom: 1.2rem;
-        }
+        footer { background: var(--aqua-dark); color: rgba(255,255,255,0.8); padding-top: 3rem; }
+        footer h5 { font-family: 'Merriweather', serif; font-size: 1rem; color: #fff; border-bottom: 2px solid var(--aqua-accent); padding-bottom: 0.6rem; margin-bottom: 1.2rem; }
         footer ul { list-style: none; padding: 0; margin: 0; }
         footer ul li { margin-bottom: 0.45rem; }
-        footer ul li a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s;
-        }
+        footer ul li a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
         footer ul li a:hover { color: var(--aqua-light); }
         footer ul li a i { margin-right: 6px; }
-        .footer-bottom {
-            background: rgba(0,0,0,0.25);
-            padding: 1rem 0;
-            margin-top: 2.5rem;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.55);
-        }
-
-        /* ── BUTTONS ── */
-        .btn-aqua {
-            background: var(--aqua-primary);
-            color: #fff;
-            border: none;
-            font-weight: 700;
-            border-radius: 8px;
-            padding: 0.55rem 1.4rem;
-            transition: background 0.2s, transform 0.15s;
-        }
+        .footer-bottom { background: rgba(0,0,0,0.25); padding: 1rem 0; margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+        .btn-aqua { background: var(--aqua-primary); color: #fff; border: none; font-weight: 700; border-radius: 8px; padding: 0.55rem 1.4rem; transition: background 0.2s, transform 0.15s; }
         .btn-aqua:hover { background: var(--aqua-dark); color: #fff; transform: translateY(-1px); }
-        .btn-outline-aqua {
-            border: 2px solid var(--aqua-primary);
-            color: var(--aqua-primary);
-            font-weight: 700;
-            border-radius: 8px;
-            padding: 0.5rem 1.4rem;
-            background: transparent;
-            transition: all 0.2s;
-        }
+        .btn-outline-aqua { border: 2px solid var(--aqua-primary); color: var(--aqua-primary); font-weight: 700; border-radius: 8px; padding: 0.5rem 1.4rem; background: transparent; transition: all 0.2s; }
         .btn-outline-aqua:hover { background: var(--aqua-primary); color: #fff; }
-
-        /* ── BADGE ── */
-        .badge-aqua {
-            background: var(--aqua-primary);
-            color: #fff;
-            font-weight: 700;
-            border-radius: 6px;
-            font-size: 0.72rem;
-            padding: 0.3em 0.65em;
-        }
-
-        /* ── ALERT BAND ── */
-        .alert-band {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            color: #664d03;
-            padding: 0.7rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        /* ── UTILITIES ── */
-        .section-title {
-            font-family: 'Merriweather', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--aqua-dark);
-            border-left: 4px solid var(--aqua-accent);
-            padding-left: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
+        .badge-aqua { background: var(--aqua-primary); color: #fff; font-weight: 700; border-radius: 6px; font-size: 0.72rem; padding: 0.3em 0.65em; }
+        .alert-band { background: #fff3cd; border-left: 5px solid #ffc107; color: #664d03; padding: 0.7rem 1rem; font-size: 0.875rem; font-weight: 600; }
+        .section-title { font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700; color: var(--aqua-dark); border-left: 4px solid var(--aqua-accent); padding-left: 0.75rem; margin-bottom: 1.5rem; }
         .text-aqua { color: var(--aqua-primary) !important; }
         .bg-aqua-light { background-color: var(--aqua-bg) !important; }
-
         @media (max-width: 991.98px) {
             .navbar-nav .nav-link { border-bottom: none; padding: 0.6rem 1rem !important; }
             .page-hero h1 { font-size: 1.5rem; }
@@ -304,10 +105,10 @@
         <div class="container d-flex justify-content-between align-items-center">
             <div>
                 <i class="bi bi-telephone-fill me-1"></i>
-                <a href="tel:0240511111">0240 511 111</a>
+                <a href="tel:0240524310">0240 524 310</a>
                 <span class="mx-2">|</span>
                 <i class="bi bi-envelope-fill me-1"></i>
-                <a href="/cdn-cgi/l/email-protection#4a252c2c23292f0a2b3b3f2b392f383c643825"><span class="__cf_email__" data-cfemail="a2cdc4c4cbc1c7e2c3d3d7c3d1c7d0d48cd0cd">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#5724323425322336253e362317362622362432252123223b343236792538"><span class="__cf_email__" data-cfemail="7605131504130217041f170236170703170513040002031a151317580419">[email&#160;protected]</span></a>
                 <span class="mx-2">|</span>
                 <i class="bi bi-clock-fill me-1"></i> Lun–Vin: 08:00 – 16:30
             </div>
@@ -324,7 +125,6 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}">
-                {{-- Înlocuiește cu logo-ul tău: <img src="{{ asset('images/logo.png') }}" alt="Logo"> --}}
                 <div style="width:60px;height:60px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
                     <i class="bi bi-droplet-half text-white" style="font-size:1.85rem;"></i>
                 </div>
@@ -344,9 +144,32 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Acasă</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('despre*') ? 'active' : '' }}" href="{{ url('/despre') }}">Despre noi</a>
+
+                    {{-- Despre noi — dropdown --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('despre*') ? 'active' : '' }}"
+                           href="#" role="button" data-bs-toggle="dropdown">Despre noi</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{{ url('/despre') }}">
+                                    <i class="bi bi-info-circle text-aqua me-2"></i>Despre noi
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('despre/centre-operationale*') ? 'active' : '' }}"
+                                   href="{{ url('/despre/centre-operationale') }}">
+                                    <i class="bi bi-building text-aqua me-2"></i>Centre Operaționale
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('despre/structura-organizationala*') ? 'active' : '' }}"
+                                   href="{{ url('/despre/structura-organizationala') }}">
+                                    <i class="bi bi-diagram-3 text-aqua me-2"></i>Structură Organizațională
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->is('servicii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Servicii</a>
@@ -391,11 +214,8 @@
 
             {{-- MOBIL: overlay drawer --}}
             <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:2000;">
-                {{-- Backdrop --}}
                 <div onclick="inchideMeniu()" style="position:absolute;inset:0;background:rgba(2,62,138,0.5);backdrop-filter:blur(4px);"></div>
-                {{-- Drawer --}}
                 <div id="mobileDrawer" style="position:absolute;top:0;right:0;width:85%;max-width:320px;height:100%;background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 40px rgba(0,0,0,0.15);">
-                    {{-- Header drawer --}}
                     <div style="padding:1.25rem 1.5rem;background:linear-gradient(135deg,#023e8a,#0077b6);display:flex;align-items:center;justify-content:space-between;">
                         <div style="display:flex;align-items:center;gap:0.75rem;">
                             <div style="width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;">
@@ -411,7 +231,6 @@
                         </button>
                     </div>
 
-                    {{-- Butoane rapide --}}
                     <div style="padding:1rem 1.25rem;background:#f0f8ff;border-bottom:1px solid #e2e8f0;display:flex;gap:0.75rem;">
                         <a href="{{ url('/client/index-contor') }}" style="flex:1;background:#0077b6;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
                             <i class="bi bi-speedometer2 d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Trimite Index
@@ -421,14 +240,30 @@
                         </a>
                     </div>
 
-                    {{-- Navigatie --}}
                     <nav style="flex:1;overflow-y:auto;padding:0.75rem 0;">
                         <a href="{{ url('/') }}" style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;text-decoration:none;color:#1a1a2e;font-weight:700;font-size:0.9rem;border-left:3px solid {{ request()->is('/') ? '#0077b6' : 'transparent' }};background:{{ request()->is('/') ? '#f0f8ff' : 'transparent' }};">
                             <i class="bi bi-house" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i> Acasă
                         </a>
-                        <a href="{{ url('/despre') }}" style="display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;text-decoration:none;color:#1a1a2e;font-weight:700;font-size:0.9rem;border-left:3px solid {{ request()->is('despre*') ? '#0077b6' : 'transparent' }};background:{{ request()->is('despre*') ? '#f0f8ff' : 'transparent' }};">
-                            <i class="bi bi-info-circle" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i> Despre noi
-                        </a>
+
+                        {{-- Despre noi expandabil --}}
+                        <div>
+                            <button onclick="toggleSubmeniu('subDespre')" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('despre*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                                <i class="bi bi-info-circle" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
+                                <span style="flex:1;">Despre noi</span>
+                                <i class="bi bi-chevron-down" id="iconDespre" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
+                            </button>
+                            <div id="subDespre" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
+                                <a href="{{ url('/despre') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-info-circle text-aqua"></i> Despre noi
+                                </a>
+                                <a href="{{ url('/despre/centre-operationale') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-building text-aqua"></i> Centre Operaționale
+                                </a>
+                                <a href="{{ url('/despre/structura-organizationala') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-diagram-3 text-aqua"></i> Structură Organizațională
+                                </a>
+                            </div>
+                        </div>
 
                         {{-- Servicii expandabil --}}
                         <div>
@@ -484,10 +319,9 @@
                         </a>
                     </nav>
 
-                    {{-- Footer drawer --}}
                     <div style="padding:1rem 1.5rem;border-top:1px solid #e2e8f0;background:#f8fafc;">
                         <div style="font-size:0.75rem;color:#6c757d;margin-bottom:0.3rem;">
-                            <i class="bi bi-telephone-fill me-1" style="color:#0077b6;"></i> 0240 511 111
+                            <i class="bi bi-telephone-fill me-1" style="color:#0077b6;"></i> 0747022009
                             <span class="mx-2">·</span>
                             <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0340 131 111
                         </div>
@@ -498,7 +332,6 @@
         </div>
     </nav>
 
-    {{-- ALERT BAND (opțional – anunțuri urgente) --}}
     @hasSection('alert_band')
         <div class="alert-band">
             <div class="container">
@@ -508,7 +341,6 @@
         </div>
     @endif
 
-    {{-- PAGE HERO (opțional pe pagini interioare) --}}
     @hasSection('page_hero')
         <section class="page-hero">
             <div class="container position-relative">
@@ -517,12 +349,10 @@
         </section>
     @endif
 
-    {{-- MAIN CONTENT --}}
     <main>
         @yield('content')
     </main>
 
-    {{-- FOOTER --}}
     <footer>
         <div class="container">
             <div class="row g-4">
@@ -535,7 +365,7 @@
                     <ul>
                         <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Exemple nr. 1, Tulcea</a></li>
                         <li><a href="tel:0240511111"><i class="bi bi-telephone-fill"></i> 0240 511 111</a></li>
-                        <li><a href="/cdn-cgi/l/email-protection#dcb3babab5bfb99cbdada9bdafb9aeaaf2aeb3"><i class="bi bi-envelope-fill"></i> <span class="__cf_email__" data-cfemail="96f9f0f0fff5f3d6f7e7e3f7e5f3e4e0b8e4f9">[email&#160;protected]</span></a></li>
+                        <li><a href="/cdn-cgi/l/email-protection#394a5c5a4b5c4d584b50584d7958484c584a5c4b4f4d4c555a5c58174b56"><i class="bi bi-envelope-fill"></i> <span class="__cf_email__" data-cfemail="f784929485928396859e9683b7968682968492858183829b949296d98598">[email&#160;protected]</span></a></li>
                         <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 08:00 – 16:30</a></li>
                     </ul>
                 </div>
@@ -543,6 +373,8 @@
                     <h5>Link-uri rapide</h5>
                     <ul>
                         <li><a href="{{ url('/despre') }}">Despre noi</a></li>
+                        <li><a href="{{ url('/despre/centre-operationale') }}">Centre Operaționale</a></li>
+                        <li><a href="{{ url('/despre/structura-organizationala') }}">Structură Organizațională</a></li>
                         <li><a href="{{ url('/servicii') }}">Servicii</a></li>
                         <li><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
                         <li><a href="{{ url('/contact') }}">Contact</a></li>
@@ -591,7 +423,7 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
 
     <script>
@@ -610,11 +442,15 @@
         setTimeout(() => { menu.style.display = 'none'; }, 300);
     }
     function toggleSubmeniu(id) {
-        const sub = document.getElementById(id);
-        const iconId = id === 'subServicii' ? 'iconServicii' : 'iconInfo';
-        const icon = document.getElementById(iconId);
+        const iconMap = {
+            'subServicii': 'iconServicii',
+            'subInfo':     'iconInfo',
+            'subDespre':   'iconDespre',
+        };
+        const sub    = document.getElementById(id);
+        const icon   = document.getElementById(iconMap[id]);
         const isOpen = sub.style.display === 'block';
-        sub.style.display = isOpen ? 'none' : 'block';
+        sub.style.display    = isOpen ? 'none' : 'block';
         icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
     </script>
