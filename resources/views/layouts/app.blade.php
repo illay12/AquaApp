@@ -52,7 +52,7 @@
             }
         }
         .navbar-nav .dropdown-item { font-size: 0.875rem; font-weight: 600; padding: 0.55rem 1.2rem; color: var(--aqua-text); }
-        .navbar-nav .dropdown-item:hover { background-color: var(--aqua-bg); color: var(--aqua-primary); }
+        .navbar-nav .dropdown-item:hover { background-color: var(--aqua-bg) !important; color: var(--aqua-primary) !important; }
         .page-hero { background: linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color: #fff; padding: 3rem 0 2.5rem; position: relative; overflow: hidden; }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 1; }
         .page-hero h1 { font-family: 'Merriweather', serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
@@ -93,6 +93,14 @@
         @media (max-width: 991.98px) {
             .navbar-nav .nav-link { border-bottom: none; padding: 0.6rem 1rem !important; }
             .page-hero h1 { font-size: 1.5rem; }
+        }
+        /* Dropdown active — override Bootstrap, must be last */
+        a.dropdown-item.active, a.dropdown-item:active,
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: var(--aqua-bg) !important;
+            color: var(--aqua-primary) !important;
+            font-weight: 700 !important;
+            border-left: 3px solid var(--aqua-primary) !important;
         }
     </style>
 
@@ -151,7 +159,7 @@
                            href="#" role="button" data-bs-toggle="dropdown">Despre noi</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="{{ url('/despre') }}">
+                                <a class="dropdown-item {{ request()->is('despre') && !request()->is('despre/*') ? 'active' : '' }}" href="{{ url('/despre') }}">
                                     <i class="bi bi-info-circle text-aqua me-2"></i>Despre noi
                                 </a>
                             </li>
@@ -174,14 +182,14 @@
                         <a class="nav-link dropdown-toggle {{ request()->is('servicii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Servicii</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/servicii/alimentare-apa') }}">
+                            <li><a class="dropdown-item {{ request()->is('servicii/alimentare-apa*') ? 'active' : '' }}" href="{{ url('/servicii/alimentare-apa') }}">
                                 <i class="bi bi-droplet text-aqua me-2"></i>Alimentare cu apă</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/servicii/canalizare') }}">
+                            <li><a class="dropdown-item {{ request()->is('servicii/canalizare*') ? 'active' : '' }}" href="{{ url('/servicii/canalizare') }}">
                                 <i class="bi bi-filter-circle text-aqua me-2"></i>Canalizare</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/servicii/epurare') }}">
+                            <li><a class="dropdown-item {{ request()->is('servicii/epurare*') ? 'active' : '' }}" href="{{ url('/servicii/epurare') }}">
                                 <i class="bi bi-recycle text-aqua me-2"></i>Epurare ape uzate</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url('/servicii/avize') }}">
+                            <li><a class="dropdown-item {{ request()->is('servicii/avize*') ? 'active' : '' }}" href="{{ url('/servicii/avize') }}">
                                 <i class="bi bi-file-earmark-check text-aqua me-2"></i>Avize și autorizații</a></li>
                         </ul>
                     </li>
@@ -189,10 +197,14 @@
                         <a class="nav-link dropdown-toggle {{ request()->is('informatii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Informații publice</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/informatii/calitatea-apei') }}">Calitatea apei</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/informatii/tarife') }}">Tarife și Taxe</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/informatii/legislatie') }}">Legislație</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/informatii/formulare') }}">Formulare utile</a></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/calitatea-apei*') ? 'active' : '' }}" href="{{ url('/informatii/calitatea-apei') }}">
+                                <i class="bi bi-clipboard2-pulse text-aqua me-2"></i>Calitatea apei</a></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/tarife*') ? 'active' : '' }}" href="{{ url('/informatii/tarife') }}">
+                                <i class="bi bi-cash-stack text-aqua me-2"></i>Tarife și Taxe</a></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/legislatie*') ? 'active' : '' }}" href="{{ url('/informatii/legislatie') }}">
+                                <i class="bi bi-journal-text text-aqua me-2"></i>Legislație</a></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/formulare*') ? 'active' : '' }}" href="{{ url('/informatii/formulare') }}">
+                                <i class="bi bi-file-earmark-text text-aqua me-2"></i>Formulare utile</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
