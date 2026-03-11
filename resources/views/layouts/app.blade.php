@@ -116,9 +116,9 @@
                 <a href="tel:0240524310">0240 524 310</a>
                 <span class="mx-2">|</span>
                 <i class="bi bi-envelope-fill me-1"></i>
-                <a href="/cdn-cgi/l/email-protection#5724323425322336253e362317362622362432252123223b343236792538"><span class="__cf_email__" data-cfemail="7605131504130217041f170236170703170513040002031a151317580419">[email&#160;protected]</span></a>
+                <a href="mailto:secretariat@aquaservtulcea.ro">secretariat@aquaservtulcea.ro</a>
                 <span class="mx-2">|</span>
-                <i class="bi bi-clock-fill me-1"></i> Lun–Vin: 08:00 – 16:30
+                <i class="bi bi-clock-fill me-1"></i> Lun–Vin: 07:30 – 16:00
             </div>
             <div>
                 <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
@@ -337,7 +337,7 @@
                             <span class="mx-2">·</span>
                             <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0340 131 111
                         </div>
-                        <div style="font-size:0.72rem;color:#9ca3af;">Lun–Vin: 08:00–16:30</div>
+                        <div style="font-size:0.72rem;color:#9ca3af;">Lun–Vin: 07:30–16:00</div>
                     </div>
                 </div>
             </div>
@@ -375,10 +375,10 @@
                         dedicat calității și siguranței apei pentru comunitate.
                     </p>
                     <ul>
-                        <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Exemple nr. 1, Tulcea</a></li>
-                        <li><a href="tel:0240511111"><i class="bi bi-telephone-fill"></i> 0240 511 111</a></li>
-                        <li><a href="/cdn-cgi/l/email-protection#394a5c5a4b5c4d584b50584d7958484c584a5c4b4f4d4c555a5c58174b56"><i class="bi bi-envelope-fill"></i> <span class="__cf_email__" data-cfemail="f784929485928396859e9683b7968682968492858183829b949296d98598">[email&#160;protected]</span></a></li>
-                        <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 08:00 – 16:30</a></li>
+                        <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Rezervorului, nr. 2, Tulcea</a></li>
+                        <li><a href="tel:0240511111"><i class="bi bi-telephone-fill"></i> 0240 524 310</a></li>
+                        <li><a href="mailto:secretariat@aquaservtulcea.ro"><i class="bi bi-envelope-fill"></i> secretariat@aquaservtulcea.ro</a></li>
+                        <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 07:30 – 16:00</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6">
@@ -406,12 +406,18 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Program casierii</h5>
-                    <p style="font-size:0.875rem;">
+                    <p style="font-size:0.875rem;margin-bottom:0.6rem;">
                         <strong style="color:#fff;">Tulcea – Sediu central</strong><br>
-                        Lun–Vin: 08:00 – 14:30
+                        Lun–Vin: 07:30 – 17:00
                     </p>
-                    <p style="font-size:0.875rem;">
-                        <strong style="color:#fff;">Telecitire avarie</strong><br>
+                    <a href="{{ url('/program-casierii') }}"
+                       style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:rgba(255,255,255,0.75);text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.35rem 0.8rem;margin-bottom:1rem;transition:all 0.2s;"
+                       onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.color='#fff'"
+                       onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.75)'">
+                        <i class="bi bi-clock" style="color:var(--aqua-light);"></i> Program Casierii Județ
+                    </a>
+                    <p style="font-size:0.875rem;margin-bottom:0;">
+                        <strong style="color:#fff;">Telecitire</strong><br>
                         <span style="font-size:1.1rem;color:var(--aqua-light);">
                             <i class="bi bi-telephone-fill"></i> 0340 131 111
                         </span>
@@ -435,7 +441,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
 
     <script>

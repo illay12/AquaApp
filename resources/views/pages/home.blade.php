@@ -124,7 +124,7 @@
                                 <i class="bi bi-telephone-fill me-2"></i> Dispecerat avarii
                             </h5>
                             <p class="mb-1" style="font-size:2rem;font-weight:800;color:#dc3545;letter-spacing:-1px;">
-                                0340 131 111
+                                0747 022 009
                             </p>
                             <p class="mb-0 text-muted" style="font-size:0.82rem;">Disponibil 24/7 pentru urgențe</p>
                         </div>
