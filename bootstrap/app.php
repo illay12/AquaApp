@@ -11,9 +11,18 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-    $middleware->alias([
-        'dispecerat' => \App\Http\Middleware\DispeceratAuth::class,
-    ]);
+        $middleware->alias([
+            'dispecerat' => \App\Http\Middleware\DispeceratAuth::class,
+        ]);
+
+        // Înlocuiește middleware-ul implicit de criptare cu al nostru
+        // care exclude cookie_consent (setat din JavaScript)
+        $middleware->web(replace: [
+            \Illuminate\Cookie\Middleware\EncryptCookies::class => \App\Http\Middleware\EncryptCookies::class,
+        ]);
+
+        // Cookie consent
+        $middleware->appendToGroup('web', \App\Http\Middleware\CookieConsent::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

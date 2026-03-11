@@ -472,5 +472,6 @@
         icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
     </script>
+    @include('components.cookie-banner')
 </body>
 </html>
