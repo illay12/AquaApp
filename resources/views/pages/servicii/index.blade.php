@@ -29,6 +29,15 @@
                 ['bi-file-earmark-check-fill','Avize și autorizații','avize','#48cae4',
                     'Emitem avize de amplasament, avize tehnice și autorizații de racordare pentru branșamente apă și racorduri canal, atât pentru persoane fizice cât și juridice.',
                     ['Aviz amplasament','Aviz tehnic racordare','Autorizație construire','Recepție lucrări']],
+                ['bi-clipboard-data-fill','Monitorizarea calității apei',null,'#0096c7',
+                    'Monitorizăm permanent calitatea apei potabile distribuite prin rețea, efectuând analize fizico-chimice și bacteriologice conform standardelor europene în vigoare.',
+                    ['Analize fizico-chimice','Analize bacteriologice','Buletine de analiză','Conformitate standarde UE']],
+                ['bi-briefcase-fill','Prestații către terți',null,'#023e8a',
+                    'Oferim servicii specializate către terți: intervenții pe rețele de apă și canal, lucrări de construcție și reparații, vidanjare, precum și alte prestații tehnice la cerere.',
+                    ['Intervenții rețele','Lucrări construcție-montaj','Vidanjare','Alte prestații tehnice']],
+                ['bi-truck','Închirieri de utilaje',null,'#0077b6',
+                    'Punem la dispoziție utilaje specializate pentru lucrări de construcții, săpături și intervenții tehnice. Parcul nostru auto include echipamente moderne pentru diverse tipuri de lucrări.',
+                    ['Excavatoare','Buldoexcavatoare','Autoutilitare','Echipamente specializate']],
             ] as [$icon, $titlu, $slug, $color, $desc, $lista])
             <div class="col-md-6">
                 <div class="card h-100 p-4">
@@ -44,12 +53,31 @@
                             <li class="mb-1">{{ $item }}</li>
                         @endforeach
                     </ul>
+                    @if($slug)
                     <a href="{{ url('/servicii/'.$slug) }}" class="btn btn-outline-aqua btn-sm mt-auto align-self-start">
                         Detalii <i class="bi bi-arrow-right ms-1"></i>
                     </a>
+                    @endif
                 </div>
             </div>
             @endforeach
+        </div>
+    </div>
+</section>
+
+<section style="padding:2rem 0 3.5rem;">
+    <div class="container">
+        <h2 class="section-title mb-4"><i class="bi bi-file-earmark-text me-2"></i>Tarife</h2>
+        <div class="card p-4">
+            <h5 style="font-family:'Merriweather',serif;" class="mb-3">
+                Tarife noi — Anul 2025
+                <small class="text-muted fw-normal fs-6 ms-2">(actualizat 25.04.2025)</small>
+            </h5>
+            <ul class="list-unstyled mb-0">
+                <li class="mb-2"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Tarife servicii și închiriere utilaje 2025</li>
+                <li class="mb-2"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Hotărârea 131 din 14.04.2025 – Modificare tarife servicii conexe</li>
+                <li><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Notă de fundamentare tarife 2025</li>
+            </ul>
         </div>
     </div>
 </section>

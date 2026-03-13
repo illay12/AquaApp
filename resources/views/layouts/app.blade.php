@@ -340,7 +340,7 @@
                         <div style="font-size:0.75rem;color:#6c757d;margin-bottom:0.3rem;">
                             <i class="bi bi-telephone-fill me-1" style="color:#0077b6;"></i> 0747022009
                             <span class="mx-2">·</span>
-                            <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0340 131 111
+                            <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0747 022 009
                         </div>
                         <div style="font-size:0.72rem;color:#9ca3af;">Lun–Vin: 07:30–16:00</div>
                     </div>
@@ -424,7 +424,7 @@
                     <p style="font-size:0.875rem;margin-bottom:0;">
                         <strong style="color:#fff;">Telecitire</strong><br>
                         <span style="font-size:1.1rem;color:var(--aqua-light);">
-                            <i class="bi bi-telephone-fill"></i> 0340 131 111
+                            <i class="bi bi-telephone-fill"></i> 0747 022 009
                         </span>
                     </p>
                     <div class="d-flex gap-2 mt-3">

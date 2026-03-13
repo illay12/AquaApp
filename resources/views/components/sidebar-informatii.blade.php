@@ -24,7 +24,7 @@
         <p class="fw-bold mb-1" style="color:#dc3545;font-size:0.9rem;">
             <i class="bi bi-telephone-fill me-1"></i> Dispecerat avarii 24/7
         </p>
-        <p style="font-size:1.7rem;font-weight:800;color:#dc3545;margin:0;">0340 131 111</p>
+        <p style="font-size:1.7rem;font-weight:800;color:#dc3545;margin:0;">0747 022 009</p>
     </div>
 </div>
 
