@@ -308,7 +308,7 @@
                                 'icon'    => 'bi-person-badge-fill',
                                 'bg'      => 'linear-gradient(135deg,#023e8a,#0055a0)',
                                 'accent'  => '#023e8a',
-                                'cv'      => '/fisiere/cv-valentin-ifrim.pdf',
+                                'cv'      => asset('storage/documente/cv-uri/CV-VALENTIN-C.-IFRIM.pdf'),
                             ],
                             [
                                 'functie' => 'Director Economic',
@@ -316,7 +316,7 @@
                                 'icon'    => 'bi-graph-up-arrow',
                                 'bg'      => 'linear-gradient(135deg,#0077b6,#0096c7)',
                                 'accent'  => '#0077b6',
-                                'cv'      => '/fisiere/cv-selda-matei.pdf',
+                                'cv'      => asset('storage/documente/cv-uri/CV-MATEI-SELDA.pdf'),
                             ],
                             [
                                 'functie' => 'Inginer Șef',
@@ -324,7 +324,7 @@
                                 'icon'    => 'bi-wrench-adjustable-circle',
                                 'bg'      => 'linear-gradient(135deg,#0096c7,#00b4d8)',
                                 'accent'  => '#0096c7',
-                                'cv'      => '/fisiere/cv-george-ilie.pdf',
+                                'cv'      => asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf')
                             ],
                         ];
                         @endphp
@@ -369,8 +369,8 @@
                                 ORGANIGRAMA nr.566 / 23.09.2025
                             </div>
                         </div>
-                            <a href="asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf)"
-                           target="_blank" class="org-btn-primary">
+                            <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
+                            target="_blank" class="org-btn-primary">
                             <i class="bi bi-download"></i> Descarcă
                         </a>
                     </div>
@@ -388,8 +388,8 @@
                                 Organigrama nr.429 / 14.07.2025
                             </div>
                         </div>
-                        <a href="asset('storage/documente/structura_organizationala/Organigrama-nr.429-14.07.2025.pdf)"
-                           target="_blank" class="org-btn-secondary">
+                            <a href="{{ asset('storage/documente/structura_organizationala/Organigrama-nr.429-14.07.2025.pdf') }}"
+                            target="_blank" class="org-btn-secondary">
                             <i class="bi bi-download"></i> Descarcă
                         </a>
                     </div>
