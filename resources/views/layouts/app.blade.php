@@ -138,8 +138,7 @@
                 </div>
                 <div>
                     <span>AquaServ Tulcea</span>
-                    <small>Servicii apă și canal</small>
-                </div>
+                    <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>
             </a>
 
             <button class="navbar-toggler border-0 d-lg-none" type="button" onclick="deschideMeniu()" style="padding:0.4rem 0.6rem;">
