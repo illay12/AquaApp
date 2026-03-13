@@ -111,7 +111,9 @@
                     <div class="card-body" style="background:#fff5f5;border-radius:12px;text-align:center;">
                         <i class="bi bi-telephone-fill" style="font-size:2rem;color:#dc3545;"></i>
                         <p class="fw-bold mt-2 mb-0" style="color:#dc3545;">Dispecerat avarii 24/7</p>
-                        <p style="font-size:1.8rem;font-weight:800;color:#dc3545;margin:0;">0340 131 111</p>
+                        <p style="font-size:1.8rem;font-weight:800;color:#dc3545;margin:0;">
+                            <a href="tel:+40747022009" style="color:inherit;text-decoration:none;">0747 022 009</a>
+                        </p>
                     </div>
                 </div>
 

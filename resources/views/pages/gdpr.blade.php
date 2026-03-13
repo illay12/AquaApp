@@ -253,12 +253,12 @@
                     <h2 class="gdpr-card-title">Documente utile</h2>
                 </div>
                 <div class="card-body d-flex flex-column gap-2">
-                    <a href="http://www.aquaservtulcea.ro/wp-content/uploads/2019/04/site-aquaserv-2.pdf" target="_blank" class="doc-link">
+                    <a href="{{ asset('storage/documente/gdpr/monitorizarea_video.pdf') }}" target="_blank" class="doc-link">
                         <div class="doc-icon-wrap"><i class="bi bi-file-pdf"></i></div>
                         <div style="flex:1;"><div class="doc-title">Politica privind supravegherea prin mijloace video</div><div class="doc-sub">SC AQUASERV SA Tulcea · PDF</div></div>
                         <i class="bi bi-download" style="color:var(--aqua-primary);"></i>
                     </a>
-                    <a href="http://www.aquaservtulcea.ro/wp-content/uploads/2019/04/site-aqua-3.pdf" target="_blank" class="doc-link">
+                    <a href="{{ asset('storage/documente/gdpr/drepturi persoane vizate.pdf') }}" target="_blank" class="doc-link">
                         <div class="doc-icon-wrap"><i class="bi bi-file-pdf"></i></div>
                         <div style="flex:1;"><div class="doc-title">Anexa 1 – Drepturile persoanelor vizate</div><div class="doc-sub">SC AQUASERV SA Tulcea · PDF</div></div>
                         <i class="bi bi-download" style="color:var(--aqua-primary);"></i>
@@ -267,6 +267,15 @@
             </div>
 
         </div>
+
+        {{-- LINK COOKIES --}}
+        <div class="col-lg-9 offset-lg-3">
+            <div class="mt-2 p-3 d-flex align-items-center gap-3" style="background:var(--aqua-bg);border:1px solid var(--aqua-border);border-radius:10px;font-size:0.875rem;color:#495057;">
+                <i class="bi bi-cookie" style="font-size:1.4rem;color:var(--aqua-primary);flex-shrink:0;"></i>
+                <span>Consultați și <a href="{{ url('/cookies') }}" style="color:var(--aqua-primary);font-weight:600;">Politica de utilizare a cookie-urilor</a> pentru informații despre fișierele stocate în browser.</span>
+            </div>
+        </div>
+
     </div>
     </div>
     </section>
