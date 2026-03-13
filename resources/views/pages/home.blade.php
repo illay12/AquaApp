@@ -124,7 +124,7 @@
                                 <i class="bi bi-telephone-fill me-2"></i> Dispecerat avarii
                             </h5>
                             <p class="mb-1" style="font-size:2rem;font-weight:800;color:#dc3545;letter-spacing:-1px;">
-                                0747 022 009
+                                <a href="tel:+40747022009" style="color:inherit;text-decoration:none;">0747 022 009</a>
                             </p>
                             <p class="mb-0 text-muted" style="font-size:0.82rem;">Disponibil 24/7 pentru urgențe</p>
                         </div>

@@ -14,7 +14,8 @@
             <p class="cb-desc">
                 Acest site folosește cookie-uri tehnice necesare pentru funcționarea corectă a serviciilor.
                 Prin continuarea navigării sunteți de acord cu utilizarea acestora conform
-                <a href="{{ url('/gdpr') }}" target="_blank">Politicii de confidențialitate</a>.
+                <a href="{{ url('/gdpr') }}" target="_blank">Politicii de confidențialitate</a> și
+                <a href="{{ url('/cookies') }}" target="_blank">Politicii de Cookies</a>.
             </p>
         </div>
         <div class="cb-actions">
