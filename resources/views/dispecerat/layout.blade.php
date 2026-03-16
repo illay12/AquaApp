@@ -166,12 +166,24 @@
             <i class="bi bi-grid-1x2"></i> Dashboard
         </a>
 
+        @if(session('dispecerat_categorie') === 'calitate')
+        <div class="sidebar-label mt-2">Buletine</div>
+        <a href="{{ route('dispecerat.buletin.create') }}"
+           class="sidebar-link {{ request()->routeIs('dispecerat.buletin.create') ? 'active' : '' }}">
+            <i class="bi bi-cloud-upload"></i> Încarcă buletin
+        </a>
+        <a href="{{ route('dispecerat.dashboard') }}"
+           class="sidebar-link {{ request()->routeIs('dispecerat.dashboard') && !request()->hasAny(['q','categorie','an','luna']) ? 'active' : '' }}">
+            <i class="bi bi-file-earmark-medical"></i> Buletine analiză apă
+        </a>
+        @endif
+
         <div class="sidebar-label mt-2">Anunțuri</div>
         <a href="{{ route('dispecerat.anunturi.create') }}"
            class="sidebar-link {{ request()->routeIs('dispecerat.anunturi.create') ? 'active' : '' }}">
             <i class="bi bi-plus-circle"></i> Anunț nou
         </a>
-        <a href="{{ route('dispecerat.dashboard') }}"
+        <a href="{{ route('dispecerat.dashboard') }}{{ session('dispecerat_categorie') === 'calitate' ? '#anunturi' : '' }}"
            class="sidebar-link">
             <i class="bi bi-list-ul"></i> Toate anunțurile
         </a>

@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:www.aquaservtulcea.ro)"
+      "WebFetch(domain:www.aquaservtulcea.ro)",
+      "Bash(mkdir -p c:/laragon/www/aquaApp/public/formulare)",
+      "Bash(curl -s -o \"cerere-verificare-metrologica.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2023/03/Cerere-verificare-metrologica-nou.pdf\")",
+      "Bash(curl -s -o \"cerere-contract-pj.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2023/03/Incheiere-contract-persoane-juridice.pdf\")",
+      "Bash(curl -s -o \"cerere-contract-nou.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2023/03/Incheiere-contract-utilizatori-casnici.pdf\")",
+      "Bash(curl -s -o \"inlocuire-apometru.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2023/03/Inlocuire-apometru-nou.pdf\")",
+      "Bash(curl -s -o \"cerere-reziliere-pj.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2023/03/Reziliere-agenti-economice.pdf\")"
     ]
   }
 }

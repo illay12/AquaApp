@@ -53,6 +53,37 @@ $labelsCategorie = [
     </div>
     <div class="card-panel-body">
 
+        <form method="GET" action="{{ route('dispecerat.dashboard') }}" class="row g-2 mb-3">
+            <div class="col-md-3">
+                <select name="an_buletin" class="form-select form-select-sm">
+                    <option value="">Toți anii</option>
+                    @foreach($aniBuletine as $anB)
+                        <option value="{{ $anB }}" {{ request('an_buletin') == $anB ? 'selected' : '' }}>{{ $anB }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="luna_buletin" class="form-select form-select-sm">
+                    <option value="">Toate lunile</option>
+                    @foreach(['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'] as $numeLuna)
+                        <option value="{{ $numeLuna }}" {{ request('luna_buletin') === $numeLuna ? 'selected' : '' }}>{{ $numeLuna }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary-aqua btn-sm w-100">
+                    <i class="bi bi-search me-1"></i> Filtrează
+                </button>
+            </div>
+            @if(request()->hasAny(['an_buletin', 'luna_buletin']))
+            <div class="col-md-2">
+                <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary btn-sm w-100">
+                    <i class="bi bi-x-circle me-1"></i> Resetează
+                </a>
+            </div>
+            @endif
+        </form>
+
         @if($buletine && $buletine->count() > 0)
             @foreach($buletine as $an => $luniAn)
             <div class="mb-4">
@@ -121,7 +152,7 @@ $labelsCategorie = [
 {{-- ================================================================
      LISTA ANUNTURI
      ================================================================ --}}
-<div class="card-panel">
+<div id="anunturi" class="card-panel">
     <div class="card-panel-header">
         <span><i class="bi bi-list-ul me-2"></i>Anunțurile mele</span>
         <a href="{{ route('dispecerat.anunturi.create') }}" class="btn btn-primary-aqua btn-sm">
@@ -131,13 +162,13 @@ $labelsCategorie = [
     <div class="card-panel-body">
 
         <form method="GET" action="{{ route('dispecerat.dashboard') }}" class="row g-2 mb-3">
-            <div class="col-md-{{ count($categorii) > 1 ? '5' : '8' }}">
+            <div class="col-md-{{ count($categorii) > 1 ? '3' : '4' }}">
                 <input type="text" name="q" class="form-control form-control-sm"
                        placeholder="Caută după titlu sau conținut..."
                        value="{{ request('q') }}">
             </div>
             @if(count($categorii) > 1)
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <select name="categorie" class="form-select form-select-sm">
                     <option value="">Toate categoriile</option>
                     @foreach($categorii as $cat)
@@ -149,14 +180,30 @@ $labelsCategorie = [
             </div>
             @endif
             <div class="col-md-2">
+                <select name="an" class="form-select form-select-sm">
+                    <option value="">Toți anii</option>
+                    @foreach($aniAnunturi as $an)
+                        <option value="{{ $an }}" {{ request('an') == $an ? 'selected' : '' }}>{{ $an }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="luna" class="form-select form-select-sm">
+                    <option value="">Toate lunile</option>
+                    @foreach(['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'] as $i => $numeLuna)
+                        <option value="{{ $i + 1 }}" {{ request('luna') == $i + 1 ? 'selected' : '' }}>{{ $numeLuna }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-2">
                 <button type="submit" class="btn btn-primary-aqua btn-sm w-100">
                     <i class="bi bi-search me-1"></i> Caută
                 </button>
             </div>
-            @if(request()->hasAny(['q', 'categorie']))
-            <div class="col-md-2">
-                <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary btn-sm w-100">
-                    <i class="bi bi-x-circle me-1"></i> Resetează
+            @if(request()->hasAny(['q', 'categorie', 'an', 'luna']))
+            <div class="col-md-{{ count($categorii) > 1 ? '1' : '2' }}">
+                <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary btn-sm w-100" title="Resetează filtrele">
+                    <i class="bi bi-x-circle"></i>
                 </a>
             </div>
             @endif

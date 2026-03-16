@@ -21,44 +21,31 @@
                 <h2 class="section-title">Formulare disponibile pentru descărcare</h2>
                 <p>
                     Mai jos găsiți formularele tipizate necesare pentru diverse solicitări adresate AquaServ S.A.
-                    Documentele sunt disponibile în format Word (.doc) sau PDF. Completați formularul dorit și
+                    Documentele sunt disponibile în format PDF. Completați formularul dorit și
                     depuneți-l la sediul nostru sau trimiteți-l prin email.
+                    <span class="text-muted" style="font-size:0.85rem;">Actualizate: 20.03.2023</span>
                 </p>
 
                 @foreach([
                     [
-                        'bi-droplet','Branșamente și racorduri',
+                        'bi-person','Clienți persoane fizice (utilizatori casnici)',
                         [
-                            ['Cerere aviz de amplasament','doc','formulare/cerere-aviz-amplasament.doc'],
-                            ['Fișă tehnică aviz de amplasament','doc','formulare/fisa-tehnica-aviz-amplasament.doc'],
-                            ['Cerere aviz tehnic de racordare','doc','formulare/cerere-aviz-tehnic-racordare.doc'],
-                            ['Cerere recepție branșament / racord','doc','formulare/cerere-receptie.doc'],
+                            ['Încheiere contract utilizatori casnici','pdf','formulare/cerere-contract-nou.pdf'],
                         ]
                     ],
                     [
-                        'bi-person','Clienți persoane fizice',
+                        'bi-building','Clienți persoane juridice / agenți economici',
                         [
-                            ['Cerere încheiere contract nou','doc','formulare/cerere-contract-nou.doc'],
-                            ['Cerere schimbare titular contract','doc','formulare/cerere-schimbare-titular.doc'],
-                            ['Cerere reziliere contract','doc','formulare/cerere-reziliere.doc'],
-                            ['Cerere restituire garanție','doc','formulare/cerere-restituire-garantie.doc'],
-                        ]
-                    ],
-                    [
-                        'bi-building','Clienți persoane juridice / instituții',
-                        [
-                            ['Cerere încheiere contract (PJ)','doc','formulare/cerere-contract-pj.doc'],
-                            ['Cerere schimbare date facturare','doc','formulare/cerere-date-facturare.doc'],
-                            ['Declarație pe proprie răspundere consum','doc','formulare/declaratie-consum.doc'],
+                            ['Încheiere contract persoane juridice','pdf','formulare/cerere-contract-pj.pdf'],
+                            ['Reziliere agenți economici','pdf','formulare/cerere-reziliere-pj.pdf'],
                         ]
                     ],
                     [
                         'bi-tools','Diverse',
                         [
-                            ['Cerere intervenție rețea publică','doc','formulare/cerere-interventie.doc'],
-                            ['Cerere verificare contor','doc','formulare/cerere-verificare-contor.doc'],
-                            ['Sesizare calitate apă','doc','formulare/sesizare-calitate.doc'],
-                            ['Cerere informații publice (Legea 544/2001)','pdf','formulare/cerere-544-2001.pdf'],
+                            ['Cerere verificare metrologică contor','pdf','formulare/cerere-verificare-metrologica.pdf'],
+                            ['Înlocuire apometru','pdf','formulare/inlocuire-apometru.pdf'],
+
                         ]
                     ],
                 ] as [$icon, $categorie, $formulare])
@@ -69,16 +56,16 @@
                     <div class="row g-2">
                         @foreach($formulare as [$titlu, $tip, $fisier])
                         <div class="col-md-6">
-                            <a href="{{ asset($fisier) }}" download
+                            <a href="{{ Storage::url($fisier) }}" target="_blank" rel="noopener noreferrer"
                                class="d-flex align-items-center gap-3 p-3 text-decoration-none"
                                style="background:var(--aqua-bg);border-radius:8px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;"
                                onmouseover="this.style.borderColor='var(--aqua-primary)';this.style.background='#e8f4fc';"
                                onmouseout="this.style.borderColor='var(--aqua-border)';this.style.background='var(--aqua-bg)';">
-                                <i class="bi bi-file-earmark-{{ $tip === 'pdf' ? 'pdf' : 'word' }}"
-                                   style="font-size:1.8rem;color:{{ $tip === 'pdf' ? '#dc3545' : '#0d6efd' }};flex-shrink:0;"></i>
+                                <i class="bi bi-file-earmark-pdf"
+                                   style="font-size:1.8rem;color:#dc3545;flex-shrink:0;"></i>
                                 <div class="flex-grow-1">
                                     <div style="font-size:0.875rem;font-weight:600;line-height:1.3;">{{ $titlu }}</div>
-                                    <div style="font-size:0.75rem;color:var(--aqua-gray);text-transform:uppercase;">{{ strtoupper($tip) }}</div>
+                                    <div style="font-size:0.75rem;color:var(--aqua-gray);text-transform:uppercase;">PDF</div>
                                 </div>
                                 <i class="bi bi-download text-muted"></i>
                             </a>

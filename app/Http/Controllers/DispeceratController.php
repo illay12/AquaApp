@@ -134,14 +134,37 @@ class DispeceratController extends Controller
             $query->where('categorie', $request->categorie);
         }
 
-        $anunturi = $query->paginate(15)->withQueryString();
-        $total    = Anunt::whereIn('categorie', $categorii)->count();
+        if ($request->filled('an')) {
+            $query->whereYear('created_at', $request->an);
+        }
+
+        if ($request->filled('luna')) {
+            $query->whereMonth('created_at', $request->luna);
+        }
+
+        $anunturi    = $query->paginate(15)->withQueryString();
+        $total       = Anunt::whereIn('categorie', $categorii)->count();
+        $aniAnunturi = Anunt::whereIn('categorie', $categorii)
+                          ->selectRaw('YEAR(created_at) as an')
+                          ->distinct()
+                          ->orderByDesc('an')
+                          ->pluck('an');
 
         // Buletine pentru laborator
-        $buletine = null;
+        $buletine   = null;
+        $aniBuletine = collect();
         if ($categorie === 'calitate') {
-            $ordineLuni = BuletinAnaliza::ordineLuni();
-            $buletine = BuletinAnaliza::groupatPeAni()
+            $ordineLuni   = BuletinAnaliza::ordineLuni();
+            $buletineQuery = BuletinAnaliza::groupatPeAni();
+
+            if ($request->filled('an_buletin')) {
+                $buletineQuery->where('an', $request->an_buletin);
+            }
+            if ($request->filled('luna_buletin')) {
+                $buletineQuery->where('luna', $request->luna_buletin);
+            }
+
+            $buletine = $buletineQuery
                             ->get()
                             ->groupBy('an')
                             ->sortKeysDesc()
@@ -150,9 +173,14 @@ class DispeceratController extends Controller
                                     ->groupBy('luna')
                                     ->sortByDesc(fn($_, $luna) => $ordineLuni[$luna] ?? 0);
                             });
+
+            $aniBuletine = BuletinAnaliza::distinct()->orderByDesc('an')->pluck('an');
         }
 
-        return view('dispecerat.dashboard', compact('anunturi', 'total', 'categorie', 'categorii', 'buletine'));
+        return view('dispecerat.dashboard', compact(
+            'anunturi', 'total', 'categorie', 'categorii',
+            'buletine', 'aniAnunturi', 'aniBuletine'
+        ));
     }
 
     /*
