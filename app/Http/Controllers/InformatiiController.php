@@ -5,6 +5,15 @@ namespace App\Http\Controllers;
 class InformatiiController extends Controller
 {
     /**
+     * Index informații publice
+     * GET /informatii
+     */
+    public function index()
+    {
+        return view('pages.informatii.index');
+    }
+
+    /**
      * Tarife
      * GET /informatii/tarife
      */
@@ -38,6 +47,15 @@ class InformatiiController extends Controller
     public function formulare()
     {
         return view('pages.informatii.formulare');
+    }
+
+    /**
+     * Avize și acorduri
+     * GET /informatii/avize
+     */
+    public function avize()
+    {
+        return view('pages.informatii.avize');
     }
 
     /**

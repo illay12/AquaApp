@@ -202,8 +202,11 @@
                                 <i class="bi bi-cash-stack text-aqua me-2"></i>Tarife și Taxe</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/legislatie*') ? 'active' : '' }}" href="{{ url('/informatii/legislatie') }}">
                                 <i class="bi bi-journal-text text-aqua me-2"></i>Legislație</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/formulare*') ? 'active' : '' }}" href="{{ url('/informatii/formulare') }}">
                                 <i class="bi bi-file-earmark-text text-aqua me-2"></i>Formulare utile</a></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/avize*') ? 'active' : '' }}" href="{{ url('/informatii/avize') }}">
+                                <i class="bi bi-patch-check text-aqua me-2"></i>Avize și acorduri</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
                                 <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
@@ -321,6 +324,9 @@
                                 </a>
                                 <a href="{{ url('/informatii/formulare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-file-earmark-arrow-down text-aqua"></i> Formulare utile
+                                </a>
+                                <a href="{{ url('/informatii/avize') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-patch-check text-aqua"></i> Avize și acorduri
                                 </a>
                                 <a href="{{ url('/program-casierii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-clock text-aqua"></i> Program casierii

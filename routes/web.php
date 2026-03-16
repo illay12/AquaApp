@@ -65,10 +65,12 @@ Route::prefix('anunturi')->name('anunturi.')->group(function () {
 */
 
 Route::prefix('informatii')->name('informatii.')->group(function () {
+    Route::get('/',               [InformatiiController::class, 'index'])->name('index');
     Route::get('/tarife',         [InformatiiController::class, 'tarife'])->name('tarife');
     Route::get('/calitatea-apei', [CalitateaApeiController::class, 'index'])->name('calitatea-apei');
     Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
     Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
+    Route::get('/avize',          [InformatiiController::class, 'avize'])->name('avize');
 });
 
 /*

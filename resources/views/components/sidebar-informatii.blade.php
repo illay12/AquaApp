@@ -8,6 +8,7 @@
             ['/informatii/calitatea-apei','bi-droplet-half','Calitatea apei'],
             ['/informatii/legislatie','bi-book','Legislație'],
             ['/informatii/formulare','bi-file-earmark-arrow-down','Formulare utile'],
+            ['/informatii/avize','bi-patch-check','Avize și acorduri'],
             ['/program-casierii','bi-clock','Program casierii'],
         ] as [$url, $icon, $label])
         <a href="{{ url($url) }}"
