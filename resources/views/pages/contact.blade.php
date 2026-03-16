@@ -75,6 +75,19 @@
     .ct-strip-lbl { font-size: 0.65rem; }
 }
 
+/* Mobil mic: 2 coloane dar val permite wrap */
+@media(max-width:480px) {
+    .ct-strip-val {
+        font-size: 0.85rem;
+        white-space: normal;      /* permite wrap */
+        word-break: break-word;
+        letter-spacing: 0;
+    }
+    .ct-strip-lbl { font-size: 0.62rem; }
+    .ct-strip-ico { width: 32px; height: 32px; font-size: 0.85rem; border-radius: 8px; }
+    .ct-strip-item { padding: 0.75rem 0.6rem; gap: 0.5rem; }
+}
+
 /* ═══════════════════════════════════════════
    MAIN GRID: formular + departamente
 ═══════════════════════════════════════════ */
@@ -540,7 +553,10 @@
     document.addEventListener('DOMContentLoaded', function () {
         const el = document.getElementById('formular-contact');
         if (el) {
-            setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+            setTimeout(() => {
+                const top = el.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }, 200);
         }
     });
 </script>
