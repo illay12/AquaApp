@@ -28,7 +28,7 @@
         .topbar { background: var(--aqua-dark); color: rgba(255,255,255,0.85); font-size: 0.8rem; padding: 6px 0; }
         .topbar a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .topbar a:hover { color: #fff; }
-        .navbar { background: #ffffff; border-bottom: 3px solid var(--aqua-primary); box-shadow: 0 2px 12px rgba(0,119,182,0.10); padding: 0; }
+        .navbar { background: #ffffff; border-bottom: 3px solid var(--aqua-primary); box-shadow: 0 2px 12px rgba(0,119,182,0.10); padding: 0; z-index: 1030; }
         .navbar-brand img { height: 64px; }
         .navbar-brand span { font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700; color: var(--aqua-dark); line-height: 1.2; }
         .navbar-brand small { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--aqua-gray); display: block; letter-spacing: 0.04em; text-transform: uppercase; }
