@@ -114,6 +114,13 @@
                     'color' => '#0096c7',
                 ],
                 [
+                    'url'   => '/informatii/legea-544-2001',
+                    'icon'  => 'bi-journal-bookmark',
+                    'titlu' => 'Legea 544/2001',
+                    'desc'  => 'Informații privind accesul liber la informațiile de interes public, persoane responsabile și formulare de solicitare.',
+                    'color' => '#0077b6',
+                ],
+                [
                     'url'   => '/program-casierii',
                     'icon'  => 'bi-clock',
                     'titlu' => 'Program casierii',

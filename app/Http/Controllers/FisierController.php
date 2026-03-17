@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AnuntFisier;
 use App\Models\BuletinAnaliza;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class FisierController extends Controller
 {
@@ -41,6 +42,29 @@ class FisierController extends Controller
             $fisier->nume_original,
             ['Content-Type' => $mime]
         );
+    }
+
+    /**
+     * Servire documente statice din storage/documente/{folder}
+     * GET /documente/{folder}/{fisier}
+     */
+    public function document(string $folder, string $fisier): BinaryFileResponse
+    {
+        // Permite doar caractere sigure în nume
+        if (!preg_match('/^[a-zA-Z0-9_\-]+$/', $folder) || !preg_match('/^[a-zA-Z0-9_\-\.]+\.pdf$/', $fisier)) {
+            abort(404);
+        }
+
+        $cale = storage_path('documente/' . $folder . '/' . $fisier);
+
+        if (!file_exists($cale)) {
+            abort(404, 'Documentul nu a fost găsit.');
+        }
+
+        return response()->file($cale, [
+            'Content-Type'        => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $fisier . '"',
+        ]);
     }
 
     /**

@@ -59,6 +59,15 @@ class InformatiiController extends Controller
     }
 
     /**
+     * Legea 544/2001 — acces la informații de interes public
+     * GET /informatii/legea-544-2001
+     */
+    public function legea544()
+    {
+        return view('pages.informatii.legea-544-2001');
+    }
+
+    /**
      * Program casierii
      * GET /program-casierii
      */

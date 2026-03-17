@@ -207,6 +207,8 @@
                                 <i class="bi bi-file-earmark-text text-aqua me-2"></i>Formulare utile</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/avize*') ? 'active' : '' }}" href="{{ url('/informatii/avize') }}">
                                 <i class="bi bi-patch-check text-aqua me-2"></i>Avize și acorduri</a></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/legea-544-2001*') ? 'active' : '' }}" href="{{ url('/informatii/legea-544-2001') }}">
+                                <i class="bi bi-journal-bookmark text-aqua me-2"></i>Legea 544/2001</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
                                 <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
@@ -327,6 +329,9 @@
                                 </a>
                                 <a href="{{ url('/informatii/avize') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-patch-check text-aqua"></i> Avize și acorduri
+                                </a>
+                                <a href="{{ url('/informatii/legea-544-2001') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-journal-bookmark text-aqua"></i> Legea 544/2001
                                 </a>
                                 <a href="{{ url('/program-casierii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-clock text-aqua"></i> Program casierii

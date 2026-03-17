@@ -71,6 +71,7 @@ Route::prefix('informatii')->name('informatii.')->group(function () {
     Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
     Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
     Route::get('/avize',          [InformatiiController::class, 'avize'])->name('avize');
+    Route::get('/legea-544-2001', [InformatiiController::class, 'legea544'])->name('legea-544-2001');
 });
 
 /*
@@ -92,6 +93,7 @@ Route::prefix('contact')->name('contact.')->group(function () {
 
 Route::get('/fisiere/{id}/download',         [FisierController::class, 'download'])->name('fisiere.download');
 Route::get('/fisiere/buletin/{id}/download', [FisierController::class, 'downloadBuletin'])->name('fisiere.buletin.download');
+Route::get('/documente/{folder}/{fisier}',   [FisierController::class, 'document'])->name('documente.show');
 
 /*
 |--------------------------------------------------------------------------
