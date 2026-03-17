@@ -100,7 +100,7 @@ class DocumenteAdminController extends Controller
         $file->move($dest, $numeSigur);
 
         return redirect()->route('admin.documente.index')
-            ->with('success', "Fisierul \"{$numeSigur}\" a fost incarcat in {$folder}/{$an}.");
+            ->with('success', "Fișierul a fost încărcat cu succes.");
     }
 
     public function sterge(Request $request)
@@ -140,6 +140,6 @@ class DocumenteAdminController extends Controller
         }
 
         return redirect()->route('admin.documente.index')
-            ->with('success', "Fisierul \"{$fisier}\" a fost sters.");
+            ->with('success', "Fișierul a fost șters cu succes.");
     }
 }

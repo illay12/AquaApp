@@ -125,6 +125,11 @@ class ClientController extends Controller
 
         $contor = Contor::find($validated['contor_id']);
 
+        // Verificare ownership: contorul trebuie să aparțină clientului din cerere
+        if (strtoupper(trim($validated['cod_client'])) !== strtoupper(trim($contor->cod_client))) {
+            abort(403, 'Contorul nu aparține acestui client.');
+        }
+
         // Validam doar fata de index_vechi (originalul), nu fata de cel trimis anterior
         if ((int) $validated['index_nou'] < (int) $contor->index_vechi) {
             return back()->withInput()->withErrors([

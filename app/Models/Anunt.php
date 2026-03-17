@@ -15,7 +15,6 @@ class Anunt extends Model
     protected $fillable = [
         'titlu',
         'continut',
-        'slug',
         'categorie',
     ];
 

@@ -106,9 +106,9 @@ Route::get('/documente/{folder}/{fisier}',   [FisierController::class, 'document
 
 Route::prefix('client')->name('client.')->group(function () {
     Route::get('/login',         [ClientController::class, 'loginForm'])->name('login');
-    Route::post('/login',        [ClientController::class, 'login'])->name('login.post');
+    Route::post('/login',        [ClientController::class, 'login'])->middleware('throttle:6,1')->name('login.post');
     Route::get('/factura',       [ClientController::class, 'factura'])->name('factura');
-    Route::get('/contoare',      [ClientController::class, 'getContoare'])->name('contoare');
+    Route::get('/contoare',      [ClientController::class, 'getContoare'])->middleware('throttle:30,1')->name('contoare');
     Route::get('/index-contor',  [ClientController::class, 'indexContor'])->name('index-contor');
     Route::post('/index-contor', [ClientController::class, 'trimiteIndex'])->name('index-contor.post');
     Route::get('/avarie',        [ClientController::class, 'avarie'])->name('avarie');
@@ -133,7 +133,7 @@ Route::prefix('client')->name('client.')->group(function () {
 
 Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
     Route::get('/login',  [DispeceratController::class, 'loginForm'])->name('login');
-    Route::post('/login', [DispeceratController::class, 'login'])->name('login.post');
+    Route::post('/login', [DispeceratController::class, 'login'])->middleware('throttle:6,1')->name('login.post');
     Route::post('/logout',[DispeceratController::class, 'logout'])->name('logout');
 
     Route::middleware(DispeceratAuth::class)->group(function () {
@@ -158,7 +158,7 @@ Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login',  [AdminController::class, 'loginForm'])->name('login');
-    Route::post('/login', [AdminController::class, 'login'])->name('login.post');
+    Route::post('/login', [AdminController::class, 'login'])->middleware('throttle:6,1')->name('login.post');
 
     Route::middleware(AdminAuth::class)->group(function () {
         Route::get('/',                [AdminController::class, 'dashboard'])->name('dashboard');

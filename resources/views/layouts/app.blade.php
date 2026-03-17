@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', config('app.name', 'AquaServ')) | Servicii Apă și Canal</title>
+    <title>@yield('title', config('app.name', 'Aquaserv')) | Servicii Apă și Canal</title>
     <meta name="description" content="@yield('meta_description', 'Operator regional de servicii de alimentare cu apă și canalizare')">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -137,7 +137,7 @@
                     <i class="bi bi-droplet-half text-white" style="font-size:1.85rem;"></i>
                 </div>
                 <div>
-                    <span>AquaServ Tulcea</span>
+                    <span>Aquaserv Tulcea</span>
                     <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>
             </a>
 
@@ -196,6 +196,9 @@
                         <a class="nav-link dropdown-toggle {{ request()->is('informatii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Informații publice</a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
+                                <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/calitatea-apei*') ? 'active' : '' }}" href="{{ url('/informatii/calitatea-apei') }}">
                                 <i class="bi bi-clipboard2-pulse text-aqua me-2"></i>Calitatea apei</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/tarife*') ? 'active' : '' }}" href="{{ url('/informatii/tarife') }}">
@@ -213,9 +216,6 @@
                                 <i class="bi bi-people text-aqua me-2"></i>Hotărâri AGA</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/surse-buget-bilant*') ? 'active' : '' }}" href="{{ url('/informatii/surse-buget-bilant') }}">
                                 <i class="bi bi-bar-chart-line text-aqua me-2"></i>Surse, Buget, Bilanț</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
-                                <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -395,7 +395,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <h5>AquaServ S.A.</h5>
+                    <h5>Aquaserv S.A.</h5>
                     <p style="font-size:0.875rem;line-height:1.7;">
                         Operator regional de servicii de alimentare cu apă și canalizare,
                         dedicat calității și siguranței apei pentru comunitate.

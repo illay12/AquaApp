@@ -30,10 +30,20 @@ class DispeceratController extends Controller
     {
         if (!$request->hasFile('fisiere')) return;
 
+        $mimePermise = [
+            'application/pdf'                                                          => 'pdf',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'docx',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'       => 'xlsx',
+        ];
+
         foreach ($request->file('fisiere') as $fisier) {
             if (!$fisier->isValid()) continue;
 
-            $extensie = strtolower($fisier->getClientOriginalExtension());
+            // Verificare MIME type real din conținutul fișierului, nu din extensia dată de client
+            $mimeReal = $fisier->getMimeType();
+            if (!array_key_exists($mimeReal, $mimePermise)) continue;
+
+            $extensie = $mimePermise[$mimeReal];
             $cale     = $fisier->store('anunturi/fisiere', 'public');
 
             AnuntFisier::create([

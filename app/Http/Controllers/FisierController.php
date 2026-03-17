@@ -55,15 +55,17 @@ class FisierController extends Controller
             abort(404);
         }
 
-        $cale = storage_path('documente/' . $folder . '/' . $fisier);
+        $dirBaza = realpath(storage_path('documente'));
+        $cale    = realpath($dirBaza . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $fisier);
 
-        if (!file_exists($cale)) {
-            abort(404, 'Documentul nu a fost găsit.');
+        // Verificare path traversal: fișierul trebuie să fie strict sub directorul de bază
+        if ($cale === false || !str_starts_with($cale, $dirBaza . DIRECTORY_SEPARATOR)) {
+            abort(404);
         }
 
         return response()->file($cale, [
             'Content-Type'        => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="' . $fisier . '"',
+            'Content-Disposition' => 'inline; filename="' . basename($cale) . '"',
         ]);
     }
 
