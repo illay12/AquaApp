@@ -209,6 +209,8 @@
                                 <i class="bi bi-patch-check text-aqua me-2"></i>Avize și acorduri</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/legea-544-2001*') ? 'active' : '' }}" href="{{ url('/informatii/legea-544-2001') }}">
                                 <i class="bi bi-journal-bookmark text-aqua me-2"></i>Legea 544/2001</a></li>
+                            <li><a class="dropdown-item {{ request()->is('despre/hotarari-aga*') ? 'active' : '' }}" href="{{ url('/despre/hotarari-aga') }}">
+                                <i class="bi bi-people text-aqua me-2"></i>Hotărâri AGA</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
                                 <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
@@ -333,6 +335,9 @@
                                 <a href="{{ url('/informatii/legea-544-2001') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-journal-bookmark text-aqua"></i> Legea 544/2001
                                 </a>
+                                <a href="{{ url('/despre/hotarari-aga') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-people text-aqua"></i> Hotărâri AGA
+                                </a>
                                 <a href="{{ url('/program-casierii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-clock text-aqua"></i> Program casierii
                                 </a>
@@ -403,6 +408,7 @@
                         <li><a href="{{ url('/despre') }}">Despre noi</a></li>
                         <li><a href="{{ url('/despre/centre-operationale') }}">Centre Operaționale</a></li>
                         <li><a href="{{ url('/despre/structura-organizationala') }}">Structură Organizațională</a></li>
+                        <li><a href="{{ url('/despre/hotarari-aga') }}">Hotărâri AGA</a></li>
                         <li><a href="{{ url('/servicii') }}">Servicii</a></li>
                         <li><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
                         <li><a href="{{ url('/contact') }}">Contact</a></li>

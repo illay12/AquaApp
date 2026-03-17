@@ -26,6 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/despre', [DespreController::class, 'index'])->name('despre');
 Route::get('/despre/centre-operationale', fn() => view('pages.despre.centre-operationale'))->name('despre.centre-operationale');
 Route::get('/despre/structura-organizationala', fn() => view('pages.despre.structura-organizationala'))->name('despre.structura-organizationala');
+Route::get('/despre/hotarari-aga',             fn() => view('pages.despre.hotarari-aga'))->name('despre.hotarari-aga');
 
 Route::get('/program-casierii', [InformatiiController::class, 'programCasierii'])->name('program-casierii');
 
