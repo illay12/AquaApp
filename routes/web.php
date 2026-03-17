@@ -13,6 +13,7 @@ use App\Http\Middleware\DispeceratAuth;
 use App\Http\Controllers\FisierController;
 use App\Http\Controllers\CalitateaApeiController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DocumenteAdminController;
 use App\Http\Middleware\AdminAuth;
 
 /*
@@ -26,7 +27,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/despre', [DespreController::class, 'index'])->name('despre');
 Route::get('/despre/centre-operationale', fn() => view('pages.despre.centre-operationale'))->name('despre.centre-operationale');
 Route::get('/despre/structura-organizationala', fn() => view('pages.despre.structura-organizationala'))->name('despre.structura-organizationala');
-Route::get('/despre/hotarari-aga',             fn() => view('pages.despre.hotarari-aga'))->name('despre.hotarari-aga');
 
 Route::get('/program-casierii', [InformatiiController::class, 'programCasierii'])->name('program-casierii');
 
@@ -72,7 +72,9 @@ Route::prefix('informatii')->name('informatii.')->group(function () {
     Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
     Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
     Route::get('/avize',          [InformatiiController::class, 'avize'])->name('avize');
-    Route::get('/legea-544-2001', [InformatiiController::class, 'legea544'])->name('legea-544-2001');
+    Route::get('/legea-544-2001',    [InformatiiController::class, 'legea544'])->name('legea-544-2001');
+    Route::get('/surse-buget-bilant', [InformatiiController::class, 'surseBugetBilant'])->name('surse-buget-bilant');
+    Route::get('/hotarari-aga',       [InformatiiController::class, 'hotarariAga'])->name('hotarari-aga');
 });
 
 /*
@@ -165,5 +167,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/import/indecsi', [AdminController::class, 'importIndecsi'])->name('import.indecsi');
         Route::post('/sincronizare',   [AdminController::class, 'sincronizare'])->name('sincronizare');
         Route::post('/compara',        [AdminController::class, 'comparaExporturi'])->name('compara');
+        Route::get('/documente',         [DocumenteAdminController::class, 'index'])->name('documente.index');
+        Route::post('/documente/upload', [DocumenteAdminController::class, 'upload'])->name('documente.upload');
+        Route::post('/documente/sterge', [DocumenteAdminController::class, 'sterge'])->name('documente.sterge');
     });
 });

@@ -10,6 +10,7 @@
             ['/informatii/formulare','bi-file-earmark-arrow-down','Formulare utile'],
             ['/informatii/avize','bi-patch-check','Avize și acorduri'],
             ['/informatii/legea-544-2001','bi-journal-bookmark','Legea 544/2001'],
+            ['/informatii/surse-buget-bilant','bi-bar-chart-line','Surse, Buget, Bilanț'],
             ['/program-casierii','bi-clock','Program casierii'],
         ] as [$url, $icon, $label])
         <a href="{{ url($url) }}"

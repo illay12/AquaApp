@@ -12,4 +12,5 @@ class DespreController extends Controller
     {
         return view('pages.despre');
     }
+
 }

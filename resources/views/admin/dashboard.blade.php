@@ -75,6 +75,11 @@
                 <i class="bi bi-arrow-repeat"></i> Sincronizare Lunară
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.documente.index') }}">
+                <i class="bi bi-folder2-open"></i> Documente Publice
+            </a>
+        </li>
     </ul>
     <div style="position:absolute;bottom:1.5rem;left:0;right:0;padding:0 1.25rem;">
         <form method="POST" action="{{ route('admin.logout') }}">

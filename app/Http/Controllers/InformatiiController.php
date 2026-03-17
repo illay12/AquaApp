@@ -68,6 +68,57 @@ class InformatiiController extends Controller
     }
 
     /**
+     * Surse, Buget, Bilanț — citește dinamic fișierele de pe disc
+     * GET /informatii/surse-buget-bilant
+     */
+    /**
+     * Hotărâri AGA + Raportări CA — citește dinamic fișierele de pe disc
+     * GET /informatii/hotarari-aga
+     */
+    public function hotarariAga()
+    {
+        $ani   = $this->citesteAniFisiere(storage_path('app/public/documente/aga'));
+        $aniCa = $this->citesteAniFisiere(storage_path('app/public/documente/raportari ca'));
+        return view('pages.informatii.hotarari-aga', compact('ani', 'aniCa'));
+    }
+
+    public function surseBugetBilant()
+    {
+        $base = storage_path('app/public/documente');
+
+        $bugete = $this->citesteAniFisiere($base . '/bugete');
+        $bilant = $this->citesteAniFisiere($base . '/bilant contabil');
+
+        return view('pages.informatii.surse-buget-bilant', compact('bugete', 'bilant'));
+    }
+
+    private function citesteAniFisiere(string $cale): array
+    {
+        if (!is_dir($cale)) return [];
+
+        $ani = [];
+        foreach (scandir($cale) as $an) {
+            if ($an === '.' || $an === '..') continue;
+            $calean = $cale . DIRECTORY_SEPARATOR . $an;
+            if (!is_dir($calean) || !preg_match('/^\d{4}$/', $an)) continue;
+
+            $fisiere = [];
+            foreach (scandir($calean) as $f) {
+                if ($f === '.' || $f === '..') continue;
+                if (strtolower(pathinfo($f, PATHINFO_EXTENSION)) !== 'pdf') continue;
+                $fisiere[] = $f;
+            }
+            sort($fisiere);
+            if (!empty($fisiere)) {
+                $ani[(int)$an] = $fisiere;
+            }
+        }
+
+        krsort($ani);
+        return $ani;
+    }
+
+    /**
      * Program casierii
      * GET /program-casierii
      */
