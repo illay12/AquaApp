@@ -268,7 +268,13 @@ class AdminController extends Controller
 
             $conv = fn($s) => $esteUtf8 ? trim($s) : mb_convert_encoding(trim($s), 'UTF-8', $encoding ?? 'Windows-1252');
 
-            $serie      = strtoupper($conv($row[$idx['serie_contor']]));
+            // Normalizam seria: daca Excel a exportat un numar lung ca "1.0014E+11",
+            // il convertim inapoi la intreg ("100140000000") pentru consistenta
+            $serieRaw = $conv($row[$idx['serie_contor']]);
+            if (is_numeric($serieRaw) && stripos($serieRaw, 'E') !== false) {
+                $serieRaw = number_format((float)$serieRaw, 0, '.', '');
+            }
+            $serie = strtoupper(trim($serieRaw));
             $indexVechi = trim($row[$idx['index_vechi']]);
             $adresa     = $conv($row[$idx['adresa']]);
             $codClient  = strtoupper($conv($row[$idx['cod_client']]));
