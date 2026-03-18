@@ -90,7 +90,18 @@
         .section-title { font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700; color: var(--aqua-dark); border-left: 4px solid var(--aqua-accent); padding-left: 0.75rem; margin-bottom: 1.5rem; }
         .text-aqua { color: var(--aqua-primary) !important; }
         .bg-aqua-light { background-color: var(--aqua-bg) !important; }
-        @media (max-width: 991.98px) {
+        /* Desktop compact — 1200px–1400px (zoom 110%) */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .navbar-nav .nav-link { font-size: 0.82rem !important; padding: 1.5rem 0.6rem !important; }
+            .navbar-brand span { font-size: 1.1rem; }
+            .btn-aqua.btn-sm { font-size: 0.78rem; padding: 0.45rem 0.9rem; }
+        }
+        @media (min-width: 1200px) and (max-width: 1280px) {
+            .navbar-nav .nav-link { font-size: 0.78rem !important; padding: 1.5rem 0.45rem !important; }
+            .navbar-brand span { font-size: 1rem; }
+            .navbar-brand small { font-size: 0.65rem; }
+        }
+        @media (max-width: 1199.98px) {
             .navbar-nav .nav-link { border-bottom: none; padding: 0.6rem 1rem !important; }
             .page-hero h1 { font-size: 1.5rem; }
         }
@@ -130,7 +141,7 @@
     </div>
 
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}">
                 <div style="width:60px;height:60px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
@@ -141,12 +152,12 @@
                     <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>
             </a>
 
-            <button class="navbar-toggler border-0 d-lg-none" type="button" onclick="deschideMeniu()" style="padding:0.4rem 0.6rem;">
+            <button class="navbar-toggler border-0 d-xl-none" type="button" onclick="deschideMeniu()" style="padding:0.4rem 0.6rem;">
                 <i class="bi bi-list" style="font-size:1.8rem;color:var(--aqua-primary);"></i>
             </button>
 
             {{-- DESKTOP menu --}}
-            <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarMain">
+            <div class="collapse navbar-collapse d-none d-xl-flex" id="navbarMain">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Acasă</a>
@@ -402,7 +413,7 @@
                     </p>
                     <ul>
                         <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Rezervorului, nr. 2, Tulcea</a></li>
-                        <li><a href="tel:0240511111"><i class="bi bi-telephone-fill"></i> 0240 524 310</a></li>
+                        <li><a href="tel:0240524310"><i class="bi bi-telephone-fill"></i> 0240 524 310</a></li>
                         <li><a href="mailto:secretariat@aquaservtulcea.ro"><i class="bi bi-envelope-fill"></i> secretariat@aquaservtulcea.ro</a></li>
                         <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 07:30 – 16:00</a></li>
                     </ul>
@@ -444,10 +455,16 @@
                         <i class="bi bi-clock" style="color:var(--aqua-light);"></i> Program Casierii Județ
                     </a>
                     <p style="font-size:0.875rem;margin-bottom:0;">
-                        <strong style="color:#fff;">Telecitire</strong><br>
-                        <span style="font-size:1.1rem;color:var(--aqua-light);">
+                        <strong style="color:#fff;">Dispecerat Avarii</strong><br>
+                        <a href="tel:0747022009" style="font-size:1.1rem;color:var(--aqua-light);text-decoration:none;">
                             <i class="bi bi-telephone-fill"></i> 0747 022 009
-                        </span>
+                        </a>
+                        <br>
+                        <br>
+                        <strong style="color:#fff;">Telecitire</strong><br>
+                        <a href="tel:0340131111" style="font-size:1.1rem;color:var(--aqua-light);text-decoration:none;">
+                            <i class="bi bi-telephone-fill"></i> 0340 131 111
+                        </a>
                     </p>
                     <div class="d-flex gap-2 mt-3">
                         <a href="#" class="btn btn-sm btn-outline-light"><i class="bi bi-facebook"></i></a>

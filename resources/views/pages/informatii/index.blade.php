@@ -121,6 +121,20 @@
                     'color' => '#0077b6',
                 ],
                 [
+                    'url'   => '/informatii/hotarari-aga',
+                    'icon'  => 'bi-people',
+                    'titlu' => 'Hotărâri AGA',
+                    'desc'  => 'Hotărârile Adunării Generale a Acționarilor și raportările Consiliului de Administrație.',
+                    'color' => '#0077b6',
+                ],
+                [
+                    'url'   => '/informatii/surse-buget-bilant',
+                    'icon'  => 'bi-bar-chart-line',
+                    'titlu' => 'Surse, Buget, Bilanț',
+                    'desc'  => 'Bugete de venituri și cheltuieli, bilanțuri contabile și rapoarte de audit anuale.',
+                    'color' => '#0096c7',
+                ],
+                [
                     'url'   => '/program-casierii',
                     'icon'  => 'bi-clock',
                     'titlu' => 'Program casierii',

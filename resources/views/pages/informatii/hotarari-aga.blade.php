@@ -75,12 +75,20 @@
     @media (max-width: 991.98px) {
         .sidebar-nav-card { display: none; }
         .aga-tabs { gap: 0.4rem; }
-        .aga-tab { padding: 0.5rem 1rem; font-size: 0.82rem; }
+        .aga-tab { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
     }
     @media (max-width: 575.98px) {
         .doc-item { gap: 0.65rem; padding: 0.7rem 1rem; }
         .doc-pdf-badge { display: none; }
         .year-header { padding: 0.8rem 1rem; }
+        .year-label { font-size: 0.88rem; }
+        .aga-tab .tab-text-lung { display: none; }
+        .aga-tab .tab-text-scurt { display: inline; }
+        .aga-tabs { width: 100%; }
+        .aga-tab { flex: 1; justify-content: center; }
+    }
+    @media (min-width: 576px) {
+        .aga-tab .tab-text-scurt { display: none; }
     }
 </style>
 @endpush
@@ -96,10 +104,14 @@
                 {{-- Tabs --}}
                 <div class="aga-tabs">
                     <a href="#sectiunea-aga" onclick="schimbTab('aga')" id="tab-aga" class="aga-tab active">
-                        <i class="bi bi-people-fill"></i> Hotărâri AGA
+                        <i class="bi bi-people-fill"></i>
+                        <span class="tab-text-lung">Hotărâri AGA</span>
+                        <span class="tab-text-scurt">AGA</span>
                     </a>
                     <a href="#sectiunea-ca" onclick="schimbTab('ca')" id="tab-ca" class="aga-tab">
-                        <i class="bi bi-briefcase-fill"></i> Raportări Consiliu Administrație
+                        <i class="bi bi-briefcase-fill"></i>
+                        <span class="tab-text-lung">Raportări Consiliu Administrație</span>
+                        <span class="tab-text-scurt">Consiliu Adm.</span>
                     </a>
                 </div>
 
@@ -166,7 +178,7 @@
             </div>{{-- /col-lg-8 --}}
 
             {{-- ═══════════════ SIDEBAR ═══════════════ --}}
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-none d-lg-block">
                 @include('components.sidebar-informatii')
             </div>
 

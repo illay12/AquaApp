@@ -95,7 +95,7 @@
                 </div>
                 <p style="font-size:0.8rem;" class="text-muted">l.e. = locuitori echivalenți</p>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-none d-lg-block">
                 @include('components.sidebar-servicii')
             </div>
         </div>

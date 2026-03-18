@@ -78,14 +78,14 @@
                 <div style="background:var(--aqua-bg);border-radius:12px;padding:1.5rem;border:1.5px solid var(--aqua-border);">
                     <h6 class="fw-bold text-aqua"><i class="bi bi-info-circle me-2"></i>Depunere documente</h6>
                     <p class="mb-0" style="font-size:0.875rem;">
-                        Formularele completate se pot depune la <strong>Sediul central</strong> (Str. Principală nr. 1),
+                        Formularele completate se pot depune 
                         la orice <strong>agenție</strong> sau se pot trimite pe email la
-                        <a href="mailto:office@aquaserv.ro">office@aquaserv.ro</a>.
-                        Program depunere documente: <strong>Luni–Vineri, 08:00–14:30</strong>.
+                        <a href="mailto:secretariat@aquaservtulcea.ro"> secretariat@aquaservtulcea.ro</a>.
+                        Program depunere documente: <strong>Luni–Vineri, 07:30–16:00</strong>.
                     </p>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-none d-lg-block">
                 @include('components.sidebar-informatii')
             </div>
         </div>

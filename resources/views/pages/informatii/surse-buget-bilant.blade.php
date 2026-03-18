@@ -56,18 +56,26 @@
 
     @media (max-width: 991.98px) {
         .sbb-tabs { gap: 0.4rem; }
-        .sbb-tab { padding: 0.5rem 1rem; font-size: 0.82rem; }
+        .sbb-tab { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
     }
     @media (max-width: 575.98px) {
         .doc-item { gap: 0.65rem; padding: 0.7rem 1rem; }
         .doc-pdf-badge { display: none; }
         .year-header { padding: 0.8rem 1rem; }
+        .year-label { font-size: 0.88rem; }
+        .sbb-tab .tab-text-lung { display: none; }
+        .sbb-tab .tab-text-scurt { display: inline; }
+        .sbb-tabs { width: 100%; }
+        .sbb-tab { flex: 1; justify-content: center; }
+    }
+    @media (min-width: 576px) {
+        .sbb-tab .tab-text-scurt { display: none; }
     }
 </style>
 @endpush
 
 @section('content')
-<section style="padding:3.5rem 0;">
+<section style="padding:2rem 0 3.5rem;">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-8">
@@ -83,10 +91,14 @@
                 {{-- Tabs --}}
                 <div class="sbb-tabs">
                     <a href="#" onclick="schimbTab('buget'); return false;" id="tab-buget" class="sbb-tab active">
-                        <i class="bi bi-wallet2"></i> Buget de venituri și cheltuieli
+                        <i class="bi bi-wallet2"></i>
+                        <span class="tab-text-lung">Buget de venituri și cheltuieli</span>
+                        <span class="tab-text-scurt">Buget</span>
                     </a>
                     <a href="#" onclick="schimbTab('bilant'); return false;" id="tab-bilant" class="sbb-tab">
-                        <i class="bi bi-file-earmark-spreadsheet"></i> Bilanț contabil
+                        <i class="bi bi-file-earmark-spreadsheet"></i>
+                        <span class="tab-text-lung">Bilanț contabil</span>
+                        <span class="tab-text-scurt">Bilanț</span>
                     </a>
                 </div>
 
@@ -147,7 +159,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-none d-lg-block">
                 @include('components.sidebar-informatii')
             </div>
         </div>

@@ -79,7 +79,8 @@ class ClientController extends Controller
         if (!$client) {
             return response()->json([
                 'found' => false,
-                'mesaj' => 'Nu am găsit niciun client cu codul introdus. Verificați codul de pe factură.',
+                'mesaj' => 'Codul de client introdus nu este valid sau contorul dumneavoastră este cu telecitire
+                și va fi citit de către personalul Aquaserv!',
             ]);
         }
 

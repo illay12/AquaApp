@@ -71,7 +71,7 @@
                     <i class="bi bi-file-earmark-arrow-down me-2"></i> Descarcă formularul de cerere
                 </a>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-none d-lg-block">
                 @include('components.sidebar-servicii')
             </div>
         </div>

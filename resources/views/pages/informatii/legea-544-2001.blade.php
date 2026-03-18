@@ -13,15 +13,29 @@
     </nav>
 @endsection
 
+@push('styles')
+<style>
+    @media (max-width: 767.98px) {
+        .legea544-intro { padding: 1rem 1.1rem !important; }
+        .legea544-intro p { font-size: 0.875rem !important; }
+    }
+    @media (max-width: 575.98px) {
+        .list-group-item .badge { display: none; }
+        .list-group-item { font-size: 0.85rem; }
+        .list-group-item .bi-download { display: none; }
+    }
+</style>
+@endpush
+
 @section('content')
-<section style="padding:3.5rem 0;">
+<section style="padding:2rem 0 3.5rem;">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-8">
 
                 <h2 class="section-title">Informații publice</h2>
 
-                <div class="mb-4" style="border-left:4px solid var(--aqua-primary);background:#f0f8ff;padding:1.25rem 1.5rem;border-radius:0 10px 10px 0;">
+                <div class="mb-4 legea544-intro" style="border-left:4px solid var(--aqua-primary);background:#f0f8ff;padding:1.25rem 1.5rem;border-radius:0 10px 10px 0;">
                     <p class="mb-2" style="font-size:0.9375rem;line-height:1.75;">
                         Accesul liber și neîngrădit al oricărei persoane din România la orice informații de interes public,
                         definite astfel prin <strong>Legea nr. 544/2001</strong>, constituie unul dintre principiile
@@ -60,11 +74,11 @@
                                     <p class="mb-1 text-muted" style="font-size:0.875rem;">Compartiment Relații cu Publicul</p>
                                     <p class="mb-1" style="font-size:0.875rem;">
                                         <i class="bi bi-telephone text-aqua me-1"></i>
-                                        <a href="tel:+40240524310" class="text-decoration-none">0240.524.310 int.118</a>
+                                        <a href="tel:+40240524310" class="text-decoration-none">0240.524.310 </a>
                                     </p>
                                     <p class="mb-0" style="font-size:0.875rem;">
                                         <i class="bi bi-envelope text-aqua me-1"></i>
-                                        <a href="mailto:dpo@aquaservtulcea.ro" class="text-decoration-none">dpo@aquaservtulcea.ro</a>
+                                        <a href="mailto:demidov.aurel@aquaservtulcea.ro" class="text-decoration-none">demidov.aurel@aquaservtulcea.ro</a>
                                     </p>
                                 </div>
                             </div>
@@ -84,11 +98,10 @@
                                     <p class="mb-1 text-muted" style="font-size:0.875rem;">Compartiment Relații cu Publicul</p>
                                     <p class="mb-1" style="font-size:0.875rem;">
                                         <i class="bi bi-telephone text-aqua me-1"></i>
-                                        <a href="tel:+40240524310" class="text-decoration-none">0240.524.310 int.118</a>
+                                        <a href="tel:+40240524310" class="text-decoration-none">0240.524.310</a>
                                     </p>
                                     <p class="mb-0" style="font-size:0.875rem;">
                                         <i class="bi bi-envelope text-aqua me-1"></i>
-                                        <a href="mailto:dpo@aquaservtulcea.ro" class="text-decoration-none">dpo@aquaservtulcea.ro</a>
                                         <a href="mailto:demidov.aurel@aquaservtulcea.ro" class="text-decoration-none">demidov.aurel@aquaservtulcea.ro</a>
                                     </p>
                                 </div>
@@ -107,7 +120,7 @@
                         <strong>S.C. Aquaserv S.A. Tulcea</strong> puteți trimite o cerere, conform formularelor
                         de mai jos, pe adresa <strong>str. Tudor Vladimirescu nr. 2, municipiul Tulcea, județul Tulcea</strong>,
                         sau prin poștă electronică la adresa
-                        <a href="mailto:aquaserv_tl@yahoo.com">aquaserv_tl@yahoo.com</a>.
+                        <a href="mailto:secretariat@aquaservtulcea.ro">secretariat@aquaservtulcea.ro</a>.
                     </p>
                 </div>
 
@@ -159,7 +172,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 d-none d-lg-block">
                 @include('components.sidebar-informatii')
             </div>
         </div>

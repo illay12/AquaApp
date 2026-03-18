@@ -175,7 +175,7 @@
                            style="background:var(--aqua-primary);border-color:var(--aqua-primary);">
                             <i class="bi bi-cash-coin"></i> Tarife și taxe
                         </a>
-                        <a href="{{ url('/client/factura') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
+                        <a href="{{ url('https://my.aquaservtulcea.ro/login') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
                             <i class="bi bi-credit-card"></i> Plătește factura
                         </a>
                         <a href="{{ url('/client/index-contor') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
@@ -193,34 +193,6 @@
                             <i class="bi bi-telephone-fill me-1"></i> Dispecerat avarii 24/7
                         </p>
                         <p style="font-size:1.7rem;font-weight:800;color:#dc3545;margin:0;">0747 022 009</p>
-                    </div>
-                </div>
-
-                <div class="card" style="background:var(--aqua-bg);border-color:var(--aqua-border);">
-                    <div class="card-body">
-                        <h6 class="fw-bold text-aqua mb-2">
-                            <i class="bi bi-file-earmark-pdf me-2"></i> Documente utile
-                        </h6>
-                        <ul class="list-unstyled mb-0" style="font-size:0.875rem;">
-                            <li class="mb-2">
-                                <a href="{{ asset('documente/hotarare-aga-135-2025.pdf') }}" target="_blank">
-                                    <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
-                                    H.A.G.A. nr. 135/2025
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a href="{{ asset('documente/decizie-anrsc-158-2025.pdf') }}" target="_blank">
-                                    <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
-                                    Decizia A.N.R.S.C. nr. 158/2025
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('documente/strategie-tarifare-2021-2027.pdf') }}" target="_blank">
-                                    <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
-                                    Strategie tarifare 2021-2027
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
