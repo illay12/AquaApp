@@ -429,17 +429,14 @@
                         <li><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
                         <li><a href="{{ url('/contact') }}">Contact</a></li>
                         <li><a href="{{ url('/gdpr') }}">GDPR</a></li>
-                        <li><a href="{{ url('/sitemap') }}">Hartă site</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Zona clienți</h5>
                     <ul>
-                        <li><a href="{{ url('/client/factura') }}"><i class="bi bi-credit-card"></i> Plătește factura</a></li>
+                        <li><a href="{{ url('https://my.aquaservtulcea.ro/login') }}"><i class="bi bi-credit-card"></i> Plătește factura</a></li>
                         <li><a href="{{ url('/client/index-contor') }}"><i class="bi bi-speedometer2"></i> Transmite index contor</a></li>
-                        <li><a href="{{ url('/client/avarie') }}"><i class="bi bi-exclamation-triangle"></i> Raportează avarie</a></li>
-                        <li><a href="{{ url('/client/contract') }}"><i class="bi bi-file-text"></i> Contract nou</a></li>
-                        <li><a href="{{ url('/informatii/formulare') }}"><i class="bi bi-download"></i> Formulare</a></li>
+                        <li><a href="{{ url('/contact/') }}"><i class="bi bi-exclamation-triangle"></i> Raportează avarie</a></li>                        <li><a href="{{ url('/informatii/formulare') }}"><i class="bi bi-download"></i> Formulare</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
