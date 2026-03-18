@@ -39,37 +39,37 @@
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-receipt"></i></div>
-                        <h6 style="font-size:0.75rem;margin:0;">Plătește factura</h6>
+                        <h6 style="font-size:0.875rem;margin:0;">Plătește factura</h6>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('/client/index-contor') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-speedometer2"></i></div>
-                        <h6 style="font-size:0.75rem;margin:0;">Index contor</h6>
+                        <h6 style="font-size:0.875rem;margin:0;">Trimite Index</h6>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('/anunturi?q=&categorie=avarie') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-tools"></i></div>
-                        <h6 style="font-size:0.75rem;margin:0;">Avarie</h6>
+                        <h6 style="font-size:0.875rem;margin:0;">Avarii</h6>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('/informatii/calitatea-apei') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-droplet-half"></i></div>
-                        <h6 style="font-size:0.75rem;margin:0;">Calitatea apei</h6>
+                        <h6 style="font-size:0.875rem;margin:0;">Calitatea apei</h6>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('/informatii/tarife') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-cash-coin"></i></div>
-                        <h6 style="font-size:0.75rem;margin:0;">Tarife</h6>
+                        <h6 style="font-size:0.875rem;margin:0;">Tarife</h6>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('/informatii/formulare') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
                         <div class="icon-wrap"><i class="bi bi-file-earmark-arrow-down"></i></div>
-                        <h6 style="font-size:0.75rem;margin:0;">Formulare</h6>
+                        <h6 style="font-size:0.875rem;margin:0;">Formulare</h6>
                     </a>
                 </div>
             </div>
@@ -85,8 +85,8 @@
                 <div class="col-lg-7">
                     <h2 class="section-title">Ultimele anunțuri</h2>
 
-                    @forelse($anunturi ?? [] as $anunt)
-                        <div class="news-item">
+                    @forelse($anunturi ?? [] as $i => $anunt)
+                        <div class="news-item {{ $i >= 3 ? 'd-none d-sm-block' : '' }}">
                             <div class="date">
                                 <i class="bi bi-calendar3 me-1"></i>
                                 {{ $anunt->created_at->format('d.m.Y') }}
