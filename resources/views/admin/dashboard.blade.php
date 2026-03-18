@@ -361,28 +361,107 @@
         </div>
         <div class="section-body">
 
-            @if(session('sync_mesaj'))
-                <div class="alert alert-{{ session('sync_tip') === 'success' ? 'success' : 'warning' }} d-flex align-items-start gap-2 mb-3"
-                     style="border-radius:10px;font-size:0.875rem;">
-                    <i class="bi bi-{{ session('sync_tip') === 'success' ? 'check-circle-fill' : 'exclamation-triangle-fill' }} mt-1 flex-shrink-0"></i>
-                    <div>{!! session('sync_mesaj') !!}</div>
+            @if(session('sync_stats'))
+            @php $st = session('sync_stats'); @endphp
+            {{-- Raport sincronizare --}}
+            <div style="border:1.5px solid {{ session('sync_tip') === 'success' ? '#86efac' : '#fde68a' }};border-radius:12px;overflow:hidden;margin-bottom:1.5rem;">
+                {{-- Header raport --}}
+                <div style="background:{{ session('sync_tip') === 'success' ? '#f0fdf4' : '#fffbeb' }};padding:0.75rem 1.25rem;border-bottom:1px solid {{ session('sync_tip') === 'success' ? '#86efac' : '#fde68a' }};display:flex;align-items:center;gap:0.6rem;">
+                    <i class="bi bi-{{ session('sync_tip') === 'success' ? 'check-circle-fill' : 'exclamation-triangle-fill' }}"
+                       style="color:{{ session('sync_tip') === 'success' ? '#16a34a' : '#d97706' }};font-size:1.1rem;"></i>
+                    <strong style="font-size:0.9rem;color:{{ session('sync_tip') === 'success' ? '#15803d' : '#92400e' }};">
+                        Raport sincronizare — {{ now()->format('d.m.Y H:i') }}
+                    </strong>
                 </div>
-
-                @if(session('sync_erori') && count(session('sync_erori')) > 0)
-                <div style="background:#fff;border:1px solid #fca5a5;border-radius:10px;overflow:hidden;margin-bottom:1.25rem;">
-                    <div style="background:#fef2f2;padding:0.65rem 1rem;border-bottom:1px solid #fca5a5;display:flex;align-items:center;gap:0.5rem;">
-                        <i class="bi bi-bug-fill" style="color:#dc2626;"></i>
-                        <strong style="font-size:0.82rem;color:#dc2626;">{{ count(session('sync_erori')) }} erori de format detectate</strong>
-                    </div>
-                    <div style="max-height:200px;overflow-y:auto;padding:0.75rem 1rem;">
-                        @foreach(session('sync_erori') as $eroare)
-                        <div style="font-size:0.78rem;font-family:monospace;color:#7f1d1d;padding:0.25rem 0;border-bottom:1px solid #fee2e2;">
-                            <i class="bi bi-x-circle me-1" style="color:#dc2626;"></i>{{ $eroare }}
+                {{-- Statistici --}}
+                <div style="padding:1rem 1.25rem;background:#fff;">
+                    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:{{ ($st['sterse'] > 0 || $st['erori'] > 0) ? '1rem' : '0' }};">
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-plus-circle-fill" style="color:#16a34a;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#15803d;line-height:1;">{{ $st['noi'] }}</div>
+                                <div style="font-size:0.72rem;color:#166534;font-weight:600;text-transform:uppercase;">Contoare noi</div>
+                            </div>
                         </div>
-                        @endforeach
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-arrow-repeat" style="color:#2563eb;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#1d4ed8;line-height:1;">{{ $st['actualizate'] }}</div>
+                                <div style="font-size:0.72rem;color:#1e40af;font-weight:600;text-transform:uppercase;">Actualizate</div>
+                            </div>
+                        </div>
+                        @if($st['sterse'] > 0)
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-trash3-fill" style="color:#dc2626;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#dc2626;line-height:1;">{{ $st['sterse'] }}</div>
+                                <div style="font-size:0.72rem;color:#991b1b;font-weight:600;text-transform:uppercase;">Șterse</div>
+                            </div>
+                        </div>
+                        @endif
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-person-plus-fill" style="color:#0284c7;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#0369a1;line-height:1;">{{ $st['clienti_noi'] }}</div>
+                                <div style="font-size:0.72rem;color:#075985;font-weight:600;text-transform:uppercase;">Clienți noi</div>
+                            </div>
+                        </div>
+                        @if($st['duplicate'] > 0)
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-exclamation-triangle-fill" style="color:#d97706;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#d97706;line-height:1;">{{ $st['duplicate'] }}</div>
+                                <div style="font-size:0.72rem;color:#92400e;font-weight:600;text-transform:uppercase;">Duplicate</div>
+                            </div>
+                        </div>
+                        @endif
+                        @if($st['erori'] > 0)
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-x-octagon-fill" style="color:#dc2626;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#dc2626;line-height:1;">{{ $st['erori'] }}</div>
+                                <div style="font-size:0.72rem;color:#991b1b;font-weight:600;text-transform:uppercase;">Erori format</div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
+
+                    {{-- Seriile șterse --}}
+                    @if(session('sync_sterse') && count(session('sync_sterse')) > 0)
+                    <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;overflow:hidden;margin-bottom:0.75rem;">
+                        <div style="padding:0.5rem 0.75rem;border-bottom:1px solid #fca5a5;display:flex;align-items:center;gap:0.4rem;">
+                            <i class="bi bi-trash3" style="color:#dc2626;font-size:0.85rem;"></i>
+                            <strong style="font-size:0.78rem;color:#991b1b;">Contoare scoase din uz ({{ count(session('sync_sterse')) }}):</strong>
+                        </div>
+                        <div style="padding:0.5rem 0.75rem;display:flex;flex-wrap:wrap;gap:0.35rem;">
+                            @foreach(array_slice(session('sync_sterse'), 0, 30) as $serie)
+                            <span style="font-size:0.72rem;font-family:monospace;background:#fff;border:1px solid #fca5a5;border-radius:4px;padding:0.15rem 0.45rem;color:#7f1d1d;">{{ $serie }}</span>
+                            @endforeach
+                            @if(count(session('sync_sterse')) > 30)
+                            <span style="font-size:0.72rem;color:#7f1d1d;font-style:italic;">... și încă {{ count(session('sync_sterse')) - 30 }} serii</span>
+                            @endif
+                        </div>
+                    </div>
+                    @endif
+
+                    {{-- Erori de format --}}
+                    @if(session('sync_erori') && count(session('sync_erori')) > 0)
+                    <div style="background:#fff;border:1px solid #fca5a5;border-radius:8px;overflow:hidden;">
+                        <div style="background:#fef2f2;padding:0.5rem 0.75rem;border-bottom:1px solid #fca5a5;display:flex;align-items:center;gap:0.4rem;">
+                            <i class="bi bi-bug-fill" style="color:#dc2626;font-size:0.85rem;"></i>
+                            <strong style="font-size:0.78rem;color:#dc2626;">{{ count(session('sync_erori')) }} erori de format detectate</strong>
+                        </div>
+                        <div style="max-height:180px;overflow-y:auto;padding:0.5rem 0.75rem;">
+                            @foreach(session('sync_erori') as $eroare)
+                            <div style="font-size:0.75rem;font-family:monospace;color:#7f1d1d;padding:0.2rem 0;border-bottom:1px solid #fee2e2;">
+                                <i class="bi bi-x-circle me-1" style="color:#dc2626;"></i>{{ $eroare }}
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                 </div>
-                @endif
+            </div>
             @endif
 
             <p style="font-size:0.85rem;color:#6c757d;margin-bottom:1.25rem;">

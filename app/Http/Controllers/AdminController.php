@@ -347,28 +347,17 @@ class AdminController extends Controller
         }
 
         // Stergem contoarele care nu mai sunt in fisier (scoase din uz)
-        // Folosim tabel temporar pentru a evita limita MySQL la NOT IN cu multe valori
-        \Illuminate\Support\Facades\DB::statement('CREATE TEMPORARY TABLE IF NOT EXISTS tmp_serii_active (serie_contor VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci PRIMARY KEY)');
-        \Illuminate\Support\Facades\DB::table('tmp_serii_active')->truncate();
-
-        foreach (array_chunk($seriiDinFisier, 500) as $chunk) {
-            \Illuminate\Support\Facades\DB::table('tmp_serii_active')->insert(
-                array_map(fn($s) => ['serie_contor' => $s], $chunk)
-            );
+        $seriiSterse = [];
+        $contoareSterse = 0;
+        if (!empty($seriiDinFisier)) {
+            $seriiSterse = \App\Models\Contor::whereNotIn('serie_contor', $seriiDinFisier)
+                ->pluck('serie_contor')
+                ->toArray();
+            $contoareSterse = count($seriiSterse);
+            if ($contoareSterse > 0) {
+                \App\Models\Contor::whereNotIn('serie_contor', $seriiDinFisier)->delete();
+            }
         }
-
-        $contoareSterse = \Illuminate\Support\Facades\DB::statement(
-            'SELECT COUNT(*) FROM contoare WHERE serie_contor NOT IN (SELECT serie_contor FROM tmp_serii_active)'
-        );
-        $contoareSterse = \Illuminate\Support\Facades\DB::select(
-            'SELECT COUNT(*) as total FROM contoare WHERE serie_contor NOT IN (SELECT serie_contor FROM tmp_serii_active)'
-        )[0]->total;
-
-        \Illuminate\Support\Facades\DB::statement(
-            'DELETE FROM contoare WHERE serie_contor NOT IN (SELECT serie_contor FROM tmp_serii_active)'
-        );
-
-        \Illuminate\Support\Facades\DB::statement('DROP TEMPORARY TABLE IF EXISTS tmp_serii_active');
 
         $totalDuplicate = array_sum($duplicate) - count($duplicate);
 
@@ -398,7 +387,16 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')
             ->with('sync_mesaj', $mesaj)
             ->with('sync_tip', $tip)
-            ->with('sync_erori', $erori);
+            ->with('sync_erori', $erori)
+            ->with('sync_sterse', $seriiSterse)
+            ->with('sync_stats', [
+                'noi'         => $contoareNoi,
+                'actualizate' => $contoareActualizate,
+                'sterse'      => $contoareSterse,
+                'clienti_noi' => $clientiNoi,
+                'duplicate'   => $totalDuplicate,
+                'erori'       => count($erori),
+            ]);
     }
 
     /*
