@@ -20,7 +20,7 @@
             <div class="col-lg-8">
                 <h2 class="section-title">Tipuri de avize emise</h2>
                 <p>
-                    AquaServ S.A. emite avize și autorizații necesare pentru realizarea lucrărilor de branșare
+                    Aquaserv S.A. emite avize și autorizații necesare pentru realizarea lucrărilor de branșare
                     la rețeaua de apă potabilă și racordare la rețeaua de canalizare, în conformitate cu
                     legislația în vigoare.
                 </p>

@@ -245,7 +245,7 @@
                                 <i class="bi bi-droplet-half text-white" style="font-size:1.1rem;"></i>
                             </div>
                             <div>
-                                <div style="color:#fff;font-weight:800;font-size:0.95rem;line-height:1.1;">AquaServ S.A.</div>
+                                <div style="color:#fff;font-weight:800;font-size:0.95rem;line-height:1.1;">Aquaserv S.A.</div>
                                 <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;">Servicii apă și canal</div>
                             </div>
                         </div>
@@ -459,7 +459,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-                <span>&copy; {{ date('Y') }} AquaServ S.A. Toate drepturile rezervate.</span>
+                <span>&copy; {{ date('Y') }} Aquaserv S.A. Toate drepturile rezervate.</span>
                 <span>
                     <a href="{{ url('/gdpr') }}" style="color:rgba(255,255,255,0.5);text-decoration:none;margin-right:1rem;">Politică confidențialitate</a>
                     <a href="{{ url('/cookies') }}" style="color:rgba(255,255,255,0.5);text-decoration:none;">Cookies</a>

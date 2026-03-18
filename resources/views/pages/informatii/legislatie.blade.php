@@ -20,7 +20,7 @@
             <div class="col-lg-8">
                 <h2 class="section-title">Legislație aplicabilă</h2>
                 <p>
-                    Activitatea AquaServ S.A. se desfășoară în conformitate cu cadrul legal național și european
+                    Activitatea Aquaserv S.A. se desfășoară în conformitate cu cadrul legal național și european
                     privind serviciile de alimentare cu apă și canalizare.
                 </p>
 

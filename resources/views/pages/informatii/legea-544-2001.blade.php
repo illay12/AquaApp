@@ -40,7 +40,7 @@
                         <i class="bi bi-person-badge text-aqua"></i> Persoane responsabile
                     </h4>
                     <p class="mb-3" style="font-size:0.9375rem;">
-                        Pentru asigurarea accesului la informațiile de interes public, <strong>Compania AquaServ S.A.</strong>
+                        Pentru asigurarea accesului la informațiile de interes public, <strong>Compania Aquaserv S.A.</strong>
                         a desemnat următoarele persoane cu responsabilități în acest domeniu:
                     </p>
 
@@ -64,7 +64,7 @@
                                     </p>
                                     <p class="mb-0" style="font-size:0.875rem;">
                                         <i class="bi bi-envelope text-aqua me-1"></i>
-                                        <a href="mailto:aquaserv_tl@yahoo.com" class="text-decoration-none">aquaserv_tl@yahoo.com</a>
+                                        <a href="mailto:dpo@aquaservtulcea.ro" class="text-decoration-none">dpo@aquaservtulcea.ro</a>
                                     </p>
                                 </div>
                             </div>
@@ -88,7 +88,8 @@
                                     </p>
                                     <p class="mb-0" style="font-size:0.875rem;">
                                         <i class="bi bi-envelope text-aqua me-1"></i>
-                                        <a href="mailto:aquaserv_tl@yahoo.com" class="text-decoration-none">aquaserv_tl@yahoo.com</a>
+                                        <a href="mailto:dpo@aquaservtulcea.ro" class="text-decoration-none">dpo@aquaservtulcea.ro</a>
+                                        <a href="mailto:demidov.aurel@aquaservtulcea.ro" class="text-decoration-none">demidov.aurel@aquaservtulcea.ro</a>
                                     </p>
                                 </div>
                             </div>
