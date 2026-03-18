@@ -532,7 +532,7 @@
                                 <i class="bi bi-receipt" style="color:var(--aqua-primary);font-size:.85rem;"></i>
                             </div>
                             <div>
-                                <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:1px;">Contractuală & Facturare</div>
+                                <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:1px;">Contractare & Facturare</div>
                                 <div style="font-size:0.9rem;font-weight:700;color:#111;">Str. Tudor Vladimirescu, nr. 2, Tulcea</div>
                             </div>
                         </div>

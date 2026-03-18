@@ -21,26 +21,21 @@
             <div class="col-lg-8">
 
                 {{-- FILTRE --}}
-                <form method="GET" action="{{ url('/anunturi') }}" class="card mb-4 p-3" style="border-color:var(--aqua-border);">
+                <form method="GET" action="{{ url('/anunturi') }}" id="form-filtre" class="card mb-4 p-3" style="border-color:var(--aqua-border);">
                     <div class="row g-2 align-items-end">
-                        <div class="col-md-5">
+                        <div class="col-md-8">
                             <label class="form-label fw-bold small">Caută</label>
                             <input type="text" name="q" class="form-control form-control-sm" placeholder="Cuvânt cheie..." value="{{ request('q') }}">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label fw-bold small">Categorie</label>
-                            <select name="categorie" class="form-select form-select-sm">
+                            <select name="categorie" class="form-select form-select-sm" onchange="document.getElementById('form-filtre').submit()">
                                 <option value="">Toate categoriile</option>
                                 <option value="anunturi" {{ request('categorie')=='anunturi'?'selected':'' }}>Anunțuri</option>
                                 <option value="avarie" {{ request('categorie')=='avarie'?'selected':'' }}>Avarii</option>
                                 <option value="angajare" {{ request('categorie')=='angajare'?'selected':'' }}>Angajare</option>
                                 <option value="calitate" {{ request('categorie')=='calitate'?'selected':'' }}>Calitate apă</option>
                             </select>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-aqua btn-sm w-100">
-                                <i class="bi bi-search me-1"></i> Filtrează
-                            </button>
                         </div>
                     </div>
                 </form>

@@ -174,15 +174,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item {{ request()->is('despre/centre-operationale*') ? 'active' : '' }}"
-                                   href="{{ url('/despre/centre-operationale') }}">
-                                    <i class="bi bi-building text-aqua me-2"></i>Centre Operaționale
-                                </a>
-                            </li>
-                            <li>
                                 <a class="dropdown-item {{ request()->is('despre/structura-organizationala*') ? 'active' : '' }}"
                                    href="{{ url('/despre/structura-organizationala') }}">
                                     <i class="bi bi-diagram-3 text-aqua me-2"></i>Structură Organizațională
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('despre/centre-operationale*') ? 'active' : '' }}"
+                                   href="{{ url('/despre/centre-operationale') }}">
+                                    <i class="bi bi-building text-aqua me-2"></i>Centre Operaționale
                                 </a>
                             </li>
                         </ul>
@@ -287,11 +287,11 @@
                                 <a href="{{ url('/despre') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-info-circle text-aqua"></i> Despre noi
                                 </a>
-                                <a href="{{ url('/despre/centre-operationale') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-building text-aqua"></i> Centre Operaționale
-                                </a>
                                 <a href="{{ url('/despre/structura-organizationala') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-diagram-3 text-aqua"></i> Structură Organizațională
+                                </a>
+                                <a href="{{ url('/despre/centre-operationale') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-building text-aqua"></i> Centre Operaționale
                                 </a>
                             </div>
                         </div>
@@ -416,8 +416,8 @@
                     <h5>Link-uri rapide</h5>
                     <ul>
                         <li><a href="{{ url('/despre') }}">Despre noi</a></li>
-                        <li><a href="{{ url('/despre/centre-operationale') }}">Centre Operaționale</a></li>
                         <li><a href="{{ url('/despre/structura-organizationala') }}">Structură Organizațională</a></li>
+                        <li><a href="{{ url('/despre/centre-operationale') }}">Centre Operaționale</a></li>
                         <li><a href="{{ url('/informatii/hotarari-aga') }}">Hotărâri AGA</a></li>
                         <li><a href="{{ url('/servicii') }}">Servicii</a></li>
                         <li><a href="{{ url('/anunturi') }}">Anunțuri</a></li>

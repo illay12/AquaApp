@@ -23,7 +23,6 @@
                     Mai jos găsiți formularele tipizate necesare pentru diverse solicitări adresate Aquaserv S.A.
                     Documentele sunt disponibile în format PDF. Completați formularul dorit și
                     depuneți-l la sediul nostru sau trimiteți-l prin email.
-                    <span class="text-muted" style="font-size:0.85rem;">Actualizate: 20.03.2023</span>
                 </p>
 
                 @foreach([
