@@ -317,17 +317,18 @@ class AdminController extends Controller
         // ── Toate operatiunile DB intr-o singura tranzactie ────────────
         // Pe SQLite aceasta optimizare reduce timpul de la minute la secunde
         // deoarece SQLite face fsync dupa fiecare statement fara tranzactie.
-        $chunkSize          = 500;
-        $clientiNoi         = 0;
-        $contoareNoi        = 0;
+        $chunkSize           = 500;
+        $clientiNoi          = 0;
+        $clientiStersi       = 0;
+        $contoareNoi         = 0;
         $contoareActualizate = 0;
-        $contoareSterse     = 0;
-        $seriiSterse        = [];
-        $seriiDinFisier     = array_keys($contoareBulk);
+        $contoareSterse      = 0;
+        $seriiSterse         = [];
+        $seriiDinFisier      = array_keys($contoareBulk);
 
         \Illuminate\Support\Facades\DB::transaction(function () use (
             $clientiBulk, $contoareBulk, $seriiDinFisier, $chunkSize,
-            &$clientiNoi, &$contoareNoi, &$contoareActualizate,
+            &$clientiNoi, &$clientiStersi, &$contoareNoi, &$contoareActualizate,
             &$contoareSterse, &$seriiSterse
         ) {
             // 1. Clienti noi
@@ -371,8 +372,34 @@ class AdminController extends Controller
             $contoareSterse = count($seriiSterse);
 
             if ($contoareSterse > 0) {
+                // Retinem cod_client al contoarelor ce urmeaza sa fie sterse
+                $codClientiAfectati = [];
+                foreach (array_chunk($seriiSterse, $chunkSize) as $chunk) {
+                    $coduri = \Illuminate\Support\Facades\DB::table('contoare')
+                        ->whereIn('serie_contor', $chunk)
+                        ->pluck('cod_client')
+                        ->toArray();
+                    $codClientiAfectati = array_merge($codClientiAfectati, $coduri);
+                }
+                $codClientiAfectati = array_unique($codClientiAfectati);
+
+                // Stergem contoarele
                 foreach (array_chunk($seriiSterse, $chunkSize) as $chunk) {
                     \Illuminate\Support\Facades\DB::table('contoare')->whereIn('serie_contor', $chunk)->delete();
+                }
+
+                // Stergem clientii care nu mai au niciun contor asociat
+                if (!empty($codClientiAfectati)) {
+                    foreach (array_chunk($codClientiAfectati, $chunkSize) as $chunk) {
+                        $clientiStersi += \Illuminate\Support\Facades\DB::table('clienti')
+                            ->whereIn('cod_client', $chunk)
+                            ->whereNotExists(function ($q) {
+                                $q->select(\Illuminate\Support\Facades\DB::raw(1))
+                                  ->from('contoare')
+                                  ->whereColumn('contoare.cod_client', 'clienti.cod_client');
+                            })
+                            ->delete();
+                    }
                 }
             }
         });
@@ -388,7 +415,9 @@ class AdminController extends Controller
         $mesaj .= "<strong>{$contoareNoi}</strong> contoare noi adaugate, ";
         $mesaj .= "<strong>{$contoareActualizate}</strong> contoare actualizate, ";
         $mesaj .= "<strong>{$clientiNoi}</strong> clienti noi adaugati";
-        $mesaj .= $contoareSterse > 0 ? ", <strong>{$contoareSterse}</strong> contoare scoase din uz sterse." : ".";
+        $mesaj .= $contoareSterse > 0 ? ", <strong>{$contoareSterse}</strong> contoare scoase din uz sterse" : "";
+        $mesaj .= $clientiStersi > 0 ? ", <strong>{$clientiStersi}</strong> clienti fara contoare stersi" : "";
+        $mesaj .= ".";
         if ($totalDuplicate > 0) {
             $mesaj .= " <strong>{$totalDuplicate}</strong> randuri duplicate — s-a pastrat ultima aparitie.";
         }
@@ -404,12 +433,13 @@ class AdminController extends Controller
             ->with('sync_erori', $erori)
             ->with('sync_sterse', $seriiSterse)
             ->with('sync_stats', [
-                'noi'         => $contoareNoi,
-                'actualizate' => $contoareActualizate,
-                'sterse'      => $contoareSterse,
-                'clienti_noi' => $clientiNoi,
-                'duplicate'   => $totalDuplicate,
-                'erori'       => count($erori),
+                'noi'            => $contoareNoi,
+                'actualizate'    => $contoareActualizate,
+                'sterse'         => $contoareSterse,
+                'clienti_noi'    => $clientiNoi,
+                'clienti_stersi' => $clientiStersi,
+                'duplicate'      => $totalDuplicate,
+                'erori'          => count($erori),
             ]);
     }
 

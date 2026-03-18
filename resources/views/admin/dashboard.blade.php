@@ -406,6 +406,15 @@
                                 <div style="font-size:0.72rem;color:#075985;font-weight:600;text-transform:uppercase;">Clienți noi</div>
                             </div>
                         </div>
+                        @if(($st['clienti_stersi'] ?? 0) > 0)
+                        <div style="display:flex;align-items:center;gap:0.5rem;background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
+                            <i class="bi bi-person-dash-fill" style="color:#dc2626;font-size:1.1rem;"></i>
+                            <div>
+                                <div style="font-size:1.4rem;font-weight:800;color:#dc2626;line-height:1;">{{ $st['clienti_stersi'] }}</div>
+                                <div style="font-size:0.72rem;color:#991b1b;font-weight:600;text-transform:uppercase;">Clienți șterși</div>
+                            </div>
+                        </div>
+                        @endif
                         @if($st['duplicate'] > 0)
                         <div style="display:flex;align-items:center;gap:0.5rem;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:0.5rem 1rem;min-width:140px;">
                             <i class="bi bi-exclamation-triangle-fill" style="color:#d97706;font-size:1.1rem;"></i>

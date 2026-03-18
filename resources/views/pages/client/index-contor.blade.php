@@ -183,7 +183,7 @@
                             <i class="bi bi-telephone" style="color:var(--aqua-primary);font-size:1.1rem;flex-shrink:0;"></i>
                             <div>
                                 <div style="font-weight:700;font-size:0.75rem;color:var(--aqua-dark);">Relații clienți</div>
-                                <div style="font-size:0.72rem;color:#6c757d;">0240 511 111</div>
+                                <div style="font-size:0.72rem;color:#6c757d;">0240 511 369</div>
                             </div>
                         </div>
                     </div>
@@ -547,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const el = document.getElementById(id);
         el.addEventListener('keydown', e => {
             if (e.key === 'Enter') { identificaClient(); return; }
+            if (e.ctrlKey || e.metaKey) return;
             const permise = ['Backspace','Delete','ArrowLeft','ArrowRight','Tab','Home','End'];
             if (!permise.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
         });
