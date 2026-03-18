@@ -12,6 +12,23 @@
     </nav>
 @endsection
     
+@php
+$categorieStyle = [
+    'anunturi' => 'background:#dbeafe;color:#1d4ed8;',
+    'avarie'   => 'background:#fee2e2;color:#b91c1c;',
+    'angajare' => 'background:#dcfce7;color:#15803d;',
+    'calitate' => 'background:#e0f2fe;color:#0369a1;',
+    'diverse'  => 'background:#f3e8ff;color:#7e22ce;',
+];
+$categorieLabel = [
+    'anunturi' => 'Anunțuri',
+    'avarie'   => 'Avarie',
+    'angajare' => 'Angajare',
+    'calitate' => 'Calitate apă',
+    'diverse'  => 'Diverse',
+];
+@endphp
+
 @section('content')
 <section style="padding:3.5rem 0;">
     <div class="container">
@@ -35,6 +52,7 @@
                                 <option value="avarie" {{ request('categorie')=='avarie'?'selected':'' }}>Avarii</option>
                                 <option value="angajare" {{ request('categorie')=='angajare'?'selected':'' }}>Angajare</option>
                                 <option value="calitate" {{ request('categorie')=='calitate'?'selected':'' }}>Calitate apă</option>
+                                <option value="diverse" {{ request('categorie')=='diverse'?'selected':'' }}>Diverse</option>
                             </select>
                         </div>
                     </div>
@@ -44,7 +62,9 @@
                 @forelse($anunturi ?? [] as $anunt)
                     <div class="card mb-3 p-3">
                         <div class="d-flex justify-content-between align-items-start mb-1">
-                            <span class="badge-aqua">{{ $anunt->categorie }}</span>
+                            <span style="display:inline-block;padding:0.25em 0.75em;border-radius:20px;font-size:0.75rem;font-weight:700;{{ $categorieStyle[$anunt->categorie] ?? 'background:#f1f5f9;color:#475569;' }}">
+                                {{ $categorieLabel[$anunt->categorie] ?? $anunt->categorie }}
+                            </span>
                             <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>{{ $anunt->created_at->format('d.m.Y') }}</small>
                         </div>
                         <h5 class="mt-2" style="font-size:1rem;font-weight:700;">
@@ -124,6 +144,9 @@
                             </a></li>
                             <li class="py-1 border-bottom"><a href="{{ url('/anunturi?categorie=calitate') }}" class="d-flex justify-content-between text-decoration-none" style="color:var(--aqua-text);">
                                 <span><i class="bi bi-droplet-half text-aqua me-2"></i>Calitate apă</span>
+                            </a></li>
+                            <li class="py-1 border-bottom"><a href="{{ url('/anunturi?categorie=diverse') }}" class="d-flex justify-content-between text-decoration-none" style="color:var(--aqua-text);">
+                                <span><i class="bi bi-collection text-aqua me-2"></i>Diverse</span>
                             </a></li>
                             <li class="py-1"><a href="{{ url('/anunturi') }}" class="d-flex justify-content-between text-decoration-none" style="color:var(--aqua-text);">
                                 <span><i class="bi bi-list text-aqua me-2"></i>Toate anunțurile</span>
