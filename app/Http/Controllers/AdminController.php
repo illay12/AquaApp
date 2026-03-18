@@ -217,7 +217,14 @@ class AdminController extends Controller
             'fisier_sync.max'      => 'Fisierul nu poate depasi 10MB.',
         ]);
 
-        $file   = $request->file('fisier_sync');
+        $file = $request->file('fisier_sync');
+
+        // ── Detectam encoding ──────────────────────────────────────────
+        $continutFisier = file_get_contents($file->getRealPath());
+        $encoding = mb_detect_encoding($continutFisier, ['UTF-8', 'Windows-1252', 'ISO-8859-2', 'ISO-8859-1'], true);
+        $esteUtf8 = ($encoding === 'UTF-8');
+        unset($continutFisier); // eliberam memoria
+
         $handle = fopen($file->getRealPath(), 'r');
 
         // Sarim BOM UTF-8
@@ -233,10 +240,7 @@ class AdminController extends Controller
             return back()->withErrors(['fisier_sync' => 'Fisierul este gol sau invalid.']);
         }
 
-        // Normalizam headerul (lowercase, trim)
         $header = array_map(fn($h) => strtolower(trim($h)), $header);
-
-        // Verificam coloanele obligatorii
         $obligatorii = ['serie_contor', 'index_vechi', 'adresa', 'cod_client', 'nume'];
         $lipsa = array_diff($obligatorii, $header);
         if (!empty($lipsa)) {
@@ -244,19 +248,15 @@ class AdminController extends Controller
             return back()->withErrors(['fisier_sync' => 'Coloane lipsa: ' . implode(', ', $lipsa)]);
         }
 
-        // Mapam coloanele la indecsi
         $idx = array_flip($header);
 
-        // Detectam encoding-ul fisierului si convertim la UTF-8
-        $continutFisier = file_get_contents($file->getRealPath());
-        $encoding = mb_detect_encoding($continutFisier, ['UTF-8', 'Windows-1252', 'ISO-8859-2', 'ISO-8859-1'], true);
-        $esteUtf8 = ($encoding === 'UTF-8');
-
+        // ── Parsam CSV in memorie ──────────────────────────────────────
         $clientiBulk  = [];
         $contoareBulk = [];
         $erori        = [];
         $duplicate    = [];
         $linie        = 1;
+        $now          = now()->toDateTimeString();
 
         while (($row = fgetcsv($handle, 0, ',')) !== false) {
             $linie++;
@@ -284,8 +284,6 @@ class AdminController extends Controller
                 continue;
             }
 
-            $now = now()->toDateTimeString();
-
             $clientiBulk[$codClient] = [
                 'cod_client'  => $codClient,
                 'nume'        => $nume,
@@ -310,76 +308,86 @@ class AdminController extends Controller
 
         fclose($handle);
 
-        // ── INSERT/UPDATE in bulk (cate 500) ──────────────────────────
-        $chunkSize = 500;
-
-        // Clienti: inseram doar cei noi (ignoram daca exista)
-        $clientiNoi = 0;
-        foreach (array_chunk(array_values($clientiBulk), $chunkSize) as $chunk) {
-            $clientiNoi += \Illuminate\Support\Facades\DB::table('clienti')->insertOrIgnore($chunk);
-        }
-
-        // Contoare: identificam ce exista deja inainte de upsert
-        $seriiDinFisier   = array_keys($contoareBulk);
-        $seriiExistente   = \Illuminate\Support\Facades\DB::table('contoare')
-                                ->whereIn('serie_contor', $seriiDinFisier)
-                                ->pluck('serie_contor')
-                                ->flip()
-                                ->all();
-
+        // ── Toate operatiunile DB intr-o singura tranzactie ────────────
+        // Pe SQLite aceasta optimizare reduce timpul de la minute la secunde
+        // deoarece SQLite face fsync dupa fiecare statement fara tranzactie.
+        $chunkSize          = 500;
+        $clientiNoi         = 0;
         $contoareNoi        = 0;
         $contoareActualizate = 0;
-        foreach ($seriiDinFisier as $serie) {
-            if (isset($seriiExistente[$serie])) {
-                $contoareActualizate++;
-            } else {
-                $contoareNoi++;
+        $contoareSterse     = 0;
+        $seriiSterse        = [];
+        $seriiDinFisier     = array_keys($contoareBulk);
+
+        \Illuminate\Support\Facades\DB::transaction(function () use (
+            $clientiBulk, $contoareBulk, $seriiDinFisier, $chunkSize,
+            &$clientiNoi, &$contoareNoi, &$contoareActualizate,
+            &$contoareSterse, &$seriiSterse
+        ) {
+            // 1. Clienti noi
+            foreach (array_chunk(array_values($clientiBulk), $chunkSize) as $chunk) {
+                $clientiNoi += \Illuminate\Support\Facades\DB::table('clienti')->insertOrIgnore($chunk);
             }
-        }
 
-        // Upsert contoare
-        foreach (array_chunk(array_values($contoareBulk), $chunkSize) as $chunk) {
-            \Illuminate\Support\Facades\DB::table('contoare')->upsert(
-                $chunk,
-                ['serie_contor'],
-                ['index_vechi', 'index_nou', 'adresa', 'cod_client', 'updated_at']
-            );
-        }
-
-        // Stergem contoarele care nu mai sunt in fisier (scoase din uz)
-        $seriiSterse = [];
-        $contoareSterse = 0;
-        if (!empty($seriiDinFisier)) {
-            $seriiSterse = \App\Models\Contor::whereNotIn('serie_contor', $seriiDinFisier)
+            // 2. Citim TOATE seriile existente o singura data
+            //    Folosim acest rezultat atat pentru numarat noi/actualizate cat si pentru stergere
+            $seriiExistenteFlipped = \Illuminate\Support\Facades\DB::table('contoare')
                 ->pluck('serie_contor')
-                ->toArray();
-            $contoareSterse = count($seriiSterse);
-            if ($contoareSterse > 0) {
-                \App\Models\Contor::whereNotIn('serie_contor', $seriiDinFisier)->delete();
+                ->flip()
+                ->all();
+
+            // 3. Numaram noi vs actualizate (O(n) cu array_flip)
+            $seriiDinFisierFlipped = array_flip($seriiDinFisier);
+            foreach ($seriiDinFisier as $serie) {
+                if (isset($seriiExistenteFlipped[$serie])) {
+                    $contoareActualizate++;
+                } else {
+                    $contoareNoi++;
+                }
             }
-        }
+
+            // 4. Upsert contoare (insert + update intr-un singur query per chunk)
+            foreach (array_chunk(array_values($contoareBulk), $chunkSize) as $chunk) {
+                \Illuminate\Support\Facades\DB::table('contoare')->upsert(
+                    $chunk,
+                    ['serie_contor'],
+                    ['index_vechi', 'index_nou', 'adresa', 'cod_client', 'updated_at']
+                );
+            }
+
+            // 5. Stergem contoarele absente — calculam diferenta in PHP (fara NOT IN)
+            //    Evitam limita SQLite de 999 variabile si query suplimentar
+            foreach (array_keys($seriiExistenteFlipped) as $serie) {
+                if (!isset($seriiDinFisierFlipped[$serie])) {
+                    $seriiSterse[] = $serie;
+                }
+            }
+            $contoareSterse = count($seriiSterse);
+
+            if ($contoareSterse > 0) {
+                foreach (array_chunk($seriiSterse, $chunkSize) as $chunk) {
+                    \Illuminate\Support\Facades\DB::table('contoare')->whereIn('serie_contor', $chunk)->delete();
+                }
+            }
+        });
 
         $totalDuplicate = array_sum($duplicate) - count($duplicate);
+
+        // Adaugam duplicatele in log-ul de erori
+        foreach ($duplicate as $serie => $count) {
+            $erori[] = "Serie duplicata in fisier: '{$serie}' apare de {$count} ori — s-a importat ultima aparitie";
+        }
 
         $mesaj  = "Sincronizare finalizata: ";
         $mesaj .= "<strong>{$contoareNoi}</strong> contoare noi adaugate, ";
         $mesaj .= "<strong>{$contoareActualizate}</strong> contoare actualizate, ";
         $mesaj .= "<strong>{$clientiNoi}</strong> clienti noi adaugati";
-        if ($contoareSterse > 0) {
-            $mesaj .= ", <strong>{$contoareSterse}</strong> contoare scoase din uz sterse.";
-        } else {
-            $mesaj .= ".";
-        }
+        $mesaj .= $contoareSterse > 0 ? ", <strong>{$contoareSterse}</strong> contoare scoase din uz sterse." : ".";
         if ($totalDuplicate > 0) {
-            $mesaj .= " <strong>{$totalDuplicate}</strong> randuri duplicate in fisier (aceeasi serie de mai multe ori) — s-a pastrat ultima aparitie.";
+            $mesaj .= " <strong>{$totalDuplicate}</strong> randuri duplicate — s-a pastrat ultima aparitie.";
         }
         if (count($erori) > 0) {
             $mesaj .= " <strong>" . count($erori) . "</strong> erori de format.";
-        }
-
-        // Adaugam duplicatele in log-ul de erori
-        foreach ($duplicate as $serie => $count) {
-            $erori[] = "Serie duplicata in fisier: '{$serie}' apare de {$count} ori — s-a importat ultima aparitie";
         }
 
         $tip = (($contoareNoi + $contoareActualizate) > 0) ? 'success' : 'warning';
