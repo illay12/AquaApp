@@ -198,9 +198,6 @@
                                 <i class="bi bi-filter-circle text-aqua me-2"></i>Canalizare</a></li>
                             <li><a class="dropdown-item {{ request()->is('servicii/epurare*') ? 'active' : '' }}" href="{{ url('/servicii/epurare') }}">
                                 <i class="bi bi-recycle text-aqua me-2"></i>Epurare ape uzate</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item {{ request()->is('servicii/avize*') ? 'active' : '' }}" href="{{ url('/servicii/avize') }}">
-                                <i class="bi bi-file-earmark-check text-aqua me-2"></i>Avize și autorizații</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -315,9 +312,6 @@
                                 </a>
                                 <a href="{{ url('/servicii/epurare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-recycle text-aqua"></i> Epurare ape uzate
-                                </a>
-                                <a href="{{ url('/servicii/avize') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-file-earmark-check text-aqua"></i> Avize și autorizații
                                 </a>
                             </div>
                         </div>

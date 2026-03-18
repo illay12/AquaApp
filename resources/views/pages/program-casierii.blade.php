@@ -212,7 +212,11 @@
                 <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:contractare.facturare@aquaservtulcea.ro">contractare.facturare@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
-                        <span class="pc-orar-zile">Luni – Vineri</span>
+                        <span class="pc-orar-zile">Luni – Joi</span>
+                        <span class="pc-orar-ore">07:30 – 17:00</span>
+                    </div>
+                    <div class="pc-orar-row">
+                        <span class="pc-orar-zile">Vineri</span>
                         <span class="pc-orar-ore">07:30 – 17:00</span>
                     </div>
                     <div class="pc-orar-row">
@@ -245,6 +249,10 @@
                         <span class="pc-orar-zile">Vineri</span>
                         <span class="pc-orar-ore">07:30 – 13:30</span>
                     </div>
+                    <div class="pc-orar-row">
+                        <span class="pc-orar-zile">Sâmbătă – Duminică</span>
+                        <span class="pc-orar-inchis">ÎNCHIS</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -261,6 +269,7 @@
             <div class="pc-card-body">
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240571180">0240.571.180</a></div>
                 <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.macin@aquaservtulcea.ro">centru.macin@aquaservtulcea.ro</a></div>
+                <br>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>
@@ -269,6 +278,10 @@
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Vineri</span>
                         <span class="pc-orar-ore">07:30 – 13:30</span>
+                    </div>
+                    <div class="pc-orar-row">
+                        <span class="pc-orar-zile">Sâmbătă – Duminică</span>
+                        <span class="pc-orar-inchis">ÎNCHIS</span>
                     </div>
                 </div>
             </div>
@@ -295,6 +308,10 @@
                         <span class="pc-orar-zile">Vineri</span>
                         <span class="pc-orar-ore">07:30 – 13:30</span>
                     </div>
+                    <div class="pc-orar-row">
+                        <span class="pc-orar-zile">Sâmbătă – Duminică</span>
+                        <span class="pc-orar-inchis">ÎNCHIS</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -319,6 +336,10 @@
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Vineri</span>
                         <span class="pc-orar-ore">08:00 – 14:30</span>
+                    </div>
+                    <div class="pc-orar-row">
+                        <span class="pc-orar-zile">Sâmbătă – Duminică</span>
+                        <span class="pc-orar-inchis">ÎNCHIS</span>
                     </div>
                 </div>
             </div>

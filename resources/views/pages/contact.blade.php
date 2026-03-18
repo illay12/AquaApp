@@ -421,7 +421,7 @@
             </div>
 
             <div class="ct-info-card">
-                <div class="ct-dept-title">Contractuală & Facturare</div>
+                <div class="ct-dept-title">Contractare & Facturare</div>
                 <div class="ct-dept-row"><i class="bi bi-geo-alt-fill"></i><span>Str. Tudor Vladimirescu, nr. 2</span></div>
                 <div class="ct-dept-row"><i class="bi bi-telephone-fill" style="color:var(--aqua-primary)"></i><a href="tel:0240511369" style="color:var(--aqua-primary);font-size:1.15rem;font-weight:900;">0240.511.369</a></div>
                 <div class="ct-dept-row"><i class="bi bi-envelope-fill"></i><a href="mailto:contractare.facturare@aquaservtulcea.ro" style="font-size:0.88rem;">contractare.facturare@aquaservtulcea.ro</a></div>

@@ -45,7 +45,7 @@ Route::prefix('servicii')->name('servicii.')->group(function () {
     Route::get('/alimentare-apa', [ServiciiController::class, 'alimentareApa'])->name('alimentare-apa');
     Route::get('/canalizare',     [ServiciiController::class, 'canalizare'])->name('canalizare');
     Route::get('/epurare',        [ServiciiController::class, 'epurare'])->name('epurare');
-    Route::get('/avize',          [ServiciiController::class, 'avize'])->name('avize');
+
 });
 
 /*

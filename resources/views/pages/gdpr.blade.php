@@ -97,7 +97,7 @@
                             <div class="info-chip"><div class="info-label">Telefon</div><div class="info-value">0240 524 310</div></div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">Reg. Comertului</div><div class="info-value">J20/04000/348364</div></div>
+                            <div class="info-chip"><div class="info-label">Reg. Comertului</div><div class="info-value">J2004000348364</div></div>
                         </div>
                         <div class="col-sm-6">
                             <div class="info-chip"><div class="info-label">CUI</div><div class="info-value">RO 16775941</div></div>

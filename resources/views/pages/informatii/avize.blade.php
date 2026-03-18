@@ -41,11 +41,27 @@
 
                 <h2 class="section-title">Aviz de amplasament și acord de racordare</h2>
                 <p class="mb-4">
-                    SC AquaServ SA Tulcea eliberează două tipuri de documente tehnice necesare
+                    SC Aquaserv Tulcea eliberează două tipuri de documente tehnice necesare
                     pentru realizarea de construcții sau branșamente la rețelele de apă și canalizare:
                     <strong>avizul de amplasament</strong> și <strong>acordul de racordare</strong>.
                     Documentele pot fi solicitate și prin e-mail, pentru o procesare mai rapidă.
                 </p>
+
+                {{-- Link formulare --}}
+                <div class="avize-box mb-4 p-4 rounded-3"
+                     style="background:linear-gradient(135deg,#fff8e1 0%,#fffde7 100%);border:1.5px solid #ffe082;">
+                    <h5 class="fw-bold mb-2" style="color:var(--aqua-dark);">
+                        <i class="bi bi-file-earmark-text me-2" style="color:#f59e0b;"></i>Aveți nevoie de formulare?
+                    </h5>
+                    <p class="mb-3" style="font-size:0.9rem;">
+                        Descărcați cererile și formularele necesare 
+                        direct de pe pagina dedicată!
+                    </p>
+                    <a href="{{ route('informatii.formulare') }}" class="btn btn-sm"
+                       style="background:#f59e0b;color:#fff;border:none;border-radius:8px;">
+                        <i class="bi bi-download me-1"></i> Accesați pagina Formulare
+                    </a>
+                </div>
 
                 {{-- Aviz de amplasament --}}
                 <div class="mb-4">
@@ -116,8 +132,8 @@
                         Documentele pot fi transmise electronic la adresa centrului operațional din
                         localitatea dumneavoastră, pentru o procesare mai rapidă.
                     </p>
-                    <a href="mailto:aquaserv_tl@yahoo.com" class="btn btn-aqua btn-sm avize-email-btn">
-                        <i class="bi bi-envelope me-1"></i> aquaserv_tl@yahoo.com
+                    <a href="mailto:secretariat@aquaservtulcea.ro" class="btn btn-aqua btn-sm avize-email-btn">
+                        <i class="bi bi-envelope me-1"></i> secretariat@aquaservtulcea.ro
                     </a>
                 </div>
 
@@ -202,7 +218,7 @@
                     <p class="mb-0" style="font-size:0.875rem;">
                         Documentele se depun la <strong>sediul central</strong> sau la centrele operaționale de mai sus.
                         Program: <strong>Luni–Vineri, 08:00–15:00</strong>.
-                        Informații la <a href="mailto:aquaserv_tl@yahoo.com">aquaserv_tl@yahoo.com</a>.
+                        Informații la <a href="mailto:secretariat@aquaservtulcea.ro">secretariat@aquaservtulcea.ro</a>.
                     </p>
                 </div>
 
