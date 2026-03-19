@@ -23,8 +23,9 @@
             --aqua-border:    #caf0f8;
         }
         * { box-sizing: border-box; }
-        body { font-family: 'Nunito', sans-serif; color: var(--aqua-text); background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
+        body { font-family: 'Nunito', sans-serif; font-size: 17px; color: var(--aqua-text); background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
         main { flex: 1; }
+        p { font-size: 1.05rem; line-height: 1.75; }
         .topbar { background: var(--aqua-dark); color: rgba(255,255,255,0.85); font-size: 0.8rem; padding: 6px 0; }
         .topbar a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .topbar a:hover { color: #fff; }
@@ -156,7 +157,9 @@
             <div>
                 <a href="https://www.facebook.com/AquaservTulcea/" class="me-2"><i class="bi bi-facebook"></i></a>
                 <span class="mx-2">|</span>
-                <i class="bi bi-geo-alt-fill me-1"></i> Județul Tulcea
+                <a href="https://maps.app.goo.gl/jDibWxXwgdk4kuQr5" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">
+                    <i class="bi bi-geo-alt-fill me-1"></i> Județul Tulcea
+                </a>
             </div>
         </div>
     </div>

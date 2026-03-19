@@ -296,6 +296,56 @@
             ════════════════════════════════ --}}
             <div class="col-lg-8">
 
+                {{-- ── AGA ── --}}
+                <div class="section-gap">
+                    <h2 class="section-title">AGA – Adunarea Generală a Acționarilor</h2>
+                    <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
+                        Adunarea Generală a Acționarilor este organul suprem de decizie al S.C. AQUASERV S.A. Tulcea, alcătuit din reprezentanții unităților administrativ-teritoriale membre ale Asociației de Dezvoltare Intercomunitară (ADI) „ECOTID". AGA aprobă strategia companiei, bilanțul contabil, distribuirea profitului și numirea membrilor Consiliului de Administrație.
+                    </p>
+                    <div class="org-card-primary">
+                        <div class="org-icon-box" style="background:rgba(255,255,255,0.15);">
+                            <i class="bi bi-file-earmark-text-fill text-white" style="font-size:1.4rem;"></i>
+                        </div>
+                        <div style="flex:1; min-width:0;">
+                            <div style="font-size:0.65rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.07em;font-weight:700;margin-bottom:0.25rem;">
+                                Structură
+                            </div>
+                            <div style="font-weight:800;color:#fff;font-size:0.9rem;">
+                                Organigrama actuală AQUASERV S.A.
+                            </div>
+                        </div>
+                        <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
+                           target="_blank" class="org-btn-primary">
+                            <i class="bi bi-eye"></i> Vezi organigrama
+                        </a>
+                    </div>
+                </div>
+
+                {{-- ── CA ── --}}
+                <div class="section-gap">
+                    <h2 class="section-title">CA – Consiliul de Administrație</h2>
+                    <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
+                        Consiliul de Administrație este organul de conducere colectivă al S.C. AQUASERV S.A. Tulcea, ales de Adunarea Generală a Acționarilor. Acesta stabilește direcțiile principale de activitate și de dezvoltare ale companiei, supraveghează managementul executiv și asigură respectarea intereselor acționarilor și ale comunităților deservite.
+                    </p>
+                    <div class="org-card-primary">
+                        <div class="org-icon-box" style="background:rgba(255,255,255,0.15);">
+                            <i class="bi bi-file-earmark-text-fill text-white" style="font-size:1.4rem;"></i>
+                        </div>
+                        <div style="flex:1; min-width:0;">
+                            <div style="font-size:0.65rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.07em;font-weight:700;margin-bottom:0.25rem;">
+                                Structură
+                            </div>
+                            <div style="font-weight:800;color:#fff;font-size:0.9rem;">
+                                Organigrama actuală AQUASERV S.A.
+                            </div>
+                        </div>
+                        <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
+                           target="_blank" class="org-btn-primary">
+                            <i class="bi bi-eye"></i> Vezi organigrama
+                        </a>
+                    </div>
+                </div>
+
                 {{-- ── CONDUCERE ── --}}
                 <div class="section-gap">
                     <h2 class="section-title">Conducere</h2>
