@@ -305,10 +305,18 @@ class DispeceratController extends Controller
             'file' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
         ]);
 
-        $cale = $request->file('file')->store('anunturi/imagini', 'public');
+        $fisier    = $request->file('file');
+        $filename  = uniqid('img_') . '.' . $fisier->getClientOriginalExtension();
+        $dir       = public_path('app/storage/anunturi/imagini');
+
+        if (!is_dir($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        $fisier->move($dir, $filename);
 
         return response()->json([
-            'location' => Storage::disk('public')->url($cale),
+            'location' => asset('app/storage/anunturi/imagini/' . $filename),
         ]);
     }
 
