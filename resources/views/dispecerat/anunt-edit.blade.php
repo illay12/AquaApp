@@ -216,7 +216,7 @@ tinymce.init({
     image_advtab: true,
     image_uploadtab: true,
     automatic_uploads: true,
-    images_upload_url: '{{ route('dispecerat.upload.imagine') }}',
+    paste_data_images: true,
     images_upload_handler: function (blobInfo, progress) {
         return new Promise(function (resolve, reject) {
             var formData = new FormData();
@@ -225,14 +225,19 @@ tinymce.init({
 
             fetch('{{ route('dispecerat.upload.imagine') }}', {
                 method: 'POST',
+                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json' },
                 body: formData,
             })
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                if (data.location) resolve(data.location);
-                else reject('Upload eșuat.');
+            .then(function (r) {
+                if (!r.ok) { reject({ message: 'Upload eșuat (HTTP ' + r.status + ').', remove: false }); return null; }
+                return r.json();
             })
-            .catch(function () { reject('Eroare la upload imagine.'); });
+            .then(function (data) {
+                if (!data) return;
+                if (data.location) resolve(data.location);
+                else reject({ message: 'Răspuns invalid de la server.', remove: false });
+            })
+            .catch(function (err) { reject({ message: 'Eroare la upload imagine.', remove: false }); });
         });
     },
     convert_urls: false,
