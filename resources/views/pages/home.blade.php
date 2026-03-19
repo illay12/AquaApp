@@ -38,7 +38,7 @@
             <div class="row g-2 justify-content-center">
                 <div class="col-4 col-md-3 col-lg-2">
                     <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i class="bi bi-receipt"></i></div>
+                        <div class="icon-wrap"><i  class="bi bi-receipt"></i></div>
                         <h6 style="font-size:0.875rem;margin:0;">Plătește factura</h6>
                     </a>
                 </div>

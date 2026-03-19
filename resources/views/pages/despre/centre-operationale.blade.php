@@ -141,7 +141,7 @@
                     </div>
                     <div>
                         <h4 class="mb-0 text-white fw-bold" style="font-size:1.1rem;">Centrul Operațional Mãcin</h4>
-                        <small style="color:rgba(255,255,255,0.7);font-size:0.75rem;">Orașul Mãcin</small>
+                        <small style="color:rgba(255,255,255,0.7);font-size:0.75rem;">Orașul Mãcin, Comuna Carcaliu</small>
                     </div>
                 </div>
                 <div class="card-body p-4">
@@ -398,6 +398,145 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        {{-- ══════════════════════════════════════
+             PUNCTE DE LUCRU
+        ══════════════════════════════════════ --}}
+        @php
+        $puncteLucru = [
+            ['nume' => 'Mineri',              'delta' => false],
+            ['nume' => 'Revărsarea',          'delta' => false],
+            ['nume' => 'Tudor Vladimirescu',  'delta' => false],
+            ['nume' => 'Maliuc',              'delta' => true],
+            ['nume' => 'Mahmudia',            'delta' => false],
+            ['nume' => 'Crișan',              'delta' => true],
+            ['nume' => 'Mila 23',             'delta' => true],
+            ['nume' => 'Grindu',              'delta' => false],
+            ['nume' => 'Ilganii de Sus',      'delta' => true],
+            ['nume' => 'Partizani',           'delta' => true],
+            ['nume' => 'Gorgova',             'delta' => true],
+            ['nume' => 'Chilia Veche',        'delta' => true],
+            ['nume' => 'Horia',               'delta' => false],
+            ['nume' => 'Florești',            'delta' => false],
+            ['nume' => 'Cloșca',              'delta' => false],
+            ['nume' => 'Ceatalchioi',         'delta' => true],
+            ['nume' => 'Patlageanca',         'delta' => true],
+            ['nume' => 'Dorobanțu',           'delta' => false],
+            ['nume' => 'Mesteru',             'delta' => false],
+            ['nume' => 'Cârjelari',           'delta' => false],
+        ];
+        $nrDelta = count(array_filter($puncteLucru, fn($p) => $p['delta']));
+        $nrJudet = count($puncteLucru) - $nrDelta;
+        @endphp
+
+        <div class="mb-5" style="border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,119,182,0.13);">
+            {{-- Header --}}
+            <div class="py-4 px-4 px-md-5 d-flex flex-wrap align-items-center justify-content-between gap-3"
+                 style="background:linear-gradient(135deg,#023e8a 0%,#0077b6 60%,#00b4d8 100%);">
+                <div class="d-flex align-items-center gap-3">
+                    <div style="width:52px;height:52px;background:rgba(255,255,255,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="bi bi-geo-alt-fill text-white" style="font-size:1.5rem;"></i>
+                    </div>
+                    <div>
+                        <h3 class="mb-0 text-white fw-bold" style="font-size:1.25rem;letter-spacing:-0.3px;">Puncte de lucru</h3>
+                        <small style="color:rgba(255,255,255,0.75);font-size:0.8rem;">{{ count($puncteLucru) }} localități deservite în județul Tulcea</small>
+                    </div>
+                </div>
+                {{-- Contoare --}}
+                <div class="d-flex gap-3">
+                    <div class="text-center px-3 py-2" style="background:rgba(255,255,255,0.12);border-radius:12px;min-width:90px;">
+                        <div style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1;">{{ $nrDelta }}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:2px;">Delta Dunării</div>
+                    </div>
+                    <div class="text-center px-3 py-2" style="background:rgba(255,255,255,0.12);border-radius:12px;min-width:90px;">
+                        <div style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1;">{{ $nrJudet }}</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:2px;">Alte localități</div>
+                    </div>
+                </div>
+            </div>
+
+{{-- Legendă --}}
+<div class="px-4 px-md-5 py-3 d-flex align-items-center gap-4 flex-wrap" 
+     style="background:#f8fafc;border-bottom:1px solid var(--aqua-border);">
+
+    <span style="font-size:0.78rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">
+        Legendă:
+    </span>
+
+    {{-- Delta Dunării - ALBASTRU --}}
+    <span class="d-flex align-items-center gap-2" 
+          style="font-size:0.82rem;color:#0369a1;font-weight:600;">
+        <span style="width:18px;
+                     height:18px;
+                     background:linear-gradient(135deg,#e0f2fe,#38bdf8);
+                     border:2px solid #0284c7;
+                     border-radius:5px;
+                     display:inline-block;
+                     flex-shrink:0;">
+        </span>
+        Localitate din Delta Dunării
+    </span>
+
+                {{-- Localități normale - VERDE --}}
+                <span class="d-flex align-items-center gap-2" 
+                    style="font-size:0.82rem;color:#166534;font-weight:600;">
+                    <span style="width:18px;
+                                height:18px;
+                                background:linear-gradient(135deg,#dcfce7,#4ade80);
+                                border:2px solid #16a34a;
+                                border-radius:5px;
+                                display:inline-block;
+                                flex-shrink:0;">
+                    </span>
+                    Altă localitate din județ
+                </span>
+
+            </div>
+
+            {{-- Grid localități --}}
+                <div class="p-4 p-md-5" style="background:#fff;">
+                    <div class="row g-3">
+                        @foreach($puncteLucru as $p)
+                        <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                            <div class="h-100 d-flex flex-column align-items-center justify-content-center text-center p-3"
+                                style="border-radius:12px;
+                                        background:{{ $p['delta'] 
+                                            ? 'linear-gradient(135deg,#e0f2fe,#38bdf8)' 
+                                            : 'linear-gradient(135deg,#dcfce7,#4ade80)' }};
+                                        border:2px solid {{ $p['delta'] ? '#0284c7' : '#16a34a' }};
+                                        min-height:80px;
+                                        transition:transform 0.2s,box-shadow 0.2s;"
+                                onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'"
+                                onmouseout="this.style.transform='';this.style.boxShadow=''">
+
+                                <i class="bi bi-geo-alt-fill mb-1"
+                                style="font-size:1.1rem;
+                                        color:{{ $p['delta'] ? '#0369a1' : '#166534' }};">
+                                </i>
+
+                                <div style="font-size:0.82rem;
+                                            font-weight:700;
+                                            color:{{ $p['delta'] ? '#0c4a6e' : '#14532d' }};
+                                            line-height:1.3;">
+                                    {{ $p['nume'] }}
+                                </div>
+
+                                @if($p['delta'])
+                                <div style="font-size:0.65rem;
+                                            color:#0369a1;
+                                            margin-top:3px;
+                                            font-weight:600;
+                                            opacity:0.8;">
+                                    Delta Dunării
+                                </div>
+                                @endif
+
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
         </div>
 
     </div>
