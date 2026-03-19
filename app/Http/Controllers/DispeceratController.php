@@ -208,6 +208,10 @@ class DispeceratController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->filled('continut_b64')) {
+            $request->merge(['continut' => base64_decode($request->continut_b64)]);
+        }
+
         $categorii = $this->categoriiPermise();
 
         $validated = $request->validate([
@@ -252,6 +256,10 @@ class DispeceratController extends Controller
 
     public function update(Request $request, int $id)
     {
+        if ($request->filled('continut_b64')) {
+            $request->merge(['continut' => base64_decode($request->continut_b64)]);
+        }
+
         $categorii = $this->categoriiPermise();
 
         $anunt = Anunt::whereIn('categorie', $categorii)->where('id', $id)->firstOrFail();

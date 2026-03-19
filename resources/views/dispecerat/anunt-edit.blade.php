@@ -31,6 +31,7 @@
                 <form id="form-editare" action="{{ route('dispecerat.anunturi.update', $anunt->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" name="continut_b64" id="continut-b64">
 
                     @php
                     $labels = [
@@ -91,7 +92,7 @@
                         @error('continut')
                             <div class="text-danger mb-1" style="font-size:0.875rem;">{{ $message }}</div>
                         @enderror
-                        <textarea name="continut" id="editor-continut"
+                        <textarea id="editor-continut"
                                   class="form-control @error('continut') is-invalid @enderror"
                                   rows="12">{{ old('continut', $anunt->continut) }}</textarea>
                     </div>
@@ -242,6 +243,11 @@ tinymce.init({
     },
     convert_urls: false,
     branding: false, promotion: false,
+});
+
+document.getElementById('form-editare').addEventListener('submit', function() {
+    var content = tinymce.get('editor-continut').getContent();
+    document.getElementById('continut-b64').value = btoa(unescape(encodeURIComponent(content)));
 });
 
 // Sterge fisier individual

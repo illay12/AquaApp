@@ -16,8 +16,9 @@
             </div>
             <div class="card-panel-body">
 
-                <form action="{{ route('dispecerat.anunturi.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="form-create" action="{{ route('dispecerat.anunturi.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="continut_b64" id="continut-b64">
 
                     {{-- TITLU --}}
                     <div class="mb-4">
@@ -122,8 +123,7 @@
                         </div>
                         @enderror
 
-                        <textarea name="continut"
-                                  id="editor-continut"
+                        <textarea id="editor-continut"
                                   class="form-control @error('continut') is-invalid @enderror"
                                   rows="12">{{ old('continut') }}</textarea>
                     </div>
@@ -293,6 +293,11 @@ tinymce.init({
     convert_urls: false,
     branding:false,
     promotion:false
+});
+
+document.getElementById('form-create').addEventListener('submit', function() {
+    var content = tinymce.get('editor-continut').getContent();
+    document.getElementById('continut-b64').value = btoa(unescape(encodeURIComponent(content)));
 });
 
 
