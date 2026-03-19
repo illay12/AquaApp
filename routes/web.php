@@ -154,6 +154,7 @@ Route::prefix('dispecerat')->name('dispecerat.')->group(function () {
         Route::put('/anunturi/{id}',      [DispeceratController::class, 'update'])->name('anunturi.update');
         Route::delete('/anunturi/{id}',   [DispeceratController::class, 'destroy'])->name('anunturi.destroy');
         Route::delete('/fisiere/{id}',    [DispeceratController::class, 'stergeFisier'])->name('fisiere.sterge');
+        Route::post('/upload-imagine',    [DispeceratController::class, 'uploadImagine'])->name('upload.imagine');
         Route::get('/buletin/create',     [DispeceratController::class, 'buletinCreate'])->name('buletin.create');
         Route::post('/buletin',           [DispeceratController::class, 'buletinStore'])->name('buletin.store');
         Route::delete('/buletin/{id}',    [DispeceratController::class, 'buletinDestroy'])->name('buletin.destroy');

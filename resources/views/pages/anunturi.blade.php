@@ -72,7 +72,7 @@ $categorieLabel = [
                                 {{ $anunt->titlu }}
                             </a>
                         </h5>
-                        <p class="text-muted mb-2" style="font-size:0.875rem;">{{ Str::limit(strip_tags($anunt->continut), 160) }}</p>
+                        <p class="text-muted mb-2" style="font-size:0.875rem;">{{ Str::limit(strip_tags(html_entity_decode($anunt->continut, ENT_QUOTES | ENT_HTML5, 'UTF-8')), 400) }}</p>
                         <a href="{{ url('/anunturi/' . $anunt->slug) }}" class="btn btn-sm btn-outline-aqua">
                             Citește mai mult <i class="bi bi-arrow-right ms-1"></i>
                         </a>

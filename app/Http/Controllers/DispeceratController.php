@@ -299,6 +299,19 @@ class DispeceratController extends Controller
             ->with('success', 'Anunțul și fișierele atașate au fost șterse.');
     }
 
+    public function uploadImagine(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
+        ]);
+
+        $cale = $request->file('file')->store('anunturi/imagini', 'public');
+
+        return response()->json([
+            'location' => Storage::disk('public')->url($cale),
+        ]);
+    }
+
     public function stergeFisier(int $id)
     {
         $categorii = $this->categoriiPermise();

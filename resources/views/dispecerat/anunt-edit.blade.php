@@ -19,8 +19,7 @@
                 <div class="d-flex gap-3 mb-4 p-2 px-3"
                      style="background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:0.82rem;color:#64748b;">
                     <span><i class="bi bi-calendar3 me-1"></i> Publicat: <strong>{{ $anunt->created_at->format('d.m.Y H:i') }}</strong></span>
-                    <span><i class="bi bi-link-45deg me-1"></i> Slug: <strong>{{ $anunt->slug }}</strong></span>
-                    <span class="ms-auto">
+<span class="ms-auto">
                         <a href="{{ url('/anunturi/'.$anunt->slug) }}" target="_blank"
                            style="color:#0077b6;text-decoration:none;">
                             <i class="bi bi-eye me-1"></i> Vezi pe site
@@ -211,9 +210,32 @@
 tinymce.init({
     selector: '#editor-continut',
     language: 'ro', height: 420, menubar: false,
-    plugins: ['advlist','autolink','lists','link','searchreplace','fullscreen','table','wordcount'],
-    toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link | table | removeformat | fullscreen',
+    plugins: ['advlist','autolink','lists','link','searchreplace','fullscreen','table','wordcount','image'],
+    toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
     content_style: 'body { font-family: Nunito, sans-serif; font-size: 15px; line-height: 1.8; }',
+    image_advtab: true,
+    image_uploadtab: true,
+    automatic_uploads: true,
+    images_upload_url: '{{ route('dispecerat.upload.imagine') }}',
+    images_upload_handler: function (blobInfo, progress) {
+        return new Promise(function (resolve, reject) {
+            var formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            formData.append('_token', '{{ csrf_token() }}');
+
+            fetch('{{ route('dispecerat.upload.imagine') }}', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.location) resolve(data.location);
+                else reject('Upload eșuat.');
+            })
+            .catch(function () { reject('Eroare la upload imagine.'); });
+        });
+    },
+    convert_urls: false,
     branding: false, promotion: false,
 });
 

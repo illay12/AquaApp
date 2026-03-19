@@ -256,12 +256,36 @@ tinymce.init({
         'advlist','autolink','lists',
         'link','searchreplace',
         'fullscreen','table',
-        'wordcount'
+        'wordcount','image'
     ],
 
     toolbar:
-        'undo redo | blocks | bold italic underline | bullist numlist | link | table | removeformat | fullscreen',
+        'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
 
+    image_advtab: true,
+    image_uploadtab: true,
+    automatic_uploads: true,
+    images_upload_url: '{{ route('dispecerat.upload.imagine') }}',
+    images_upload_handler: function (blobInfo, progress) {
+        return new Promise(function (resolve, reject) {
+            var formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            formData.append('_token', '{{ csrf_token() }}');
+
+            fetch('{{ route('dispecerat.upload.imagine') }}', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.location) resolve(data.location);
+                else reject('Upload eșuat.');
+            })
+            .catch(function () { reject('Eroare la upload imagine.'); });
+        });
+    },
+
+    convert_urls: false,
     branding:false,
     promotion:false
 });

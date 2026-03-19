@@ -308,15 +308,15 @@
                         </div>
                         <div style="flex:1; min-width:0;">
                             <div style="font-size:0.65rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.07em;font-weight:700;margin-bottom:0.25rem;">
-                                Structură
+                                Document
                             </div>
                             <div style="font-weight:800;color:#fff;font-size:0.9rem;">
-                                Organigrama actuală AQUASERV S.A.
+                                Plan Administrare AQUASERV 2020–2024
                             </div>
                         </div>
-                        <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
+                        <a href="{{ asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf') }}"
                            target="_blank" class="org-btn-primary">
-                            <i class="bi bi-eye"></i> Vezi organigrama
+                            <i class="bi bi-eye"></i> Vezi documentul
                         </a>
                     </div>
                 </div>
@@ -333,15 +333,15 @@
                         </div>
                         <div style="flex:1; min-width:0;">
                             <div style="font-size:0.65rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.07em;font-weight:700;margin-bottom:0.25rem;">
-                                Structură
+                                Document
                             </div>
                             <div style="font-weight:800;color:#fff;font-size:0.9rem;">
-                                Organigrama actuală AQUASERV S.A.
+                                Plan Administrare AQUASERV 2020–2024
                             </div>
                         </div>
-                        <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
+                        <a href="{{ asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf') }}"
                            target="_blank" class="org-btn-primary">
-                            <i class="bi bi-eye"></i> Vezi organigrama
+                            <i class="bi bi-eye"></i> Vezi documentul
                         </a>
                     </div>
                 </div>
