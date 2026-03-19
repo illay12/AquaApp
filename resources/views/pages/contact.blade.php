@@ -190,6 +190,28 @@
 .ct-gdpr { font-size: 0.78rem; color: #bbb; }
 .ct-gdpr a { color: #999; text-decoration: underline; }
 
+/* Upload zone */
+.ct-upload-zone {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .65rem .9rem;
+    border: 1.5px dashed #d0d8e8; border-radius: 9px;
+    background: #fafbfd; cursor: pointer;
+    font-size: 0.88rem; color: #888;
+    transition: border-color .18s, background .18s;
+}
+.ct-upload-zone:hover { border-color: var(--aqua-primary); background: #f0f6ff; color: var(--aqua-primary); }
+.ct-file-chip {
+    display: inline-flex; align-items: center; gap: .35rem;
+    background: #eef4ff; color: #0057a0; border-radius: 6px;
+    padding: .25rem .6rem; font-size: 0.82rem; font-weight: 600;
+    margin: .35rem .3rem 0 0;
+}
+.ct-file-chip button {
+    background: none; border: none; padding: 0; line-height: 1;
+    color: #0057a0; cursor: pointer; font-size: .85rem;
+    display: flex; align-items: center;
+}
+
 .ct-success {
     background: #f0fdf4; border: 1.5px solid #bbf7d0;
     border-radius: 9px; padding: .8rem 1rem; margin-bottom: 1rem;
@@ -357,7 +379,7 @@
                         <i class="bi bi-check-circle-fill"></i> {{ session('success') }}
                     </div>
                 @endif
-                <form action="{{ route('contact.trimite') }}" method="POST">
+                <form action="{{ route('contact.trimite') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="ct-field">
                         <label>Nume complet <span style="color:#dc2626">*</span></label>
@@ -371,8 +393,9 @@
                     </div>
                     <div class="ct-2col">
                         <div class="ct-field">
-                            <label>Telefon</label>
-                            <input type="tel" name="telefon" value="{{ old('telefon') }}" placeholder="07xx xxx xxx">
+                            <label>Telefon <span style="color:#dc2626">*</span></label>
+                            <input type="tel" name="telefon" value="{{ old('telefon') }}" required placeholder="07xx xxx xxx">
+                            @error('telefon')<div class="err">{{ $message }}</div>@enderror
                         </div>
                         <div class="ct-field">
                             <label>Tip solicitare <span style="color:#dc2626">*</span></label>
@@ -388,9 +411,28 @@
                     </div>
                     <div class="ct-field">
                         <label>Mesaj <span style="color:#dc2626">*</span></label>
-                        <textarea name="mesaj" required rows="6" placeholder="Descrieți solicitarea dvs...">{{ old('mesaj') }}</textarea>
+                        <textarea name="mesaj" required rows="5" placeholder="Descrieți solicitarea dvs...">{{ old('mesaj') }}</textarea>
                         @error('mesaj')<div class="err">{{ $message }}</div>@enderror
                     </div>
+
+                    {{-- Atașamente --}}
+                    <div class="ct-field">
+                        <label>Atașamente <span style="color:#aaa;font-weight:600;text-transform:none;letter-spacing:0;">(opțional — max. 3 fișiere, 5 MB fiecare)</span></label>
+                        <label for="fisiere-input" class="ct-upload-zone" id="upload-zone">
+                            <i class="bi bi-paperclip" style="font-size:1.1rem;color:var(--aqua-primary);"></i>
+                            <span id="upload-text">PDF, JPG, PNG, DOC, DOCX</span>
+                        </label>
+                        <input type="file" id="fisiere-input" name="fisiere[]" multiple
+                               accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                               style="display:none;" onchange="arataFisiere(this)">
+                        <div id="fisiere-list"></div>
+                        @error('fisiere')<div class="err">{{ $message }}</div>@enderror
+                        @error('fisiere.*')<div class="err">{{ $message }}</div>@enderror
+                        @error('fisiere.0')<div class="err">{{ $message }}</div>@enderror
+                        @error('fisiere.1')<div class="err">{{ $message }}</div>@enderror
+                        @error('fisiere.2')<div class="err">{{ $message }}</div>@enderror
+                    </div>
+
                     <div class="ct-submit-row">
                         <button type="submit" class="ct-btn">
                             <i class="bi bi-send"></i> Trimite mesajul
@@ -478,7 +520,7 @@
             <div class="ct-card">
                 @php
                 $aud = [
-                    ['n'=>'Ifrim Cătrinescu Valentin','i'=>'IC','r'=>'Director General', 'e'=>'director.general@aquaservtulcea.ro','z'=>'Marți'],
+                    ['n'=>'Ifrim Catrinescu Valentin','i'=>'IC','r'=>'Director General', 'e'=>'director.general@aquaservtulcea.ro','z'=>'Marți'],
                     ['n'=>'Ilie George',              'i'=>'IG','r'=>'Inginer Șef',      'e'=>'director.tehnic@aquaservtulcea.ro', 'z'=>'Miercuri'],
                     ['n'=>'Matei Selda Georgiana',    'i'=>'MS','r'=>'Director Economic','e'=>'director.economic@aquaservtulcea.ro','z'=>'Joi'],
                 ];
@@ -505,39 +547,56 @@
             <div style="font-size:0.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--aqua-primary);margin-bottom:.4rem;">Localizare</div>
             <div style="font-size:1.15rem;font-weight:800;color:#111;margin-bottom:1rem;">Adrese</div>
             <div class="ct-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2839.5!2d28.8019!3d45.1767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDEwJzM2LjEiTiAyOMKwNDgnMDcuNCJF!5e0!3m2!1sro!2sro!4v1"
-                    width="100%" height="200" style="border:0;display:block;" allowfullscreen="" loading="lazy">
-                </iframe>
+                {{-- Iframuri Google Maps --}}
+                <div style="position:relative;height:260px;">
+                    <iframe id="map-sediu"
+                        src="https://maps.google.com/maps?q=45.1669467,28.793184&output=embed&hl=ro&z=17"
+                        style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;" allowfullscreen loading="lazy">
+                    </iframe>
+                    <iframe id="map-contractare"
+                        src="https://maps.google.com/maps?q=45.1784283,28.8015393&output=embed&hl=ro&z=17"
+                        style="position:absolute;inset:0;width:100%;height:100%;border:0;display:none;" allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+
+                {{-- Adrese — funcționează și ca tab switcher --}}
                 <div style="background:#fff;border-top:1px solid #e4e9f0;">
-                    <a href="https://maps.google.com/?q=Str.+Rezervorului+2+Tulcea" target="_blank"
-                       style="display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border-bottom:1px solid #f0f4f8;text-decoration:none;transition:background .15s;"
-                       onmouseover="this.style.background='#f7f9fc'" onmouseout="this.style.background='transparent'">
+                    <button id="tab-sediu" onclick="switchMap('sediu')"
+                        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border:none;border-bottom:1px solid #f0f4f8;text-align:left;cursor:pointer;background:#fff;border-left:3px solid var(--aqua-primary);transition:background .15s;"
+                        onmouseover="this.style.background='#f7f9fc'" onmouseout="this.style.background='#fff'">
                         <div style="display:flex;align-items:center;gap:.6rem;">
                             <div style="width:30px;height:30px;border-radius:8px;background:#eef4ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                 <i class="bi bi-building" style="color:var(--aqua-primary);font-size:.85rem;"></i>
                             </div>
                             <div>
                                 <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:1px;">Secretariat & Sediu central</div>
-                                <div style="font-size:0.9rem;font-weight:700;color:#111;">Str. Rezervorului, nr. 2, Tulcea</div>
+                                <div class="map-label" style="font-size:0.9rem;font-weight:700;color:#111;">Str. Rezervorului, nr. 2, Tulcea</div>
                             </div>
                         </div>
-                        <i class="bi bi-box-arrow-up-right" style="color:var(--aqua-primary);font-size:.85rem;flex-shrink:0;"></i>
-                    </a>
-                    <a href="https://maps.google.com/?q=Str.+Tudor+Vladimirescu+2+Tulcea" target="_blank"
-                       style="display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;text-decoration:none;transition:background .15s;"
-                       onmouseover="this.style.background='#f7f9fc'" onmouseout="this.style.background='transparent'">
+                        <a href="https://maps.app.goo.gl/jDibWxXwgdk4kuQr5" target="_blank" rel="noopener noreferrer"
+                           onclick="event.stopPropagation()"
+                           style="color:var(--aqua-primary);font-size:.85rem;flex-shrink:0;padding:.2rem .3rem;">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                    </button>
+                    <button id="tab-contractare" onclick="switchMap('contractare')"
+                        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border:none;text-align:left;cursor:pointer;background:#fff;border-left:3px solid transparent;transition:background .15s;"
+                        onmouseover="this.style.background='#f7f9fc'" onmouseout="this.style.background='#fff'">
                         <div style="display:flex;align-items:center;gap:.6rem;">
-                            <div style="width:30px;height:30px;border-radius:8px;background:#eef4ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                <i class="bi bi-receipt" style="color:var(--aqua-primary);font-size:.85rem;"></i>
+                            <div style="width:30px;height:30px;border-radius:8px;background:#f0f4f8;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="bi bi-receipt" style="color:var(--aqua-gray);font-size:.85rem;"></i>
                             </div>
                             <div>
                                 <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#999;margin-bottom:1px;">Contractare & Facturare</div>
-                                <div style="font-size:0.9rem;font-weight:700;color:#111;">Str. Tudor Vladimirescu, nr. 2, Tulcea</div>
+                                <div class="map-label" style="font-size:0.9rem;font-weight:700;color:#555;">Str. Tudor Vladimirescu, nr. 2, Tulcea</div>
                             </div>
                         </div>
-                        <i class="bi bi-box-arrow-up-right" style="color:var(--aqua-primary);font-size:.85rem;flex-shrink:0;"></i>
-                    </a>
+                        <a href="https://maps.app.goo.gl/xHE8Sg9AvG62xqqt5" target="_blank" rel="noopener noreferrer"
+                           onclick="event.stopPropagation()"
+                           style="color:var(--aqua-primary);font-size:.85rem;flex-shrink:0;padding:.2rem .3rem;">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -558,6 +617,88 @@
                 window.scrollTo({ top: top, behavior: 'smooth' });
             }, 200);
         }
+
+        // Mesaje validare browser în română
+        const mesaje = {
+            nume:    { valueMissing: 'Numele este obligatoriu.', tooShort: 'Numele trebuie să aibă cel puțin 3 caractere.' },
+            email:   { valueMissing: 'Adresa de email este obligatorie.', typeMismatch: 'Introduceți o adresă de email validă (ex: nume@domeniu.ro).' },
+            telefon: { valueMissing: 'Numărul de telefon este obligatoriu.' },
+            subiect: { valueMissing: 'Vă rugăm să alegeți un tip de solicitare.' },
+            mesaj:   { valueMissing: 'Mesajul este obligatoriu.', tooShort: 'Mesajul trebuie să aibă cel puțin 10 caractere.' },
+        };
+
+        document.querySelectorAll('#formular-contact [name]').forEach(function(field) {
+            field.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                const reg = mesaje[field.name];
+                if (!reg) return;
+                const v = field.validity;
+                field.setCustomValidity(
+                    v.valueMissing  ? (reg.valueMissing  || '') :
+                    v.typeMismatch  ? (reg.typeMismatch  || '') :
+                    v.tooShort      ? (reg.tooShort      || '') :
+                    v.tooLong       ? (reg.tooLong       || '') :
+                    v.patternMismatch ? (reg.patternMismatch || '') :
+                    ''
+                );
+                field.reportValidity();
+            });
+            field.addEventListener('input', function() {
+                field.setCustomValidity('');
+            });
+            field.addEventListener('change', function() {
+                field.setCustomValidity('');
+            });
+        });
     });
+
+    function arataFisiere(input) {
+        const list  = document.getElementById('fisiere-list');
+        const text  = document.getElementById('upload-text');
+        const zone  = document.getElementById('upload-zone');
+        const files = Array.from(input.files).slice(0, 3);
+
+        list.innerHTML = '';
+
+        if (files.length === 0) {
+            text.textContent = 'PDF, JPG, PNG, DOC, DOCX';
+            zone.querySelector('i').className = 'bi bi-paperclip';
+            return;
+        }
+
+        text.textContent = files.length === 1 ? '1 fișier selectat' : files.length + ' fișiere selectate';
+        zone.querySelector('i').className = 'bi bi-check-circle-fill';
+        zone.querySelector('i').style.color = '#16a34a';
+
+        files.forEach(function(f) {
+            const chip = document.createElement('span');
+            chip.className = 'ct-file-chip';
+            const ext = f.name.split('.').pop().toUpperCase();
+            chip.innerHTML = '<i class="bi bi-file-earmark-text"></i>' + f.name
+                + ' <span style="opacity:.6;font-weight:400;">(' + ext + ')</span>';
+            list.appendChild(chip);
+        });
+    }
+
+    function switchMap(which) {
+        const isSediu = which === 'sediu';
+
+        document.getElementById('map-sediu').style.display       = isSediu ? 'block' : 'none';
+        document.getElementById('map-contractare').style.display = isSediu ? 'none'  : 'block';
+
+        const tabSediu       = document.getElementById('tab-sediu');
+        const tabContractare = document.getElementById('tab-contractare');
+
+        tabSediu.style.borderLeft       = isSediu ? '3px solid var(--aqua-primary)' : '3px solid transparent';
+        tabSediu.style.background       = isSediu ? '#fff' : '#fff';
+        tabSediu.querySelector('.map-label').style.color = isSediu ? '#111' : '#555';
+        tabSediu.querySelector('div > div').style.background    = isSediu ? '#eef4ff' : '#f0f4f8';
+        tabSediu.querySelector('i').style.color                 = isSediu ? 'var(--aqua-primary)' : 'var(--aqua-gray)';
+
+        tabContractare.style.borderLeft = isSediu ? '3px solid transparent' : '3px solid var(--aqua-primary)';
+        tabContractare.querySelector('.map-label').style.color  = isSediu ? '#555' : '#111';
+        tabContractare.querySelector('div > div').style.background  = isSediu ? '#f0f4f8' : '#eef4ff';
+        tabContractare.querySelector('i').style.color               = isSediu ? 'var(--aqua-gray)' : 'var(--aqua-primary)';
+    }
 </script>
 @endpush

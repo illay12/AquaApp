@@ -113,6 +113,28 @@
             font-weight: 700 !important;
             border-left: 3px solid var(--aqua-primary) !important;
         }
+        /* Nested submenu */
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu .dropdown-menu {
+            top: 0; left: 100%; margin-top: -3px;
+            display: block !important;
+            opacity: 0 !important; visibility: hidden !important;
+            transform: translateX(6px);
+            pointer-events: none !important;
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+        }
+        .dropdown-submenu:hover .dropdown-menu {
+            opacity: 1 !important; visibility: visible !important;
+            transform: translateX(0);
+            pointer-events: auto !important;
+        }
+        .dropdown-submenu > .dropdown-item::after {
+            content: ''; display: inline-block;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 4px solid currentColor;
+            margin-left: auto; float: right; margin-top: 4px;
+        }
     </style>
 
     @stack('styles')
@@ -132,8 +154,7 @@
                 <i class="bi bi-clock-fill me-1"></i> Lun–Vin: 07:30 – 16:00
             </div>
             <div>
-                <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="me-2"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.facebook.com/AquaservTulcea/" class="me-2"><i class="bi bi-facebook"></i></a>
                 <span class="mx-2">|</span>
                 <i class="bi bi-geo-alt-fill me-1"></i> Județul Tulcea
             </div>
@@ -206,6 +227,18 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
                                 <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item {{ request()->is('integritate*') ? 'active' : '' }}" href="#">
+                                    <i class="bi bi-shield-check text-aqua me-2"></i>Integritate
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="https://declaratii.integritate.eu/" target="_blank" rel="noopener noreferrer">
+                                            <i class="bi bi-file-earmark-person text-aqua me-2"></i>Declarații de avere
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/calitatea-apei*') ? 'active' : '' }}" href="{{ url('/informatii/calitatea-apei') }}">
                                 <i class="bi bi-clipboard2-pulse text-aqua me-2"></i>Calitatea apei</a></li>
@@ -324,6 +357,14 @@
                                 <i class="bi bi-chevron-down" id="iconInfo" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
                             </button>
                             <div id="subInfo" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
+                                <a href="{{ url('/program-casierii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-clock text-aqua"></i> Program casierii
+                                </a>
+                                {{-- Integritate submeniu in mobil --}}
+                                <div style="padding:0.4rem 1.5rem 0.2rem 2.5rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0077b6;">Integritate</div>
+                                <a href="https://declaratii.integritate.eu/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 3rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-file-earmark-person text-aqua"></i> Declarații de avere
+                                </a>
                                 <a href="{{ url('/informatii/calitatea-apei') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-droplet-half text-aqua"></i> Calitatea apei
                                 </a>
@@ -347,9 +388,6 @@
                                 </a>
                                 <a href="{{ url('/informatii/surse-buget-bilant') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-bar-chart-line text-aqua"></i> Surse, Buget, Bilanț
-                                </a>
-                                <a href="{{ url('/program-casierii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-clock text-aqua"></i> Program casierii
                                 </a>
                             </div>
                         </div>
@@ -494,6 +532,13 @@
         document.body.style.overflow = '';
         setTimeout(() => { menu.style.display = 'none'; }, 300);
     }
+    // Previne Bootstrap sa inchida dropdown-ul parinte la click pe Integritate
+    document.querySelectorAll('.dropdown-submenu > .dropdown-item').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
     function toggleSubmeniu(id) {
         const iconMap = {
             'subServicii': 'iconServicii',

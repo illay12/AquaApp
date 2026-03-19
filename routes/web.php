@@ -79,6 +79,16 @@ Route::prefix('informatii')->name('informatii.')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
+| INTEGRITATE
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('integritate')->name('integritate.')->group(function () {
+    Route::view('/declaratii-de-avere', 'pages.integritate.declaratii-de-avere')->name('declaratii-de-avere');
+});
+
+/*
+|--------------------------------------------------------------------------
 | CONTACT
 |--------------------------------------------------------------------------
 */

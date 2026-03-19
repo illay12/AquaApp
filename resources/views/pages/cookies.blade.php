@@ -277,8 +277,8 @@
                             <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.25rem;">Întrebări despre cookie-uri?</div>
                             <div style="font-family:'Merriweather',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.75rem;">Ne puteți contacta oricând</div>
                             <div class="d-flex flex-wrap gap-2">
-                                <a href="mailto:office@aquaservtulcea.ro" style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:0.35rem 0.9rem;color:#fff;text-decoration:none;font-size:0.82rem;">
-                                    <i class="bi bi-envelope-fill"></i> office@aquaservtulcea.ro
+                                <a href="mailto: secretariat@aquaservtulcea.ro" style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:0.35rem 0.9rem;color:#fff;text-decoration:none;font-size:0.82rem;">
+                                    <i class="bi bi-envelope-fill"></i>  secretariat@aquaservtulcea.ro
                                 </a>
                                 <a href="{{ url('/contact') }}" style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:0.35rem 0.9rem;color:#fff;text-decoration:none;font-size:0.82rem;">
                                     <i class="bi bi-arrow-right-circle-fill"></i> Formular contact
