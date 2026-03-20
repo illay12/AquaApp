@@ -18,11 +18,6 @@
            style="{{ request()->is('servicii/epurare') ? 'background:var(--aqua-primary);border-color:var(--aqua-primary);' : '' }}">
             <i class="bi bi-recycle"></i> Epurare ape uzate
         </a>
-        <a href="{{ url('/servicii/avize') }}"
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2 {{ request()->is('servicii/avize') ? 'active' : '' }}"
-           style="{{ request()->is('servicii/avize') ? 'background:var(--aqua-primary);border-color:var(--aqua-primary);' : '' }}">
-            <i class="bi bi-file-earmark-check-fill"></i> Avize și autorizații
-        </a>
     </div>
 </div>
 

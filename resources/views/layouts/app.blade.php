@@ -22,7 +22,7 @@
             --aqua-gray:      #6c757d;
             --aqua-border:    #caf0f8;
         }
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; }l,
         body { font-family: 'Nunito', sans-serif; font-size: 17px; color: var(--aqua-text); background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; }
         main { flex: 1; }
         p { font-size: 1.05rem; line-height: 1.75; }
@@ -499,9 +499,7 @@
                         </a>
                     </p>
                     <div class="d-flex gap-2 mt-3">
-                        <a href="#" class="btn btn-sm btn-outline-light"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-light"><i class="bi bi-youtube"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-light"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/AquaservTulcea/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light"><i class="bi bi-facebook"></i></a>
                     </div>
                 </div>
             </div>
