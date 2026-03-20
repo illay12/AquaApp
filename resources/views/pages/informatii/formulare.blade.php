@@ -43,7 +43,7 @@
                         'bi-tools','Diverse',
                         [
                             ['Cerere verificare metrologică contor','pdf','formulare/cerere-verificare-metrologica.pdf'],
-                            ['Înlocuire apometru','pdf','formulare/inlocuire-apometru.pdf'],
+                            ['Cerere solicitare servicii','pdf','formulare/cerere-solicitare-servicii.pdf'],
 
                         ]
                     ],
