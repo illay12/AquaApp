@@ -364,10 +364,16 @@
                                     <i class="bi bi-clock text-aqua"></i> Program casierii
                                 </a>
                                 {{-- Integritate submeniu in mobil --}}
-                                <div style="padding:0.4rem 1.5rem 0.2rem 2.5rem;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0077b6;">Integritate</div>
-                                <a href="https://declaratii.integritate.eu/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 3rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-file-earmark-person text-aqua"></i> Declarații de avere
-                                </a>
+                                <button onclick="toggleSubmeniu('subIntegritate')" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;border-left:none;color:#374151;font-weight:600;font-size:0.85rem;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-shield-check text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
+                                    <span style="flex:1;">Integritate</span>
+                                    <i class="bi bi-chevron-down" id="iconIntegritate" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
+                                </button>
+                                <div id="subIntegritate" style="display:none;background:#f0f8ff;">
+                                    <a href="https://declaratii.integritate.eu/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 3.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-person text-aqua"></i> Declarații de avere
+                                    </a>
+                                </div>
                                 <a href="{{ url('/informatii/calitatea-apei') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-droplet-half text-aqua"></i> Calitatea apei
                                 </a>
@@ -542,9 +548,10 @@
     });
     function toggleSubmeniu(id) {
         const iconMap = {
-            'subServicii': 'iconServicii',
-            'subInfo':     'iconInfo',
-            'subDespre':   'iconDespre',
+            'subServicii':    'iconServicii',
+            'subInfo':        'iconInfo',
+            'subDespre':      'iconDespre',
+            'subIntegritate': 'iconIntegritate',
         };
         const sub    = document.getElementById(id);
         const icon   = document.getElementById(iconMap[id]);
