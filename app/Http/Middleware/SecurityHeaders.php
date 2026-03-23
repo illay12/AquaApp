@@ -17,7 +17,7 @@ class SecurityHeaders
             "script-src 'self' 'unsafe-inline' cdn.jsdelivr.net",
             "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com",
             "font-src 'self' fonts.gstatic.com cdn.jsdelivr.net",
-            "img-src 'self' data: blob:",
+            "img-src * data: blob:",
             "connect-src 'self'",
             "frame-ancestors 'self'",
             "base-uri 'self'",
