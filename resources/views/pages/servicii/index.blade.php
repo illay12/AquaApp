@@ -62,20 +62,4 @@
     </div>
 </section>
 
-<section style="padding:2rem 0 3.5rem;">
-    <div class="container">
-        <h2 class="section-title mb-4"><i class="bi bi-file-earmark-text me-2"></i>Tarife</h2>
-        <div class="card p-4">
-            <h5 style="font-family:'Merriweather',serif;" class="mb-3">
-                Tarife noi — Anul 2025
-                <small class="text-muted fw-normal fs-6 ms-2">(actualizat 25.04.2025)</small>
-            </h5>
-            <ul class="list-unstyled mb-0">
-                <li class="mb-2"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Tarife servicii și închiriere utilaje 2025</li>
-                <li class="mb-2"><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Hotărârea 131 din 14.04.2025 – Modificare tarife servicii conexe</li>
-                <li><i class="bi bi-file-earmark-pdf-fill text-danger me-2"></i>Notă de fundamentare tarife 2025</li>
-            </ul>
-        </div>
-    </div>
-</section>
 @endsection
