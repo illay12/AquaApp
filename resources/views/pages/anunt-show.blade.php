@@ -137,6 +137,8 @@
     .anunt-continut ul, .anunt-continut ol { padding-left: 1.5rem; margin-bottom: 1.2rem; }
     .anunt-continut li { margin-bottom: 0.4rem; }
     .anunt-continut strong { color: var(--aqua-dark); }
+    .anunt-continut img { max-width: 100%; height: auto; display: block; margin: 1rem auto; border-radius: 6px; }
+    .anunt-continut table { max-width: 100%; overflow-x: auto; display: block; }
     @media print {
         nav, footer, .col-lg-4 { display: none !important; }
         .col-lg-8 { width: 100% !important; }
