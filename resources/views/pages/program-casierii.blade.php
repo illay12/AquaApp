@@ -52,7 +52,7 @@
 @media(max-width:575px)  { .pc-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════
-   CARD CASERIE
+   CARD CASIERIE
 ═══════════════════════════════════════ */
 .pc-card {
     background: #fff;
@@ -202,7 +202,7 @@
             <div class="pc-card-head tulcea">
                 <div class="pc-card-ico"><i class="bi bi-building"></i></div>
                 <div>
-                    <div class="pc-card-name">Caserie Tulcea</div>
+                    <div class="pc-card-name">Casierie Tulcea</div>
                     <div class="pc-card-sub">Sediu central</div>
                 </div>
             </div>
@@ -232,7 +232,7 @@
             <div class="pc-card-head isaccea">
                 <div class="pc-card-ico"><i class="bi bi-building"></i></div>
                 <div>
-                    <div class="pc-card-name">Caserie Isaccea</div>
+                    <div class="pc-card-name">Casierie Isaccea</div>
                     <div class="pc-card-sub">Centru Operațional</div>
                 </div>
             </div>
@@ -262,7 +262,7 @@
             <div class="pc-card-head macin">
                 <div class="pc-card-ico"><i class="bi bi-building"></i></div>
                 <div>
-                    <div class="pc-card-name">Caserie Măcin</div>
+                    <div class="pc-card-name">Casierie Măcin</div>
                     <div class="pc-card-sub">Centru Operațional</div>
                 </div>
             </div>
@@ -292,7 +292,7 @@
             <div class="pc-card-head sulina">
                 <div class="pc-card-ico"><i class="bi bi-building"></i></div>
                 <div>
-                    <div class="pc-card-name">Caserie Sulina</div>
+                    <div class="pc-card-name">Casierie Sulina</div>
                     <div class="pc-card-sub">Centru Operațional</div>
                 </div>
             </div>
@@ -321,7 +321,7 @@
             <div class="pc-card-head babadag">
                 <div class="pc-card-ico"><i class="bi bi-building"></i></div>
                 <div>
-                    <div class="pc-card-name">Caserie Babadag</div>
+                    <div class="pc-card-name">Casierie Babadag</div>
                     <div class="pc-card-sub">Centru Operațional</div>
                 </div>
             </div>
