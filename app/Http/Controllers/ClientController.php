@@ -113,7 +113,7 @@ class ClientController extends Controller
     public function trimiteIndex(Request $request)
     {
         $zi = (int) now()->format('d');
-        if ($zi < 10 || $zi > 20) {
+        if ($zi <= 30 || $zi >= 0) {
             $mesaj = 'Transmiterea indexului este posibilă doar în perioada 10–20 a fiecărei luni.';
             if ($request->expectsJson() || $request->ajax()) {
                 return response()->json(['success' => false, 'mesaj' => $mesaj], 422);
