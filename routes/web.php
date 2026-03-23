@@ -95,7 +95,7 @@ Route::prefix('integritate')->name('integritate.')->group(function () {
 
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/',        [ContactController::class, 'index'])->name('index');
-    Route::post('/trimite',[ContactController::class, 'trimite'])->name('trimite');
+    Route::post('/trimite',[ContactController::class, 'trimite'])->middleware('throttle:5,1')->name('trimite');
 });
 
 /*
@@ -120,7 +120,7 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::get('/factura',       [ClientController::class, 'factura'])->name('factura');
     Route::get('/contoare',      [ClientController::class, 'getContoare'])->middleware('throttle:30,1')->name('contoare');
     Route::get('/index-contor',  [ClientController::class, 'indexContor'])->name('index-contor');
-    Route::post('/index-contor', [ClientController::class, 'trimiteIndex'])->name('index-contor.post');
+    Route::post('/index-contor', [ClientController::class, 'trimiteIndex'])->middleware('throttle:10,1')->name('index-contor.post');
     Route::get('/avarie',        [ClientController::class, 'avarie'])->name('avarie');
     Route::post('/avarie',       [ClientController::class, 'trimiteAvarie'])->name('avarie.post');
     Route::get('/contract',      [ClientController::class, 'contract'])->name('contract');

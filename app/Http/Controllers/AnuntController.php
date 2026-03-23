@@ -13,6 +13,11 @@ class AnuntController extends Controller
      */
     public function index(Request $request)
     {
+        $request->validate([
+            'q'         => 'nullable|string|max:255',
+            'categorie' => 'nullable|string|max:50',
+        ]);
+
         $query = Anunt::latest();
 
         if ($request->filled('q')) {

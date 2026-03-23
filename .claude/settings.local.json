@@ -14,7 +14,13 @@
       "Bash(curl -L -o \"Reclamatie-administrativa.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2019/10/Reclamatie-administrativa.pdf\")",
       "Bash(curl -L -o \"Reclamatie-administrativa2.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2019/10/Reclamatie-administrativa2.pdf\")",
       "Bash(curl -L -o \"Solicitare-informatii-de-interes-public.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2019/10/Solicitare-informatii-de-interes-public.pdf\")",
-      "Bash(curl -L -o \"Buletin-informativ-2020.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2021/04/Buletin-informativ-2020.pdf\")"
+      "Bash(curl -L -o \"Buletin-informativ-2020.pdf\" \"https://www.aquaservtulcea.ro/wp-content/uploads/2021/04/Buletin-informativ-2020.pdf\")",
+      "Bash(php -l app/Http/Middleware/SecurityHeaders.php)",
+      "Bash(php -l app/Http/Controllers/AdminController.php)",
+      "Bash(php -l app/Providers/AppServiceProvider.php)",
+      "Bash(grep -A 20 '\"\"scripts\"\"' composer.json)",
+      "Bash(rm -f vite.config.js package.json package-lock.json resources/css/app.css resources/js/app.js resources/js/bootstrap.js)",
+      "Bash(rm -rf node_modules)"
     ],
     "additionalDirectories": [
       "c:\\laragon\\www\\aquaApp\\public\\fisiere\\legea544"

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use App\Models\Contor;
 use App\Models\Client;
@@ -111,6 +112,15 @@ class ClientController extends Controller
      */
     public function trimiteIndex(Request $request)
     {
+        $zi = (int) now()->format('d');
+        if ($zi < 10 || $zi > 20) {
+            $mesaj = 'Transmiterea indexului este posibilă doar în perioada 10–20 a fiecărei luni.';
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json(['success' => false, 'mesaj' => $mesaj], 422);
+            }
+            return redirect()->route('client.index-contor')->withErrors(['general' => $mesaj]);
+        }
+
         $validated = $request->validate([
             'cod_client' => 'required|string|max:20',
             'telefon'    => 'nullable|string|max:20',
@@ -139,6 +149,15 @@ class ClientController extends Controller
         }
 
         $contor->update(['index_nou' => $validated['index_nou']]);
+
+        Log::info('[AUDIT] Index contor transmis', [
+            'contor_id'    => $contor->id,
+            'serie_contor' => $contor->serie_contor,
+            'cod_client'   => $validated['cod_client'],
+            'index_vechi'  => $contor->index_vechi,
+            'index_nou'    => $validated['index_nou'],
+            'ip'           => $request->ip(),
+        ]);
 
         // Actualizam telefonul si emailul clientului cu datele introduse
         Client::gasesteDupaCod(strtoupper(trim($validated['cod_client'])))

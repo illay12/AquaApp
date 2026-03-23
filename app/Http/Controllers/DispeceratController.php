@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Anunt;
 use App\Models\AnuntFisier;
@@ -231,8 +232,16 @@ class DispeceratController extends Controller
 
         $anunt = Anunt::create([
             'titlu'     => $validated['titlu'],
-            'continut'  => $validated['continut'],
+            'continut'  => clean($validated['continut']),
             'categorie' => $validated['categorie'],
+        ]);
+
+        Log::info('[AUDIT] Anunț creat', [
+            'anunt_id'  => $anunt->id,
+            'titlu'     => $anunt->titlu,
+            'categorie' => $anunt->categorie,
+            'operator'  => session('dispecerat_user'),
+            'ip'        => request()->ip(),
         ]);
 
         $this->salveazaFisiere($anunt, $request);
@@ -281,8 +290,16 @@ class DispeceratController extends Controller
 
         $anunt->update([
             'titlu'     => $validated['titlu'],
-            'continut'  => $validated['continut'],
+            'continut'  => clean($validated['continut']),
             'categorie' => $validated['categorie'],
+        ]);
+
+        Log::info('[AUDIT] Anunț editat', [
+            'anunt_id'  => $anunt->id,
+            'titlu'     => $anunt->titlu,
+            'categorie' => $anunt->categorie,
+            'operator'  => session('dispecerat_user'),
+            'ip'        => request()->ip(),
         ]);
 
         $this->salveazaFisiere($anunt, $request);
@@ -300,6 +317,13 @@ class DispeceratController extends Controller
         foreach ($anunt->fisiere as $fisier) {
             Storage::disk('public')->delete($fisier->cale);
         }
+
+        Log::info('[AUDIT] Anunț șters', [
+            'anunt_id'  => $anunt->id,
+            'titlu'     => $anunt->titlu,
+            'operator'  => session('dispecerat_user'),
+            'ip'        => request()->ip(),
+        ]);
 
         $anunt->delete();
 

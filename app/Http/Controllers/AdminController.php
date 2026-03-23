@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Models\Contor;
 use Carbon\Carbon;
 
@@ -99,6 +100,15 @@ class AdminController extends Controller
 
         $prefix = 'indecsi_' . $an . '_' . str_pad($luna, 2, '0', STR_PAD_LEFT);
 
+        Log::info('[AUDIT] Export indecși', [
+            'luna'   => $luna,
+            'an'     => $an,
+            'format' => $format,
+            'count'  => $contoare->count(),
+            'admin'  => Auth::user()?->username ?? Auth::user()?->email,
+            'ip'     => $request->ip(),
+        ]);
+
         if ($format === 'xlsx') {
             return $this->exportXlsx($contoare, $prefix, $luna, $an);
         }
@@ -187,6 +197,15 @@ class AdminController extends Controller
         if (count($erori) > 0) {
             $mesaj .= " <strong>" . count($erori) . "</strong> erori de format.";
         }
+
+        Log::info('[AUDIT] Import indecși', [
+            'fisier'     => $file->getClientOriginalName(),
+            'actualizate' => $actualizate,
+            'negasite'   => count($negasite),
+            'erori'      => count($erori),
+            'admin'      => Auth::user()?->username ?? Auth::user()?->email,
+            'ip'         => $request->ip(),
+        ]);
 
         $tip = ($actualizate > 0) ? 'success' : 'warning';
 

@@ -124,7 +124,7 @@
                             <button type="button"
                                     class="btn btn-sm btn-outline-danger"
                                     title="Șterge fișierul"
-                                    onclick="stergeFisierExistent({{ $fisier->id }}, '{{ addslashes($fisier->nume_original) }}')">
+                                    onclick="stergeFisierExistent({{ $fisier->id }}, {{ json_encode($fisier->nume_original) }})">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </div>

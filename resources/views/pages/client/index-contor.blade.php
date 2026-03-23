@@ -209,6 +209,12 @@
 
 @push('scripts')
 <script>
+function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = String(str ?? '');
+    return d.innerHTML;
+}
+
 let indexVechiSelectat = 0;
 let dateCurente = { codClient:'', telefon:'', email:'', contorId:null, serieContor:'', indexNouExistent:null };
 
@@ -350,12 +356,12 @@ function construiesteCardNormal(serie, adresa, vechi) {
         '<div style="width:38px;height:38px;min-width:38px;background:#f0f8ff;border-radius:10px;display:flex;align-items:center;justify-content:center;">' +
             '<i class="bi bi-speedometer2" style="font-size:1.1rem;color:var(--aqua-primary);"></i></div>' +
         '<div style="flex:1;min-width:0;">' +
-            '<div style="font-weight:800;font-size:0.875rem;color:var(--aqua-dark);">' + serie + '</div>' +
-            '<div style="font-size:0.75rem;color:#6c757d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + adresa + '</div>' +
+            '<div style="font-weight:800;font-size:0.875rem;color:var(--aqua-dark);">' + esc(serie) + '</div>' +
+            '<div style="font-size:0.75rem;color:#6c757d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + esc(adresa) + '</div>' +
         '</div>' +
         '<div style="text-align:right;flex-shrink:0;">' +
             '<div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;">Index anterior</div>' +
-            '<div style="font-weight:800;font-size:1rem;color:var(--aqua-primary);">' + vechi + ' <span style="font-size:0.65rem;font-weight:400;">m³</span></div>' +
+            '<div style="font-weight:800;font-size:1rem;color:var(--aqua-primary);">' + esc(vechi) + ' <span style="font-size:0.65rem;font-weight:400;">m³</span></div>' +
         '</div></div>';
 }
 
@@ -364,13 +370,13 @@ function construiesteCardTrimis(serie, adresa, vechi, nou) {
         '<div style="width:38px;height:38px;min-width:38px;background:#dcfce7;border-radius:10px;display:flex;align-items:center;justify-content:center;">' +
             '<i class="bi bi-check-circle-fill" style="font-size:1.1rem;color:#16a34a;"></i></div>' +
         '<div style="flex:1;min-width:0;">' +
-            '<div style="font-weight:800;font-size:0.875rem;color:#15803d;">' + serie + '</div>' +
-            '<div style="font-size:0.75rem;color:#6c757d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + adresa + '</div>' +
+            '<div style="font-weight:800;font-size:0.875rem;color:#15803d;">' + esc(serie) + '</div>' +
+            '<div style="font-size:0.75rem;color:#6c757d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + esc(adresa) + '</div>' +
             '<div style="font-size:0.7rem;color:#0077b6;margin-top:2px;"><i class="bi bi-arrow-repeat me-1"></i>Apasă pentru a retrimite</div>' +
         '</div>' +
         '<div style="text-align:right;flex-shrink:0;">' +
             '<div style="font-size:0.65rem;color:#16a34a;font-weight:700;text-transform:uppercase;">✓ Trimis</div>' +
-            '<div style="font-size:0.75rem;color:#6c757d;">' + vechi + ' → <strong style="color:#16a34a;">' + nou + '</strong> m³</div>' +
+            '<div style="font-size:0.75rem;color:#6c757d;">' + esc(vechi) + ' → <strong style="color:#16a34a;">' + esc(nou) + '</strong> m³</div>' +
         '</div></div>';
 }
 
@@ -395,11 +401,11 @@ function selecteazaContor(card, c) {
     document.getElementById('rezumatContor').innerHTML =
         '<div style="display:flex;flex-wrap:wrap;gap:1rem;">' +
             '<div><div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">Serie</div>' +
-            '<div style="font-weight:700;color:var(--aqua-dark);">' + c.serie_contor + '</div></div>' +
+            '<div style="font-weight:700;color:var(--aqua-dark);">' + esc(c.serie_contor) + '</div></div>' +
             '<div style="flex:1;min-width:90px;"><div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">Adresă</div>' +
-            '<div style="font-weight:700;color:var(--aqua-dark);">' + c.adresa + '</div></div>' +
+            '<div style="font-weight:700;color:var(--aqua-dark);">' + esc(c.adresa) + '</div></div>' +
             '<div><div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">Index anterior</div>' +
-            '<div style="font-weight:700;color:var(--aqua-primary);">' + c.index_vechi + ' m³</div></div>' +
+            '<div style="font-weight:700;color:var(--aqua-primary);">' + esc(c.index_vechi) + ' m³</div></div>' +
         '</div>';
 
     document.getElementById('eroareIndex').style.display  = 'none';

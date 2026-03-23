@@ -23,6 +23,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Cookie consent
         $middleware->appendToGroup('web', \App\Http\Middleware\CookieConsent::class);
+
+        // Security headers (CSP, X-Frame-Options, etc.)
+        $middleware->appendToGroup('web', \App\Http\Middleware\SecurityHeaders::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
