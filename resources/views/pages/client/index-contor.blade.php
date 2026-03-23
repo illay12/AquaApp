@@ -82,7 +82,7 @@
                             <i class="bi bi-exclamation-triangle-fill me-1"></i><span id="textEroare"></span>
                         </div>
 
-                        <button id="btnIdentifica" onclick="identificaClient()" class="btn btn-aqua w-100"
+                        <button id="btnIdentifica" class="btn btn-aqua w-100"
                                 style="padding:0.875rem;font-size:1rem;font-weight:700;border-radius:10px;min-height:52px;">
                             <span id="btnText"><i class="bi bi-search me-2"></i>Verifică datele</span>
                             <span id="btnSpinner" style="display:none;"><span class="spinner-border spinner-border-sm me-2"></span>Se verifică...</span>
@@ -149,11 +149,11 @@
                             </div>
 
                             <div class="d-flex gap-2">
-                                <button type="button" onclick="revinLaPas2()" class="btn btn-outline-secondary"
+                                <button type="button" id="btnRevin" class="btn btn-outline-secondary"
                                         style="border-radius:10px;padding:0.75rem 1.1rem;font-size:1rem;">
                                     <i class="bi bi-arrow-left"></i>
                                 </button>
-                                <button id="btnTrimite" onclick="validezSiConfirm()" class="btn btn-aqua flex-fill"
+                                <button id="btnTrimite" class="btn btn-aqua flex-fill"
                                         style="padding:0.875rem;font-size:1rem;font-weight:700;border-radius:10px;min-height:52px;">
                                     <span id="btnTrimiteText"><i class="bi bi-send-fill me-2"></i>Transmite indexul</span>
                                     <span id="btnTrimiteSpinner" style="display:none;"><span class="spinner-border spinner-border-sm me-2"></span>Se trimite...</span>
@@ -196,7 +196,7 @@
 
 {{-- MODAL --}}
 <div id="modalConfirmare" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1rem;">
-    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(3px);" onclick="inchideModal()"></div>
+    <div id="modalBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(3px);"></div>
     <div id="modalBox" style="position:relative;width:100%;max-width:400px;border-radius:16px;padding:1.75rem;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.3);z-index:1;">
         <div id="modalIcon" style="width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.875rem;font-size:1.5rem;"></div>
         <h5 id="modalTitlu" style="text-align:center;font-weight:800;margin-bottom:0.4rem;font-size:1rem;"></h5>
@@ -238,7 +238,18 @@ function aratModal(tip, titlu, mesaj, butoane) {
     document.getElementById('modalTitlu').style.color     = s.color;
     document.getElementById('modalTitlu').textContent     = titlu;
     document.getElementById('modalMesaj').innerHTML       = mesaj;
-    document.getElementById('modalButoane').innerHTML     = butoane;
+
+    const container = document.getElementById('modalButoane');
+    container.innerHTML = '';
+    butoane.forEach(b => {
+        const btn = document.createElement('button');
+        btn.className = b.cls || 'btn';
+        btn.style.cssText = b.style || '';
+        btn.innerHTML = b.text;
+        btn.addEventListener('click', b.action);
+        container.appendChild(btn);
+    });
+
     document.getElementById('modalConfirmare').style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
@@ -286,7 +297,7 @@ async function identificaClient() {
     if (!esteInPerioadaCitire()) {
         aratModal('eroare', 'Perioadă de citire închisă',
             'Transmiterea indexului este posibilă doar în perioada <strong>10–20 a fiecărei luni</strong>.<br><br>Pentru informații sunați la <strong>0240 511 111</strong>.',
-            '<button onclick="inchideModal()" class="btn btn-outline-secondary w-100" style="border-radius:8px;padding:0.75rem;">Închide</button>');
+            [{ text:'Închide', cls:'btn btn-outline-secondary w-100', style:'border-radius:8px;padding:0.75rem;', action: inchideModal }]);
         return;
     }
 
@@ -432,7 +443,7 @@ function validezSiConfirm() {
     if (indexNou < indexVechiSelectat) {
         aratModal('eroare', 'Index invalid',
             'Indexul introdus (<strong>' + indexNou + ' m³</strong>) este mai mic decât indexul anterior (<strong>' + indexVechiSelectat + ' m³</strong>).<br><br>Verificați cifrele de pe afișajul contorului.',
-            '<button onclick="inchideModal()" class="btn w-100" style="background:#dc2626;color:#fff;border-radius:8px;padding:0.75rem;">Corectează indexul</button>');
+            [{ text:'Corectează indexul', cls:'btn w-100', style:'background:#dc2626;color:#fff;border-radius:8px;padding:0.75rem;', action: inchideModal }]);
         return;
     }
 
@@ -445,16 +456,20 @@ function validezSiConfirm() {
     if (diferenta > 50) {
         aratModal('atentie', 'Consum neobișnuit de mare',
             'Indexul introdus (<strong>' + indexNou + ' m³</strong>) depășește indexul anterior cu <strong>' + diferenta + ' m³</strong>.<br>Dacă cifrele sunt corecte, confirmați.' + mesajRetrimite,
-            '<button onclick="inchideModal()" class="btn btn-outline-secondary flex-fill" style="border-radius:8px;padding:0.75rem;">Corectează</button>' +
-            '<button onclick="trimiteAjax(' + indexNou + ')" class="btn flex-fill" style="background:#ca8a04;color:#fff;border-radius:8px;padding:0.75rem;margin-left:0.5rem;">Confirm, trimite</button>');
+            [
+                { text:'Corectează', cls:'btn btn-outline-secondary flex-fill', style:'border-radius:8px;padding:0.75rem;', action: inchideModal },
+                { text:'Confirm, trimite', cls:'btn flex-fill', style:'background:#ca8a04;color:#fff;border-radius:8px;padding:0.75rem;margin-left:0.5rem;', action: () => trimiteAjax(indexNou) }
+            ]);
         return;
     }
 
     const titlu = eRetrimitere ? 'Confirmare retrimitere index' : 'Confirmare transmitere index';
     aratModal('succes', titlu,
         'Doriți să transmiteți indexul <strong>' + indexNou + ' m³</strong> pentru contorul <strong>' + dateCurente.serieContor + '</strong>?<br><span style="font-size:0.8rem;color:#6c757d;">Consum estimat: ' + diferenta + ' m³</span>' + mesajRetrimite,
-        '<button onclick="inchideModal()" class="btn btn-outline-secondary flex-fill" style="border-radius:8px;padding:0.75rem;">Anulează</button>' +
-        '<button onclick="trimiteAjax(' + indexNou + ')" class="btn btn-aqua flex-fill" style="border-radius:8px;padding:0.75rem;margin-left:0.5rem;">Confirmă</button>');
+        [
+            { text:'Anulează', cls:'btn btn-outline-secondary flex-fill', style:'border-radius:8px;padding:0.75rem;', action: inchideModal },
+            { text:'Confirmă', cls:'btn btn-aqua flex-fill', style:'border-radius:8px;padding:0.75rem;margin-left:0.5rem;', action: () => trimiteAjax(indexNou) }
+        ]);
 }
 
 // ── AJAX Submit ────────────────────────────────────────────────────────────
@@ -510,13 +525,13 @@ async function trimiteAjax(indexNou) {
         } else {
             aratModal('eroare', 'Eroare',
                 data.mesaj || 'A apărut o eroare. Încercați din nou.',
-                '<button onclick="inchideModal()" class="btn w-100" style="background:#dc2626;color:#fff;border-radius:8px;padding:0.75rem;">Închide</button>');
+                [{ text:'Închide', cls:'btn w-100', style:'background:#dc2626;color:#fff;border-radius:8px;padding:0.75rem;', action: inchideModal }]);
         }
 
     } catch (e) {
         aratModal('eroare', 'Eroare de conexiune',
             'Nu s-a putut trimite indexul. Verificați conexiunea și încercați din nou.',
-            '<button onclick="inchideModal()" class="btn w-100" style="background:#dc2626;color:#fff;border-radius:8px;padding:0.75rem;">Închide</button>');
+            [{ text:'Închide', cls:'btn w-100', style:'background:#dc2626;color:#fff;border-radius:8px;padding:0.75rem;', action: inchideModal }]);
     } finally {
         document.getElementById('btnTrimiteText').style.display    = 'inline';
         document.getElementById('btnTrimiteSpinner').style.display = 'none';
@@ -526,6 +541,11 @@ async function trimiteAjax(indexNou) {
 
 // ── Events ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btnIdentifica').addEventListener('click', identificaClient);
+    document.getElementById('btnRevin').addEventListener('click', revinLaPas2);
+    document.getElementById('btnTrimite').addEventListener('click', validezSiConfirm);
+    document.getElementById('modalBackdrop').addEventListener('click', inchideModal);
+
     // Scroll automat la formular
     const card = document.querySelector('.card');
     if (card) {
