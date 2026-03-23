@@ -176,7 +176,7 @@
                     <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>
             </a>
 
-            <button class="navbar-toggler border-0 d-xl-none" type="button" onclick="deschideMeniu()" style="padding:0.4rem 0.6rem;">
+            <button class="navbar-toggler border-0 d-xl-none" type="button" id="btnDeschideMeniu" style="padding:0.4rem 0.6rem;">
                 <i class="bi bi-list" style="font-size:1.8rem;color:var(--aqua-primary);"></i>
             </button>
 
@@ -281,7 +281,7 @@
 
             {{-- MOBIL: overlay drawer --}}
             <div id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:2000;">
-                <div onclick="inchideMeniu()" style="position:absolute;inset:0;background:rgba(2,62,138,0.5);backdrop-filter:blur(4px);"></div>
+                <div id="overlayMeniu" style="position:absolute;inset:0;background:rgba(2,62,138,0.5);backdrop-filter:blur(4px);"></div>
                 <div id="mobileDrawer" style="position:absolute;top:0;right:0;width:85%;max-width:320px;height:100%;background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 40px rgba(0,0,0,0.15);">
                     <div style="padding:1.25rem 1.5rem;background:linear-gradient(135deg,#023e8a,#0077b6);display:flex;align-items:center;justify-content:space-between;">
                         <div style="display:flex;align-items:center;gap:0.75rem;">
@@ -293,7 +293,7 @@
                                 <div style="color:rgba(255,255,255,0.7);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;">Servicii apă și canal</div>
                             </div>
                         </div>
-                        <button onclick="inchideMeniu()" style="background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:1.1rem;">
+                        <button id="btnInchideMeniu" style="background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:1.1rem;">
                             <i class="bi bi-x-lg"></i>
                         </button>
                     </div>
@@ -314,7 +314,7 @@
 
                         {{-- Despre noi expandabil --}}
                         <div>
-                            <button onclick="toggleSubmeniu('subDespre')" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('despre*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                            <button data-submeniu="subDespre" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('despre*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
                                 <i class="bi bi-info-circle" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
                                 <span style="flex:1;">Despre noi</span>
                                 <i class="bi bi-chevron-down" id="iconDespre" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
@@ -334,7 +334,7 @@
 
                         {{-- Servicii expandabil --}}
                         <div>
-                            <button onclick="toggleSubmeniu('subServicii')" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('servicii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                            <button data-submeniu="subServicii" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('servicii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
                                 <i class="bi bi-droplet" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
                                 <span style="flex:1;">Servicii</span>
                                 <i class="bi bi-chevron-down" id="iconServicii" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
@@ -354,7 +354,7 @@
 
                         {{-- Informatii expandabil --}}
                         <div>
-                            <button onclick="toggleSubmeniu('subInfo')" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('informatii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                            <button data-submeniu="subInfo" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('informatii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
                                 <i class="bi bi-newspaper" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
                                 <span style="flex:1;">Informații publice</span>
                                 <i class="bi bi-chevron-down" id="iconInfo" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
@@ -364,7 +364,7 @@
                                     <i class="bi bi-clock text-aqua"></i> Program casierii
                                 </a>
                                 {{-- Integritate submeniu in mobil --}}
-                                <button onclick="toggleSubmeniu('subIntegritate')" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;border-left:none;color:#374151;font-weight:600;font-size:0.85rem;cursor:pointer;text-align:left;">
+                                <button data-submeniu="subIntegritate" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;border-left:none;color:#374151;font-weight:600;font-size:0.85rem;cursor:pointer;text-align:left;">
                                     <i class="bi bi-shield-check text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
                                     <span style="flex:1;">Integritate</span>
                                     <i class="bi bi-chevron-down" id="iconIntegritate" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
@@ -539,13 +539,6 @@
         document.body.style.overflow = '';
         setTimeout(() => { menu.style.display = 'none'; }, 300);
     }
-    // Previne Bootstrap sa inchida dropdown-ul parinte la click pe Integritate
-    document.querySelectorAll('.dropdown-submenu > .dropdown-item').forEach(function(el) {
-        el.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        });
-    });
     function toggleSubmeniu(id) {
         const iconMap = {
             'subServicii':    'iconServicii',
@@ -559,6 +552,20 @@
         sub.style.display    = isOpen ? 'none' : 'block';
         icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
     }
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('btnDeschideMeniu').addEventListener('click', deschideMeniu);
+        document.getElementById('btnInchideMeniu').addEventListener('click', inchideMeniu);
+        document.getElementById('overlayMeniu').addEventListener('click', inchideMeniu);
+        document.querySelectorAll('[data-submeniu]').forEach(function(btn) {
+            btn.addEventListener('click', function() { toggleSubmeniu(btn.dataset.submeniu); });
+        });
+        document.querySelectorAll('.dropdown-submenu > .dropdown-item').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+    });
     </script>
     @include('components.cookie-banner')
 </body>
