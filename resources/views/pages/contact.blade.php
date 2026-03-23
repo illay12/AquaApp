@@ -561,9 +561,8 @@
 
                 {{-- Adrese — funcționează și ca tab switcher --}}
                 <div style="background:#fff;border-top:1px solid #e4e9f0;">
-                    <button id="tab-sediu" onclick="switchMap('sediu')"
-                        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border:none;border-bottom:1px solid #f0f4f8;text-align:left;cursor:pointer;background:#fff;border-left:3px solid var(--aqua-primary);transition:background .15s;"
-                        onmouseover="this.style.background='#f7f9fc'" onmouseout="this.style.background='#fff'">
+                    <button id="tab-sediu"
+                        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border:none;border-bottom:1px solid #f0f4f8;text-align:left;cursor:pointer;background:#fff;border-left:3px solid var(--aqua-primary);transition:background .15s;">
                         <div style="display:flex;align-items:center;gap:.6rem;">
                             <div style="width:30px;height:30px;border-radius:8px;background:#eef4ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                 <i class="bi bi-building" style="color:var(--aqua-primary);font-size:.85rem;"></i>
@@ -574,14 +573,13 @@
                             </div>
                         </div>
                         <a href="https://maps.app.goo.gl/jDibWxXwgdk4kuQr5" target="_blank" rel="noopener noreferrer"
-                           onclick="event.stopPropagation()"
+                           class="map-external-link"
                            style="color:var(--aqua-primary);font-size:.85rem;flex-shrink:0;padding:.2rem .3rem;">
                             <i class="bi bi-box-arrow-up-right"></i>
                         </a>
                     </button>
-                    <button id="tab-contractare" onclick="switchMap('contractare')"
-                        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border:none;text-align:left;cursor:pointer;background:#fff;border-left:3px solid transparent;transition:background .15s;"
-                        onmouseover="this.style.background='#f7f9fc'" onmouseout="this.style.background='#fff'">
+                    <button id="tab-contractare"
+                        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border:none;text-align:left;cursor:pointer;background:#fff;border-left:3px solid transparent;transition:background .15s;">
                         <div style="display:flex;align-items:center;gap:.6rem;">
                             <div style="width:30px;height:30px;border-radius:8px;background:#f0f4f8;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                 <i class="bi bi-receipt" style="color:var(--aqua-gray);font-size:.85rem;"></i>
@@ -592,7 +590,7 @@
                             </div>
                         </div>
                         <a href="https://maps.app.goo.gl/xHE8Sg9AvG62xqqt5" target="_blank" rel="noopener noreferrer"
-                           onclick="event.stopPropagation()"
+                           class="map-external-link"
                            style="color:var(--aqua-primary);font-size:.85rem;flex-shrink:0;padding:.2rem .3rem;">
                             <i class="bi bi-box-arrow-up-right"></i>
                         </a>
@@ -610,6 +608,19 @@
 @push('scripts')
 <script nonce="@nonce">
     document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('tab-sediu').addEventListener('click', function() { switchMap('sediu'); });
+        document.getElementById('tab-contractare').addEventListener('click', function() { switchMap('contractare'); });
+
+        ['tab-sediu', 'tab-contractare'].forEach(function(id) {
+            const btn = document.getElementById(id);
+            btn.addEventListener('mouseover', function() { this.style.background = '#f7f9fc'; });
+            btn.addEventListener('mouseout',  function() { this.style.background = '#fff'; });
+        });
+
+        document.querySelectorAll('.map-external-link').forEach(function(link) {
+            link.addEventListener('click', function(e) { e.stopPropagation(); });
+        });
+
         const el = document.getElementById('formular-contact');
         if (el) {
             setTimeout(() => {

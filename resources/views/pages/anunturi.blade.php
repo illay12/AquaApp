@@ -46,7 +46,7 @@ $categorieLabel = [
                         </div>
                         <div class="col-md-4">
                             <label class="form-label fw-bold small">Categorie</label>
-                            <select name="categorie" class="form-select form-select-sm" onchange="document.getElementById('form-filtre').submit()">
+                            <select name="categorie" id="selectCategorie" class="form-select form-select-sm">
                                 <option value="">Toate categoriile</option>
                                 <option value="anunturi" {{ request('categorie')=='anunturi'?'selected':'' }}>Anunțuri</option>
                                 <option value="avarie" {{ request('categorie')=='avarie'?'selected':'' }}>Avarii</option>
@@ -160,3 +160,11 @@ $categorieLabel = [
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script nonce="@nonce">
+document.getElementById('selectCategorie').addEventListener('change', function () {
+    document.getElementById('form-filtre').submit();
+});
+</script>
+@endpush
