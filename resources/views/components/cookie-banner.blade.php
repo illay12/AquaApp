@@ -115,7 +115,7 @@
 }
 </style>
 
-<script>
+<script nonce="@nonce">
 (function() {
     const banner  = document.getElementById('cookie-banner');
     const btnOk   = document.getElementById('cb-accept');

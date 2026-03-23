@@ -208,7 +208,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script nonce="@nonce">
 function esc(str) {
     const d = document.createElement('div');
     d.textContent = String(str ?? '');

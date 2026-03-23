@@ -608,7 +608,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script nonce="@nonce">
     document.addEventListener('DOMContentLoaded', function () {
         const el = document.getElementById('formular-contact');
         if (el) {

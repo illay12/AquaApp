@@ -311,7 +311,7 @@
 @endpush
 
 @push('scripts')
-<script>
+<script nonce="@nonce">
 const sections = document.querySelectorAll('[id]');
 const navLinks  = document.querySelectorAll('.gdpr-nav-link');
 const observer  = new IntersectionObserver((entries) => {

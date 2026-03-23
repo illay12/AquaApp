@@ -188,7 +188,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script nonce="@nonce">
 function toggleAn(header) {
     const body = header.nextElementSibling;
     const chevron = header.querySelector('.year-chevron');

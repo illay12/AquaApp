@@ -325,7 +325,7 @@
 @endpush
 
 @push('scripts')
-<script>
+<script nonce="@nonce">
 const ckSections = document.querySelectorAll('[id]');
 const ckNavLinks = document.querySelectorAll('.ck-nav-link');
 const ckObserver = new IntersectionObserver((entries) => {

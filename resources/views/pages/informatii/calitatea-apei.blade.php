@@ -460,7 +460,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script nonce="@nonce">
 function toggleYear(an) {
     const acc  = document.getElementById('year-' + an);
     const body = acc.querySelector('.year-body');

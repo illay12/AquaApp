@@ -524,7 +524,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
 
-    <script>
+    <script nonce="@nonce">
     function deschideMeniu() {
         const menu = document.getElementById('mobileMenu');
         const drawer = document.getElementById('mobileDrawer');
