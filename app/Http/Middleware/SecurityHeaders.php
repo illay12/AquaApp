@@ -13,7 +13,8 @@ class SecurityHeaders
         $nonce = base64_encode(random_bytes(16));
         app()->instance('csp-nonce', $nonce);
 
-        $isDispeceratOrAdmin = $request->is('dispecerat/*') || $request->is('admin/*');
+        $isDispeceratOrAdmin = $request->is('dispecerat') || $request->is('dispecerat/*')
+                           || $request->is('admin') || $request->is('admin/*');
 
         $response = $next($request);
 
