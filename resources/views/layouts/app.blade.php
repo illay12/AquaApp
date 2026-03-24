@@ -67,7 +67,7 @@
         .quick-access-card:hover { background: var(--aqua-primary); border-color: var(--aqua-primary); color: #fff; transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,119,182,0.2); }
         .quick-access-card .icon-wrap { width: 64px; height: 64px; border-radius: 50%; background: var(--aqua-bg); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.8rem; color: var(--aqua-primary); transition: all 0.25s; }
         .quick-access-card:hover .icon-wrap { background: rgba(255,255,255,0.2); color: #fff; }
-        .quick-access-card h6 { font-weight: 700; font-size: 0.9rem; margin: 0; }
+        .quick-access-card h6 { font-weight: 700; font-size: 0.9rem; margin: 0; min-height: 2.5em; display: flex; align-items: center; justify-content: center; }
         .news-item { border-left: 4px solid var(--aqua-primary); padding: 0.9rem 1rem; margin-bottom: 1rem; background: var(--aqua-bg); border-radius: 0 8px 8px 0; transition: border-color 0.2s; }
         .news-item:hover { border-left-color: var(--aqua-accent); }
         .news-item .date { font-size: 0.75rem; color: var(--aqua-gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
