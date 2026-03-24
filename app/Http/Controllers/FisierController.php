@@ -15,6 +15,7 @@ class FisierController extends Controller
      */
     public function download(int $id)
     {
+        
         $fisier = AnuntFisier::findOrFail($id);
 
         if (!Storage::disk('public')->exists($fisier->cale)) {
