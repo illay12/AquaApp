@@ -22,23 +22,33 @@
             <div class="col-lg-9">
 
                 {{-- NOTIFICARE AJUSTARE TARIFE --}}
-                <div class="p-4 mb-4" style="background:var(--aqua-bg);border-left:4px solid var(--aqua-primary);border-radius:0 10px 10px 0;">
-                    <p class="mb-2" style="font-size:0.95rem;">
-                        <strong>S.C. AQUASERV S.A.</strong> – începând cu <strong>1 ianuarie 2026</strong>, va ajusta prețurile și tarifele
-                        pentru serviciile de alimentare cu apă și de canalizare, în conformitate cu Strategia de Tarifare 2021-2027,
-                        aprobată de Asociația de Dezvoltare Intercomunitară, respectiv de primăriile membre ale acesteia prin
-                        <strong>Hotărârea A.G.A. nr. 135/15.12.2025</strong> și a <strong>Deciziei A.N.R.S.C. nr. 158/03.12.2025</strong>.
-                    </p>
-                    <p class="mb-2" style="font-size:0.95rem;">
-                        Strategia de tarifare aferentă Planului de Afaceri al operatorului prevede creșteri în termeni reali ale
-                        prețurilor și tarifelor, la care se adaugă rata inflației și TVA-ul (care nu sunt stabilite de către Operator).
-                    </p>
-                    <p class="mb-0" style="font-size:0.95rem;">
-                        În ultimul an, creșterea inflației – <strong>9,76%</strong> a generat majorări semnificative ale costurilor de operare:
-                        energie electrică, materiale, substanțe pentru tratarea apei, servicii de mentenanță și reparații.
-                        Toate acestea influențează direct costurile reale ale producerii, transportului și distribuției apei potabile,
-                        precum și pe cele ale colectării și epurării apelor uzate.
-                    </p>
+                <div class="mb-4" style="background:var(--aqua-bg);border-left:4px solid var(--aqua-primary);border-radius:0 10px 10px 0;">
+                    <button id="btn-notificare" class="d-flex align-items-center justify-content-between w-100 p-4"
+                            style="background:transparent;border:none;text-align:left;cursor:pointer;gap:0.75rem;">
+                        <span style="font-size:0.95rem;font-weight:700;color:var(--aqua-dark);">
+                            <i class="bi bi-info-circle-fill me-2" style="color:var(--aqua-primary);"></i>
+                            Notificare ajustare tarife – 1 ianuarie 2026
+                        </span>
+                        <i id="icon-notificare" class="bi bi-chevron-down" style="flex-shrink:0;color:var(--aqua-primary);transition:transform 0.25s;"></i>
+                    </button>
+                    <div id="continut-notificare" style="display:none;padding:0 1.5rem 1.5rem;">
+                        <p class="mb-2" style="font-size:0.95rem;">
+                            <strong>S.C. AQUASERV S.A.</strong> – începând cu <strong>1 ianuarie 2026</strong>, va ajusta prețurile și tarifele
+                            pentru serviciile de alimentare cu apă și de canalizare, în conformitate cu Strategia de Tarifare 2021-2027,
+                            aprobată de Asociația de Dezvoltare Intercomunitară, respectiv de primăriile membre ale acesteia prin
+                            <strong>Hotărârea A.G.A. nr. 135/15.12.2025</strong> și a <strong>Deciziei A.N.R.S.C. nr. 158/03.12.2025</strong>.
+                        </p>
+                        <p class="mb-2" style="font-size:0.95rem;">
+                            Strategia de tarifare aferentă Planului de Afaceri al operatorului prevede creșteri în termeni reali ale
+                            prețurilor și tarifelor, la care se adaugă rata inflației și TVA-ul (care nu sunt stabilite de către Operator).
+                        </p>
+                        <p class="mb-0" style="font-size:0.95rem;">
+                            În ultimul an, creșterea inflației – <strong>9,76%</strong> a generat majorări semnificative ale costurilor de operare:
+                            energie electrică, materiale, substanțe pentru tratarea apei, servicii de mentenanță și reparații.
+                            Toate acestea influențează direct costurile reale ale producerii, transportului și distribuției apei potabile,
+                            precum și pe cele ale colectării și epurării apelor uzate.
+                        </p>
+                    </div>
                 </div>
 
                 <p style="font-size:0.95rem;">
@@ -201,3 +211,18 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script nonce="@nonce">
+document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('btn-notificare');
+    var continut = document.getElementById('continut-notificare');
+    var icon = document.getElementById('icon-notificare');
+    btn.addEventListener('click', function() {
+        var deschis = continut.style.display !== 'none';
+        continut.style.display = deschis ? 'none' : 'block';
+        icon.style.transform = deschis ? '' : 'rotate(180deg)';
+    });
+});
+</script>
+@endpush

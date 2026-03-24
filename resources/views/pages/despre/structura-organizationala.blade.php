@@ -482,8 +482,7 @@
                         @foreach($documente as $doc)
                         <a href="{{ $doc['url'] }}" target="_blank"
                            class="doc-row"
-                           style="--doc-color: {{ $doc['culoare'] }};"
-                           style="--doc-color: {{ $doc['culoare'] }}; --doc-hover: {{ $doc['hover'] }}40;"
+                           style="--doc-color: {{ $doc['culoare'] }}; --doc-hover: {{ $doc['hover'] }}40;">
                             <div class="doc-icon-box" style="background:{{ $doc['culoare'] }};">
                                 <i class="bi {{ $doc['icon'] }}"></i>
                             </div>

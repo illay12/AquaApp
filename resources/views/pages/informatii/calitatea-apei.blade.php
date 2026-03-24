@@ -382,33 +382,6 @@
                     </div>
                 </div>
 
-                {{-- Legislatie mobil - collapsible --}}
-                <div class="d-lg-none mb-3">
-                    <div class="card p-3">
-                        <button class="btn p-0 d-flex align-items-center justify-content-between w-100"
-                                style="font-weight:700;font-size:0.875rem;color:var(--aqua-dark);border:none;background:transparent;"
-                                class="legislatie-toggle">
-                            <span><i class="bi bi-journal-text me-2"></i>Legislație relevantă</span>
-                            <i class="bi bi-chevron-down" style="font-size:0.8rem;color:#0077b6;"></i>
-                        </button>
-                        <div style="display:none;margin-top:0.75rem;">
-                            <ul style="font-size:0.82rem;list-style:none;padding:0;margin:0;">
-                                <li class="mb-2 pb-2" style="border-bottom:1px solid var(--aqua-border);">
-                                    <i class="bi bi-file-text me-1" style="color:#0369a1;"></i>
-                                    Legea nr. 458/2002 privind calitatea apei potabile
-                                </li>
-                                <li class="mb-2 pb-2" style="border-bottom:1px solid var(--aqua-border);">
-                                    <i class="bi bi-file-text me-1" style="color:#0369a1;"></i>
-                                    Legea nr. 311/2004 – modificarea Legii 458/2002
-                                </li>
-                                <li>
-                                    <i class="bi bi-file-text me-1" style="color:#0369a1;"></i>
-                                    HG nr. 974/2004 – Norme de supraveghere
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
                 {{-- DESKTOP sidebar --}}
                 <div class="d-none d-lg-block">
