@@ -424,7 +424,7 @@
                         </label>
                         <input type="file" id="fisiere-input" name="fisiere[]" multiple
                                accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
-                               style="display:none;" onchange="arataFisiere(this)">
+                               style="display:none;">
                         <div id="fisiere-list"></div>
                         @error('fisiere')<div class="err">{{ $message }}</div>@enderror
                         @error('fisiere.*')<div class="err">{{ $message }}</div>@enderror
@@ -610,6 +610,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('tab-sediu').addEventListener('click', function() { switchMap('sediu'); });
         document.getElementById('tab-contractare').addEventListener('click', function() { switchMap('contractare'); });
+        document.getElementById('fisiere-input').addEventListener('change', function() { arataFisiere(this); });
 
         ['tab-sediu', 'tab-contractare'].forEach(function(id) {
             const btn = document.getElementById(id);

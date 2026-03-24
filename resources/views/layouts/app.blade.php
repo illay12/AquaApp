@@ -82,6 +82,7 @@
         footer ul li a:hover { color: var(--aqua-light); }
         footer ul li a i { margin-right: 6px; }
         .footer-bottom { background: rgba(0,0,0,0.25); padding: 1rem 0; margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+        .footer-casierii-link:hover { background: rgba(255,255,255,0.15) !important; color: #fff !important; }
         .btn-aqua { background: var(--aqua-primary); color: #fff; border: none; font-weight: 700; border-radius: 8px; padding: 0.55rem 1.4rem; transition: background 0.2s, transform 0.15s; }
         .btn-aqua:hover { background: var(--aqua-dark); color: #fff; transform: translateY(-1px); }
         .btn-outline-aqua { border: 2px solid var(--aqua-primary); color: var(--aqua-primary); font-weight: 700; border-radius: 8px; padding: 0.5rem 1.4rem; background: transparent; transition: all 0.2s; }
@@ -487,9 +488,8 @@
                         Lun–Vin: 07:30 – 17:00
                     </p>
                     <a href="{{ url('/program-casierii') }}"
-                       style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:rgba(255,255,255,0.75);text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.35rem 0.8rem;margin-bottom:1rem;transition:all 0.2s;"
-                       onmouseover="this.style.background='rgba(255,255,255,0.15)';this.style.color='#fff'"
-                       onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.75)'">
+                       class="footer-casierii-link"
+                       style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:rgba(255,255,255,0.75);text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.35rem 0.8rem;margin-bottom:1rem;transition:all 0.2s;">
                         <i class="bi bi-clock" style="color:var(--aqua-light);"></i> Program Casierii Județ
                     </a>
                     <p style="font-size:0.875rem;margin-bottom:0;">

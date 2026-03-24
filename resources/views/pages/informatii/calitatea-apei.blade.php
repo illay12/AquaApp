@@ -277,7 +277,7 @@
                              id="year-{{ $an }}">
 
                             <button class="year-btn"
-                                    onclick="toggleYear('{{ $an }}')"
+                                    data-an="{{ $an }}"
                                     aria-expanded="{{ $esteActiv ? 'true' : 'false' }}">
                                 <span class="year-badge">{{ $an }}</span>
                                 <span class="year-meta">
@@ -311,7 +311,7 @@
                                      id="{{ $lunaId }}">
 
                                     <button class="luna-btn"
-                                            onclick="toggleLuna('{{ $lunaId }}')"
+                                            data-luna="{{ $lunaId }}"
                                             aria-expanded="{{ $lunaActiva ? 'true' : 'false' }}">
                                         <span class="luna-dot"></span>
                                         <span class="luna-label">
@@ -387,7 +387,7 @@
                     <div class="card p-3">
                         <button class="btn p-0 d-flex align-items-center justify-content-between w-100"
                                 style="font-weight:700;font-size:0.875rem;color:var(--aqua-dark);border:none;background:transparent;"
-                                onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';">
+                                class="legislatie-toggle">
                             <span><i class="bi bi-journal-text me-2"></i>Legislație relevantă</span>
                             <i class="bi bi-chevron-down" style="font-size:0.8rem;color:#0077b6;"></i>
                         </button>
@@ -503,5 +503,20 @@ function toggleLuna(id) {
         btn.setAttribute('aria-expanded', 'true');
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.year-btn[data-an]').forEach(function(btn) {
+        btn.addEventListener('click', function() { toggleYear(this.dataset.an); });
+    });
+    document.querySelectorAll('.luna-btn[data-luna]').forEach(function(btn) {
+        btn.addEventListener('click', function() { toggleLuna(this.dataset.luna); });
+    });
+    document.querySelectorAll('.legislatie-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var panel = this.nextElementSibling;
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+});
 </script>
 @endpush

@@ -103,12 +103,12 @@
 
                 {{-- Tabs --}}
                 <div class="aga-tabs">
-                    <a href="#sectiunea-aga" onclick="schimbTab('aga')" id="tab-aga" class="aga-tab active">
+                    <a href="#sectiunea-aga" id="tab-aga" class="aga-tab active" data-tab="aga">
                         <i class="bi bi-people-fill"></i>
                         <span class="tab-text-lung">Hotărâri AGA</span>
                         <span class="tab-text-scurt">AGA</span>
                     </a>
-                    <a href="#sectiunea-ca" onclick="schimbTab('ca')" id="tab-ca" class="aga-tab">
+                    <a href="#sectiunea-ca" id="tab-ca" class="aga-tab" data-tab="ca">
                         <i class="bi bi-briefcase-fill"></i>
                         <span class="tab-text-lung">Raportări Consiliu Administrație</span>
                         <span class="tab-text-scurt">Consiliu Adm.</span>
@@ -120,7 +120,7 @@
                     @foreach($ani as $an => $fisiere)
                     <div class="year-accordion">
                         <div class="year-header {{ $loop->first ? 'open' : '' }}"
-                             onclick="toggleAn(this)">
+>
                             <div class="year-label">
                                 <i class="bi bi-calendar3" style="color:{{ $loop->first ? '#fff' : 'var(--aqua-primary)' }};"></i>
                                 {{ $an }}
@@ -150,7 +150,7 @@
                     @foreach($aniCa as $an => $fisiere)
                     <div class="year-accordion">
                         <div class="year-header {{ $loop->first ? 'open' : '' }}"
-                             onclick="toggleAn(this)">
+>
                             <div class="year-label">
                                 <i class="bi bi-calendar3" style="color:{{ $loop->first ? '#fff' : 'var(--aqua-primary)' }};"></i>
                                 {{ $an }}
@@ -217,5 +217,17 @@ function schimbTab(tab) {
     document.getElementById('tab-ca').classList.toggle('active', tab === 'ca');
     return false;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.aga-tab[data-tab]').forEach(function(tab) {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            schimbTab(this.dataset.tab);
+        });
+    });
+    document.querySelectorAll('.year-header').forEach(function(header) {
+        header.addEventListener('click', function() { toggleAn(this); });
+    });
+});
 </script>
 @endpush

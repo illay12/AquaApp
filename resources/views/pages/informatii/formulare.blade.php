@@ -57,9 +57,8 @@
                         <div class="col-md-6">
                             <a href="{{ Storage::url($fisier) }}" target="_blank" rel="noopener noreferrer"
                                class="d-flex align-items-center gap-3 p-3 text-decoration-none"
-                               style="background:var(--aqua-bg);border-radius:8px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;"
-                               onmouseover="this.style.borderColor='var(--aqua-primary)';this.style.background='#e8f4fc';"
-                               onmouseout="this.style.borderColor='var(--aqua-border)';this.style.background='var(--aqua-bg)';">
+                               class="formular-link"
+                               style="background:var(--aqua-bg);border-radius:8px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
                                 <i class="bi bi-file-earmark-pdf"
                                    style="font-size:1.8rem;color:#dc3545;flex-shrink:0;"></i>
                                 <div class="flex-grow-1">
@@ -91,3 +90,9 @@
     </div>
 </section>
 @endsection
+
+@push('styles')
+<style>
+    .formular-link:hover { border-color: var(--aqua-primary) !important; background: #e8f4fc !important; }
+</style>
+@endpush

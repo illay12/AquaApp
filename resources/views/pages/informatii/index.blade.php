@@ -29,6 +29,7 @@
     .info-card:hover {
         box-shadow: 0 6px 24px rgba(0,119,182,0.10);
         transform: translateY(-3px);
+        border-color: var(--card-color) !important;
     }
     .info-card .card-icon {
         width: 52px;
@@ -145,8 +146,7 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <a href="{{ url($item['url']) }}" class="info-card"
                    style="--card-color:{{ $item['color'] }};"
-                   onmouseover="this.style.borderColor='{{ $item['color'] }}';"
-                   onmouseout="this.style.borderColor='var(--aqua-border)';">
+>
                     <div class="card-icon"
                          style="background:{{ $item['color'] }}1a;color:{{ $item['color'] }};">
                         <i class="bi {{ $item['icon'] }}"></i>

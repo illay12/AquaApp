@@ -90,12 +90,12 @@
 
                 {{-- Tabs --}}
                 <div class="sbb-tabs">
-                    <a href="#" onclick="schimbTab('buget'); return false;" id="tab-buget" class="sbb-tab active">
+                    <a href="#" id="tab-buget" class="sbb-tab active" data-tab="buget">
                         <i class="bi bi-wallet2"></i>
                         <span class="tab-text-lung">Buget de venituri și cheltuieli</span>
                         <span class="tab-text-scurt">Buget</span>
                     </a>
-                    <a href="#" onclick="schimbTab('bilant'); return false;" id="tab-bilant" class="sbb-tab">
+                    <a href="#" id="tab-bilant" class="sbb-tab" data-tab="bilant">
                         <i class="bi bi-file-earmark-spreadsheet"></i>
                         <span class="tab-text-lung">Bilanț contabil</span>
                         <span class="tab-text-scurt">Bilanț</span>
@@ -106,7 +106,7 @@
                 <div id="sectiunea-buget">
                     @foreach($bugete as $an => $fisiere)
                     <div class="year-accordion">
-                        <div class="year-header {{ $loop->first ? 'open' : '' }}" onclick="toggleAn(this)">
+                        <div class="year-header {{ $loop->first ? 'open' : '' }}">
                             <div class="year-label">
                                 <i class="bi bi-calendar3" style="{{ $loop->first ? 'color:#fff' : 'color:var(--aqua-primary)' }};"></i>
                                 {{ $an }}
@@ -134,7 +134,7 @@
                 <div id="sectiunea-bilant" style="display:none;">
                     @foreach($bilant as $an => $fisiere)
                     <div class="year-accordion">
-                        <div class="year-header {{ $loop->first ? 'open' : '' }}" onclick="toggleAn(this)">
+                        <div class="year-header {{ $loop->first ? 'open' : '' }}">
                             <div class="year-label">
                                 <i class="bi bi-calendar3" style="{{ $loop->first ? 'color:#fff' : 'color:var(--aqua-primary)' }};"></i>
                                 {{ $an }}
@@ -195,5 +195,17 @@ function schimbTab(tab) {
     document.getElementById('tab-buget').classList.toggle('active',  tab === 'buget');
     document.getElementById('tab-bilant').classList.toggle('active', tab === 'bilant');
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.sbb-tab[data-tab]').forEach(function(tab) {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            schimbTab(this.dataset.tab);
+        });
+    });
+    document.querySelectorAll('.year-header').forEach(function(header) {
+        header.addEventListener('click', function() { toggleAn(this); });
+    });
+});
 </script>
 @endpush

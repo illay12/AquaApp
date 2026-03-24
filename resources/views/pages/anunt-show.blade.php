@@ -50,10 +50,8 @@
                         </h6>
                         @foreach($anunt->fisiere as $fisier)
                         <a href="{{ $fisier->url }}" target="_blank"
-                           class="d-flex align-items-center gap-3 p-3 mb-2 text-decoration-none"
-                           style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;"
-                           onmouseover="this.style.background='#e0f0ff';this.style.borderColor='var(--aqua-primary)'"
-                           onmouseout="this.style.background='var(--aqua-bg)';this.style.borderColor='var(--aqua-border)'">
+                           class="d-flex align-items-center gap-3 p-3 mb-2 text-decoration-none fisier-link-card"
+                           style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
                             <i class="bi {{ $fisier->icon }}"
                                style="font-size:1.8rem;color:{{ $fisier->culoare_icon }};flex-shrink:0;"></i>
                             <div style="flex:1;overflow:hidden;">
@@ -78,7 +76,7 @@
                         <a href="{{ url('/anunturi') }}" class="btn btn-outline-aqua btn-sm">
                             <i class="bi bi-arrow-left me-1"></i> Înapoi la anunțuri
                         </a>
-                        <a href="#" onclick="window.print()" class="btn btn-sm btn-light" title="Printează">
+                        <a href="#" id="btn-print" class="btn btn-sm btn-light" title="Printează">
                             <i class="bi bi-printer"></i>
                         </a>
                     </div>
@@ -103,10 +101,8 @@
                     <div class="card-body p-0">
                         @forelse($anunturiRecente ?? [] as $recent)
                             <a href="{{ url('/anunturi/' . $recent->slug) }}"
-                               class="d-block p-3 text-decoration-none"
-                               style="border-bottom:1px solid var(--aqua-border);color:var(--aqua-text);"
-                               onmouseover="this.style.background='var(--aqua-bg)'"
-                               onmouseout="this.style.background='transparent'">
+                               class="d-block p-3 text-decoration-none recent-anunt-link"
+                               style="border-bottom:1px solid var(--aqua-border);color:var(--aqua-text);transition:background 0.15s;"
                                 <div style="font-size:0.75rem;color:var(--aqua-gray);margin-bottom:0.2rem;">
                                     <span class="badge-aqua me-1">{{ $recent->categorie }}</span>
                                     {{ $recent->created_at->format('d.m.Y') }}
@@ -140,11 +136,22 @@
     .anunt-continut img { max-width: 100%; height: auto; border-radius: 4px; }
     .anunt-continut p > img:only-child { display: block; margin: 1rem auto; }
     .anunt-continut table { max-width: 100%; overflow-x: auto; display: block; }
+    .fisier-link-card:hover { background: #e0f0ff !important; border-color: var(--aqua-primary) !important; }
+    .recent-anunt-link:hover { background: var(--aqua-bg) !important; }
     @media print {
         nav, footer, .col-lg-4 { display: none !important; }
         .col-lg-8 { width: 100% !important; }
     }
 </style>
+@endpush
+
+@push('scripts')
+<script nonce="@nonce">
+    document.getElementById('btn-print').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.print();
+    });
+</script>
 @endpush
 
 @endsection

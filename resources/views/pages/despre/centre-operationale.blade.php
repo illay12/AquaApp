@@ -46,9 +46,9 @@
             @foreach($centre as $c)
             <div class="col-6 col-md-4 col-lg-2">
                 <a href="#centru-{{ $c['id'] }}" class="d-block text-decoration-none"
-                   style="padding:1.25rem 0.75rem;border-radius:14px;background:#fff;border:2px solid var(--aqua-border);text-align:center;transition:all 0.25s;"
-                   onmouseover="this.style.borderColor='{{ $c['culoare'] }}';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,119,182,0.15)'"
-                   onmouseout="this.style.borderColor='var(--aqua-border)';this.style.transform='';this.style.boxShadow=''">
+                   class="centru-nav-card"
+                   data-culoare="{{ $c['culoare'] }}"
+                   style="padding:1.25rem 0.75rem;border-radius:14px;background:#fff;border:2px solid var(--aqua-border);text-align:center;transition:all 0.25s;">
                     <div style="width:48px;height:48px;border-radius:50%;background:{{ $c['culoare'] }};display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;">
                         <i class="bi {{ $c['icon'] }} text-white" style="font-size:1.2rem;"></i>
                     </div>
@@ -140,8 +140,7 @@
                                     border:2px solid {{ $p['delta'] ? '#0284c7' : '#16a34a' }};
                                     min-height:80px;
                                     transition:transform 0.2s,box-shadow 0.2s;"
-                            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'"
-                            onmouseout="this.style.transform='';this.style.boxShadow=''">
+                            class="localitate-card">
                             <i class="bi bi-geo-alt-fill mb-1" style="font-size:1.1rem;color:{{ $p['delta'] ? '#0369a1' : '#166534' }};"></i>
                             <div style="font-size:0.82rem;font-weight:700;color:{{ $p['delta'] ? '#0c4a6e' : '#14532d' }};line-height:1.3;">{{ $p['nume'] }}</div>
                             @if($p['delta'])
@@ -498,3 +497,28 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script nonce="@nonce">
+document.querySelectorAll('.centru-nav-card').forEach(function(card) {
+    var culoare = card.dataset.culoare;
+    card.addEventListener('mouseover', function() {
+        this.style.borderColor = culoare;
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 8px 24px rgba(0,119,182,0.15)';
+    });
+    card.addEventListener('mouseout', function() {
+        this.style.borderColor = 'var(--aqua-border)';
+        this.style.transform = '';
+        this.style.boxShadow = '';
+    });
+});
+</script>
+@endpush
+
+@push('styles')
+<style>
+    .localitate-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .localitate-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+</style>
+@endpush

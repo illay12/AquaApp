@@ -138,6 +138,7 @@
     .doc-row:hover {
         box-shadow: 0 6px 20px rgba(0,119,182,0.1);
         transform: translateX(4px);
+        border-color: var(--doc-hover, rgba(0,119,182,0.25));
     }
     .doc-icon-box {
         width: 44px; height: 44px; min-width: 44px;
@@ -482,8 +483,7 @@
                         <a href="{{ $doc['url'] }}" target="_blank"
                            class="doc-row"
                            style="--doc-color: {{ $doc['culoare'] }};"
-                           onmouseover="this.style.borderColor='{{ $doc['hover'] }}40'"
-                           onmouseout="this.style.borderColor=''">
+                           style="--doc-color: {{ $doc['culoare'] }}; --doc-hover: {{ $doc['hover'] }}40;"
                             <div class="doc-icon-box" style="background:{{ $doc['culoare'] }};">
                                 <i class="bi {{ $doc['icon'] }}"></i>
                             </div>
