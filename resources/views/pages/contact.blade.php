@@ -641,7 +641,6 @@
 
         document.querySelectorAll('#formular-contact [name]').forEach(function(field) {
             field.addEventListener('invalid', function(e) {
-                e.preventDefault();
                 const reg = mesaje[field.name];
                 if (!reg) return;
                 const v = field.validity;

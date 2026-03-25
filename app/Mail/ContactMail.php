@@ -29,7 +29,7 @@ class ContactMail extends Mailable
         $tip = $tipuri[$this->data['subiect']] ?? ucfirst($this->data['subiect']);
 
         return new Envelope(
-            subject: "[AquaServ] {$tip} — {$this->data['nume']}",
+            subject: "[Aquaserv] {$tip} — {$this->data['nume']}",
             replyTo: [$this->data['email']],
         );
     }
