@@ -653,7 +653,6 @@
                     v.patternMismatch ? (reg.patternMismatch || '') :
                     ''
                 );
-                field.reportValidity();
             });
             field.addEventListener('input', function() {
                 field.setCustomValidity('');
