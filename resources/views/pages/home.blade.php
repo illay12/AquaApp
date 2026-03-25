@@ -33,43 +33,49 @@
     </section>
 
     {{-- QUICK ACCESS --}}
-    <section style="background:#f0f8ff;padding:1rem 0;">
+    <section style="background:#f0f8ff;padding:1.2rem 0;">
         <div class="container">
             <div class="row g-2 justify-content-center">
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i  class="bi bi-receipt"></i></div>
-                        <h6 style="font-size:0.875rem;margin:0;">Plătește factura</h6>
+                    <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="qa-btn">
+                        <div class="qa-btn__ripple"></div>
+                        <div class="qa-btn__icon"><i class="bi bi-receipt"></i></div>
+                        <span class="qa-btn__label">Plătește factura</span>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/client/index-contor') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i class="bi bi-speedometer2"></i></div>
-                        <h6 style="font-size:0.875rem;margin:0;">Trimite Index</h6>
+                    <a href="{{ url('/client/index-contor') }}" class="qa-btn">
+                        <div class="qa-btn__ripple"></div>
+                        <div class="qa-btn__icon"><i class="bi bi-speedometer2"></i></div>
+                        <span class="qa-btn__label">Trimite Index</span>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/anunturi?q=&categorie=avarie') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i class="bi bi-tools"></i></div>
-                        <h6 style="font-size:0.875rem;margin:0;">Avarii</h6>
+                    <a href="{{ url('/anunturi?q=&categorie=avarie') }}" class="qa-btn">
+                        <div class="qa-btn__ripple"></div>
+                        <div class="qa-btn__icon"><i class="bi bi-tools"></i></div>
+                        <span class="qa-btn__label">Avarii</span>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/informatii/calitatea-apei') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i class="bi bi-droplet-half"></i></div>
-                        <h6 style="font-size:0.875rem;margin:0;">Calitatea apei</h6>
+                    <a href="{{ url('/informatii/calitatea-apei') }}" class="qa-btn">
+                        <div class="qa-btn__ripple"></div>
+                        <div class="qa-btn__icon"><i class="bi bi-droplet-half"></i></div>
+                        <span class="qa-btn__label">Calitatea apei</span>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/informatii/tarife') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i class="bi bi-cash-coin"></i></div>
-                        <h6 style="font-size:0.875rem;margin:0;">Tarife</h6>
+                    <a href="{{ url('/informatii/tarife') }}" class="qa-btn">
+                        <div class="qa-btn__ripple"></div>
+                        <div class="qa-btn__icon"><i class="bi bi-cash-coin"></i></div>
+                        <span class="qa-btn__label">Tarife</span>
                     </a>
                 </div>
                 <div class="col-4 col-md-3 col-lg-2">
-                    <a href="{{ url('/informatii/formulare') }}" class="quick-access-card" style="padding:1rem 0.5rem;">
-                        <div class="icon-wrap"><i class="bi bi-file-earmark-arrow-down"></i></div>
-                        <h6 style="font-size:0.875rem;margin:0;">Formulare</h6>
+                    <a href="{{ url('/informatii/formulare') }}" class="qa-btn">
+                        <div class="qa-btn__ripple"></div>
+                        <div class="qa-btn__icon"><i class="bi bi-file-earmark-arrow-down"></i></div>
+                        <span class="qa-btn__label">Formulare</span>
                     </a>
                 </div>
             </div>
@@ -189,42 +195,269 @@
     </section>
 
     {{-- SERVICII CARDS --}}
-    <section style="padding:4rem 0;background:#fff;">
+    <section style="padding:4rem 0;background:#f0f8ff;">
         <div class="container">
             <h2 class="section-title">Serviciile noastre</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100 text-center p-4">
-                        <div style="width:72px;height:72px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:2rem;color:var(--aqua-primary);">
-                            <i class="bi bi-droplet-fill"></i>
+                    <a href="{{ url('/servicii/alimentare-apa') }}" class="servicii-card-link">
+                        <div class="servicii-card servicii-card--albastru">
+                            <div class="servicii-card__icon-wrap">
+                                <i class="bi bi-droplet-fill servicii-card__icon"></i>
+                                <div class="servicii-card__ripple"></div>
+                            </div>
+                            <h3 class="servicii-card__title">Alimentare cu apă</h3>
+                            <div class="servicii-card__line"></div>
+                            <p class="servicii-card__desc">Captare, tratare și distribuție apă potabilă de calitate pentru populație și industrie.</p>
+                            <span class="servicii-card__cta">Află mai mult <i class="bi bi-arrow-right"></i></span>
                         </div>
-                        <h5 style="font-family:'Merriweather',serif;font-size:1rem;">Alimentare cu apă</h5>
-                        <p class="text-muted" style="font-size:0.875rem;">Captare, tratare și distribuție apă potabilă de calitate pentru populație și industrie.</p>
-                        <a href="{{ url('/servicii/alimentare-apa') }}" class="btn btn-outline-aqua btn-sm mt-auto">Află mai mult</a>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 text-center p-4">
-                        <div style="width:72px;height:72px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:2rem;color:var(--aqua-primary);">
-                            <i class="bi bi-filter-circle-fill"></i>
+                    <a href="{{ url('/servicii/canalizare') }}" class="servicii-card-link">
+                        <div class="servicii-card servicii-card--teal">
+                            <div class="servicii-card__icon-wrap">
+                                <i class="bi bi-filter-circle-fill servicii-card__icon"></i>
+                                <div class="servicii-card__ripple"></div>
+                            </div>
+                            <h3 class="servicii-card__title">Canalizare</h3>
+                            <div class="servicii-card__line"></div>
+                            <p class="servicii-card__desc">Colectare și transport ape uzate prin rețeaua de canalizare, mentenanță și intervenții.</p>
+                            <span class="servicii-card__cta">Află mai mult <i class="bi bi-arrow-right"></i></span>
                         </div>
-                        <h5 style="font-family:'Merriweather',serif;font-size:1rem;">Canalizare</h5>
-                        <p class="text-muted" style="font-size:0.875rem;">Colectare și transport ape uzate prin rețeaua de canalizare, mentenanță și intervenții.</p>
-                        <a href="{{ url('/servicii/canalizare') }}" class="btn btn-outline-aqua btn-sm mt-auto">Află mai mult</a>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100 text-center p-4">
-                        <div style="width:72px;height:72px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:2rem;color:var(--aqua-primary);">
-                            <i class="bi bi-recycle"></i>
+                    <a href="{{ url('/servicii/epurare') }}" class="servicii-card-link">
+                        <div class="servicii-card servicii-card--indigo">
+                            <div class="servicii-card__icon-wrap">
+                                <i class="bi bi-recycle servicii-card__icon"></i>
+                                <div class="servicii-card__ripple"></div>
+                            </div>
+                            <h3 class="servicii-card__title">Epurare ape uzate</h3>
+                            <div class="servicii-card__line"></div>
+                            <p class="servicii-card__desc">Tratare și epurare ape uzate în stații moderne, respectând normele de mediu europene.</p>
+                            <span class="servicii-card__cta">Află mai mult <i class="bi bi-arrow-right"></i></span>
                         </div>
-                        <h5 style="font-family:'Merriweather',serif;font-size:1rem;">Epurare ape uzate</h5>
-                        <p class="text-muted" style="font-size:0.875rem;">Tratare și epurare ape uzate în stații moderne, respectând normele de mediu europene.</p>
-                        <a href="{{ url('/servicii/epurare') }}" class="btn btn-outline-aqua btn-sm mt-auto">Află mai mult</a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+    @push('styles')
+    <style>
+        /* ── QUICK ACCESS BUTTONS ── */
+        .qa-btn {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--aqua-text);
+            background: #fff;
+            border: 1.5px solid var(--aqua-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+        }
+        .qa-btn:hover {
+            transform: translateY(-4px);
+            background: var(--aqua-primary);
+            border-color: var(--aqua-primary);
+            color: #fff;
+            box-shadow: 0 10px 28px rgba(0,119,182,0.22);
+        }
+        .qa-btn__ripple {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(0,119,182,0.07);
+            transform: scale(0.4);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .qa-btn:hover .qa-btn__ripple {
+            transform: scale(2);
+            opacity: 1;
+            background: rgba(255,255,255,0.12);
+        }
+        .qa-btn__icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--aqua-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            color: var(--aqua-primary);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.35s ease, background 0.3s ease, color 0.3s ease;
+        }
+        .qa-btn:hover .qa-btn__icon {
+            transform: scale(1.15) rotate(-8deg);
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        .qa-btn__label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.25;
+            min-height: 2.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .servicii-card-link {
+            text-decoration: none;
+            display: block;
+            height: 100%;
+        }
+        .servicii-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            padding: 2.5rem 2rem 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .servicii-card--albastru {
+            background: linear-gradient(145deg, #0077b6 0%, #00b4d8 100%);
+            box-shadow: 0 8px 24px rgba(0, 119, 182, 0.35);
+        }
+        .servicii-card--teal {
+            background: linear-gradient(145deg, #0096a0 0%, #00cfc1 100%);
+            box-shadow: 0 8px 24px rgba(0, 150, 160, 0.35);
+        }
+        .servicii-card--indigo {
+            background: linear-gradient(145deg, #023e8a 0%, #0077b6 100%);
+            box-shadow: 0 8px 24px rgba(2, 62, 138, 0.35);
+        }
+        .servicii-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        .servicii-card--albastru:hover { box-shadow: 0 20px 48px rgba(0, 119, 182, 0.5); }
+        .servicii-card--teal:hover     { box-shadow: 0 20px 48px rgba(0, 150, 160, 0.5); }
+        .servicii-card--indigo:hover   { box-shadow: 0 20px 48px rgba(2, 62, 138, 0.5); }
+
+        .servicii-card__icon-wrap {
+            position: relative;
+            width: 88px;
+            height: 88px;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .servicii-card__icon {
+            font-size: 3rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+        .servicii-card:hover .servicii-card__icon {
+            transform: scale(1.18) rotate(-6deg);
+        }
+        .servicii-card__ripple {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transform: scale(0.8);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .servicii-card:hover .servicii-card__ripple {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .servicii-card__line {
+            width: 40px;
+            height: 3px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 2px;
+            margin: 0.6rem 0 1rem;
+            transition: width 0.35s ease;
+        }
+        .servicii-card:hover .servicii-card__line { width: 70px; }
+        .servicii-card__title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .servicii-card__desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            flex: 1;
+        }
+        .servicii-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1.2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            padding: 0.4rem 1.1rem;
+            transition: background 0.3s ease, gap 0.3s ease;
+            width: fit-content;
+        }
+        .servicii-card:hover .servicii-card__cta {
+            background: rgba(255,255,255,0.35);
+            gap: 10px;
+        }
+        .servicii-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            transition: transform 0.4s ease;
+        }
+        .servicii-card:hover::after { transform: scale(1.3); }
+
+        @media (max-width: 767px) {
+            .servicii-card {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                padding: 1.4rem 1.2rem;
+                border-radius: 14px;
+            }
+            .servicii-card__icon-wrap {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 0;
+                margin-right: 1rem;
+                flex-shrink: 0;
+            }
+            .servicii-card__icon { font-size: 2rem; }
+            .servicii-card__title { font-size: 1.05rem; align-self: center; flex: 1; }
+            .servicii-card__line { width: 100%; flex-basis: 100%; margin: 0.6rem 0 0.7rem; }
+            .servicii-card__desc { font-size: 0.85rem; flex-basis: 100%; margin-bottom: 0.6rem; }
+            .servicii-card__cta { margin-top: 0.4rem; font-size: 0.82rem; padding: 0.35rem 1rem; }
+            .servicii-card:hover { transform: translateY(-4px) scale(1.01); }
+        }
+    </style>
+    @endpush
 
 @endsection
