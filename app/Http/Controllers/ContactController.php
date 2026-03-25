@@ -51,7 +51,7 @@ class ContactController extends Controller
         $files = array_filter($request->file('fisiere', []));
 
         try {
-            Mail::to(config('mail.contact_to', 'secretariat@aquaservtulcea.ro'))
+            Mail::to(config('mail.contact_to', 'laurentiu.petrica@aquaservtulcea.ro'))
                 ->bcc('sesizari@aquaservtulcea.ro')
                 ->send(new ContactMail($validated, $files));
 
