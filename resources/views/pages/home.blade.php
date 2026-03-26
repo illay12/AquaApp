@@ -24,8 +24,13 @@
 
                 </div>
                 <div class="col-lg-5 d-none d-lg-flex justify-content-center">
-                    <div style="width:280px;height:280px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);">
-                        <i class="bi bi-droplet-fill" style="font-size:8rem;color:rgba(255,255,255,0.7);"></i>
+                    <div class="hero-droplet-wrap">
+                        <div class="hero-droplet-ring hero-droplet-ring--1"></div>
+                        <div class="hero-droplet-ring hero-droplet-ring--2"></div>
+                        <div class="hero-droplet-ring hero-droplet-ring--3"></div>
+                        <div class="hero-droplet-circle">
+                            <i class="bi bi-droplet-fill hero-droplet-icon"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,6 +252,57 @@
 
     @push('styles')
     <style>
+        /* ── HERO DROPLET ── */
+        .hero-droplet-wrap {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-droplet-circle {
+            width: 280px;
+            height: 280px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            animation: droplet-float 4s ease-in-out infinite;
+        }
+        .hero-droplet-icon {
+            font-size: 8rem;
+            color: rgba(255,255,255,0.75);
+            animation: droplet-pulse 4s ease-in-out infinite;
+        }
+        /* Inele de ripple care se expandează continuu */
+        .hero-droplet-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.18);
+            animation: droplet-ring 3.6s ease-out infinite;
+        }
+        .hero-droplet-ring--1 { width: 280px; height: 280px; animation-delay: 0s; }
+        .hero-droplet-ring--2 { width: 280px; height: 280px; animation-delay: 1.2s; }
+        .hero-droplet-ring--3 { width: 280px; height: 280px; animation-delay: 2.4s; }
+
+        @keyframes droplet-float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-12px); }
+        }
+        @keyframes droplet-pulse {
+            0%, 100% { opacity: 0.75; transform: scale(1); }
+            50%       { opacity: 0.9;  transform: scale(1.06); }
+        }
+        @keyframes droplet-ring {
+            0%   { transform: scale(1);    opacity: 0.5; }
+            100% { transform: scale(1.75); opacity: 0; }
+        }
+
         /* ── QUICK ACCESS BUTTONS ── */
         .qa-btn {
             position: relative;
