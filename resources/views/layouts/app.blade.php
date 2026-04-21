@@ -210,6 +210,23 @@
                                     <i class="bi bi-building text-aqua me-2"></i>Centre Operaționale
                                 </a>
                             </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="#">
+                                    <i class="bi bi-graph-up-arrow text-aqua me-2"></i>Dezvoltare
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="https://poim.aquaservtulcea.ro/" target="_blank" rel="noopener noreferrer">
+                                            <i class="bi bi-box-arrow-up-right text-aqua me-2"></i>Aquaserv - POIM
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bi bi-file-earmark-text text-aqua me-2"></i>Aquaserv - PDD
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
@@ -330,6 +347,20 @@
                                 <a href="{{ url('/despre/centre-operationale') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-building text-aqua"></i> Centre Operaționale
                                 </a>
+                                {{-- Dezvoltare sub-expandabil --}}
+                                <button data-submeniu="subDezvoltare" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-graph-up-arrow text-aqua"></i>
+                                    <span style="flex:1;">Dezvoltare</span>
+                                    <i class="bi bi-chevron-down" id="iconDezvoltare" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
+                                </button>
+                                <div id="subDezvoltare" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="https://poim.aquaservtulcea.ro/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-box-arrow-up-right text-aqua"></i> Aquaserv - POIM
+                                    </a>
+                                    <a href="#" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-text text-aqua"></i> Aquaserv - PDD
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -545,6 +576,7 @@
             'subInfo':        'iconInfo',
             'subDespre':      'iconDespre',
             'subIntegritate': 'iconIntegritate',
+            'subDezvoltare':  'iconDezvoltare',
         };
         const sub    = document.getElementById(id);
         const icon   = document.getElementById(iconMap[id]);
