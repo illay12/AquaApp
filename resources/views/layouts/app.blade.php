@@ -216,6 +216,11 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a class="dropdown-item" href="{{ route('despre.pos') }}">
+                                            <i class="bi bi-file-earmark-ruled text-aqua me-2"></i>Aquaserv - POS
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href="https://poim.aquaservtulcea.ro/" target="_blank" rel="noopener noreferrer">
                                             <i class="bi bi-box-arrow-up-right text-aqua me-2"></i>Aquaserv - POIM
                                         </a>
@@ -354,6 +359,9 @@
                                     <i class="bi bi-chevron-down" id="iconDezvoltare" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
                                 </button>
                                 <div id="subDezvoltare" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="{{ route('despre.pos') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-ruled text-aqua"></i> Aquaserv - POS
+                                    </a>
                                     <a href="https://poim.aquaservtulcea.ro/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-box-arrow-up-right text-aqua"></i> Aquaserv - POIM
                                     </a>
