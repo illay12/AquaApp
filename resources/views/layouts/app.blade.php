@@ -83,7 +83,7 @@
         footer ul li a i { margin-right: 6px; }
         .footer-bottom { background: rgba(0,0,0,0.25); padding: 1rem 0; margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
         .footer-casierii-link:hover { background: rgba(255,255,255,0.15) !important; color: #fff !important; }
-        .btn-aqua { background: var(--aqua-primary); color: #fff; border: none; font-weight: 700; border-radius: 8px; padding: 0.55rem 1.4rem; transition: background 0.2s, transform 0.15s; }
+        .btn-aqua { background: var(--aqua-primary); color: #fff !important; border: none; font-weight: 700 !important; font-size: 0.875rem !important; font-family: 'Nunito', sans-serif !important; text-transform: none !important; letter-spacing: normal !important; white-space: nowrap !important; border-radius: 8px; padding: 0.5rem 1.1rem !important; transition: background 0.2s, transform 0.15s; }
         .btn-aqua:hover { background: var(--aqua-dark); color: #fff; transform: translateY(-1px); }
         .btn-outline-aqua { border: 2px solid var(--aqua-primary); color: var(--aqua-primary); font-weight: 700; border-radius: 8px; padding: 0.5rem 1.4rem; background: transparent; transition: all 0.2s; }
         .btn-outline-aqua:hover { background: var(--aqua-primary); color: #fff; }
@@ -92,11 +92,13 @@
         .section-title { font-family: 'Merriweather', serif; font-size: 1.4rem; font-weight: 700; color: var(--aqua-dark); border-left: 4px solid var(--aqua-accent); padding-left: 0.75rem; margin-bottom: 1.5rem; }
         .text-aqua { color: var(--aqua-primary) !important; }
         .bg-aqua-light { background-color: var(--aqua-bg) !important; }
-        /* Desktop compact — 1200px–1400px (zoom 110%) */
+        /* Nav padding consistent — toate lățimile desktop */
+        @media (min-width: 1200px) {
+            .navbar-nav .nav-link { padding: 1.5rem 0.7rem !important; }
+        }
         @media (min-width: 1200px) and (max-width: 1399px) {
-            .navbar-nav .nav-link { font-size: 0.82rem !important; padding: 1.5rem 0.6rem !important; }
+            .navbar-nav .nav-link { padding: 1.5rem 0.6rem !important; }
             .navbar-brand span { font-size: 1.1rem; }
-            .btn-aqua.btn-sm { font-size: 0.78rem; padding: 0.45rem 0.9rem; }
         }
         @media (min-width: 1200px) and (max-width: 1280px) {
             .navbar-nav .nav-link { font-size: 0.78rem !important; padding: 1.5rem 0.45rem !important; }
@@ -190,7 +192,7 @@
 
                     {{-- Despre noi — dropdown --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('despre*') ? 'active' : '' }}"
+                        <a class="nav-link dropdown-toggle {{ request()->is('despre*') || request()->is('servicii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Despre noi</a>
                         <ul class="dropdown-menu">
                             <li>
@@ -209,6 +211,28 @@
                                    href="{{ url('/despre/centre-operationale') }}">
                                     <i class="bi bi-building text-aqua me-2"></i>Centre Operaționale
                                 </a>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item {{ request()->is('servicii*') ? 'active' : '' }}" href="#">
+                                    <i class="bi bi-droplet text-aqua me-2"></i>Servicii
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item {{ request()->is('servicii/alimentare-apa*') ? 'active' : '' }}" href="{{ url('/servicii/alimentare-apa') }}">
+                                            <i class="bi bi-droplet text-aqua me-2"></i>Alimentare cu apă
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item {{ request()->is('servicii/canalizare*') ? 'active' : '' }}" href="{{ url('/servicii/canalizare') }}">
+                                            <i class="bi bi-filter-circle text-aqua me-2"></i>Canalizare
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item {{ request()->is('servicii/epurare*') ? 'active' : '' }}" href="{{ url('/servicii/epurare') }}">
+                                            <i class="bi bi-recycle text-aqua me-2"></i>Epurare ape uzate
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item" href="#">
@@ -234,55 +258,76 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('servicii*') ? 'active' : '' }}"
-                           href="#" role="button" data-bs-toggle="dropdown">Servicii</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {{ request()->is('servicii/alimentare-apa*') ? 'active' : '' }}" href="{{ url('/servicii/alimentare-apa') }}">
-                                <i class="bi bi-droplet text-aqua me-2"></i>Alimentare cu apă</a></li>
-                            <li><a class="dropdown-item {{ request()->is('servicii/canalizare*') ? 'active' : '' }}" href="{{ url('/servicii/canalizare') }}">
-                                <i class="bi bi-filter-circle text-aqua me-2"></i>Canalizare</a></li>
-                            <li><a class="dropdown-item {{ request()->is('servicii/epurare*') ? 'active' : '' }}" href="{{ url('/servicii/epurare') }}">
-                                <i class="bi bi-recycle text-aqua me-2"></i>Epurare ape uzate</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('informatii*') ? 'active' : '' }}"
+                        <a class="nav-link dropdown-toggle {{ request()->is('informatii*') || request()->is('program-casierii*') ? 'active' : '' }}"
                            href="#" role="button" data-bs-toggle="dropdown">Informații publice</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item {{ request()->is('program-casierii*') ? 'active' : '' }}" href="{{ url('/program-casierii') }}">
                                 <i class="bi bi-clock text-aqua me-2"></i>Program casierii</a></li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('integritate*') ? 'active' : '' }}" href="#">
-                                    <i class="bi bi-shield-check text-aqua me-2"></i>Integritate
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="https://declaratii.integritate.eu/" target="_blank" rel="noopener noreferrer">
-                                            <i class="bi bi-file-earmark-person text-aqua me-2"></i>Declarații de avere
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/calitatea-apei*') ? 'active' : '' }}" href="{{ url('/informatii/calitatea-apei') }}">
                                 <i class="bi bi-clipboard2-pulse text-aqua me-2"></i>Calitatea apei</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/tarife*') ? 'active' : '' }}" href="{{ url('/informatii/tarife') }}">
                                 <i class="bi bi-cash-stack text-aqua me-2"></i>Tarife și Taxe</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/legislatie*') ? 'active' : '' }}" href="{{ url('/informatii/legislatie') }}">
                                 <i class="bi bi-journal-text text-aqua me-2"></i>Legislație</a></li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/formulare*') ? 'active' : '' }}" href="{{ url('/informatii/formulare') }}">
                                 <i class="bi bi-file-earmark-text text-aqua me-2"></i>Formulare utile</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/avize*') ? 'active' : '' }}" href="{{ url('/informatii/avize') }}">
                                 <i class="bi bi-patch-check text-aqua me-2"></i>Avize și acorduri</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/legea-544-2001*') ? 'active' : '' }}" href="{{ url('/informatii/legea-544-2001') }}">
                                 <i class="bi bi-journal-bookmark text-aqua me-2"></i>Legea 544/2001</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item {{ request()->is('informatii/buletin-informativ*') || request()->is('informatii/contracte-achizitii*') ? 'active' : '' }}" href="#">
+                                    <i class="bi bi-three-dots text-aqua me-2"></i>Alte informații
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item {{ request()->is('informatii/buletin-informativ*') ? 'active' : '' }}" href="{{ url('/informatii/buletin-informativ') }}">
+                                        <i class="bi bi-newspaper text-aqua me-2"></i>Buletin informativ</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('informatii/contracte-achizitii*') ? 'active' : '' }}" href="{{ url('/informatii/contracte-achizitii') }}">
+                                        <i class="bi bi-file-earmark-check text-aqua me-2"></i>Contracte de achiziții</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- Transparență --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('transparenta*') || request()->is('informatii/hotarari-aga*') || request()->is('informatii/surse-buget-bilant*') ? 'active' : '' }}"
+                           href="#" role="button" data-bs-toggle="dropdown">Transparență</a>
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item {{ request()->is('informatii/hotarari-aga*') ? 'active' : '' }}" href="{{ url('/informatii/hotarari-aga') }}">
                                 <i class="bi bi-people text-aqua me-2"></i>Hotărâri AGA</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/surse-buget-bilant*') ? 'active' : '' }}" href="{{ url('/informatii/surse-buget-bilant') }}">
                                 <i class="bi bi-bar-chart-line text-aqua me-2"></i>Surse, Buget, Bilanț</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/situatii-financiare*') ? 'active' : '' }}" href="{{ url('/transparenta/situatii-financiare') }}">
+                                <i class="bi bi-file-earmark-spreadsheet text-aqua me-2"></i>Situații financiare</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/buget-investitii*') ? 'active' : '' }}" href="{{ url('/transparenta/buget-investitii') }}">
+                                <i class="bi bi-wallet2 text-aqua me-2"></i>Buget investiții</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') ? 'active' : '' }}" href="{{ url('/transparenta/rapoarte-evaluare') }}">
+                                <i class="bi bi-clipboard-data text-aqua me-2"></i>Rapoarte de evaluare</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/raport-anual*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-anual') }}">
+                                <i class="bi bi-file-earmark-text text-aqua me-2"></i>Raport anual activitate</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/raport-audit*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-audit') }}">
+                                <i class="bi bi-search text-aqua me-2"></i>Raport audit extern</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/cheltuieli-personal*') || request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="#">
+                                    <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/cod-etica*') ? 'active' : '' }}" href="{{ url('/transparenta/cod-etica') }}">
+                                        <i class="bi bi-award text-aqua me-2"></i>Cod de etică</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/componenta-ca*') ? 'active' : '' }}" href="{{ url('/transparenta/componenta-ca') }}">
+                                        <i class="bi bi-people-fill text-aqua me-2"></i>Componența CA</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/guvernanta-corporativa*') ? 'active' : '' }}" href="{{ url('/transparenta/guvernanta-corporativa') }}">
+                                        <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță corporativă</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/cheltuieli-personal*') ? 'active' : '' }}" href="{{ url('/transparenta/cheltuieli-personal') }}">
+                                        <i class="bi bi-currency-exchange text-aqua me-2"></i>Cheltuieli personal</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="{{ url('/transparenta/plan-integritate') }}">
+                                        <i class="bi bi-shield-lock text-aqua me-2"></i>Plan de integritate</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -337,7 +382,7 @@
 
                         {{-- Despre noi expandabil --}}
                         <div>
-                            <button data-submeniu="subDespre" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('despre*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                            <button data-submeniu="subDespre" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('despre*') || request()->is('servicii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
                                 <i class="bi bi-info-circle" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
                                 <span style="flex:1;">Despre noi</span>
                                 <i class="bi bi-chevron-down" id="iconDespre" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
@@ -352,6 +397,23 @@
                                 <a href="{{ url('/despre/centre-operationale') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-building text-aqua"></i> Centre Operaționale
                                 </a>
+                                {{-- Servicii sub-expandabil --}}
+                                <button data-submeniu="subServiciiDespre" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-droplet text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
+                                    <span style="flex:1;">Servicii</span>
+                                    <i class="bi bi-chevron-down" id="iconServiciiDespre" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
+                                </button>
+                                <div id="subServiciiDespre" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="{{ url('/servicii/alimentare-apa') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-droplet text-aqua"></i> Alimentare cu apă
+                                    </a>
+                                    <a href="{{ url('/servicii/canalizare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-filter-circle text-aqua"></i> Canalizare
+                                    </a>
+                                    <a href="{{ url('/servicii/epurare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-recycle text-aqua"></i> Epurare ape uzate
+                                    </a>
+                                </div>
                                 {{-- Dezvoltare sub-expandabil --}}
                                 <button data-submeniu="subDezvoltare" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
                                     <i class="bi bi-graph-up-arrow text-aqua"></i>
@@ -372,29 +434,9 @@
                             </div>
                         </div>
 
-                        {{-- Servicii expandabil --}}
-                        <div>
-                            <button data-submeniu="subServicii" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('servicii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
-                                <i class="bi bi-droplet" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
-                                <span style="flex:1;">Servicii</span>
-                                <i class="bi bi-chevron-down" id="iconServicii" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
-                            </button>
-                            <div id="subServicii" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
-                                <a href="{{ url('/servicii/alimentare-apa') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-droplet text-aqua"></i> Alimentare cu apă
-                                </a>
-                                <a href="{{ url('/servicii/canalizare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-filter-circle text-aqua"></i> Canalizare
-                                </a>
-                                <a href="{{ url('/servicii/epurare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-recycle text-aqua"></i> Epurare ape uzate
-                                </a>
-                            </div>
-                        </div>
-
                         {{-- Informatii expandabil --}}
                         <div>
-                            <button data-submeniu="subInfo" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('informatii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                            <button data-submeniu="subInfo" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('informatii*') || request()->is('program-casierii*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
                                 <i class="bi bi-newspaper" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
                                 <span style="flex:1;">Informații publice</span>
                                 <i class="bi bi-chevron-down" id="iconInfo" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
@@ -403,19 +445,8 @@
                                 <a href="{{ url('/program-casierii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-clock text-aqua"></i> Program casierii
                                 </a>
-                                {{-- Integritate submeniu in mobil --}}
-                                <button data-submeniu="subIntegritate" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;border-left:none;color:#374151;font-weight:600;font-size:0.85rem;cursor:pointer;text-align:left;">
-                                    <i class="bi bi-shield-check text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
-                                    <span style="flex:1;">Integritate</span>
-                                    <i class="bi bi-chevron-down" id="iconIntegritate" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
-                                </button>
-                                <div id="subIntegritate" style="display:none;background:#f0f8ff;">
-                                    <a href="https://declaratii.integritate.eu/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 3.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                        <i class="bi bi-file-earmark-person text-aqua"></i> Declarații de avere
-                                    </a>
-                                </div>
                                 <a href="{{ url('/informatii/calitatea-apei') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-droplet-half text-aqua"></i> Calitatea apei
+                                    <i class="bi bi-clipboard2-pulse text-aqua"></i> Calitatea apei
                                 </a>
                                 <a href="{{ url('/informatii/tarife') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-cash-coin text-aqua"></i> Tarife și Taxe
@@ -432,12 +463,75 @@
                                 <a href="{{ url('/informatii/legea-544-2001') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-journal-bookmark text-aqua"></i> Legea 544/2001
                                 </a>
+                                {{-- Alte informații sub-expandabil --}}
+                                <button data-submeniu="subAlteInfo" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-three-dots text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
+                                    <span style="flex:1;">Alte informații</span>
+                                    <i class="bi bi-chevron-down" id="iconAlteInfo" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
+                                </button>
+                                <div id="subAlteInfo" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="{{ url('/informatii/buletin-informativ') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-newspaper text-aqua"></i> Buletin informativ
+                                    </a>
+                                    <a href="{{ url('/informatii/contracte-achizitii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-check text-aqua"></i> Contracte de achiziții
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Transparență expandabil --}}
+                        <div>
+                            <button data-submeniu="subTransparenta" style="width:100%;display:flex;align-items:center;gap:1rem;padding:0.85rem 1.5rem;background:transparent;border:none;border-left:3px solid {{ request()->is('transparenta*') || request()->is('informatii/hotarari-aga*') || request()->is('informatii/surse-buget-bilant*') ? '#0077b6' : 'transparent' }};color:#1a1a2e;font-weight:700;font-size:0.9rem;cursor:pointer;text-align:left;">
+                                <i class="bi bi-shield-check" style="color:#0077b6;font-size:1.1rem;width:20px;text-align:center;"></i>
+                                <span style="flex:1;">Transparență</span>
+                                <i class="bi bi-chevron-down" id="iconTransparenta" style="color:#0077b6;font-size:0.8rem;transition:transform 0.2s;"></i>
+                            </button>
+                            <div id="subTransparenta" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
                                 <a href="{{ url('/informatii/hotarari-aga') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-people text-aqua"></i> Hotărâri AGA
                                 </a>
                                 <a href="{{ url('/informatii/surse-buget-bilant') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-bar-chart-line text-aqua"></i> Surse, Buget, Bilanț
                                 </a>
+                                <a href="{{ url('/transparenta/situatii-financiare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-file-earmark-spreadsheet text-aqua"></i> Situații financiare
+                                </a>
+                                <a href="{{ url('/transparenta/buget-investitii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-wallet2 text-aqua"></i> Buget investiții
+                                </a>
+                                <a href="{{ url('/transparenta/rapoarte-evaluare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-clipboard-data text-aqua"></i> Rapoarte de evaluare
+                                </a>
+                                <a href="{{ url('/transparenta/raport-anual') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-file-earmark-text text-aqua"></i> Raport anual
+                                </a>
+                                <a href="{{ url('/transparenta/raport-audit') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-search text-aqua"></i> Raport audit extern
+                                </a>
+                                {{-- Guvernanță sub-expandabil --}}
+                                <button data-submeniu="subGuvernanta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-building-check text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
+                                    <span style="flex:1;">Guvernanță</span>
+                                    <i class="bi bi-chevron-down" id="iconGuvernanta" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
+                                </button>
+                                <div id="subGuvernanta" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="{{ url('/transparenta/cod-etica') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-award text-aqua"></i> Cod de etică
+                                    </a>
+                                    <a href="{{ url('/transparenta/componenta-ca') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-people-fill text-aqua"></i> Componența CA
+                                    </a>
+                                    <a href="{{ url('/transparenta/guvernanta-corporativa') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-building-check text-aqua"></i> Guvernanță corporativă
+                                    </a>
+                                    <a href="{{ url('/transparenta/cheltuieli-personal') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-currency-exchange text-aqua"></i> Cheltuieli personal
+                                    </a>
+                                    <a href="{{ url('/transparenta/plan-integritate') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-shield-lock text-aqua"></i> Plan de integritate
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -580,11 +674,13 @@
     }
     function toggleSubmeniu(id) {
         const iconMap = {
-            'subServicii':    'iconServicii',
-            'subInfo':        'iconInfo',
-            'subDespre':      'iconDespre',
-            'subIntegritate': 'iconIntegritate',
-            'subDezvoltare':  'iconDezvoltare',
+            'subServiciiDespre': 'iconServiciiDespre',
+            'subInfo':           'iconInfo',
+            'subDespre':         'iconDespre',
+            'subDezvoltare':     'iconDezvoltare',
+            'subAlteInfo':       'iconAlteInfo',
+            'subTransparenta':   'iconTransparenta',
+            'subGuvernanta':     'iconGuvernanta',
         };
         const sub    = document.getElementById(id);
         const icon   = document.getElementById(iconMap[id]);

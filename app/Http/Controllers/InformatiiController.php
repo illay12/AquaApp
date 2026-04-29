@@ -92,6 +92,173 @@ class InformatiiController extends Controller
         return view('pages.informatii.surse-buget-bilant', compact('bugete', 'bilant'));
     }
 
+    // ── Informații publice — pagini noi ─────────────────────────────────────
+
+    public function buletinInformativ()
+    {
+        return view('pages.documente-lista', [
+            'titlu'       => 'Buletin informativ',
+            'iconClasa'   => 'bi-newspaper',
+            'ani'         => $this->citesteAniFisiere(storage_path('app/public/documente/buletin informativ')),
+            'storageUrl'  => 'documente/buletin%20informativ',
+            'culoareIcon' => '#0077b6',
+        ]);
+    }
+
+    public function contracteAchizitii()
+    {
+        return view('pages.documente-lista', [
+            'titlu'       => 'Contracte de achiziții',
+            'iconClasa'   => 'bi-file-earmark-check',
+            'ani'         => $this->citesteAniFisiere(storage_path('app/public/documente/contracte achizitii')),
+            'storageUrl'  => 'documente/contracte%20achizitii',
+            'culoareIcon' => '#198754',
+        ]);
+    }
+
+
+    // ── Transparență ────────────────────────────────────────────────────────
+
+    public function rapoarteEvaluare()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Rapoarte de evaluare',
+            'iconClasa'        => 'bi-clipboard-data',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/rapoarte evaluare')),
+            'storageUrl'       => 'documente/rapoarte%20evaluare',
+            'culoareIcon'      => '#dc3545',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/rapoarte-evaluare',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function situatiiFinanciare()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Situații financiare',
+            'iconClasa'        => 'bi-file-earmark-spreadsheet',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/situatii financiare')),
+            'storageUrl'       => 'documente/situatii%20financiare',
+            'culoareIcon'      => '#0077b6',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/situatii-financiare',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function bugetInvestitii()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Buget investiții',
+            'iconClasa'        => 'bi-wallet2',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/buget investitii')),
+            'storageUrl'       => 'documente/buget%20investitii',
+            'culoareIcon'      => '#198754',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/buget-investitii',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function raportAnual()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Raport anual activitate',
+            'iconClasa'        => 'bi-file-earmark-text',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/raport anual')),
+            'storageUrl'       => 'documente/raport%20anual',
+            'culoareIcon'      => '#0dcaf0',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/raport-anual',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function codEtica()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Cod de etică',
+            'iconClasa'        => 'bi-award',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/cod etica')),
+            'storageUrl'       => 'documente/cod%20etica',
+            'culoareIcon'      => '#fd7e14',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/cod-etica',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function componentaCa()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Componența CA și Directori',
+            'iconClasa'        => 'bi-people-fill',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/componenta ca')),
+            'storageUrl'       => 'documente/componenta%20ca',
+            'culoareIcon'      => '#6f42c1',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/componenta-ca',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function guvernantaCorporativa()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Guvernanță corporativă',
+            'iconClasa'        => 'bi-building-check',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/guvernanta corporativa')),
+            'storageUrl'       => 'documente/guvernanta%20corporativa',
+            'culoareIcon'      => '#6f42c1',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/guvernanta-corporativa',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function cheltuieliPersonal()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Cheltuieli totale cu personalul',
+            'iconClasa'        => 'bi-currency-exchange',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/cheltuieli personal')),
+            'storageUrl'       => 'documente/cheltuieli%20personal',
+            'culoareIcon'      => '#198754',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/cheltuieli-personal',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function planIntegritate()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Plan de integritate',
+            'iconClasa'        => 'bi-shield-lock',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/plan integritate')),
+            'storageUrl'       => 'documente/plan%20integritate',
+            'culoareIcon'      => '#fd7e14',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/plan-integritate',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function raportAudit()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Raport audit extern',
+            'iconClasa'        => 'bi-search',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/raport audit')),
+            'storageUrl'       => 'documente/raport%20audit',
+            'culoareIcon'      => '#dc3545',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/raport-audit',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
     private function citesteAniFisiere(string $cale): array
     {
         if (!is_dir($cale)) return [];

@@ -67,15 +67,36 @@ Route::prefix('anunturi')->name('anunturi.')->group(function () {
 */
 
 Route::prefix('informatii')->name('informatii.')->group(function () {
-    Route::get('/',               [InformatiiController::class, 'index'])->name('index');
-    Route::get('/tarife',         [InformatiiController::class, 'tarife'])->name('tarife');
-    Route::get('/calitatea-apei', [CalitateaApeiController::class, 'index'])->name('calitatea-apei');
-    Route::get('/legislatie',     [InformatiiController::class, 'legislatie'])->name('legislatie');
-    Route::get('/formulare',      [InformatiiController::class, 'formulare'])->name('formulare');
-    Route::get('/avize',          [InformatiiController::class, 'avize'])->name('avize');
-    Route::get('/legea-544-2001',    [InformatiiController::class, 'legea544'])->name('legea-544-2001');
-    Route::get('/surse-buget-bilant', [InformatiiController::class, 'surseBugetBilant'])->name('surse-buget-bilant');
-    Route::get('/hotarari-aga',       [InformatiiController::class, 'hotarariAga'])->name('hotarari-aga');
+    Route::get('/',                    [InformatiiController::class, 'index'])->name('index');
+    Route::get('/tarife',              [InformatiiController::class, 'tarife'])->name('tarife');
+    Route::get('/calitatea-apei',      [CalitateaApeiController::class, 'index'])->name('calitatea-apei');
+    Route::get('/legislatie',          [InformatiiController::class, 'legislatie'])->name('legislatie');
+    Route::get('/formulare',           [InformatiiController::class, 'formulare'])->name('formulare');
+    Route::get('/avize',               [InformatiiController::class, 'avize'])->name('avize');
+    Route::get('/legea-544-2001',      [InformatiiController::class, 'legea544'])->name('legea-544-2001');
+    Route::get('/surse-buget-bilant',  [InformatiiController::class, 'surseBugetBilant'])->name('surse-buget-bilant');
+    Route::get('/hotarari-aga',        [InformatiiController::class, 'hotarariAga'])->name('hotarari-aga');
+    Route::get('/buletin-informativ',  [InformatiiController::class, 'buletinInformativ'])->name('buletin-informativ');
+    Route::get('/contracte-achizitii', [InformatiiController::class, 'contracteAchizitii'])->name('contracte-achizitii');
+});
+
+/*
+|--------------------------------------------------------------------------
+| TRANSPARENȚĂ
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('transparenta')->name('transparenta.')->group(function () {
+    Route::get('/rapoarte-evaluare',      [InformatiiController::class, 'rapoarteEvaluare'])->name('rapoarte-evaluare');
+    Route::get('/situatii-financiare',    [InformatiiController::class, 'situatiiFinanciare'])->name('situatii-financiare');
+    Route::get('/buget-investitii',       [InformatiiController::class, 'bugetInvestitii'])->name('buget-investitii');
+    Route::get('/raport-anual',           [InformatiiController::class, 'raportAnual'])->name('raport-anual');
+    Route::get('/cod-etica',              [InformatiiController::class, 'codEtica'])->name('cod-etica');
+    Route::get('/componenta-ca',          [InformatiiController::class, 'componentaCa'])->name('componenta-ca');
+    Route::get('/guvernanta-corporativa', [InformatiiController::class, 'guvernantaCorporativa'])->name('guvernanta-corporativa');
+    Route::get('/cheltuieli-personal',    [InformatiiController::class, 'cheltuieliPersonal'])->name('cheltuieli-personal');
+    Route::get('/plan-integritate',       [InformatiiController::class, 'planIntegritate'])->name('plan-integritate');
+    Route::get('/raport-audit',           [InformatiiController::class, 'raportAudit'])->name('raport-audit');
 });
 
 /*
