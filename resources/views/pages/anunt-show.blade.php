@@ -102,7 +102,7 @@
                         @forelse($anunturiRecente ?? [] as $recent)
                             <a href="{{ url('/anunturi/' . $recent->slug) }}"
                                class="d-block p-3 text-decoration-none recent-anunt-link"
-                               style="border-bottom:1px solid var(--aqua-border);color:var(--aqua-text);transition:background 0.15s;"
+                               style="border-bottom:1px solid var(--aqua-border);color:var(--aqua-text);transition:background 0.15s;">
                                 <div style="font-size:0.75rem;color:var(--aqua-gray);margin-bottom:0.2rem;">
                                     <span class="badge-aqua me-1">{{ $recent->categorie }}</span>
                                     {{ $recent->created_at->format('d.m.Y') }}
