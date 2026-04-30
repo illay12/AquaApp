@@ -229,7 +229,7 @@ class InformatiiController extends Controller
     public function raporturiCnr()
     {
         return view('pages.documente-lista', [
-            'titlu'            => 'Raporturi CNR',
+            'titlu'            => 'Rapoarte CNR',
             'iconClasa'        => 'bi-file-earmark-bar-graph',
             'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/raporturi cnr')),
             'storageUrl'       => 'documente/raporturi%20cnr',

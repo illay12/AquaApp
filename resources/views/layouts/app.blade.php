@@ -309,7 +309,7 @@
                             <li><a class="dropdown-item {{ request()->is('transparenta/raport-audit*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-audit') }}">
                                 <i class="bi bi-search text-aqua me-2"></i>Raport audit extern</a></li>
                             <li><a class="dropdown-item {{ request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="{{ url('/transparenta/raporturi-cnr') }}">
-                                <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Raporturi CNR</a></li>
+                                <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Rapoarte CNR</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/cheltuieli-personal*') || request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="#">
@@ -507,7 +507,7 @@
                                     <i class="bi bi-search text-aqua"></i> Raport audit extern
                                 </a>
                                 <a href="{{ url('/transparenta/raporturi-cnr') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-file-earmark-bar-graph text-aqua"></i> Raporturi CNR
+                                    <i class="bi bi-file-earmark-bar-graph text-aqua"></i> Rapoarte CNR
                                 </a>
                                 {{-- Guvernanță sub-expandabil --}}
                                 <button data-submeniu="subGuvernanta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
