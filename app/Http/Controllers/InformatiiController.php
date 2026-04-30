@@ -158,15 +158,9 @@ class InformatiiController extends Controller
 
     public function codEtica()
     {
-        return view('pages.documente-lista', [
-            'titlu'            => 'Cod de etică',
-            'iconClasa'        => 'bi-award',
-            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/cod etica')),
-            'storageUrl'       => 'documente/cod%20etica',
-            'culoareIcon'      => '#fd7e14',
-            'breadcrumbParent' => 'Transparență',
-            'breadcrumbUrl'    => '/transparenta/cod-etica',
-            'sidebar'          => 'components.sidebar-transparenta',
+        return view('pages.transparenta.cod-etica', [
+            'ani'        => $this->citesteAniFisiere(storage_path('app/public/documente/cod etica')),
+            'storageUrl' => 'documente/cod%20etica',
         ]);
     }
 
