@@ -6,11 +6,11 @@
         @foreach([
             ['/informatii/hotarari-aga',           'bi-people',                    'Hotărâri AGA'],
             ['/informatii/surse-buget-bilant',      'bi-bar-chart-line',            'Surse, Buget, Bilanț'],
-            ['/transparenta/situatii-financiare',   'bi-file-earmark-spreadsheet',  'Situații financiare'],
             ['/transparenta/buget-investitii',      'bi-wallet2',                   'Buget investiții'],
             ['/transparenta/rapoarte-evaluare',     'bi-clipboard-data',            'Rapoarte de evaluare'],
             ['/transparenta/raport-anual',          'bi-file-earmark-text',         'Raport anual activitate'],
             ['/transparenta/raport-audit',          'bi-search',                    'Raport audit extern'],
+            ['/transparenta/raporturi-cnr',         'bi-file-earmark-bar-graph',     'Raporturi CNR'],
             ['/transparenta/cod-etica',             'bi-award',                     'Cod de etică'],
             ['/transparenta/componenta-ca',         'bi-people-fill',               'Componența CA'],
             ['/transparenta/guvernanta-corporativa','bi-building-check',            'Guvernanță corporativă'],

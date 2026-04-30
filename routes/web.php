@@ -88,7 +88,6 @@ Route::prefix('informatii')->name('informatii.')->group(function () {
 
 Route::prefix('transparenta')->name('transparenta.')->group(function () {
     Route::get('/rapoarte-evaluare',      [InformatiiController::class, 'rapoarteEvaluare'])->name('rapoarte-evaluare');
-    Route::get('/situatii-financiare',    [InformatiiController::class, 'situatiiFinanciare'])->name('situatii-financiare');
     Route::get('/buget-investitii',       [InformatiiController::class, 'bugetInvestitii'])->name('buget-investitii');
     Route::get('/raport-anual',           [InformatiiController::class, 'raportAnual'])->name('raport-anual');
     Route::get('/cod-etica',              [InformatiiController::class, 'codEtica'])->name('cod-etica');
@@ -97,6 +96,7 @@ Route::prefix('transparenta')->name('transparenta.')->group(function () {
     Route::get('/cheltuieli-personal',    [InformatiiController::class, 'cheltuieliPersonal'])->name('cheltuieli-personal');
     Route::get('/plan-integritate',       [InformatiiController::class, 'planIntegritate'])->name('plan-integritate');
     Route::get('/raport-audit',           [InformatiiController::class, 'raportAudit'])->name('raport-audit');
+    Route::get('/raporturi-cnr',          [InformatiiController::class, 'raporturiCnr'])->name('raporturi-cnr');
 });
 
 /*

@@ -107,13 +107,7 @@ class InformatiiController extends Controller
 
     public function contracteAchizitii()
     {
-        return view('pages.documente-lista', [
-            'titlu'       => 'Contracte de achiziții',
-            'iconClasa'   => 'bi-file-earmark-check',
-            'ani'         => $this->citesteAniFisiere(storage_path('app/public/documente/contracte achizitii')),
-            'storageUrl'  => 'documente/contracte%20achizitii',
-            'culoareIcon' => '#198754',
-        ]);
+        return view('pages.informatii.contracte-achizitii');
     }
 
 
@@ -133,19 +127,6 @@ class InformatiiController extends Controller
         ]);
     }
 
-    public function situatiiFinanciare()
-    {
-        return view('pages.documente-lista', [
-            'titlu'            => 'Situații financiare',
-            'iconClasa'        => 'bi-file-earmark-spreadsheet',
-            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/situatii financiare')),
-            'storageUrl'       => 'documente/situatii%20financiare',
-            'culoareIcon'      => '#0077b6',
-            'breadcrumbParent' => 'Transparență',
-            'breadcrumbUrl'    => '/transparenta/situatii-financiare',
-            'sidebar'          => 'components.sidebar-transparenta',
-        ]);
-    }
 
     public function bugetInvestitii()
     {
@@ -241,6 +222,20 @@ class InformatiiController extends Controller
             'culoareIcon'      => '#fd7e14',
             'breadcrumbParent' => 'Transparență',
             'breadcrumbUrl'    => '/transparenta/plan-integritate',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function raporturiCnr()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Raporturi CNR',
+            'iconClasa'        => 'bi-file-earmark-bar-graph',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/raporturi cnr')),
+            'storageUrl'       => 'documente/raporturi%20cnr',
+            'culoareIcon'      => '#0077b6',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/raporturi-cnr',
             'sidebar'          => 'components.sidebar-transparenta',
         ]);
     }

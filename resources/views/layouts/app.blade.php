@@ -300,8 +300,6 @@
                                 <i class="bi bi-people text-aqua me-2"></i>Hotărâri AGA</a></li>
                             <li><a class="dropdown-item {{ request()->is('informatii/surse-buget-bilant*') ? 'active' : '' }}" href="{{ url('/informatii/surse-buget-bilant') }}">
                                 <i class="bi bi-bar-chart-line text-aqua me-2"></i>Surse, Buget, Bilanț</a></li>
-                            <li><a class="dropdown-item {{ request()->is('transparenta/situatii-financiare*') ? 'active' : '' }}" href="{{ url('/transparenta/situatii-financiare') }}">
-                                <i class="bi bi-file-earmark-spreadsheet text-aqua me-2"></i>Situații financiare</a></li>
                             <li><a class="dropdown-item {{ request()->is('transparenta/buget-investitii*') ? 'active' : '' }}" href="{{ url('/transparenta/buget-investitii') }}">
                                 <i class="bi bi-wallet2 text-aqua me-2"></i>Buget investiții</a></li>
                             <li><a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') ? 'active' : '' }}" href="{{ url('/transparenta/rapoarte-evaluare') }}">
@@ -310,6 +308,8 @@
                                 <i class="bi bi-file-earmark-text text-aqua me-2"></i>Raport anual activitate</a></li>
                             <li><a class="dropdown-item {{ request()->is('transparenta/raport-audit*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-audit') }}">
                                 <i class="bi bi-search text-aqua me-2"></i>Raport audit extern</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="{{ url('/transparenta/raporturi-cnr') }}">
+                                <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Raporturi CNR</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/cheltuieli-personal*') || request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="#">
@@ -494,9 +494,6 @@
                                 <a href="{{ url('/informatii/surse-buget-bilant') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-bar-chart-line text-aqua"></i> Surse, Buget, Bilanț
                                 </a>
-                                <a href="{{ url('/transparenta/situatii-financiare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-file-earmark-spreadsheet text-aqua"></i> Situații financiare
-                                </a>
                                 <a href="{{ url('/transparenta/buget-investitii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-wallet2 text-aqua"></i> Buget investiții
                                 </a>
@@ -508,6 +505,9 @@
                                 </a>
                                 <a href="{{ url('/transparenta/raport-audit') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-search text-aqua"></i> Raport audit extern
+                                </a>
+                                <a href="{{ url('/transparenta/raporturi-cnr') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-file-earmark-bar-graph text-aqua"></i> Raporturi CNR
                                 </a>
                                 {{-- Guvernanță sub-expandabil --}}
                                 <button data-submeniu="subGuvernanta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
