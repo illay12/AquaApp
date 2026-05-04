@@ -223,6 +223,62 @@ class InformatiiController extends Controller
         ]);
     }
 
+    public function datoriiileSocietatii()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Datoriile Societății',
+            'iconClasa'        => 'bi-cash-stack',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/datoriile societatii')),
+            'storageUrl'       => 'documente/datoriile%20societatii',
+            'culoareIcon'      => '#dc3545',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/datoriile-societatii',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function detaliereaServiciilor()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Detalierea serviciilor sau bunurilor produse de întreprinderea în interes public',
+            'iconClasa'        => 'bi-list-check',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/detalierea serviciilor')),
+            'storageUrl'       => 'documente/detalierea%20serviciilor',
+            'culoareIcon'      => '#0077b6',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/detalierea-serviciilor',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function contracteMandatAdministratori()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Contracte mandat administratori',
+            'iconClasa'        => 'bi-file-earmark-person',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/contracte mandat administratori')),
+            'storageUrl'       => 'documente/contracte%20mandat%20administratori',
+            'culoareIcon'      => '#6f42c1',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/contracte-mandat-administratori',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function obiectivulPoliticiiPublice()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Obiectivul de politică publică a întreprinderii',
+            'iconClasa'        => 'bi-bullseye',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/obiectivul politicii publice')),
+            'storageUrl'       => 'documente/obiectivul%20politicii%20publice',
+            'culoareIcon'      => '#198754',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/obiectivul-politicii-publice',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
     public function raporturiCnr()
     {
         return view('pages.documente-lista', [

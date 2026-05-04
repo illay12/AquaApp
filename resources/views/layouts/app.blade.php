@@ -328,6 +328,21 @@
                                         <i class="bi bi-shield-lock text-aqua me-2"></i>Plan de integritate</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item {{ request()->is('transparenta/datoriile-societatii*') || request()->is('transparenta/detalierea-serviciilor*') || request()->is('transparenta/contracte-mandat-administratori*') || request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="#">
+                                    <i class="bi bi-three-dots text-aqua me-2"></i>Alte informații
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/datoriile-societatii*') ? 'active' : '' }}" href="{{ url('/transparenta/datoriile-societatii') }}">
+                                        <i class="bi bi-cash-stack text-aqua me-2"></i>Datoriile Societății</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/detalierea-serviciilor*') ? 'active' : '' }}" href="{{ url('/transparenta/detalierea-serviciilor') }}">
+                                        <i class="bi bi-list-check text-aqua me-2"></i>Detalierea serviciilor</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/contracte-mandat-administratori*') ? 'active' : '' }}" href="{{ url('/transparenta/contracte-mandat-administratori') }}">
+                                        <i class="bi bi-file-earmark-person text-aqua me-2"></i>Contracte mandat adm.</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="{{ url('/transparenta/obiectivul-politicii-publice') }}">
+                                        <i class="bi bi-bullseye text-aqua me-2"></i>Obiectiv politică publică</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -532,6 +547,26 @@
                                         <i class="bi bi-shield-lock text-aqua"></i> Plan de integritate
                                     </a>
                                 </div>
+                                {{-- Alte informații sub-expandabil --}}
+                                <button data-submeniu="subAlteTransparenta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-three-dots text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
+                                    <span style="flex:1;">Alte informații</span>
+                                    <i class="bi bi-chevron-down" id="iconAlteTransparenta" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
+                                </button>
+                                <div id="subAlteTransparenta" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="{{ url('/transparenta/datoriile-societatii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-cash-stack text-aqua"></i> Datoriile Societății
+                                    </a>
+                                    <a href="{{ url('/transparenta/detalierea-serviciilor') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-list-check text-aqua"></i> Detalierea serviciilor
+                                    </a>
+                                    <a href="{{ url('/transparenta/contracte-mandat-administratori') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-person text-aqua"></i> Contracte mandat adm.
+                                    </a>
+                                    <a href="{{ url('/transparenta/obiectivul-politicii-publice') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-bullseye text-aqua"></i> Obiectiv politică publică
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -678,9 +713,10 @@
             'subInfo':           'iconInfo',
             'subDespre':         'iconDespre',
             'subDezvoltare':     'iconDezvoltare',
-            'subAlteInfo':       'iconAlteInfo',
-            'subTransparenta':   'iconTransparenta',
-            'subGuvernanta':     'iconGuvernanta',
+            'subAlteInfo':           'iconAlteInfo',
+            'subTransparenta':       'iconTransparenta',
+            'subGuvernanta':         'iconGuvernanta',
+            'subAlteTransparenta':   'iconAlteTransparenta',
         };
         const sub    = document.getElementById(id);
         const icon   = document.getElementById(iconMap[id]);
