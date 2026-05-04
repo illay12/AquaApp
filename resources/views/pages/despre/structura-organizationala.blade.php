@@ -297,6 +297,41 @@
             ════════════════════════════════ --}}
             <div class="col-lg-8">
 
+                {{-- ── ADI ── --}}
+                <div class="section-gap">
+                    <h2 class="section-title">ADI – Asociația de Dezvoltare Intercomunitară</h2>
+                    <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
+                        Asociația de Dezvoltare Intercomunitară <strong style="color:var(--aqua-dark);">„ECOTID"</strong> este structura asociativă constituită de unitățile administrativ-teritoriale din județul Tulcea în scopul înființării, organizării, reglementării, finanțării, monitorizării și gestionării în comun a serviciilor de alimentare cu apă și canalizare.
+                    </p>
+                    <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
+                        ADI „ECOTID" a delegat gestiunea serviciilor de apă și canalizare către <strong style="color:var(--aqua-dark);">S.C. Aquaserv S.A. Tulcea</strong> în baza unui contract de delegare a gestiunii, în conformitate cu legislația în vigoare privind serviciile comunitare de utilități publice.
+                    </p>
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div style="background:var(--aqua-bg);border:1.5px solid var(--aqua-border);border-radius:12px;padding:1.25rem;text-align:center;">
+                                <div style="font-size:2rem;color:var(--aqua-primary);margin-bottom:0.5rem;"><i class="bi bi-building-fill"></i></div>
+                                <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:#94a3b8;font-weight:700;margin-bottom:0.25rem;">Forma juridică</div>
+                                <div style="font-weight:700;font-size:0.9rem;color:var(--aqua-dark);">Asociație de Dezvoltare Intercomunitară</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="background:var(--aqua-bg);border:1.5px solid var(--aqua-border);border-radius:12px;padding:1.25rem;text-align:center;">
+                                <div style="font-size:2rem;color:var(--aqua-primary);margin-bottom:0.5rem;"><i class="bi bi-geo-alt-fill"></i></div>
+                                <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:#94a3b8;font-weight:700;margin-bottom:0.25rem;">Aria de acoperire</div>
+                                <div style="font-weight:700;font-size:0.9rem;color:var(--aqua-dark);">Județul Tulcea</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="background:var(--aqua-bg);border:1.5px solid var(--aqua-border);border-radius:12px;padding:1.25rem;text-align:center;">
+                                <div style="font-size:2rem;color:var(--aqua-primary);margin-bottom:0.5rem;"><i class="bi bi-droplet-half"></i></div>
+                                <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:#94a3b8;font-weight:700;margin-bottom:0.25rem;">Operator delegat</div>
+                                <div style="font-weight:700;font-size:0.9rem;color:var(--aqua-dark);">S.C. Aquaserv S.A. Tulcea</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {{-- ── AGA ── --}}
                 <div class="section-gap">
                     <h2 class="section-title">AGA – Adunarea Generală a Acționarilor</h2>
