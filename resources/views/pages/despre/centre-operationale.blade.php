@@ -257,10 +257,6 @@
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 Lungimea totală a rețelei de canalizare era de doar <strong>13 km</strong>, asigurând serviciul pentru doar <strong>32%</strong> din numărul total al consumatorilor branșați.
                             </p>
-                            <div class="alert alert-warning d-flex gap-2 align-items-start" style="border-radius:10px;font-size:0.85rem;">
-                                <i class="bi bi-exclamation-triangle-fill mt-1 flex-shrink-0"></i>
-                                <span>La Mãcin <strong>nu exista stație de epurare</strong> — apa uzată era descărcată neepurată direct în Dunăre.</span>
-                            </div>
                         </div>
                         <div class="tab-pane fade" id="macin-beneficii">
                             <div class="row g-3">
@@ -341,10 +337,6 @@
                                         <div style="font-size:0.75rem;color:#166534;">populație racordată la apă</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="alert alert-warning d-flex gap-2 align-items-start" style="border-radius:10px;font-size:0.85rem;">
-                                <i class="bi bi-exclamation-triangle-fill mt-1 flex-shrink-0"></i>
-                                <span>În Sulina <strong>nu exista rețea propriu-zisă de ape uzate menajere</strong> — rețeaua meteorică era folosită pentru evacuarea apelor uzate neepurate în Dunăre.</span>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="sulina-beneficii">
