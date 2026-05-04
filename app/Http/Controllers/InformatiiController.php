@@ -166,16 +166,19 @@ class InformatiiController extends Controller
 
     public function componentaCa()
     {
-        return view('pages.documente-lista', [
-            'titlu'            => 'Componența CA și Directori',
-            'iconClasa'        => 'bi-people-fill',
-            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/componenta ca')),
-            'storageUrl'       => 'documente/componenta%20ca',
-            'culoareIcon'      => '#6f42c1',
-            'breadcrumbParent' => 'Transparență',
-            'breadcrumbUrl'    => '/transparenta/componenta-ca',
-            'sidebar'          => 'components.sidebar-transparenta',
-        ]);
+        $cale = storage_path('app/public/documente/componenta ca/cv');
+        $fisiere = [];
+        if (is_dir($cale)) {
+            foreach (scandir($cale) as $f) {
+                if ($f === '.' || $f === '..') continue;
+                $ext = strtolower(pathinfo($f, PATHINFO_EXTENSION));
+                if (in_array($ext, ['pdf', 'doc', 'docx'])) {
+                    $fisiere[] = $f;
+                }
+            }
+            sort($fisiere);
+        }
+        return view('pages.transparenta.componenta-ca', compact('fisiere'));
     }
 
     public function guvernantaCorporativa()
