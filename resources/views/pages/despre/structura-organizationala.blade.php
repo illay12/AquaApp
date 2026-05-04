@@ -504,12 +504,12 @@
                                 'url'     => asset('storage/documente/structura_organizationala/PLAN-MANAGEMENT-2020-2024.pdf'),
                             ],
                             [
-                                'titlu'   => 'Plan Administrare AQUASERV 2020–2024',
-                                'desc'    => 'Planul de administrare al S.C. AQUASERV S.A. pentru perioada 2020–2024',
+                                'titlu'   => 'Plan Administrare AQUASERV 2025–2029',
+                                'desc'    => 'Planul de administrare al S.C. AQUASERV S.A. pentru perioada 2025–2029',
                                 'icon'    => 'bi-building-gear',
                                 'culoare' => '#00b4d8',
                                 'hover'   => '#00b4d8',
-                                'url'     => asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf'),
+                                'url'     => asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2025-2029.pdf'),
                             ],
                         ];
                         @endphp
