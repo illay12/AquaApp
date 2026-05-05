@@ -46,13 +46,15 @@ $categorieLabel = [
         .dispecerat-card-anunturi .card-body { padding: 0 !important; }
         .dispecerat-card-anunturi .card-body a {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0.7rem;
+            gap: 0.2rem;
             padding: 0.7rem 1rem;
             text-decoration: none;
             background: #fff;
             border-radius: 10px;
+            text-align: center;
         }
         .dispecerat-card-anunturi .disp-icon { font-size: 1.2rem !important; color: #dc3545; flex-shrink: 0; }
         .dispecerat-card-anunturi .disp-text { font-size: 0.75rem; color: var(--aqua-gray); margin: 0; line-height: 1.2; }
