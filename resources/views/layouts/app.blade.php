@@ -146,22 +146,24 @@
 <body>
 
     {{-- BANNER SITE NOU --}}
-    <div id="bannerSiteNou" style="display:none;background:linear-gradient(90deg,#023e8a,#0077b6);color:#fff;padding:0.7rem 1rem;font-size:0.875rem;position:relative;z-index:1050;">
-        <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap">
-            <div class="d-flex align-items-center gap-2">
-                <i class="bi bi-stars" style="font-size:1.1rem;color:#90e0ef;flex-shrink:0;"></i>
-                <span>
-                    <strong>Acesta este noul site Aquaserv Tulcea.</strong>
-                    Pentru informații care nu se regăsesc încă aici, accesați
+    <div id="bannerSiteNou" style="display:none;background:linear-gradient(90deg,#023e8a,#0077b6);color:#fff;position:relative;z-index:1050;">
+        <div style="padding:0.6rem 1rem;max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;flex:1;min-width:0;">
+                <i class="bi bi-stars" style="font-size:1rem;color:#90e0ef;flex-shrink:0;"></i>
+                <span style="font-size:0.82rem;line-height:1.4;">
+                    <strong class="d-none d-sm-inline">Acesta este noul site Aquaserv Tulcea. </strong>
+                    <span class="d-sm-none" style="font-weight:700;">Site nou! </span>
+                    <span class="d-none d-sm-inline">Pentru informații lipsă, vizitați </span>
+                    <span class="d-sm-none">Informații lipsă? </span>
                     <a href="https://www.aquaservtulcea.ro" target="_blank" rel="noopener"
-                       style="color:#90e0ef;font-weight:700;text-decoration:underline;">
-                        aquaservtulcea.ro <i class="bi bi-box-arrow-up-right" style="font-size:0.75rem;"></i>
+                       style="color:#90e0ef;font-weight:700;text-decoration:underline;white-space:nowrap;">
+                        aquaservtulcea.ro <i class="bi bi-box-arrow-up-right" style="font-size:0.7rem;"></i>
                     </a>
                 </span>
             </div>
             <button id="btnInchideBanner"
-                    style="background:rgba(255,255,255,0.15);border:none;border-radius:6px;padding:0.3rem 0.75rem;color:#fff;font-size:0.8rem;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:background 0.2s;">
-                Am înțeles <i class="bi bi-x-lg ms-1"></i>
+                    style="background:rgba(255,255,255,0.15);border:none;border-radius:6px;padding:0.35rem 0.65rem;color:#fff;font-size:0.8rem;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:background 0.2s;line-height:1;">
+                <span class="d-none d-sm-inline">Am înțeles </span><i class="bi bi-x-lg" style="font-size:0.75rem;"></i>
             </button>
         </div>
     </div>
