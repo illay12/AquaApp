@@ -152,8 +152,7 @@
                 <i class="bi bi-stars" style="font-size:1rem;color:#90e0ef;flex-shrink:0;"></i>
                 <span style="font-size:0.82rem;line-height:1.4;">
                     <strong>Acesta este noul site Aquaserv Tulcea.</strong>
-                    <span class="d-none d-sm-inline"> Pentru informații care nu se regăsesc încă aici, accesați </span>
-                    <span class="d-sm-none"> </span>
+                    Pentru informații care nu se regăsesc încă aici, accesați
                     <a href="https://www.aquaservtulcea.ro" target="_blank" rel="noopener"
                        style="color:#90e0ef;font-weight:700;text-decoration:underline;white-space:nowrap;">
                         aquaservtulcea.ro <i class="bi bi-box-arrow-up-right" style="font-size:0.7rem;"></i>
