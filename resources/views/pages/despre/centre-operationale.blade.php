@@ -84,6 +84,7 @@
             ['nume' => 'Dorobanțu',           'delta' => false],
             ['nume' => 'Mesteru',             'delta' => false],
             ['nume' => 'Cârjelari',           'delta' => false],
+            ['nume' => 'Carcaliu',            'delta' => false],
         ];
         $nrDelta = count(array_filter($puncteLucru, fn($p) => $p['delta']));
         $nrJudet = count($puncteLucru) - $nrDelta;

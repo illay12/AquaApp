@@ -595,7 +595,7 @@
                             <div class="sidebar-contact-icon"><i class="bi bi-clock-fill"></i></div>
                             <div>
                                 <span class="sidebar-contact-label">Program</span>
-                                <span class="sidebar-contact-value">Lun–Vin: 08:00–16:30</span>
+                                <span class="sidebar-contact-value">Lun–Vin: 08:00–16:00</span>
                             </div>
                         </div>
                     </div>

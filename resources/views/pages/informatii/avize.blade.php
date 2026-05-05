@@ -217,7 +217,7 @@
                     <h6 class="fw-bold text-aqua"><i class="bi bi-info-circle me-2"></i>Contact și program</h6>
                     <p class="mb-0" style="font-size:0.875rem;">
                         Documentele se depun la <strong>sediul central</strong> sau la centrele operaționale de mai sus.
-                        Program: <strong>Luni–Vineri, 08:00–15:00</strong>.
+                        Program: <strong>Luni–Vineri, 08:00–16:00</strong>.
                         Informații la <a href="mailto:secretariat@aquaservtulcea.ro">secretariat@aquaservtulcea.ro</a>.
                     </p>
                 </div>
