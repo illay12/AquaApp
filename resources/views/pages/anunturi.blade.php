@@ -183,7 +183,7 @@ $categorieLabel = [
                         {{-- mobil --}}
                         <a href="tel:+40747022009" class="d-lg-none">
                             <i class="bi bi-telephone-fill disp-icon"></i>
-                            <div>
+                            <div class="disp-text-wrap">
                                 <p class="disp-text">Dispecerat avarii</p>
                                 <p class="disp-num">0747 022 009</p>
                             </div>
