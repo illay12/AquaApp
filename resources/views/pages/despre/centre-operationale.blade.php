@@ -190,10 +190,6 @@
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 Stația de tratare funcționa pe o tehnologie învechită, pierderea de apă tehnologică fiind egală cu <strong>25%</strong> din totalul de apă brută. Lungimea rețelei de canalizare de <strong>87,63 km</strong> asigura serviciul de canalizare pentru doar <strong>70%</strong> din suprafața municipiului.
                             </p>
-                            <div class="alert alert-warning d-flex gap-2 align-items-start" style="border-radius:10px;font-size:0.85rem;">
-                                <i class="bi bi-exclamation-triangle-fill mt-1 flex-shrink-0"></i>
-                                <span>În municipiul Tulcea <strong>nu exista stație de epurare</strong> — apa uzată menajeră era evacuată neepurată direct în fluviul Dunărea.</span>
-                            </div>
                         </div>
                         <div class="tab-pane fade" id="tulcea-beneficii">
                             <div class="row g-3">
