@@ -145,6 +145,27 @@
 </head>
 <body>
 
+    {{-- BANNER SITE NOU --}}
+    <div id="bannerSiteNou" style="display:none;background:linear-gradient(90deg,#023e8a,#0077b6);color:#fff;padding:0.7rem 1rem;font-size:0.875rem;position:relative;z-index:1050;">
+        <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-stars" style="font-size:1.1rem;color:#90e0ef;flex-shrink:0;"></i>
+                <span>
+                    <strong>Acesta este noul site Aquaserv Tulcea.</strong>
+                    Pentru informații care nu se regăsesc încă aici, accesați
+                    <a href="https://www.aquaservtulcea.ro" target="_blank" rel="noopener"
+                       style="color:#90e0ef;font-weight:700;text-decoration:underline;">
+                        aquaservtulcea.ro <i class="bi bi-box-arrow-up-right" style="font-size:0.75rem;"></i>
+                    </a>
+                </span>
+            </div>
+            <button id="btnInchideBanner"
+                    style="background:rgba(255,255,255,0.15);border:none;border-radius:6px;padding:0.3rem 0.75rem;color:#fff;font-size:0.8rem;font-weight:700;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:background 0.2s;">
+                Am înțeles <i class="bi bi-x-lg ms-1"></i>
+            </button>
+        </div>
+    </div>
+
     {{-- TOP BAR --}}
     <div class="topbar d-none d-md-block">
         <div class="container d-flex justify-content-between align-items-center">
@@ -690,6 +711,25 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script nonce="@nonce">
+    (function() {
+        var banner = document.getElementById('bannerSiteNou');
+        var btn    = document.getElementById('btnInchideBanner');
+        if (!sessionStorage.getItem('bannerSiteNouInchis')) {
+            banner.style.display = 'block';
+        }
+        btn.addEventListener('click', function() {
+            banner.style.transition = 'opacity 0.3s';
+            banner.style.opacity = '0';
+            setTimeout(function() { banner.style.display = 'none'; }, 300);
+            sessionStorage.setItem('bannerSiteNouInchis', '1');
+        });
+        btn.addEventListener('mouseover', function() { this.style.background = 'rgba(255,255,255,0.25)'; });
+        btn.addEventListener('mouseout',  function() { this.style.background = 'rgba(255,255,255,0.15)'; });
+    })();
+    </script>
+
     @stack('scripts')
 
     <script nonce="@nonce">
