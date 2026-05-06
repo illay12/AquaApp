@@ -29,22 +29,21 @@
                     [
                         'bi-person','Clienți persoane fizice (utilizatori casnici)',
                         [
-                            ['Încheiere contract utilizatori casnici','pdf','formulare/cerere-contract-nou.pdf'],
+                            ['Încheiere contract utilizatori casnici','pdf','documente/formulare/cerere-contract-nou.pdf'],
                         ]
                     ],
                     [
                         'bi-building','Clienți persoane juridice / agenți economici',
                         [
-                            ['Încheiere contract persoane juridice','pdf','formulare/cerere-contract-pj.pdf'],
-                            ['Reziliere agenți economici','pdf','formulare/cerere-reziliere-pj.pdf'],
+                            ['Încheiere contract persoane juridice','pdf','documente/formulare/cerere-contract-pj.pdf'],
+                            ['Reziliere agenți economici','pdf','documente/formulare/cerere-reziliere-pj.pdf'],
                         ]
                     ],
                     [
                         'bi-tools','Diverse',
                         [
-                            ['Cerere verificare metrologică contor','pdf','formulare/cerere-verificare-metrologica.pdf'],
+                            ['Cerere verificare metrologică contor','pdf','documente/formulare/cerere-verificare-metrologica.pdf'],
                             ['Cerere solicitare servicii','pdf','documente/formulare/cerere-solicitare-servicii.pdf'],
-
                         ]
                     ],
                 ] as [$icon, $categorie, $formulare])
