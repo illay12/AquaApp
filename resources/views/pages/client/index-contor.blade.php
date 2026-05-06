@@ -278,6 +278,7 @@ async function identificaClient() {
     const email     = document.getElementById('inputEmail').value.trim();
 
     document.getElementById('eroareIdentificare').style.display = 'none';
+    document.getElementById('pas3').style.display = 'none';
 
     if (!codClient) { aratEroare('Introduceți codul de client.'); return; }
     if (!telefon)   { aratEroare('Introduceți numărul de telefon.'); return; }
