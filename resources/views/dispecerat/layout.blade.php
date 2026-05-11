@@ -140,14 +140,46 @@
         }
         .btn-primary-aqua:hover { background: var(--aqua-dark); color: #fff; }
 
+        /* HAMBURGER */
+        .btn-hamburger {
+            display: none;
+            background: none; border: none;
+            font-size: 1.4rem; color: #1a1a2e;
+            padding: 0.25rem 0.5rem; cursor: pointer;
+            border-radius: 6px; line-height: 1;
+        }
+        .btn-hamburger:hover { background: #f1f5f9; }
+
+        /* OVERLAY */
+        .sidebar-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 999;
+        }
+        .sidebar-overlay.active { display: block; }
+
         @media (max-width: 768px) {
-            .sidebar { transform: translateX(-100%); }
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.25s ease;
+            }
+            .sidebar.open { transform: translateX(0); }
             .main-content { margin-left: 0; }
+            .btn-hamburger { display: inline-flex; align-items: center; }
+            .topbar { gap: 0.5rem; padding: 0.75rem 1rem; }
+            .topbar-title { font-size: 0.95rem; }
+            .topbar-badge { font-size: 0.72rem; padding: 0.2rem 0.5rem; }
+            #session-timer { display: none; }
+            .page-body { padding: 1rem; }
         }
     </style>
     @stack('styles')
 </head>
 <body>
+
+{{-- SIDEBAR OVERLAY (mobile) --}}
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 {{-- SIDEBAR --}}
 <aside class="sidebar">
@@ -210,6 +242,9 @@
 {{-- MAIN --}}
 <div class="main-content">
     <div class="topbar">
+        <button class="btn-hamburger" onclick="toggleSidebar()" aria-label="Meniu">
+            <i class="bi bi-list"></i>
+        </button>
         <span class="topbar-title">@yield('page_title', 'Dashboard')</span>
         <div class="d-flex align-items-center gap-2">
             <span class="topbar-badge">
@@ -288,5 +323,19 @@
 </script>
 
 @stack('scripts')
+<script>
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+// Close sidebar when a nav link is clicked on mobile
+document.querySelectorAll('.sidebar-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) toggleSidebar();
+    });
+});
+</script>
 </body>
 </html>
