@@ -53,34 +53,27 @@ $labelsCategorie = [
     </div>
     <div class="card-panel-body">
 
-        <form method="GET" action="{{ route('dispecerat.dashboard') }}" class="row g-2 mb-3">
-            <div class="col-md-3">
-                <select name="an_buletin" class="form-select form-select-sm">
-                    <option value="">Toți anii</option>
-                    @foreach($aniBuletine as $anB)
-                        <option value="{{ $anB }}" {{ request('an_buletin') == $anB ? 'selected' : '' }}>{{ $anB }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <select name="luna_buletin" class="form-select form-select-sm">
-                    <option value="">Toate lunile</option>
-                    @foreach(['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'] as $numeLuna)
-                        <option value="{{ $numeLuna }}" {{ request('luna_buletin') === $numeLuna ? 'selected' : '' }}>{{ $numeLuna }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary-aqua btn-sm w-100">
-                    <i class="bi bi-search me-1"></i> Filtrează
-                </button>
-            </div>
+        <form method="GET" action="{{ route('dispecerat.dashboard') }}"
+              class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+            <select name="an_buletin" class="form-select form-select-sm" style="width:auto;min-width:100px;flex:0 0 auto;">
+                <option value="">Toți anii</option>
+                @foreach($aniBuletine as $anB)
+                    <option value="{{ $anB }}" {{ request('an_buletin') == $anB ? 'selected' : '' }}>{{ $anB }}</option>
+                @endforeach
+            </select>
+            <select name="luna_buletin" class="form-select form-select-sm" style="width:auto;min-width:130px;flex:0 0 auto;">
+                <option value="">Toate lunile</option>
+                @foreach(['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'] as $numeLuna)
+                    <option value="{{ $numeLuna }}" {{ request('luna_buletin') === $numeLuna ? 'selected' : '' }}>{{ $numeLuna }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="btn btn-primary-aqua btn-sm" style="flex:0 0 auto;">
+                <i class="bi bi-search me-1"></i> Filtrează
+            </button>
             @if(request()->hasAny(['an_buletin', 'luna_buletin']))
-            <div class="col-md-2">
-                <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary btn-sm w-100">
-                    <i class="bi bi-x-circle me-1"></i> Resetează
-                </a>
-            </div>
+            <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary btn-sm" style="flex:0 0 auto;">
+                <i class="bi bi-x-circle me-1"></i> Resetează
+            </a>
             @endif
         </form>
 
@@ -161,51 +154,42 @@ $labelsCategorie = [
     </div>
     <div class="card-panel-body">
 
-        <form method="GET" action="{{ route('dispecerat.dashboard') }}" class="row g-2 mb-3">
-            <div class="col-md-{{ count($categorii) > 1 ? '3' : '4' }}">
-                <input type="text" name="q" class="form-control form-control-sm"
-                       placeholder="Caută după titlu sau conținut..."
-                       value="{{ request('q') }}">
-            </div>
+        <form method="GET" action="{{ route('dispecerat.dashboard') }}"
+              class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+            <input type="text" name="q" class="form-control form-control-sm"
+                   placeholder="Caută după titlu..."
+                   value="{{ request('q') }}"
+                   style="min-width:140px;flex:1 1 140px;">
             @if(count($categorii) > 1)
-            <div class="col-md-2">
-                <select name="categorie" class="form-select form-select-sm">
-                    <option value="">Toate categoriile</option>
-                    @foreach($categorii as $cat)
-                        <option value="{{ $cat }}" {{ request('categorie') === $cat ? 'selected' : '' }}>
-                            {{ $labelsCategorie[$cat] ?? ucfirst($cat) }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+            <select name="categorie" class="form-select form-select-sm" style="width:auto;min-width:130px;flex:0 0 auto;">
+                <option value="">Toate categoriile</option>
+                @foreach($categorii as $cat)
+                    <option value="{{ $cat }}" {{ request('categorie') === $cat ? 'selected' : '' }}>
+                        {{ $labelsCategorie[$cat] ?? ucfirst($cat) }}
+                    </option>
+                @endforeach
+            </select>
             @endif
-            <div class="col-md-2">
-                <select name="an" class="form-select form-select-sm">
-                    <option value="">Toți anii</option>
-                    @foreach($aniAnunturi as $an)
-                        <option value="{{ $an }}" {{ request('an') == $an ? 'selected' : '' }}>{{ $an }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-2">
-                <select name="luna" class="form-select form-select-sm">
-                    <option value="">Toate lunile</option>
-                    @foreach(['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'] as $i => $numeLuna)
-                        <option value="{{ $i + 1 }}" {{ request('luna') == $i + 1 ? 'selected' : '' }}>{{ $numeLuna }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary-aqua btn-sm w-100">
-                    <i class="bi bi-search me-1"></i> Caută
-                </button>
-            </div>
+            <select name="an" class="form-select form-select-sm" style="width:auto;min-width:100px;flex:0 0 auto;">
+                <option value="">Toți anii</option>
+                @foreach($aniAnunturi as $an)
+                    <option value="{{ $an }}" {{ request('an') == $an ? 'selected' : '' }}>{{ $an }}</option>
+                @endforeach
+            </select>
+            <select name="luna" class="form-select form-select-sm" style="width:auto;min-width:120px;flex:0 0 auto;">
+                <option value="">Toate lunile</option>
+                @foreach(['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'] as $i => $numeLuna)
+                    <option value="{{ $i + 1 }}" {{ request('luna') == $i + 1 ? 'selected' : '' }}>{{ $numeLuna }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="btn btn-primary-aqua btn-sm" style="flex:0 0 auto;">
+                <i class="bi bi-search me-1"></i> Caută
+            </button>
             @if(request()->hasAny(['q', 'categorie', 'an', 'luna']))
-            <div class="col-md-{{ count($categorii) > 1 ? '1' : '2' }}">
-                <a href="{{ route('dispecerat.dashboard') }}" class="btn btn-outline-secondary btn-sm w-100" title="Resetează filtrele">
-                    <i class="bi bi-x-circle"></i>
-                </a>
-            </div>
+            <a href="{{ route('dispecerat.dashboard') }}"
+               class="btn btn-outline-secondary btn-sm" title="Resetează filtrele" style="flex:0 0 auto;">
+                <i class="bi bi-x-circle"></i>
+            </a>
             @endif
         </form>
 
@@ -213,25 +197,25 @@ $labelsCategorie = [
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th class="d-none d-sm-table-cell" style="width:40px;">#</th>
                         <th>Titlu</th>
-                        @if(count($categorii) > 1)<th>Categorie</th>@endif
-                        <th>Data publicării</th>
-                        <th>Ultima modificare</th>
-                        <th class="text-end">Acțiuni</th>
+                        @if(count($categorii) > 1)<th class="d-none d-md-table-cell">Categorie</th>@endif
+                        <th style="width:130px;">Data publicării</th>
+                        <th class="d-none d-lg-table-cell" style="width:130px;">Ultima modificare</th>
+                        <th class="text-end" style="width:100px;">Acțiuni</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($anunturi as $anunt)
                     <tr>
-                        <td style="color:#94a3b8;">{{ $anunt->id }}</td>
-                        <td>
-                            <div style="font-weight:600;font-size:0.875rem;max-width:380px;">
-                                {{ Str::limit($anunt->titlu, 80) }}
+                        <td class="d-none d-sm-table-cell" style="color:#94a3b8;">{{ $anunt->id }}</td>
+                        <td style="max-width:0;">
+                            <div style="font-weight:600;font-size:0.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                                {{ $anunt->titlu }}
                             </div>
                         </td>
                         @if(count($categorii) > 1)
-                        <td>
+                        <td class="d-none d-md-table-cell">
                             <span class="badge-cat badge-{{ $anunt->categorie }}">
                                 {{ $labelsCategorie[$anunt->categorie] ?? ucfirst($anunt->categorie) }}
                             </span>
@@ -240,7 +224,7 @@ $labelsCategorie = [
                         <td style="white-space:nowrap;color:#64748b;font-size:0.82rem;">
                             {{ $anunt->created_at->format('d.m.Y H:i') }}
                         </td>
-                        <td style="white-space:nowrap;color:#64748b;font-size:0.82rem;">
+                        <td class="d-none d-lg-table-cell" style="white-space:nowrap;color:#64748b;font-size:0.82rem;">
                             {{ $anunt->updated_at->format('d.m.Y H:i') }}
                         </td>
                         <td class="text-end">
