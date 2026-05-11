@@ -61,7 +61,7 @@
         animation: bob 2.8s ease-in-out infinite;
         filter: drop-shadow(0 8px 16px rgba(0,119,182,0.25));
     }
-    @keyframes bob {
+    @@keyframes bob {
         0%, 100% { transform: translateY(0);   }
         50%       { transform: translateY(-14px); }
     }
@@ -73,7 +73,7 @@
         animation: wave-drift 3s ease-in-out infinite alternate;
         opacity: 0.35;
     }
-    @keyframes wave-drift {
+    @@keyframes wave-drift {
         from { transform: scaleX(0.95); }
         to   { transform: scaleX(1.05); }
     }
