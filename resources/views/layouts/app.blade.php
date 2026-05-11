@@ -153,9 +153,9 @@
                 <span style="font-size:0.82rem;line-height:1.4;">
                     <strong>Acesta este noul site Aquaserv Tulcea.</strong>
                     Pentru informații care nu se regăsesc încă aici, accesați
-                    <a href="https://www.aquaservtulcea.ro" target="_blank" rel="noopener"
+                    <a href="https://old.aquaservtulcea.ro" target="_blank" rel="noopener"
                        style="color:#90e0ef;font-weight:700;text-decoration:underline;white-space:nowrap;">
-                        aquaservtulcea.ro <i class="bi bi-box-arrow-up-right" style="font-size:0.7rem;"></i>
+                        old.aquaservtulcea.ro <i class="bi bi-box-arrow-up-right" style="font-size:0.7rem;"></i>
                     </a>
                 </span>
             </div>
