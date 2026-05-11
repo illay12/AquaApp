@@ -96,12 +96,31 @@
                 <div class="col-lg-7">
                     <h2 class="section-title">Ultimele anunțuri</h2>
 
+                    @php
+                    $catStyle = [
+                        'anunturi' => 'background:#dbeafe;color:#1d4ed8;',
+                        'avarie'   => 'background:#fee2e2;color:#b91c1c;',
+                        'angajare' => 'background:#dcfce7;color:#15803d;',
+                        'calitate' => 'background:#e0f2fe;color:#0369a1;',
+                        'diverse'  => 'background:#f3e8ff;color:#7e22ce;',
+                    ];
+                    $catLabel = [
+                        'anunturi' => 'Anunțuri',
+                        'avarie'   => 'Avarie',
+                        'angajare' => 'Angajare',
+                        'calitate' => 'Calitate apă',
+                        'diverse'  => 'Diverse',
+                    ];
+                    @endphp
                     @forelse($anunturi ?? [] as $i => $anunt)
                         <div class="news-item {{ $i >= 3 ? 'd-none d-sm-block' : '' }}">
                             <div class="date">
                                 <i class="bi bi-calendar3 me-1"></i>
                                 {{ $anunt->created_at->format('d.m.Y') }}
-                                <span class="ms-2 badge-aqua">{{ $anunt->categorie ?? 'Anunț' }}</span>
+                                <span class="ms-2"
+                                      style="display:inline-block;padding:0.2em 0.65em;border-radius:20px;font-size:0.72rem;font-weight:700;white-space:nowrap;{{ $catStyle[$anunt->categorie] ?? 'background:#f1f5f9;color:#475569;' }}">
+                                    {{ $catLabel[$anunt->categorie] ?? ucfirst($anunt->categorie) }}
+                                </span>
                             </div>
                             <h6><a href="{{ url('/anunturi/'.$anunt->slug) }}">{{ $anunt->titlu }}</a></h6>
                         </div>
