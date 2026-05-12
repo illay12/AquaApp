@@ -6,6 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name', 'Aquaserv')) | Servicii Apă și Canal</title>
     <meta name="description" content="@yield('meta_description', 'Operator regional de servicii de alimentare cu apă și canalizare')">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -325,43 +329,41 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item {{ request()->is('informatii/hotarari-aga*') ? 'active' : '' }}" href="{{ url('/informatii/hotarari-aga') }}">
                                 <i class="bi bi-people text-aqua me-2"></i>Hotărâri AGA</a></li>
-                            <li><a class="dropdown-item {{ request()->is('informatii/surse-buget-bilant*') ? 'active' : '' }}" href="{{ url('/informatii/surse-buget-bilant') }}">
-                                <i class="bi bi-bar-chart-line text-aqua me-2"></i>Surse, Buget, Bilanț</a></li>
-                            <li><a class="dropdown-item {{ request()->is('transparenta/buget-investitii*') ? 'active' : '' }}" href="{{ url('/transparenta/buget-investitii') }}">
-                                <i class="bi bi-wallet2 text-aqua me-2"></i>Buget investiții</a></li>
-                            <li><a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') ? 'active' : '' }}" href="{{ url('/transparenta/rapoarte-evaluare') }}">
-                                <i class="bi bi-clipboard-data text-aqua me-2"></i>Rapoarte de evaluare</a></li>
-                            <li><a class="dropdown-item {{ request()->is('transparenta/raport-anual*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-anual') }}">
-                                <i class="bi bi-file-earmark-text text-aqua me-2"></i>Raport anual activitate</a></li>
-                            <li><a class="dropdown-item {{ request()->is('transparenta/raport-audit*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-audit') }}">
-                                <i class="bi bi-search text-aqua me-2"></i>Raport audit extern</a></li>
-                            <li><a class="dropdown-item {{ request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="{{ url('/transparenta/raporturi-cnr') }}">
-                                <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Rapoarte CNR</a></li>
-                            <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="#">
+                                <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/plan-integritate*') || request()->is('transparenta/contracte-mandat-administratori*') ? 'active' : '' }}" href="#">
                                     <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item {{ request()->is('transparenta/cod-etica*') ? 'active' : '' }}" href="{{ url('/transparenta/cod-etica') }}">
-                                        <i class="bi bi-award text-aqua me-2"></i>Cod de etică</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/componenta-ca*') ? 'active' : '' }}" href="{{ url('/transparenta/componenta-ca') }}">
                                         <i class="bi bi-people-fill text-aqua me-2"></i>Componența CA</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/contracte-mandat-administratori*') ? 'active' : '' }}" href="{{ url('/transparenta/contracte-mandat-administratori') }}">
+                                        <i class="bi bi-file-earmark-person text-aqua me-2"></i>Contracte mandat adm.</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/cod-etica*') ? 'active' : '' }}" href="{{ url('/transparenta/cod-etica') }}">
+                                        <i class="bi bi-award text-aqua me-2"></i>Cod de etică</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/guvernanta-corporativa*') ? 'active' : '' }}" href="{{ url('/transparenta/guvernanta-corporativa') }}">
                                         <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță corporativă</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="{{ url('/transparenta/plan-integritate') }}">
                                         <i class="bi bi-shield-lock text-aqua me-2"></i>Plan de integritate</a></li>
                                 </ul>
                             </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item {{ request()->is('informatii/surse-buget-bilant*') ? 'active' : '' }}" href="{{ url('/informatii/surse-buget-bilant') }}">
+                                <i class="bi bi-bar-chart-line text-aqua me-2"></i>Surse, Buget, Bilanț</a></li>
+                            <li><a class="dropdown-item {{ request()->is('transparenta/buget-investitii*') ? 'active' : '' }}" href="{{ url('/transparenta/buget-investitii') }}">
+                                <i class="bi bi-wallet2 text-aqua me-2"></i>Buget investiții</a></li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('transparenta/contracte-mandat-administratori*') || request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="#">
-                                    <i class="bi bi-three-dots text-aqua me-2"></i>Alte informații
+                                <a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') || request()->is('transparenta/raport-anual*') || request()->is('transparenta/raport-audit*') || request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="#">
+                                    <i class="bi bi-journal-text text-aqua me-2"></i>Rapoarte
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item {{ request()->is('transparenta/contracte-mandat-administratori*') ? 'active' : '' }}" href="{{ url('/transparenta/contracte-mandat-administratori') }}">
-                                        <i class="bi bi-file-earmark-person text-aqua me-2"></i>Contracte mandat adm.</a></li>
-                                    <li><a class="dropdown-item {{ request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="{{ url('/transparenta/obiectivul-politicii-publice') }}">
-                                        <i class="bi bi-bullseye text-aqua me-2"></i>Obiectiv politică publică</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') ? 'active' : '' }}" href="{{ url('/transparenta/rapoarte-evaluare') }}">
+                                        <i class="bi bi-clipboard-data text-aqua me-2"></i>Rapoarte de evaluare</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/raport-anual*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-anual') }}">
+                                        <i class="bi bi-file-earmark-text text-aqua me-2"></i>Raport anual activitate</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/raport-audit*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-audit') }}">
+                                        <i class="bi bi-search text-aqua me-2"></i>Raport audit extern</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="{{ url('/transparenta/raporturi-cnr') }}">
+                                        <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Rapoarte CNR</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -549,24 +551,6 @@
                                 <a href="{{ url('/informatii/hotarari-aga') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-people text-aqua"></i> Hotărâri AGA
                                 </a>
-                                <a href="{{ url('/informatii/surse-buget-bilant') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-bar-chart-line text-aqua"></i> Surse, Buget, Bilanț
-                                </a>
-                                <a href="{{ url('/transparenta/buget-investitii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-wallet2 text-aqua"></i> Buget investiții
-                                </a>
-                                <a href="{{ url('/transparenta/rapoarte-evaluare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-clipboard-data text-aqua"></i> Rapoarte de evaluare
-                                </a>
-                                <a href="{{ url('/transparenta/raport-anual') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-file-earmark-text text-aqua"></i> Raport anual
-                                </a>
-                                <a href="{{ url('/transparenta/raport-audit') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-search text-aqua"></i> Raport audit extern
-                                </a>
-                                <a href="{{ url('/transparenta/raporturi-cnr') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
-                                    <i class="bi bi-file-earmark-bar-graph text-aqua"></i> Rapoarte CNR
-                                </a>
                                 {{-- Guvernanță sub-expandabil --}}
                                 <button data-submeniu="subGuvernanta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
                                     <i class="bi bi-building-check text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
@@ -574,11 +558,14 @@
                                     <i class="bi bi-chevron-down" id="iconGuvernanta" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
                                 </button>
                                 <div id="subGuvernanta" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
-                                    <a href="{{ url('/transparenta/cod-etica') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
-                                        <i class="bi bi-award text-aqua"></i> Cod de etică
-                                    </a>
                                     <a href="{{ url('/transparenta/componenta-ca') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-people-fill text-aqua"></i> Componența CA
+                                    </a>
+                                    <a href="{{ url('/transparenta/contracte-mandat-administratori') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-person text-aqua"></i> Contracte mandat adm.
+                                    </a>
+                                    <a href="{{ url('/transparenta/cod-etica') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-award text-aqua"></i> Cod de etică
                                     </a>
                                     <a href="{{ url('/transparenta/guvernanta-corporativa') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-building-check text-aqua"></i> Guvernanță corporativă
@@ -587,18 +574,30 @@
                                         <i class="bi bi-shield-lock text-aqua"></i> Plan de integritate
                                     </a>
                                 </div>
-                                {{-- Alte informații sub-expandabil --}}
-                                <button data-submeniu="subAlteTransparenta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
-                                    <i class="bi bi-three-dots text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
-                                    <span style="flex:1;">Alte informații</span>
-                                    <i class="bi bi-chevron-down" id="iconAlteTransparenta" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
+                                <a href="{{ url('/informatii/surse-buget-bilant') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-bar-chart-line text-aqua"></i> Surse, Buget, Bilanț
+                                </a>
+                                <a href="{{ url('/transparenta/buget-investitii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-wallet2 text-aqua"></i> Buget investiții
+                                </a>
+                                {{-- Rapoarte sub-expandabil --}}
+                                <button data-submeniu="subRapoarteTransparenta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
+                                    <i class="bi bi-journal-text text-aqua" style="font-size:1rem;width:20px;text-align:center;"></i>
+                                    <span style="flex:1;">Rapoarte</span>
+                                    <i class="bi bi-chevron-down" id="iconRapoarteTransparenta" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
                                 </button>
-                                <div id="subAlteTransparenta" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
-                                    <a href="{{ url('/transparenta/contracte-mandat-administratori') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
-                                        <i class="bi bi-file-earmark-person text-aqua"></i> Contracte mandat adm.
+                                <div id="subRapoarteTransparenta" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
+                                    <a href="{{ url('/transparenta/rapoarte-evaluare') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-clipboard-data text-aqua"></i> Rapoarte de evaluare
                                     </a>
-                                    <a href="{{ url('/transparenta/obiectivul-politicii-publice') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
-                                        <i class="bi bi-bullseye text-aqua"></i> Obiectiv politică publică
+                                    <a href="{{ url('/transparenta/raport-anual') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-text text-aqua"></i> Raport anual activitate
+                                    </a>
+                                    <a href="{{ url('/transparenta/raport-audit') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-search text-aqua"></i> Raport audit extern
+                                    </a>
+                                    <a href="{{ url('/transparenta/raporturi-cnr') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-file-earmark-bar-graph text-aqua"></i> Rapoarte CNR
                                     </a>
                                 </div>
                             </div>

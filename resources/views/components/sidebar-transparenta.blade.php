@@ -12,7 +12,6 @@
             ['/transparenta/raport-audit',          'bi-search',                    'Raport audit extern'],
             ['/transparenta/raporturi-cnr',                   'bi-file-earmark-bar-graph', 'Rapoarte CNR'],
             ['/transparenta/contracte-mandat-administratori', 'bi-file-earmark-person',    'Contracte mandat adm.'],
-            ['/transparenta/obiectivul-politicii-publice',    'bi-bullseye',               'Obiectiv politică publică'],
             ['/transparenta/cod-etica',             'bi-award',                     'Cod de etică'],
             ['/transparenta/componenta-ca',         'bi-people-fill',               'Componența CA'],
             ['/transparenta/guvernanta-corporativa','bi-building-check',            'Guvernanță corporativă'],

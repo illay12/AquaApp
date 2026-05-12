@@ -20,6 +20,51 @@
             {{-- CONTINUT PRINCIPAL --}}
             <div class="col-12">
 
+                {{-- INFORMATII COMPANIE --}}
+                <h2 class="section-title">Informații despre companie</h2>
+                <div class="card mb-5" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
+                    <div class="card-body p-4">
+                        <div class="row g-3">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
+                                    <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;">Denumire</div>
+                                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">S.C. AQUASERV S.A.</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
+                                    <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;">Sediu</div>
+                                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">Tulcea, str. Rezervorului nr. 2</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
+                                    <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;">Telefon</div>
+                                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">0240 524 310</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
+                                    <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;">Reg. Comerțului</div>
+                                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">J2004000348364</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
+                                    <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;">CUI</div>
+                                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">RO 16775941</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
+                                    <div style="font-size:0.7rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.3rem;">Cont RON</div>
+                                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.78rem;">RO46RNCB4600000178560001 – BCR Tulcea</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 class="section-title">Scurt istoric</h2>
 
                 <p style="font-size:0.95rem;line-height:1.85;">

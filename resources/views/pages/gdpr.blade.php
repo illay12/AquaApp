@@ -57,7 +57,6 @@
                         </h6>
                     </div>
                     <nav style="padding:0.5rem 0;">
-                        <a href="#despre-companie" class="gdpr-nav-link"><i class="bi bi-building"></i> Despre companie</a>
                         <a href="#scop" class="gdpr-nav-link"><i class="bi bi-bullseye"></i> Scopul prelucrării</a>
                         <a href="#temeiuri" class="gdpr-nav-link"><i class="bi bi-journal-text"></i> Temeiuri juridice</a>
                         <a href="#destinatari" class="gdpr-nav-link"><i class="bi bi-people"></i> Destinatari</a>
@@ -73,41 +72,6 @@
 
         {{-- SECTIUNI --}}
         <div class="col-lg-9">
-
-            {{-- 1. DESPRE COMPANIE --}}
-            <div class="card mb-4 gdpr-card" id="despre-companie">
-                <div class="gdpr-card-head">
-                    <div class="gdpr-icon"><i class="bi bi-building"></i></div>
-                    <h2 class="gdpr-card-title">Informatii despre companie</h2>
-                </div>
-                <div class="card-body">
-                    <p style="font-size:0.9rem;color:#495057;margin-bottom:1.25rem;">
-                        Prezenta nota de informare este emisa de S.C. AQUASERV S.A., in legatura cu
-                        derularea Contractului de furnizare/prestare a serviciului de alimentare cu apa si
-                        de canalizare pentru persoane fizice.
-                    </p>
-                    <div class="row g-2">
-                        <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">Denumire</div><div class="info-value">S.C. AQUASERV S.A.</div></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">Sediu</div><div class="info-value">Tulcea, str. Rezervorului nr. 2</div></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">Telefon</div><div class="info-value">0240 524 310</div></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">Reg. Comertului</div><div class="info-value">J2004000348364</div></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">CUI</div><div class="info-value">RO 16775941</div></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="info-chip"><div class="info-label">Cont RON</div><div class="info-value" style="font-size:0.78rem;">RO46RNCB4600000178560001 – BCR Tulcea</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             {{-- 2. SCOP --}}
             <div class="card mb-4 gdpr-card" id="scop">
