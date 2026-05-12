@@ -347,10 +347,10 @@
                                 Document
                             </div>
                             <div style="font-weight:800;color:#fff;font-size:0.9rem;">
-                                Plan Administrare AQUASERV 2020–2024
+                                Plan Administrare AQUASERV 2025–2029
                             </div>
                         </div>
-                        <a href="{{ asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf') }}"
+                        <a href="{{ asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2025-2029.pdf') }}"
                            target="_blank" class="org-btn-primary">
                             <i class="bi bi-eye"></i> Vezi documentul
                         </a>
@@ -372,10 +372,10 @@
                                 Document
                             </div>
                             <div style="font-weight:800;color:#fff;font-size:0.9rem;">
-                                Plan Administrare AQUASERV 2020–2024
+                                Plan Administrare AQUASERV 2025–2029
                             </div>
                         </div>
-                        <a href="{{ asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf') }}"
+                        <a href="{{ asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2025-2029.pdf') }}"
                            target="_blank" class="org-btn-primary">
                             <i class="bi bi-eye"></i> Vezi documentul
                         </a>
