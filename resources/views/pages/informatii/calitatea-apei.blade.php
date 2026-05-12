@@ -223,36 +223,12 @@
                     </h2>
                     <p style="line-height:1.9;color:#444;">
                         AQUASERV S.A. Tulcea asigură furnizarea apei potabile care respectă în totalitate
-                        parametrii de calitate prevăzuți de <strong>Legea nr. 458/2002</strong> privind calitatea apei
-                        potabile, cu modificările și completările ulterioare.
+                        parametrii de calitate prevăzuți de <strong>Ordonanța nr. 7/2023</strong> și <strong>HG nr. 971/2023</strong> privind calitatea apei potabile.
                     </p>
                     <p style="line-height:1.9;color:#444;">
                         Laboratorul propriu efectuează analize periodice ale apei distribuite, iar rezultatele
                         sunt puse la dispoziția publicului prin buletinele de analiză de mai jos.
                     </p>
-                    <div class="row g-2 mt-2">
-                        <div class="col-4">
-                            <div class="text-center p-2" style="background:#e0f2fe;border-radius:10px;">
-                                <i class="bi bi-droplet-fill" style="font-size:1.4rem;color:#0369a1;"></i>
-                                <div style="font-weight:800;font-size:1.2rem;color:#0369a1;">100%</div>
-                                <div style="font-size:0.8rem;color:#0369a1;">conformă normelor</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="text-center p-2" style="background:#dcfce7;border-radius:10px;">
-                                <i class="bi bi-clipboard2-check-fill" style="font-size:1.4rem;color:#059669;"></i>
-                                <div style="font-weight:800;font-size:1.2rem;color:#059669;">lunar</div>
-                                <div style="font-size:0.8rem;color:#059669;">analize efectuate</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="text-center p-2" style="background:#fef9c3;border-radius:10px;">
-                                <i class="bi bi-award-fill" style="font-size:1.4rem;color:#ca8a04;"></i>
-                                <div style="font-weight:800;font-size:1.1rem;color:#ca8a04;">ISO 22000</div>
-                                <div style="font-size:0.8rem;color:#ca8a04;">certificare calitate</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 {{-- BULETINE CU DROPDOWN PE AN --}}
@@ -365,8 +341,8 @@
                                 <i class="bi bi-flask me-1"></i> Laborator
                             </div>
                             <div style="font-size:0.78rem;color:#0369a1;line-height:1.5;">
-                                Lun–Vin<br>07:00–15:00<br>
-                                <strong>0240 511 012</strong>
+                                Lun–Vin<br>07:00–19:00<br>
+                                <strong>0737 138 839</strong>
                             </div>
                         </div>
                     </div>
@@ -390,10 +366,10 @@
                             <i class="bi bi-telephone-fill me-2"></i>Contact Laborator
                         </h6>
                         <p style="font-size:0.875rem;color:#0369a1;margin-bottom:0.5rem;">
-                            <strong>Program:</strong> Luni – Vineri, 07:00 – 15:00
+                            <strong>Program:</strong> Luni – Vineri, 07:00 – 19:00
                         </p>
                         <p style="font-size:0.875rem;color:#0369a1;margin-bottom:0;">
-                            <strong>Telefon:</strong> 0240 511 012
+                            <strong>Telefon:</strong> 0737 138 839
                         </p>
                     </div>
 
@@ -412,15 +388,11 @@
                         <ul style="font-size:0.85rem;list-style:none;padding:0;margin:0;">
                             <li class="mb-2 pb-2" style="border-bottom:1px solid var(--aqua-border);">
                                 <i class="bi bi-file-text me-1" style="color:#0369a1;"></i>
-                                Legea nr. 458/2002 privind calitatea apei potabile
-                            </li>
-                            <li class="mb-2 pb-2" style="border-bottom:1px solid var(--aqua-border);">
-                                <i class="bi bi-file-text me-1" style="color:#0369a1;"></i>
-                                Legea nr. 311/2004 – modificarea Legii 458/2002
+                                Ordonanța nr. 7/2023 privind calitatea apei potabile
                             </li>
                             <li>
                                 <i class="bi bi-file-text me-1" style="color:#0369a1;"></i>
-                                HG nr. 974/2004 – Norme de supraveghere, inspecție sanitară
+                                HG nr. 971/2023 privind calitatea apei potabile
                             </li>
                         </ul>
                     </div>

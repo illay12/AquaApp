@@ -141,9 +141,8 @@
                             ['ISO 27001', 'Sistem de Management al Securității Informației', 'bi-shield-lock'],
                             ['ISO 9001', 'Sistem de Management al Calității', 'bi-patch-check'],
                             ['ISO 14001', 'Sistem de Management de Mediu', 'bi-leaf'],
-                            ['ISO 18001', 'Sistem de Management al Sănătății și Securității Ocupaționale', 'bi-heart-pulse'],
+                            ['ISO 45001', 'Sistem de Management al Sănătății și Securității Ocupaționale', 'bi-heart-pulse'],
                             ['ISO 22000', 'Sistem de Management al Siguranței Alimentare', 'bi-droplet-half'],
-                            ['SR EN ISO', 'Alte standarde române și europene aplicabile', 'bi-file-earmark-check'],
                         ] as [$titlu, $desc, $icon])
                         <div class="col-6 col-md-4 col-lg-3">
                             <div class="card h-100 text-center p-3" style="border-color:var(--aqua-border);">

@@ -237,8 +237,8 @@
                 </div>
             </div>
             <div class="pc-card-body">
-                <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240540302">0240.540.302</a></div>
-                <div class="pc-row"><i class="bi bi-phone-fill"></i><a href="tel:0754013201">0754 013 201</a></div>
+                <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Strada Mircea Vodă, Nr. 18</span></div>
+                <div class="pc-row"><i class="bi bi-telephone-fill"></i><span><a href="tel:0240540302">0240.540.302</a> / <a href="tel:0754013201">0754 013 201</a></span></div>
                 <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.isaccea@aquaservtulcea.ro">centru.isaccea@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
@@ -267,9 +267,9 @@
                 </div>
             </div>
             <div class="pc-card-body">
+                <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Str. 1 Decembrie 1918, Nr. 32</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240571180">0240.571.180</a></div>
                 <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.macin@aquaservtulcea.ro">centru.macin@aquaservtulcea.ro</a></div>
-                <br>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>
@@ -297,6 +297,7 @@
                 </div>
             </div>
             <div class="pc-card-body">
+                <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Strada I, Nr. 142</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240543147">0240.543.147</a></div>
                 <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.sulina@aquaservtulcea.ro">centru.sulina@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
@@ -326,6 +327,7 @@
                 </div>
             </div>
             <div class="pc-card-body">
+                <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Strada Republicii, Nr. 83</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240562340">0240.562.340</a></div>
                 <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.babadag@aquaservtulcea.ro">centru.babadag@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">

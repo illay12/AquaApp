@@ -173,17 +173,17 @@
                     {{-- Tabs --}}
                     <ul class="nav nav-pills mb-4" id="tabTulcea" role="tablist" style="gap:0.5rem;">
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tulcea-situatie"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tulcea-beneficii"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tulcea-beneficii"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tulcea-situatie"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
                         </li>
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="tulcea-situatie">
+                        <div class="tab-pane fade" id="tulcea-situatie">
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 La nivelul municipiului Tulcea, sistemul de alimentare cu apă și colectare a apelor uzate era depășit moral și fizic. Rețeaua de distribuție, cu o lungime totală de <strong>162,63 km</strong>, genera pierderi mari de apă (<strong>42,16%</strong> din totalul de apă injectată în rețea) și conducea la avarii dese — peste 500 de avarii anual la conductele principale și peste 160 de avarii anual la conductele de branșament.
                             </p>
@@ -191,7 +191,7 @@
                                 Stația de tratare funcționa pe o tehnologie învechită, pierderea de apă tehnologică fiind egală cu <strong>25%</strong> din totalul de apă brută. Lungimea rețelei de canalizare de <strong>87,63 km</strong> asigura serviciul de canalizare pentru doar <strong>70%</strong> din suprafața municipiului.
                             </p>
                         </div>
-                        <div class="tab-pane fade" id="tulcea-beneficii">
+                        <div class="tab-pane fade show active" id="tulcea-beneficii">
                             <div class="row g-3">
                                 @php $beneficiiTulcea = [
                                     ['icon'=>'bi-droplet','titlu'=>'Reabilitare surse apă','desc'=>'Reabilitarea forajelor, stației de pompare, dezinfecție cu clor și instalații moderne de control.'],
@@ -238,16 +238,16 @@
                 <div class="card-body p-4">
                     <ul class="nav nav-pills mb-4" role="tablist" style="gap:0.5rem;">
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#macin-situatie"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#macin-beneficii"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#macin-beneficii"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#macin-situatie"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="macin-situatie">
+                        <div class="tab-pane fade" id="macin-situatie">
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 Populația racordată la sistemul de alimentare cu apă al orașului reprezenta înainte de începerea proiectului doar <strong>80%</strong> din totalul locuitorilor. Rețeaua de distribuție, cu o lungime totală de <strong>51,5 km</strong>, genera pierderi mari de apă și avarii dese datorate stadiului avansat de degradare.
                             </p>
@@ -255,7 +255,7 @@
                                 Lungimea totală a rețelei de canalizare era de doar <strong>13 km</strong>, asigurând serviciul pentru doar <strong>32%</strong> din numărul total al consumatorilor branșați.
                             </p>
                         </div>
-                        <div class="tab-pane fade" id="macin-beneficii">
+                        <div class="tab-pane fade show active" id="macin-beneficii">
                             <div class="row g-3">
                                 @php $beneficiMacin = [
                                     ['icon'=>'bi-droplet','titlu'=>'Front de captare nou','desc'=>'Realizarea unui nou front de captare pentru asigurarea sursei de apă.'],
@@ -302,41 +302,21 @@
                 <div class="card-body p-4">
                     <ul class="nav nav-pills mb-4" role="tablist" style="gap:0.5rem;">
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#sulina-situatie"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#sulina-beneficii"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#sulina-beneficii"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#sulina-situatie"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="sulina-situatie">
+                        <div class="tab-pane fade" id="sulina-situatie">
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 Construcția uzinei de apă potabilă a orașului Sulina a început în <strong>anul 1886</strong> și s-a finalizat în 1905. Principalele deficiențe proveneau din tehnologia incompatibilă cu calitatea apei sursei și vechimea utilajelor.
                             </p>
-                            <div class="row g-3 mb-3">
-                                <div class="col-sm-4">
-                                    <div class="text-center p-3" style="background:#fff3cd;border-radius:10px;border:1px solid #fde68a;">
-                                        <div style="font-size:1.5rem;font-weight:800;color:#92400e;">50,42%</div>
-                                        <div style="font-size:0.75rem;color:#78350f;">pierderi apă în rețea</div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="text-center p-3" style="background:#fee2e2;border-radius:10px;border:1px solid #fca5a5;">
-                                        <div style="font-size:1.5rem;font-weight:800;color:#991b1b;">85%</div>
-                                        <div style="font-size:0.75rem;color:#7f1d1d;">conducte cu vârsta peste 40 ani</div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="text-center p-3" style="background:#f0fdf4;border-radius:10px;border:1px solid #86efac;">
-                                        <div style="font-size:1.5rem;font-weight:800;color:#15803d;">74%</div>
-                                        <div style="font-size:0.75rem;color:#166534;">populație racordată la apă</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-pane fade" id="sulina-beneficii">
+                        <div class="tab-pane fade show active" id="sulina-beneficii">
                             <div class="row g-3">
                                 @php $beneficiiSulina = [
                                     ['icon'=>'bi-droplet','titlu'=>'Surse de captare','desc'=>'Reabilitarea surselor de captare a apei brute.'],
@@ -382,16 +362,16 @@
                 <div class="card-body p-4">
                     <ul class="nav nav-pills mb-4" role="tablist" style="gap:0.5rem;">
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#isaccea-situatie"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#isaccea-beneficii"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#isaccea-beneficii"
-                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#isaccea-situatie"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="isaccea-situatie">
+                        <div class="tab-pane fade" id="isaccea-situatie">
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 Populația racordată la sistemul de alimentare cu apă al orașului Isaccea reprezenta înainte de proiect doar <strong>64%</strong> din totalul locuitorilor. Rețeaua de distribuție, cu lungime totală de <strong>12,6 km</strong>, genera pierderi mari și avarii frecvente.
                             </p>
@@ -399,7 +379,7 @@
                                 Rețeaua de canalizare de <strong>4,2 km</strong> asigura serviciul pentru doar <strong>28%</strong> din consumatorii branșați. Descărcarea apelor uzate neepurate era făcută într-un afluent al fluviului Dunărea.
                             </p>
                         </div>
-                        <div class="tab-pane fade" id="isaccea-beneficii">
+                        <div class="tab-pane fade show active" id="isaccea-beneficii">
                             <div class="row g-3">
                                 @php $beneficiiIsaccea = [
                                     ['icon'=>'bi-box','titlu'=>'Rezervoare','desc'=>'Reabilitarea și extinderea rezervoarelor de înmagazinare a apei.'],
@@ -443,41 +423,48 @@
                     </div>
                 </div>
                 <div class="card-body p-4">
-                    <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
-                        Serviciul public de alimentare cu apă și canalizare al orașului era efectuat de către SP EDIL PREST Babadag. În prezent, orașul Babadag a intrat în ADI, alături de celelalte 4 aglomerări urbane: Tulcea, Mãcin, Isaccea și Sulina.
-                    </p>
-
-                    <div class="row g-3 mb-4">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="text-center p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
-                                <div style="font-size:1.4rem;font-weight:800;color:var(--aqua-primary);">66 km</div>
-                                <div style="font-size:0.75rem;color:#6c757d;">rețea apă potabilă</div>
+                    <ul class="nav nav-pills mb-4" role="tablist" style="gap:0.5rem;">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#babadag-beneficii"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Beneficiile proiectului</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#babadag-situatie"
+                                    style="font-size:0.82rem;font-weight:700;border-radius:8px;">Situația inițială</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="babadag-beneficii">
+                            <div class="row g-3">
+                                @php $beneficiiBabadag = [
+                                    ['icon'=>'bi-droplet','titlu'=>'Reabilitare foraje','desc'=>'Reabilitarea celor 16 foraje subterane din fronturile Satu Nou și Ghiol pentru asigurarea sursei de apă.'],
+                                    ['icon'=>'bi-arrow-left-right','titlu'=>'Rețea apă potabilă','desc'=>'Reabilitarea și modernizarea rețelei de distribuție a apei potabile de 66 km.'],
+                                    ['icon'=>'bi-diagram-3','titlu'=>'Rețea canalizare','desc'=>'Extinderea și reabilitarea rețelei de canalizare de 6 km.'],
+                                    ['icon'=>'bi-recycle','titlu'=>'Stație de epurare','desc'=>'Modernizarea stației de epurare cu capacitate de 25 l/s pentru eficientizarea tratării apelor uzate.'],
+                                ]; @endphp
+                                @foreach($beneficiiBabadag as $b)
+                                <div class="col-md-6">
+                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:10px;height:100%;">
+                                        <div style="width:36px;height:36px;min-width:36px;background:#0369a1;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                                            <i class="bi {{ $b['icon'] }} text-white" style="font-size:0.9rem;"></i>
+                                        </div>
+                                        <div>
+                                            <div style="font-weight:700;font-size:0.82rem;color:var(--aqua-dark);margin-bottom:0.2rem;">{{ $b['titlu'] }}</div>
+                                            <div style="font-size:0.78rem;color:#6c757d;line-height:1.5;">{{ $b['desc'] }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="text-center p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
-                                <div style="font-size:1.4rem;font-weight:800;color:var(--aqua-primary);">6 km</div>
-                                <div style="font-size:0.75rem;color:#6c757d;">rețea canalizare</div>
-                            </div>
+                        <div class="tab-pane fade" id="babadag-situatie">
+                            <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
+                                Serviciul public de alimentare cu apă și canalizare al orașului era efectuat de către SP EDIL PREST Babadag. În prezent, orașul Babadag a intrat în ADI, alături de celelalte 4 aglomerări urbane: Tulcea, Mãcin, Isaccea și Sulina.
+                            </p>
+                            <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
+                                Rețeaua de apă potabilă are o lungime de <strong>66 km</strong>, iar rețeaua de canalizare de <strong>6 km</strong>. Alimentarea cu apă se asigură din <strong>16 foraje subterane</strong>: frontul subteran Satu Nou cu 12 foraje de mare adâncime (110–120 m) și frontul subteran Ghiol cu 4 foraje cu adâncime medie (55 m). Apele menajere colectate sunt trimise la stația de epurare a orașului, cu o capacitate de <strong>25 l/s</strong>, evacuându-se gravitațional prin intermediul conductelor de PREMO și azbociment.
+                            </p>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="text-center p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
-                                <div style="font-size:1.4rem;font-weight:800;color:var(--aqua-primary);">12+4</div>
-                                <div style="font-size:0.75rem;color:#6c757d;">foraje subterane</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="text-center p-3" style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);">
-                                <div style="font-size:1.4rem;font-weight:800;color:var(--aqua-primary);">25 l/s</div>
-                                <div style="font-size:0.75rem;color:#6c757d;">capacitate stație epurare</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="background:var(--aqua-bg);border-radius:12px;padding:1rem 1.25rem;border-left:4px solid var(--aqua-primary);">
-                        <p style="font-size:0.875rem;color:#374151;line-height:1.7;margin:0;">
-                            <strong>Surse de apă:</strong> Frontul subteran Satu Nou — 12 foraje de mare adâncime (110–120 m) și frontul subteran Ghiol — 4 foraje cu adâncime medie (55 m). Apele menajere colectate sunt trimise la stația de epurare a orașului, evacuându-se gravitational prin intermediul conductelor de PREMO și azbociment.
-                        </p>
                     </div>
                 </div>
             </div>
