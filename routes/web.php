@@ -14,6 +14,7 @@ use App\Http\Controllers\FisierController;
 use App\Http\Controllers\CalitateaApeiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumenteAdminController;
+use App\Http\Controllers\SearchController;
 use App\Http\Middleware\AdminAuth;
 
 /*
@@ -23,6 +24,7 @@ use App\Http\Middleware\AdminAuth;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/cauta', [SearchController::class, 'search'])->name('search')->middleware('throttle:30,1');
 
 Route::get('/despre', [DespreController::class, 'index'])->name('despre');
 Route::get('/despre/centre-operationale', fn() => view('pages.despre.centre-operationale'))->name('despre.centre-operationale');

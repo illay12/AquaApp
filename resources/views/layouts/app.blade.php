@@ -375,6 +375,13 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('gdpr*') ? 'active' : '' }}" href="{{ url('/gdpr') }}">GDPR</a>
                     </li>
+                    <li class="nav-item d-flex align-items-center ms-1">
+                        <button id="btnSearch" aria-label="Caută"
+                                style="background:none;border:none;cursor:pointer;padding:0.4rem 0.55rem;border-radius:8px;color:var(--aqua-primary);transition:background .18s;"
+                                onmouseover="this.style.background='var(--aqua-bg)'" onmouseout="this.style.background='none'">
+                            <i class="bi bi-search" style="font-size:1.15rem;"></i>
+                        </button>
+                    </li>
                     <li class="nav-item ms-lg-2 d-flex align-items-center">
                         <a href="{{ url('https://my.aquaservtulcea.ro/') }}" class="btn btn-aqua btn-sm">
                             <i class="bi bi-person-circle me-1"></i> Cont MyApa
@@ -402,6 +409,12 @@
                         </button>
                     </div>
 
+                    {{-- Search mobil --}}
+                    <div style="padding:0.75rem 1.25rem;background:#fff;border-bottom:1px solid #e2e8f0;">
+                        <button id="btnSearchMobil" style="width:100%;display:flex;align-items:center;gap:0.6rem;background:#f0f8ff;border:1.5px solid #caf0f8;border-radius:10px;padding:0.65rem 1rem;cursor:pointer;color:#64748b;font-size:0.875rem;font-weight:600;">
+                            <i class="bi bi-search" style="color:#0077b6;font-size:1rem;"></i> Caută pe site...
+                        </button>
+                    </div>
                     <div style="padding:1rem 1.25rem;background:#f0f8ff;border-bottom:1px solid #e2e8f0;display:flex;gap:0.75rem;">
                         <a href="{{ url('/client/index-contor') }}" style="flex:1;background:#0077b6;color:#fff;border-radius:10px;padding:0.8rem 0.5rem;text-decoration:none;text-align:center;font-size:0.8rem;font-weight:700;">
                             <i class="bi bi-speedometer2 d-block" style="font-size:1.3rem;margin-bottom:4px;"></i>Trimite Index
@@ -780,5 +793,172 @@
     });
     </script>
     @include('components.cookie-banner')
+
+{{-- ══════════════════════════════════════════
+     SEARCH OVERLAY
+══════════════════════════════════════════ --}}
+<div id="searchOverlay" style="display:none;position:fixed;inset:0;z-index:9500;background:rgba(2,62,138,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:5vh 1rem 1rem;">
+    <div style="max-width:680px;margin:0 auto;">
+
+        {{-- Input --}}
+        <div style="position:relative;">
+            <i class="bi bi-search" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);font-size:1.15rem;color:#0077b6;pointer-events:none;"></i>
+            <input id="searchInput" type="text" autocomplete="off" spellcheck="false"
+                   placeholder="Caută pagini, anunțuri, buletine..."
+                   style="width:100%;padding:1rem 3.2rem 1rem 3rem;font-size:1.05rem;font-family:'Nunito',sans-serif;font-weight:600;border:none;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);outline:none;color:#1a1a2e;background:#fff;">
+            <button id="btnCloseSearch" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#94a3b8;font-size:1.2rem;padding:.25rem;" aria-label="Închide">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        {{-- Rezultate --}}
+        <div id="searchResults" style="background:#fff;border-radius:14px;margin-top:.6rem;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.15);display:none;max-height:65vh;overflow-y:auto;"></div>
+
+        {{-- Hint tastatură --}}
+        <div style="text-align:center;margin-top:.75rem;font-size:.75rem;color:rgba(255,255,255,.65);">
+            <kbd style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:.1rem .4rem;">↑↓</kbd> navighează &nbsp;
+            <kbd style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:.1rem .4rem;">Enter</kbd> deschide &nbsp;
+            <kbd style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:.1rem .4rem;">Esc</kbd> închide
+        </div>
+    </div>
+</div>
+
+<script nonce="@nonce">
+(function () {
+    const overlay   = document.getElementById('searchOverlay');
+    const input     = document.getElementById('searchInput');
+    const results   = document.getElementById('searchResults');
+    const btnOpen   = document.getElementById('btnSearch');
+    const btnOpenM  = document.getElementById('btnSearchMobil');
+    const btnClose  = document.getElementById('btnCloseSearch');
+
+    const catLabel = { anunturi:'bi-megaphone-fill', pagini:'bi-file-text-fill', buletine:'bi-droplet-fill' };
+    const catColor = { anunturi:'#0077b6', pagini:'#059669', buletine:'#0369a1' };
+    const catName  = { anunturi:'Anunțuri', pagini:'Pagini', buletine:'Buletine apă' };
+
+    let timer = null;
+    let activeIdx = -1;
+    let allItems  = [];
+
+    function open() {
+        overlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => input.focus(), 60);
+    }
+    function close() {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+        input.value = '';
+        results.style.display = 'none';
+        results.innerHTML = '';
+        activeIdx = -1;
+        allItems  = [];
+    }
+
+    if (btnOpen)  btnOpen.addEventListener('click', open);
+    if (btnOpenM) btnOpenM.addEventListener('click', function () {
+        // Chiude drawer-ul mobil dacă e deschis
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.style.display = 'none';
+        document.body.style.overflow = '';
+        open();
+    });
+    btnClose.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) close();
+    });
+
+    // Scurtătură globală Ctrl+K / /
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); open(); }
+        if (e.key === 'Escape' && overlay.style.display !== 'none') close();
+    });
+
+    // Navigare cu săgeți
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIdx = Math.min(activeIdx + 1, allItems.length - 1);
+            highlight();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIdx = Math.max(activeIdx - 1, 0);
+            highlight();
+        } else if (e.key === 'Enter' && activeIdx >= 0 && allItems[activeIdx]) {
+            window.location.href = allItems[activeIdx];
+            close();
+        }
+    });
+
+    function highlight() {
+        results.querySelectorAll('.sr-item').forEach((el, i) => {
+            el.style.background = i === activeIdx ? '#f0f8ff' : '#fff';
+        });
+        const active = results.querySelectorAll('.sr-item')[activeIdx];
+        if (active) active.scrollIntoView({ block: 'nearest' });
+    }
+
+    input.addEventListener('input', function () {
+        clearTimeout(timer);
+        const q = this.value.trim();
+        if (q.length < 2) {
+            results.style.display = 'none';
+            results.innerHTML = '';
+            activeIdx = -1; allItems = [];
+            return;
+        }
+        timer = setTimeout(() => fetchResults(q), 280);
+    });
+
+    function fetchResults(q) {
+        fetch('{{ route('search') }}?q=' + encodeURIComponent(q), {
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(r => r.json())
+        .then(data => {
+            activeIdx = -1;
+            allItems  = [];
+            if (data.total === 0) {
+                results.innerHTML = '<div style="padding:1.5rem;text-align:center;color:#94a3b8;font-size:.9rem;"><i class="bi bi-search" style="font-size:1.5rem;display:block;margin-bottom:.4rem;opacity:.4;"></i>Niciun rezultat pentru <strong>' + escHtml(q) + '</strong></div>';
+                results.style.display = 'block';
+                return;
+            }
+
+            let html = '';
+            ['anunturi', 'pagini', 'buletine'].forEach(cat => {
+                if (!data[cat] || !data[cat].length) return;
+                html += '<div style="padding:.5rem 1rem .25rem;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;background:#f8fafc;border-bottom:1px solid #f1f5f9;">'
+                      + '<i class="bi ' + catLabel[cat] + ' me-1" style="color:' + catColor[cat] + ';"></i>' + catName[cat]
+                      + '</div>';
+                data[cat].forEach((item, i) => {
+                    const url   = item.url;
+                    const title = item.titlu;
+                    const sub   = item.data ? '<span style="font-size:.72rem;color:#94a3b8;margin-left:.4rem;">' + item.data + '</span>' : '';
+                    const badge = item.categorie ? '<span style="font-size:.65rem;font-weight:700;background:#dbeafe;color:#1d4ed8;border-radius:4px;padding:.1em .45em;margin-left:.4rem;">' + escHtml(item.categorie) + '</span>' : '';
+                    allItems.push(url);
+                    html += '<a href="' + escHtml(url) + '" class="sr-item" style="display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;text-decoration:none;color:#1a1a2e;border-bottom:1px solid #f8fafc;transition:background .15s;">'
+                          + '<i class="bi ' + catLabel[cat] + '" style="font-size:.9rem;color:' + catColor[cat] + ';flex-shrink:0;opacity:.7;"></i>'
+                          + '<span style="flex:1;font-size:.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + escHtml(title) + badge + sub + '</span>'
+                          + '<i class="bi bi-arrow-right" style="font-size:.75rem;color:#cbd5e1;flex-shrink:0;"></i>'
+                          + '</a>';
+                });
+            });
+
+            results.innerHTML = html;
+            results.style.display = 'block';
+
+            // Hover cu mouse
+            results.querySelectorAll('.sr-item').forEach((el, i) => {
+                el.addEventListener('mouseenter', () => { activeIdx = i; highlight(); });
+            });
+        })
+        .catch(() => {});
+    }
+
+    function escHtml(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+})();
+</script>
 </body>
 </html>
