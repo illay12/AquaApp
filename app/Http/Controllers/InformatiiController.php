@@ -203,9 +203,9 @@ class InformatiiController extends Controller
             'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/cheltuieli personal')),
             'storageUrl'       => 'documente/cheltuieli%20personal',
             'culoareIcon'      => '#198754',
-            'breadcrumbParent' => 'Transparență',
-            'breadcrumbUrl'    => '/transparenta/cheltuieli-personal',
-            'sidebar'          => 'components.sidebar-transparenta',
+            'breadcrumbParent' => 'Informații publice',
+            'breadcrumbUrl'    => '/informatii/cheltuieli-personal',
+            'sidebar'          => 'components.sidebar-informatii',
         ]);
     }
 
@@ -231,9 +231,9 @@ class InformatiiController extends Controller
             'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/datoriile societatii')),
             'storageUrl'       => 'documente/datoriile%20societatii',
             'culoareIcon'      => '#dc3545',
-            'breadcrumbParent' => 'Transparență',
-            'breadcrumbUrl'    => '/transparenta/datoriile-societatii',
-            'sidebar'          => 'components.sidebar-transparenta',
+            'breadcrumbParent' => 'Informații publice',
+            'breadcrumbUrl'    => '/informatii/datoriile-societatii',
+            'sidebar'          => 'components.sidebar-informatii',
         ]);
     }
 
@@ -245,9 +245,9 @@ class InformatiiController extends Controller
             'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/detalierea serviciilor')),
             'storageUrl'       => 'documente/detalierea%20serviciilor',
             'culoareIcon'      => '#0077b6',
-            'breadcrumbParent' => 'Transparență',
-            'breadcrumbUrl'    => '/transparenta/detalierea-serviciilor',
-            'sidebar'          => 'components.sidebar-transparenta',
+            'breadcrumbParent' => 'Informații publice',
+            'breadcrumbUrl'    => '/informatii/detalierea-serviciilor',
+            'sidebar'          => 'components.sidebar-informatii',
         ]);
     }
 

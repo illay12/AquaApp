@@ -299,7 +299,7 @@
                                 <i class="bi bi-journal-bookmark text-aqua me-2"></i>Legea 544/2001</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('informatii/buletin-informativ*') || request()->is('informatii/contracte-achizitii*') ? 'active' : '' }}" href="#">
+                                <a class="dropdown-item {{ request()->is('informatii/buletin-informativ*') || request()->is('informatii/contracte-achizitii*') || request()->is('informatii/cheltuieli-personal*') || request()->is('informatii/datoriile-societatii*') || request()->is('informatii/detalierea-serviciilor*') ? 'active' : '' }}" href="#">
                                     <i class="bi bi-three-dots text-aqua me-2"></i>Alte informații
                                 </a>
                                 <ul class="dropdown-menu">
@@ -307,6 +307,12 @@
                                         <i class="bi bi-newspaper text-aqua me-2"></i>Buletin informativ</a></li>
                                     <li><a class="dropdown-item {{ request()->is('informatii/contracte-achizitii*') ? 'active' : '' }}" href="{{ url('/informatii/contracte-achizitii') }}">
                                         <i class="bi bi-file-earmark-check text-aqua me-2"></i>Contracte de achiziții</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('informatii/cheltuieli-personal*') ? 'active' : '' }}" href="{{ url('/informatii/cheltuieli-personal') }}">
+                                        <i class="bi bi-currency-exchange text-aqua me-2"></i>Cheltuieli personal</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('informatii/datoriile-societatii*') ? 'active' : '' }}" href="{{ url('/informatii/datoriile-societatii') }}">
+                                        <i class="bi bi-cash-stack text-aqua me-2"></i>Datoriile Societății</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('informatii/detalierea-serviciilor*') ? 'active' : '' }}" href="{{ url('/informatii/detalierea-serviciilor') }}">
+                                        <i class="bi bi-list-check text-aqua me-2"></i>Detalierea serviciilor</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -333,7 +339,7 @@
                                 <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Rapoarte CNR</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/cheltuieli-personal*') || request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="#">
+                                <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="#">
                                     <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță
                                 </a>
                                 <ul class="dropdown-menu">
@@ -343,21 +349,15 @@
                                         <i class="bi bi-people-fill text-aqua me-2"></i>Componența CA</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/guvernanta-corporativa*') ? 'active' : '' }}" href="{{ url('/transparenta/guvernanta-corporativa') }}">
                                         <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță corporativă</a></li>
-                                    <li><a class="dropdown-item {{ request()->is('transparenta/cheltuieli-personal*') ? 'active' : '' }}" href="{{ url('/transparenta/cheltuieli-personal') }}">
-                                        <i class="bi bi-currency-exchange text-aqua me-2"></i>Cheltuieli personal</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/plan-integritate*') ? 'active' : '' }}" href="{{ url('/transparenta/plan-integritate') }}">
                                         <i class="bi bi-shield-lock text-aqua me-2"></i>Plan de integritate</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('transparenta/datoriile-societatii*') || request()->is('transparenta/detalierea-serviciilor*') || request()->is('transparenta/contracte-mandat-administratori*') || request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="#">
+                                <a class="dropdown-item {{ request()->is('transparenta/contracte-mandat-administratori*') || request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="#">
                                     <i class="bi bi-three-dots text-aqua me-2"></i>Alte informații
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item {{ request()->is('transparenta/datoriile-societatii*') ? 'active' : '' }}" href="{{ url('/transparenta/datoriile-societatii') }}">
-                                        <i class="bi bi-cash-stack text-aqua me-2"></i>Datoriile Societății</a></li>
-                                    <li><a class="dropdown-item {{ request()->is('transparenta/detalierea-serviciilor*') ? 'active' : '' }}" href="{{ url('/transparenta/detalierea-serviciilor') }}">
-                                        <i class="bi bi-list-check text-aqua me-2"></i>Detalierea serviciilor</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/contracte-mandat-administratori*') ? 'active' : '' }}" href="{{ url('/transparenta/contracte-mandat-administratori') }}">
                                         <i class="bi bi-file-earmark-person text-aqua me-2"></i>Contracte mandat adm.</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/obiectivul-politicii-publice*') ? 'active' : '' }}" href="{{ url('/transparenta/obiectivul-politicii-publice') }}">
@@ -525,6 +525,15 @@
                                     <a href="{{ url('/informatii/contracte-achizitii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-file-earmark-check text-aqua"></i> Contracte de achiziții
                                     </a>
+                                    <a href="{{ url('/informatii/cheltuieli-personal') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-currency-exchange text-aqua"></i> Cheltuieli personal
+                                    </a>
+                                    <a href="{{ url('/informatii/datoriile-societatii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-cash-stack text-aqua"></i> Datoriile Societății
+                                    </a>
+                                    <a href="{{ url('/informatii/detalierea-serviciilor') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-list-check text-aqua"></i> Detalierea serviciilor
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -574,9 +583,6 @@
                                     <a href="{{ url('/transparenta/guvernanta-corporativa') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-building-check text-aqua"></i> Guvernanță corporativă
                                     </a>
-                                    <a href="{{ url('/transparenta/cheltuieli-personal') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
-                                        <i class="bi bi-currency-exchange text-aqua"></i> Cheltuieli personal
-                                    </a>
                                     <a href="{{ url('/transparenta/plan-integritate') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-shield-lock text-aqua"></i> Plan de integritate
                                     </a>
@@ -588,12 +594,6 @@
                                     <i class="bi bi-chevron-down" id="iconAlteTransparenta" style="color:#0077b6;font-size:0.75rem;transition:transform 0.2s;"></i>
                                 </button>
                                 <div id="subAlteTransparenta" style="display:none;background:#eef4fb;border-left:3px solid #90e0ef;">
-                                    <a href="{{ url('/transparenta/datoriile-societatii') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
-                                        <i class="bi bi-cash-stack text-aqua"></i> Datoriile Societății
-                                    </a>
-                                    <a href="{{ url('/transparenta/detalierea-serviciilor') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
-                                        <i class="bi bi-list-check text-aqua"></i> Detalierea serviciilor
-                                    </a>
                                     <a href="{{ url('/transparenta/contracte-mandat-administratori') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-file-earmark-person text-aqua"></i> Contracte mandat adm.
                                     </a>

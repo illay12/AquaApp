@@ -11,14 +11,11 @@
             ['/transparenta/raport-anual',          'bi-file-earmark-text',         'Raport anual activitate'],
             ['/transparenta/raport-audit',          'bi-search',                    'Raport audit extern'],
             ['/transparenta/raporturi-cnr',                   'bi-file-earmark-bar-graph', 'Rapoarte CNR'],
-            ['/transparenta/datoriile-societatii',            'bi-cash-stack',             'Datoriile Societății'],
-            ['/transparenta/detalierea-serviciilor',          'bi-list-check',             'Detalierea serviciilor'],
             ['/transparenta/contracte-mandat-administratori', 'bi-file-earmark-person',    'Contracte mandat adm.'],
             ['/transparenta/obiectivul-politicii-publice',    'bi-bullseye',               'Obiectiv politică publică'],
             ['/transparenta/cod-etica',             'bi-award',                     'Cod de etică'],
             ['/transparenta/componenta-ca',         'bi-people-fill',               'Componența CA'],
             ['/transparenta/guvernanta-corporativa','bi-building-check',            'Guvernanță corporativă'],
-            ['/transparenta/cheltuieli-personal',   'bi-currency-exchange',         'Cheltuieli personal'],
             ['/transparenta/plan-integritate',      'bi-shield-lock',               'Plan de integritate'],
         ] as [$url, $icon, $label])
         <a href="{{ url($url) }}"

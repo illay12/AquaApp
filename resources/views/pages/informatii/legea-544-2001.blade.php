@@ -118,7 +118,7 @@
                     <p style="font-size:0.9375rem;line-height:1.75;">
                         Pentru a solicita în scris informații de interes public cu privire la activitatea
                         <strong>S.C. Aquaserv S.A. Tulcea</strong> puteți trimite o cerere, conform formularelor
-                        de mai jos, pe adresa <strong>str. Tudor Vladimirescu nr. 2, municipiul Tulcea, județul Tulcea</strong>,
+                        de mai jos, pe adresa <strong>str. Rezervorului nr. 2, municipiul Tulcea, județul Tulcea</strong>,
                         sau prin poștă electronică la adresa
                         <a href="mailto:secretariat@aquaservtulcea.ro">secretariat@aquaservtulcea.ro</a>.
                     </p>

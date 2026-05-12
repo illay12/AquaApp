@@ -46,8 +46,8 @@
                     [
                         'bi-clipboard2-pulse','Calitatea apei și contorizare',
                         [
-                            ['Legea nr. 458/2002','Legea privind calitatea apei potabile.','http://legislatie.just.ro/Public/DetaliiDocument/37723'],
-                            ['Legea nr. 311/2004','Pentru modificarea și completarea Legii nr. 458/2002 privind calitatea apei potabile.','http://legislatie.just.ro/Public/DetaliiDocument/53106'],
+                            ['OUG nr. 7/2023','Ordonanță de urgență privind calitatea apei potabile.','https://legislatie.just.ro/Public/DetaliiDocument/264337'],
+                            ['H.G. nr. 971/2023','Hotărâre privind calitatea apei potabile.','https://legislatie.just.ro/Public/DetaliiDocumentAfis/275422'],
                             ['H.G. nr. 348/1993','Privind contorizarea apei și a energiei termice la populație, instituții publice și agenți economici.','http://legislatie.just.ro/Public/DetaliiDocument/3481'],
                             ['Normativul-Cadru 1993','Privind contorizarea apei și a energiei termice la populație, instituții publice și agenți economici.','http://legislatie.just.ro/Public/DetaliiDocument/3481'],
                             ['Ordinul MLPAT nr. 29/N/1993','Pentru aprobarea Normativului-cadru privind contorizarea apei și a energiei termice.','http://www.cdep.ro/pls/legis/legis_pck.htp_act_text?idt=13739'],

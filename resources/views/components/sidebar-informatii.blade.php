@@ -13,6 +13,9 @@
             ['/informatii/legea-544-2001',       'bi-journal-bookmark',        'Legea 544/2001'],
             ['/informatii/buletin-informativ',   'bi-newspaper',               'Buletin informativ'],
             ['/informatii/contracte-achizitii',  'bi-file-earmark-check',      'Contracte achiziții'],
+            ['/informatii/cheltuieli-personal',  'bi-currency-exchange',       'Cheltuieli personal'],
+            ['/informatii/datoriile-societatii', 'bi-cash-stack',              'Datoriile Societății'],
+            ['/informatii/detalierea-serviciilor','bi-list-check',             'Detalierea serviciilor'],
         ] as [$url, $icon, $label])
         <a href="{{ url($url) }}"
            class="list-group-item list-group-item-action d-flex align-items-center gap-2 {{ request()->is(ltrim($url,'/')) ? 'active' : '' }}"
