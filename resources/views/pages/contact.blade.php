@@ -474,7 +474,7 @@
 
             <div class="ct-info-card">
                 <div class="ct-dept-title">Relații cu Publicul</div>
-                <div class="ct-dept-row"><i class="bi bi-telephone-fill" style="color:var(--aqua-primary)"></i><a href="tel:0240524310" style="color:var(--aqua-primary);font-size:1.15rem;font-weight:900;">0240.524.310 int. 118</a></div>
+                <div class="ct-dept-row"><i class="bi bi-telephone-fill" style="color:var(--aqua-primary)"></i><a href="tel:0240524310" style="color:var(--aqua-primary);font-size:1.15rem;font-weight:900;">0240.524.310 int. 118</a> <span style="color:#94a3b8;">/</span> <a href="tel:0758100261" style="color:var(--aqua-primary);font-size:1.15rem;font-weight:900;">0758.100.261</a></div>
                 <div class="ct-dept-row"><i class="bi bi-envelope-fill"></i><a href="mailto:relatii.public@aquaservtulcea.ro" style="font-size:0.88rem;">relatii.public@aquaservtulcea.ro</a></div>
                 <div style="font-size:0.85rem;color:#555;margin-top:.3rem;">Legea 544/2001 – acces la informații publice</div>
             </div>
