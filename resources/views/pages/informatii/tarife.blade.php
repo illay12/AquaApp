@@ -588,6 +588,26 @@
                     </ul>
                 </div>
 
+                {{-- DOCUMENT ATASAT --}}
+                <div class="mt-4">
+                    <p class="fw-bold mb-2" style="font-size:0.85rem;color:#64748b;text-transform:uppercase;letter-spacing:0.04em;">
+                        <i class="bi bi-paperclip me-1"></i> Document atașat
+                    </p>
+                    <a href="{{ asset('storage/documente/tarife/hotarare-taxa-urgenta.pdf') }}" target="_blank"
+                       style="display:flex;align-items:center;gap:0.85rem;padding:0.9rem 1.25rem;text-decoration:none;color:inherit;border-radius:10px;border:1.5px solid var(--aqua-border);transition:background 0.14s;"
+                       onmouseover="this.style.background='#e8f4fd';this.style.borderColor='var(--aqua-primary)'"
+                       onmouseout="this.style.background='';this.style.borderColor='var(--aqua-border)'">
+                        <div style="width:40px;height:40px;min-width:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;background:#dc3545;">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                        </div>
+                        <div style="flex:1;min-width:0;">
+                            <div style="font-weight:600;font-size:0.88rem;color:var(--aqua-dark);">Hotărâre Taxă Urgență</div>
+                            <div style="font-size:0.75rem;color:#64748b;">PDF · Deschide în tab nou</div>
+                        </div>
+                        <i class="bi bi-box-arrow-up-right" style="color:var(--aqua-primary);font-size:0.9rem;"></i>
+                    </a>
+                </div>
+
             </div>
 
             {{-- SIDEBAR --}}
