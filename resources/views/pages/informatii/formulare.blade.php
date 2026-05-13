@@ -44,6 +44,7 @@
                         [
                             ['Cerere verificare metrologică contor','pdf','documente/formulare/cerere-verificare-metrologica.pdf'],
                             ['Cerere solicitare servicii','pdf','documente/formulare/cerere-solicitare-servicii.pdf'],
+                            ['Cerere Aviz Amplasare/Acord de Branșare și Aviz de Racordare','pdf','documente/formulare/cerere_tip.pdf'],
                         ]
                     ],
                 ] as [$icon, $categorie, $formulare])
