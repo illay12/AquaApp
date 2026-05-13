@@ -159,7 +159,7 @@
                             <tr>
                                 <td class="text-center">{{ $nr }}</td>
                                 <td>{{ $denumire }}</td>
-                                <td class="text-center">{{ $um }}</td>
+                                <td class="text-center" style="white-space:nowrap;">{{ $um }}</td>
                                 <td class="text-center">{{ $faraTV }}</td>
                                 <td class="text-center fw-bold" style="color:var(--aqua-primary);">{{ $cuTV }}</td>
                                 <td class="text-center">{{ $urgFara }}</td>
@@ -189,7 +189,7 @@
                             <tr>
                                 <td class="text-center">{{ $nr }}</td>
                                 <td>{{ $denumire }}</td>
-                                <td class="text-center">{{ $um }}</td>
+                                <td class="text-center" style="white-space:nowrap;">{{ $um }}</td>
                                 <td class="text-center">{{ $faraTV }}</td>
                                 <td class="text-center fw-bold" style="color:var(--aqua-primary);">{{ $cuTV }}</td>
                                 <td class="text-center">{{ $urgFara }}</td>
