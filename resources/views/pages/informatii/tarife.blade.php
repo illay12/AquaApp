@@ -601,8 +601,8 @@
                             <i class="bi bi-file-earmark-pdf-fill"></i>
                         </div>
                         <div style="flex:1;min-width:0;">
-                            <div style="font-weight:600;font-size:0.88rem;color:var(--aqua-dark);">Hotărâre Taxă Urgență</div>
-                            <div style="font-size:0.75rem;color:#64748b;">PDF · Deschide în tab nou</div>
+                            <div style="font-weight:600;font-size:0.88rem;color:var(--aqua-dark);">Hotărâre Aprobare Taxă Urgență</div>
+                            <div style="font-size:0.75rem;color:#64748b;">PDF</div>
                         </div>
                         <i class="bi bi-box-arrow-up-right" style="color:var(--aqua-primary);font-size:0.9rem;"></i>
                     </a>
