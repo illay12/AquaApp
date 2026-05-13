@@ -848,7 +848,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cl7"
                                 style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
-                            <span style="background:#e67e22;color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL7</span>
+                            <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL7</span>
                             Reabilitarea si extinderea retelelor de distributie si a sistemului de canalizare inclusiv statii de pompare in aglomerarea Tulcea
                         </button>
                     </h2>
@@ -861,6 +861,9 @@
                             </div>
                             <p><strong>Antreprenor:</strong> Asociere S.C. TERMOPRO EDIL S.R.L Oradea (Lider) și S.C. EUROPAN PROD S.A. Pitești (Asociat)</p>
                             <p><strong>Obiectiv:</strong> Reabilitarea și extinderea rețelelor de distribuție și a sistemului de canalizare inclusiv stații de pompare în aglomerarea Tulcea.</p>
+                            <div class="mt-3 p-2" style="background:#d1fae5;border-radius:8px;font-size:0.8rem;color:#065f46;">
+                                <i class="bi bi-check-circle-fill me-1"></i> <strong>Finalizat</strong>
+                            </div>
                             <div class="row g-3 mt-1">
                                 <div class="col-md-6">
                                     <p class="fw-bold mb-1" style="color:var(--aqua-dark);">Indicatori apă</p>
@@ -971,7 +974,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cl10"
                                 style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
-                            <span style="background:#e67e22;color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL10</span>
+                            <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL10</span>
                             Reabilitarea și extinderea rețelelor de distribuție și canalizare — Mãcin și Isaccea
                         </button>
                     </h2>
@@ -993,6 +996,9 @@
                                 <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare la atribuire</div><div style="font-weight:700;color:var(--aqua-dark);">12.994.562,34 lei fără TVA</div></div></div>
                                 <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare după acte adiționale</div><div style="font-weight:700;color:var(--aqua-dark);">11.479.530,32 lei fără TVA</div></div></div>
                                 <div class="col-md-4"><div style="background:#e0f2fe;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare plătită cu actualizare</div><div style="font-weight:700;color:var(--aqua-primary);">13.679.001,57 lei fără TVA</div></div></div>
+                            </div>
+                            <div class="mt-3 p-2" style="background:#d1fae5;border-radius:8px;font-size:0.8rem;color:#065f46;">
+                                <i class="bi bi-check-circle-fill me-1"></i> <strong>Finalizat</strong>
                             </div>
                         </div>
                     </div>
