@@ -1,133 +1,178 @@
-# AquaApp
+<h1 align="center">AquaApp</h1>
 
-Platformă web pentru operator regional de servicii de alimentare cu apă și canalizare, construită cu Laravel 12.
+<p align="center">
+  Full-stack web platform for a regional water & sewerage utility operator
+</p>
 
-## Funcționalități
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel 12"/>
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2"/>
+  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
+  <img src="https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap 5.3"/>
+</p>
 
-### Zonă publică
-- **Homepage** cu ultimele anunțuri
-- **Servicii**: alimentare cu apă, canalizare, epurare, avize și acorduri
-- **Anunțuri**: listă cu paginație, filtrare pe categorie și căutare
-- **Informații publice**: tarife, calitatea apei, legislație, formulare, bugete, hotărâri AGA, buletine informative, contracte și achiziții
-- **Transparență**: rapoarte evaluare, cod etic, componența CA, guvernanță corporativă, audit, rapoarte CNR
-- **Contact** cu formular AJAX și throttling (30 req/min)
-- **Căutare globală** peste anunțuri
-- Pagini GDPR, Cookies, Sitemap
+---
 
-### Zonă clienți (autentificat)
-- Dashboard cu date personale, facturi, istoric consum
-- Transmitere index contor cu verificare client (cod + telefon/email)
-- Raportare avarii
-- Vizualizare detalii contract
+## Overview
 
-### Zonă dispecerat
-- Gestionare anunțuri (CRUD complet)
-- Upload fișiere atașate (PDF, DOCX, XLSX)
-- Gestionare buletine lunare de analiză a calității apei
-- Autentificare cu token cu expirare la 8 ore
+AquaApp is a production-ready web application built for a public utility company managing water supply and sewerage services. It serves multiple user types — citizens, field operators, and administrators — each with a distinct interface tailored to their workflow.
 
-### Zonă admin
-- Import/export indecși contor (CSV/XLSX) pe lună și an
-- Sincronizare date cu sistem extern
-- Comparare exporturi
-- Gestionare documente
+The system handles everything from public transparency pages required by Romanian law to authenticated client portals with meter index submission, and an internal dispatch panel for publishing announcements and quality reports.
 
-## Tehnologii
+---
 
-- **Backend**: Laravel 12, PHP 8.2+
-- **Bază de date**: MySQL (producție) / SQLite (development)
-- **Frontend**: Bootstrap 5.3, Bootstrap Icons 1.11, Vite
-- **Pachete**: PHPSpreadsheet (import/export Excel), mews/purifier (sanitizare HTML)
-- **Mail**: SMTP
+## Features
 
-## Instalare
+### Public Portal
+- Dynamic homepage with latest announcements
+- Services pages: water supply, sewerage, wastewater treatment, permits
+- **20+ static & dynamic information pages** — tariffs, water quality reports, legislation, procurement contracts, AGA resolutions, budgets
+- Transparency section with 8+ governance pages (ethics code, board composition, CNR reports, audit)
+- Global search with rate limiting (30 req/min)
+- Contact form with AJAX submission and CSRF protection
+- GDPR, Cookies consent, Sitemap
+
+### Client Portal (authenticated)
+- Account dashboard: personal data, invoices, consumption history
+- **Meter index submission** with multi-factor client verification (client code + phone/email)
+- Fault & outage reporting
+- Contract details viewer
+
+### Dispatch Panel
+- Full CRUD for public announcements with rich text and file attachments (PDF, DOCX, XLSX)
+- Monthly water quality bulletin management with upload/delete
+- Session-based authentication with **8-hour expiring tokens**
+- Separate user table and custom auth guard
+
+### Admin Panel
+- **Bulk import/export of meter readings** via CSV/XLSX (by month & year)
+- External data synchronization
+- Export comparison & validation tool
+- Document management
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Laravel 12 |
+| Language | PHP 8.2+ |
+| Database | MySQL 8 (prod) / SQLite (dev) |
+| Frontend | Bootstrap 5.3, Bootstrap Icons 1.11, Vite |
+| Excel | PHPSpreadsheet 5.5 |
+| HTML Sanitization | mews/purifier 3.4 |
+| Testing | PHPUnit 11 |
+| Dev Tools | Laravel Pail (logs), Laravel Pint (formatter) |
+
+---
+
+## Architecture Highlights
+
+**Three independent authentication systems** running in parallel:
+
+| Role | Method | Storage | Guard |
+|------|--------|---------|-------|
+| Client | Email + password | `users` table | Laravel default Auth |
+| Dispatch operator | Username + password + 8h token | `dispecerat_users` table | Custom middleware |
+| Admin | Username + password + role check | `users` table | Custom `AdminAuth` middleware |
+
+**Custom middleware stack:**
+- `DispeceratAuth` — validates session + time-limited token
+- `AdminAuth` — verifies authenticated user has `role = 'admin'`
+- `CookieConsent` — GDPR-compliant banner
+- `SecurityHeaders` — sets X-Frame-Options, CSP, etc.
+
+**14 controllers** covering public pages, client portal, dispatch panel, admin panel, file downloads, search, and contact.
+
+---
+
+## Database Schema
+
+| Table | Description |
+|-------|-------------|
+| `users` | Clients and admins (Laravel Auth) |
+| `clienti` | Customer registry (unique client code, phone, email, address) |
+| `contoare` | Water meters per client with old/new index values |
+| `anunturi` | Public announcements with auto-generated slugs |
+| `anunt_fisiere` | Files attached to announcements (PDF/DOCX/XLSX) |
+| `dispecerat_users` | Dispatch operators with session tokens |
+| `buletine_analiza` | Monthly water quality bulletins |
+
+Relationships:
+- `anunturi` → `anunt_fisiere` (one-to-many, cascade delete)
+- `clienti` → `contoare` (one-to-many, cascade on update)
+
+---
+
+## Getting Started
 
 ```bash
-# 1. Clonare și dependențe
-git clone <repo-url>
-cd AquaApp
+# Install dependencies
 composer install
 
-# 2. Configurare
+# Environment setup
 cp .env.example .env
 php artisan key:generate
 
-# 3. Bază de date
+# Database
 php artisan migrate
 
-# 4. Storage
+# Link storage for public files
 php artisan storage:link
 
-# 5. Pornire server
-php artisan serve
+# Start development server
+composer run dev   # runs server + queue worker + log viewer concurrently
 ```
 
-## Configurare `.env`
+### Environment variables
 
 ```env
 APP_URL=http://127.0.0.1:8000
 
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
 DB_DATABASE=aquaapp
 DB_USERNAME=root
 DB_PASSWORD=
 
 MAIL_MAILER=smtp
-MAIL_HOST=...
+MAIL_HOST=your-smtp-host
 MAIL_PORT=587
-MAIL_USERNAME=...
-MAIL_PASSWORD=...
-MAIL_FROM_ADDRESS=...
+MAIL_USERNAME=your@email.com
+MAIL_FROM_ADDRESS=your@email.com
 
 DISPECERAT_USER=dispecerat
-DISPECERAT_PASSWORD=<hash-bcrypt>
+DISPECERAT_PASSWORD=<bcrypt-hash>
 ```
 
-## Structura bazei de date
+---
 
-| Tabelă | Descriere |
-|--------|-----------|
-| `users` | Clienți și administratori (Laravel Auth) |
-| `clienti` | Date clienți (cod unic, telefon, email, adresă) |
-| `contoare` | Contoare per client cu indecși vechi/noi |
-| `anunturi` | Anunțuri publice cu slug auto-generat |
-| `anunt_fisiere` | Fișiere atașate anunțurilor (PDF/DOCX/XLSX) |
-| `dispecerat_users` | Utilizatori dispecerat cu token sesiune |
-| `buletine_analiza` | Buletine lunare calitate apă |
-
-## Autentificare
-
-Aplicația are trei sisteme de autentificare separate:
-
-| Rol | Metodă | Guard |
-|-----|--------|-------|
-| Client | Email + parolă | Laravel Auth (`users`) |
-| Dispecerat | Username + parolă, token 8h | Custom (`dispecerat_users`) |
-| Admin | Username + parolă, rol `admin` | Laravel Auth (`users`) |
-
-## Scripturi
-
-```bash
-composer run dev      # Server + queue listener + log viewer în paralel
-composer run test     # Rulare teste PHPUnit
-```
-
-## Structura proiect
+## Project Structure
 
 ```
 app/
 ├── Http/
-│   ├── Controllers/     # 14 controllere (Home, Anunt, Client, Dispecerat, Admin, ...)
-│   └── Middleware/      # DispeceratAuth, AdminAuth, CookieConsent, SecurityHeaders
-├── Models/              # 7 modele Eloquent
+│   ├── Controllers/        # 14 controllers
+│   │   ├── HomeController
+│   │   ├── AnuntController
+│   │   ├── ClientController
+│   │   ├── DispeceratController
+│   │   ├── AdminController
+│   │   └── ...
+│   └── Middleware/         # DispeceratAuth, AdminAuth, CookieConsent, SecurityHeaders
+├── Models/                 # 7 Eloquent models
 resources/
-├── views/
-│   ├── pages/           # Pagini publice (home, servicii, informatii, transparenta, ...)
-│   ├── dispecerat/      # Panou dispecerat
-│   ├── admin/           # Panou admin
-│   └── components/      # Sidebar-uri, cookie banner
-routes/
-└── web.php              # Toate rutele aplicației
+└── views/
+    ├── pages/              # Public portal (home, services, info, transparency, contact)
+    ├── dispecerat/         # Dispatch panel
+    ├── admin/              # Admin panel
+    └── components/         # Reusable Blade components (sidebars, cookie banner)
+```
+
+---
+
+## Running Tests
+
+```bash
+composer run test
 ```
