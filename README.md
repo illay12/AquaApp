@@ -1,59 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# AquaApp
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Platformă web pentru operator regional de servicii de alimentare cu apă și canalizare, construită cu Laravel 12.
 
-## About Laravel
+## Funcționalități
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Zonă publică
+- **Homepage** cu ultimele anunțuri
+- **Servicii**: alimentare cu apă, canalizare, epurare, avize și acorduri
+- **Anunțuri**: listă cu paginație, filtrare pe categorie și căutare
+- **Informații publice**: tarife, calitatea apei, legislație, formulare, bugete, hotărâri AGA, buletine informative, contracte și achiziții
+- **Transparență**: rapoarte evaluare, cod etic, componența CA, guvernanță corporativă, audit, rapoarte CNR
+- **Contact** cu formular AJAX și throttling (30 req/min)
+- **Căutare globală** peste anunțuri
+- Pagini GDPR, Cookies, Sitemap
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Zonă clienți (autentificat)
+- Dashboard cu date personale, facturi, istoric consum
+- Transmitere index contor cu verificare client (cod + telefon/email)
+- Raportare avarii
+- Vizualizare detalii contract
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Zonă dispecerat
+- Gestionare anunțuri (CRUD complet)
+- Upload fișiere atașate (PDF, DOCX, XLSX)
+- Gestionare buletine lunare de analiză a calității apei
+- Autentificare cu token cu expirare la 8 ore
 
-## Learning Laravel
+### Zonă admin
+- Import/export indecși contor (CSV/XLSX) pe lună și an
+- Sincronizare date cu sistem extern
+- Comparare exporturi
+- Gestionare documente
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Tehnologii
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Backend**: Laravel 12, PHP 8.2+
+- **Bază de date**: MySQL (producție) / SQLite (development)
+- **Frontend**: Bootstrap 5.3, Bootstrap Icons 1.11, Vite
+- **Pachete**: PHPSpreadsheet (import/export Excel), mews/purifier (sanitizare HTML)
+- **Mail**: SMTP
 
-## Laravel Sponsors
+## Instalare
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+# 1. Clonare și dependențe
+git clone <repo-url>
+cd AquaApp
+composer install
 
-### Premium Partners
+# 2. Configurare
+cp .env.example .env
+php artisan key:generate
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# 3. Bază de date
+php artisan migrate
 
-## Contributing
+# 4. Storage
+php artisan storage:link
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 5. Pornire server
+php artisan serve
+```
 
-## Code of Conduct
+## Configurare `.env`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```env
+APP_URL=http://127.0.0.1:8000
 
-## Security Vulnerabilities
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=aquaapp
+DB_USERNAME=root
+DB_PASSWORD=
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+MAIL_MAILER=smtp
+MAIL_HOST=...
+MAIL_PORT=587
+MAIL_USERNAME=...
+MAIL_PASSWORD=...
+MAIL_FROM_ADDRESS=...
 
-## License
+DISPECERAT_USER=dispecerat
+DISPECERAT_PASSWORD=<hash-bcrypt>
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Structura bazei de date
+
+| Tabelă | Descriere |
+|--------|-----------|
+| `users` | Clienți și administratori (Laravel Auth) |
+| `clienti` | Date clienți (cod unic, telefon, email, adresă) |
+| `contoare` | Contoare per client cu indecși vechi/noi |
+| `anunturi` | Anunțuri publice cu slug auto-generat |
+| `anunt_fisiere` | Fișiere atașate anunțurilor (PDF/DOCX/XLSX) |
+| `dispecerat_users` | Utilizatori dispecerat cu token sesiune |
+| `buletine_analiza` | Buletine lunare calitate apă |
+
+## Autentificare
+
+Aplicația are trei sisteme de autentificare separate:
+
+| Rol | Metodă | Guard |
+|-----|--------|-------|
+| Client | Email + parolă | Laravel Auth (`users`) |
+| Dispecerat | Username + parolă, token 8h | Custom (`dispecerat_users`) |
+| Admin | Username + parolă, rol `admin` | Laravel Auth (`users`) |
+
+## Scripturi
+
+```bash
+composer run dev      # Server + queue listener + log viewer în paralel
+composer run test     # Rulare teste PHPUnit
+```
+
+## Structura proiect
+
+```
+app/
+├── Http/
+│   ├── Controllers/     # 14 controllere (Home, Anunt, Client, Dispecerat, Admin, ...)
+│   └── Middleware/      # DispeceratAuth, AdminAuth, CookieConsent, SecurityHeaders
+├── Models/              # 7 modele Eloquent
+resources/
+├── views/
+│   ├── pages/           # Pagini publice (home, servicii, informatii, transparenta, ...)
+│   ├── dispecerat/      # Panou dispecerat
+│   ├── admin/           # Panou admin
+│   └── components/      # Sidebar-uri, cookie banner
+routes/
+└── web.php              # Toate rutele aplicației
+```
