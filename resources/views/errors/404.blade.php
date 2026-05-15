@@ -230,20 +230,27 @@
             .error-code  { font-size: 4.5rem; }
             .status-pill { margin-top: .4rem; font-size: .6rem; padding: .2rem .65rem; }
 
+            /* Centraj Bootstrap row */
+            .row { justify-content: center; }
+
             /* Conținut → centrat */
             .content { text-align: center; width: 100%; }
             .error-title { font-size: 1.1rem; margin-bottom: .35rem; }
             .error-desc  {
                 font-size: .82rem; line-height: 1.55;
-                max-width: 100%; margin-bottom: 1rem;
+                width: 100%; max-width: 100%; margin: 0 auto 1rem;
+                text-align: center;
             }
             .btn-home    {
                 font-size: .85rem; padding: .55rem 1.4rem;
-                margin-bottom: 1rem; box-shadow: none; width: 100%;
-                justify-content: center;
+                margin-bottom: 1rem; box-shadow: none;
+                width: 100%; justify-content: center;
             }
-            .or-line { max-width: 100%; font-size: .66rem; margin-bottom: .65rem; }
-            .links-grid  { max-width: 100%; gap: .4rem; }
+            .or-line {
+                width: 100%; max-width: 100%;
+                font-size: .66rem; margin-bottom: .65rem;
+            }
+            .links-grid  { width: 100%; max-width: 100%; gap: .4rem; }
             .link-card   { font-size: .78rem; padding: .5rem .65rem; }
             .link-card::after { display: none; }
             .lc-icon     { width: 27px; height: 27px; font-size: .8rem; }
@@ -315,10 +322,9 @@
                 {{-- Conținut --}}
                 <div class="col-lg-7">
                     <div class="content">
-                        <p class="error-title">Hm, pagina asta nu există.</p>
+                        <p class="error-title">Această pagină nu există.</p>
                         <p class="error-desc">
-                            Adresa pe care ați accesat-o nu a fost găsită pe serverul nostru.
-                            Poate a fost mutată sau ați tastat un link greșit.
+                            Pagina solicitată nu a putut fi găsită. Este posibil ca linkul să fie incorect sau pagina să fi fost mutată permanent.
                         </p>
                         <a href="/" class="btn-home">
                             <i class="bi bi-house-fill"></i> Înapoi la pagina principală
