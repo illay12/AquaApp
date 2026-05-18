@@ -792,7 +792,7 @@ class AdminController extends Controller
 
             $sheet->setCellValue('A' . $row, $contor->cod_client);
             $sheet->setCellValue('B' . $row, $contor->client->nume ?? '-');
-            $sheet->setCellValue('C' . $row, $telefon);
+            $sheet->setCellValueExplicit('C' . $row, $telefon, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
             $sheet->setCellValue('D' . $row, $contor->client->email   ?? '-');
             $sheet->setCellValue('E' . $row, $contor->serie_contor);
             $sheet->setCellValue('F' . $row, $contor->adresa);
