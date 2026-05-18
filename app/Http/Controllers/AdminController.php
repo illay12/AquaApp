@@ -96,6 +96,7 @@ class AdminController extends Controller
             ->whereNotNull('index_nou')
             ->whereMonth('updated_at', $luna)
             ->whereYear('updated_at', $an)
+            ->orderByDesc('updated_at')
             ->get();
 
         $prefix = 'indecsi_' . $an . '_' . str_pad($luna, 2, '0', STR_PAD_LEFT);
@@ -713,10 +714,17 @@ class AdminController extends Controller
             ], ',');
 
             foreach ($contoare as $contor) {
+                $telefon = $contor->client->telefon ?? null;
+                if ($telefon && $telefon !== '-') {
+                    $telefon = '0' . ltrim($telefon, '0');
+                } else {
+                    $telefon = $telefon ?? '-';
+                }
+
                 fputcsv($handle, [
                     $contor->cod_client,
-                    $contor->client->nume    ?? '-',
-                    $contor->client->telefon ?? '-',
+                    $contor->client->nume ?? '-',
+                    $telefon,
                     $contor->client->email   ?? '-',
                     $contor->serie_contor,
                     $contor->adresa,
@@ -775,9 +783,16 @@ class AdminController extends Controller
 
         $row = 2;
         foreach ($contoare as $contor) {
+            $telefon = $contor->client->telefon ?? null;
+            if ($telefon && $telefon !== '-') {
+                $telefon = '0' . ltrim($telefon, '0');
+            } else {
+                $telefon = $telefon ?? '-';
+            }
+
             $sheet->setCellValue('A' . $row, $contor->cod_client);
-            $sheet->setCellValue('B' . $row, $contor->client->nume    ?? '-');
-            $sheet->setCellValue('C' . $row, $contor->client->telefon ?? '-');
+            $sheet->setCellValue('B' . $row, $contor->client->nume ?? '-');
+            $sheet->setCellValue('C' . $row, $telefon);
             $sheet->setCellValue('D' . $row, $contor->client->email   ?? '-');
             $sheet->setCellValue('E' . $row, $contor->serie_contor);
             $sheet->setCellValue('F' . $row, $contor->adresa);
