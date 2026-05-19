@@ -340,7 +340,7 @@
                             <a href="/servicii" class="link-card">
                                 <span class="lc-icon"><i class="bi bi-droplet"></i></span> Servicii
                             </a>
-                            <a href="/client/login" class="link-card">
+                            <a href="https://my.aquaservtulcea.ro/" class="link-card">
                                 <span class="lc-icon"><i class="bi bi-person-circle"></i></span> Cont MyApa
                             </a>
                         </div>

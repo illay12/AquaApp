@@ -103,7 +103,6 @@ $categorieLabel = [
                                 <option value="anunturi" {{ request('categorie')=='anunturi'?'selected':'' }}>Anunțuri</option>
                                 <option value="avarie"   {{ request('categorie')=='avarie'  ?'selected':'' }}>Avarii</option>
                                 <option value="angajare" {{ request('categorie')=='angajare'?'selected':'' }}>Angajare</option>
-                                <option value="calitate" {{ request('categorie')=='calitate'?'selected':'' }}>Calitate</option>
                                 <option value="diverse"  {{ request('categorie')=='diverse' ?'selected':'' }}>Diverse</option>
                             </select>
                         </div>
@@ -215,7 +214,7 @@ $categorieLabel = [
                                 </a>
                             </li>
                             <li class="border-bottom">
-                                <a href="{{ url('/anunturi?categorie=calitate') }}"
+                                <a href="{{ url('/informatii/calitatea-apei') }}"
                                    class="d-flex align-items-center gap-2 px-3 py-2 text-decoration-none"
                                    style="color:var(--aqua-text);font-size:0.875rem;transition:background 0.15s;">
                                     <i class="bi bi-droplet-half text-aqua"></i> Calitate apă
