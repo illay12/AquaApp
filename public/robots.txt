@@ -1,2 +1,9 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /dispecerat
+Disallow: /client/dashboard
+Disallow: /client/facturi
+Disallow: /client/consum
+Disallow: /client/date-personale
+
+Sitemap: https://aquaservtulcea.ro/sitemap.xml

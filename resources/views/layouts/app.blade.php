@@ -6,6 +6,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name', 'Aquaserv')) | Servicii Apă și Canal</title>
     <meta name="description" content="@yield('meta_description', 'Operator regional de servicii de alimentare cu apă și canalizare')">
+
+    {{-- Open Graph --}}
+    <meta property="og:type"        content="website">
+    <meta property="og:site_name"   content="Aquaserv Tulcea">
+    <meta property="og:url"         content="{{ url()->current() }}">
+    <meta property="og:title"       content="@yield('og_title', config('app.name') . ' | Servicii Apă și Canal')">
+    <meta property="og:description" content="@yield('og_description', 'Operator regional de servicii de alimentare cu apă și canalizare în județul Tulcea.')">
+    <meta property="og:image"       content="@yield('og_image', asset('og-image.png'))">
+    <meta name="twitter:card"       content="summary_large_image">
+
+    <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
@@ -148,12 +159,21 @@
     @stack('styles')
 
     @if(env('GOOGLE_ANALYTICS_ID'))
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}"></script>
     <script>
+        window._GA_ID = '{{ env('GOOGLE_ANALYTICS_ID') }}';
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+
+        @if(request()->cookie('cookie_consent') === 'accepted')
+        (function() {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}';
+            document.head.appendChild(s);
+        })();
         gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
+        @endif
     </script>
     @endif
 </head>

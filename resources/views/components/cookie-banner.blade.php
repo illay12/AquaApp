@@ -12,10 +12,10 @@
                 Folosim cookie-uri
             </div>
             <p class="cb-desc">
-                Acest site folosește cookie-uri tehnice necesare pentru funcționarea corectă a serviciilor.
-                Prin continuarea navigării sunteți de acord cu utilizarea acestora conform
-                <a href="{{ url('/gdpr') }}" target="_blank">Politicii de confidențialitate</a> și
-                <a href="{{ url('/cookies') }}" target="_blank">Politicii de Cookies</a>.
+                Acest site folosește cookie-uri tehnice necesare și cookie-uri de analiză (Google Analytics)
+                pentru a înțelege cum este utilizat site-ul. Puteți accepta sau refuza cookie-urile de analiză.
+                <a href="{{ url('/gdpr') }}" target="_blank">Politică confidențialitate</a> ·
+                <a href="{{ url('/cookies') }}" target="_blank">Politică cookies</a>.
             </p>
         </div>
         <div class="cb-actions">
@@ -121,13 +121,25 @@
     const btnOk   = document.getElementById('cb-accept');
     const btnNo   = document.getElementById('cb-refuse');
 
+    function loadGA() {
+        if (typeof window._GA_ID === 'undefined') return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window._GA_ID;
+        document.head.appendChild(s);
+        s.onload = function() {
+            gtag('config', window._GA_ID);
+        };
+    }
+
     function dismiss(value) {
-        // Scrie cookie 1 an
         const expires = new Date();
         expires.setFullYear(expires.getFullYear() + 1);
         document.cookie = 'cookie_consent=' + value
             + '; expires=' + expires.toUTCString()
             + '; path=/; SameSite=Lax';
+
+        if (value === 'accepted') loadGA();
 
         banner.classList.add('cb-hiding');
         banner.addEventListener('animationend', function() {

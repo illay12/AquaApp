@@ -76,6 +76,7 @@
                 <div class="mt-4">
                     <img src="/storage/documente/canalizare/canal_afis.png"
                          alt="Afis – Canalizarea nu este coș de gunoi"
+                         loading="lazy"
                          style="width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
                 </div>
             </div>

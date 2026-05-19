@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumenteAdminController;
 use App\Http\Controllers\SearchController;
 use App\Http\Middleware\AdminAuth;
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('/program-casierii', [InformatiiController::class, 'programCasierii']
 Route::view('/gdpr',    'pages.gdpr')->name('gdpr');
 Route::view('/cookies', 'pages.cookies')->name('cookies');
 Route::view('/sitemap', 'pages.sitemap')->name('sitemap');
+Route::get('/sitemap.xml', [SitemapController::class, 'xml'])->name('sitemap.xml');
 
 /*
 |--------------------------------------------------------------------------
