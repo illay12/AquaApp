@@ -47,6 +47,13 @@
                             ['Cerere Aviz Amplasare/Acord de Branșare și Aviz de Racordare','pdf','documente/formulare/cerere-tip.pdf'],
                         ]
                     ],
+                    [
+                        'bi-briefcase','Formulare Angajare',
+                        [
+                            ['Model cerere tip participare concurs','pdf','documente/formulare/cerere-participare-concurs.pdf'],
+                            ['Model CV','pdf','documente/formulare/model-cv.pdf'],
+                        ]
+                    ],
                 ] as [$icon, $categorie, $formulare])
                 <div class="mb-5">
                     <h4 class="d-flex align-items-center gap-2 mb-3" style="font-family:'Merriweather',serif;font-size:1.05rem;color:var(--aqua-dark);">
