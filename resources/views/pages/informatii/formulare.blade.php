@@ -27,6 +27,13 @@
 
                 @foreach([
                     [
+                        'bi-briefcase','Formulare Angajare',
+                        [
+                            ['Model cerere tip participare concurs','docx','documente/formulare/Anexa-nr.-2-Cerere-de-înscriere-la-concurs.docx'],
+                            ['Model CV','docx','documente/formulare/Model_CV-Europass_RO.docx'],
+                        ]
+                    ],
+                    [
                         'bi-person','Clienți persoane fizice (utilizatori casnici)',
                         [
                             ['Încheiere contract utilizatori casnici','pdf','documente/formulare/cerere-contract-nou.pdf'],
@@ -45,13 +52,6 @@
                             ['Cerere verificare metrologică contor','pdf','documente/formulare/cerere-verificare-metrologica.pdf'],
                             ['Cerere solicitare servicii','pdf','documente/formulare/cerere-solicitare-servicii.pdf'],
                             ['Cerere Aviz Amplasare/Acord de Branșare și Aviz de Racordare','pdf','documente/formulare/cerere-tip.pdf'],
-                        ]
-                    ],
-                    [
-                        'bi-briefcase','Formulare Angajare',
-                        [
-                            ['Model cerere tip participare concurs','docx','documente/formulare/Anexa-nr.-2-Cerere-de-înscriere-la-concurs.docx'],
-                            ['Model CV','docx','documente/formulare/Model_CV-Europass_RO.docx'],
                         ]
                     ],
                 ] as [$icon, $categorie, $formulare])
