@@ -50,8 +50,8 @@
                     [
                         'bi-briefcase','Formulare Angajare',
                         [
-                            ['Model cerere tip participare concurs','pdf','documente/formulare/cerere-participare-concurs.pdf'],
-                            ['Model CV','pdf','documente/formulare/model-cv.pdf'],
+                            ['Model cerere tip participare concurs','docx','documente/formulare/Anexa-nr.-2-Cerere-de-înscriere-la-concurs.docx'],
+                            ['Model CV','docx','documente/formulare/Model_CV-Europass_RO.docx'],
                         ]
                     ],
                 ] as [$icon, $categorie, $formulare])
@@ -66,11 +66,16 @@
                                class="d-flex align-items-center gap-3 p-3 text-decoration-none"
                                class="formular-link"
                                style="background:var(--aqua-bg);border-radius:8px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
+                                @if($tip === 'docx')
+                                <i class="bi bi-file-earmark-word"
+                                   style="font-size:1.8rem;color:#2b579a;flex-shrink:0;"></i>
+                                @else
                                 <i class="bi bi-file-earmark-pdf"
                                    style="font-size:1.8rem;color:#dc3545;flex-shrink:0;"></i>
+                                @endif
                                 <div class="flex-grow-1">
                                     <div style="font-size:0.875rem;font-weight:600;line-height:1.3;">{{ $titlu }}</div>
-                                    <div style="font-size:0.75rem;color:var(--aqua-gray);text-transform:uppercase;">PDF</div>
+                                    <div style="font-size:0.75rem;color:var(--aqua-gray);text-transform:uppercase;">{{ strtoupper($tip) }}</div>
                                 </div>
                                 <i class="bi bi-download text-muted"></i>
                             </a>
