@@ -34,12 +34,47 @@
         .section-header { padding:1rem 1.5rem; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; gap:0.6rem; }
         .section-header h6 { margin:0; font-weight:800; color:var(--aqua-dark); font-size:0.95rem; }
         .section-body { padding:1.5rem; }
+
+        /* ── Mobile ── */
+        .sidebar-overlay {
+            display:none; position:fixed; inset:0;
+            background:rgba(0,0,0,0.45); z-index:1040;
+        }
+        .sidebar-overlay.show { display:block; }
+        .btn-hamburger {
+            display:none; background:none; border:none;
+            font-size:1.4rem; color:#0f172a; padding:0.25rem 0.5rem;
+            line-height:1; cursor:pointer;
+        }
+        @media (max-width:991.98px) {
+            .sidebar {
+                transform:translateX(-100%);
+                transition:transform 0.28s ease;
+                z-index:1050;
+            }
+            .sidebar.sidebar-open { transform:translateX(0); }
+            .main { margin-left:0 !important; padding:1rem; }
+            .topbar {
+                position:sticky; top:0;
+                background:#f0f4f8; z-index:200;
+                padding-bottom:0.75rem;
+                border-bottom:1px solid #e2e8f0;
+                margin-bottom:1.25rem !important;
+            }
+            .btn-hamburger { display:inline-flex; align-items:center; }
+            .stat-card .val { font-size:1.6rem; }
+            .section-body { padding:1rem; }
+            .section-header { padding:0.75rem 1rem; }
+        }
     </style>
 </head>
 <body>
 
+{{-- Overlay mobil --}}
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
 {{-- SIDEBAR --}}
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
     <div class="sidebar-brand">
         <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.25rem;">
             <div style="width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;">
@@ -92,11 +127,16 @@
 
     {{-- TOPBAR --}}
     <div class="topbar">
-        <div>
-            <h4 style="font-weight:800;color:#0f172a;margin:0;">Dashboard</h4>
-            <p style="color:#6c757d;font-size:0.82rem;margin:0;">
-                {{ now()->locale('ro')->isoFormat('dddd, D MMMM YYYY') }}
-            </p>
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn-hamburger" onclick="openSidebar()" aria-label="Meniu">
+                <i class="bi bi-list"></i>
+            </button>
+            <div>
+                <h4 style="font-weight:800;color:#0f172a;margin:0;">Dashboard</h4>
+                <p style="color:#6c757d;font-size:0.82rem;margin:0;">
+                    {{ now()->locale('ro')->isoFormat('dddd, D MMMM YYYY') }}
+                </p>
+            </div>
         </div>
         <div style="font-size:0.82rem;color:#6c757d;">
             <i class="bi bi-person-circle me-1"></i>{{ Auth::user()->username }}
@@ -454,5 +494,23 @@
 </div>{{-- /.main --}}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function openSidebar() {
+        document.getElementById('sidebar').classList.add('sidebar-open');
+        document.getElementById('sidebarOverlay').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('sidebar-open');
+        document.getElementById('sidebarOverlay').classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    // Închide sidebar-ul când se face click pe un link din el (pe mobil)
+    document.querySelectorAll('.sidebar .nav-item a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (window.innerWidth < 992) closeSidebar();
+        });
+    });
+</script>
 </body>
 </html>
