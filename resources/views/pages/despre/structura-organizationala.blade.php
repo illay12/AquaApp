@@ -511,6 +511,22 @@
                                 'hover'   => '#00b4d8',
                                 'url'     => asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2025-2029.pdf'),
                             ],
+                            [
+                                'titlu'   => 'Act constitutiv',
+                                'desc'    => 'Actul constitutiv al S.C. AQUASERV S.A. Tulcea',
+                                'icon'    => 'bi-file-earmark-ruled',
+                                'culoare' => '#2563eb',
+                                'hover'   => '#2563eb',
+                                'url'     => asset('storage/documente/structura_organizationala/Act-constitutiv.pdf'),
+                            ],
+                            [
+                                'titlu'   => 'Contract de delegare',
+                                'desc'    => 'Contractul de delegare a gestiunii serviciilor de apă și canalizare',
+                                'icon'    => 'bi-file-earmark-check',
+                                'culoare' => '#059669',
+                                'hover'   => '#059669',
+                                'url'     => asset('storage/documente/structura_organizationala/Contract-de-delegare.pdf'),
+                            ],
                         ];
                         @endphp
 
