@@ -40,7 +40,7 @@ class SecurityHeaders
                 "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com",
                 "font-src 'self' fonts.gstatic.com cdn.jsdelivr.net",
                 "img-src * data: blob:",
-                "connect-src 'self' cdn.jsdelivr.net www.google-analytics.com stats.g.doubleclick.net",
+                "connect-src 'self' cdn.jsdelivr.net www.google-analytics.com region1.google-analytics.com stats.g.doubleclick.net",
                 "frame-src maps.google.com www.google.com",
                 "object-src 'none'",
                 "frame-ancestors 'self'",
