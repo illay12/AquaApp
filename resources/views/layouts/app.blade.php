@@ -159,7 +159,7 @@
     @stack('styles')
 
     @if(env('GOOGLE_ANALYTICS_ID'))
-    <script>
+    <script nonce="@nonce">
         window._GA_ID = '{{ env('GOOGLE_ANALYTICS_ID') }}';
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
