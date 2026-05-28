@@ -173,6 +173,7 @@
             document.head.appendChild(s);
         })();
         gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
+        setTimeout(function() { gtag('event', 'user_engagement', {engagement_time_msec: 10000}); }, 10000);
         @endif
     </script>
     @endif

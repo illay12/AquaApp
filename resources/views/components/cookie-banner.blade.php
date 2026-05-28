@@ -129,6 +129,7 @@
         document.head.appendChild(s);
         s.onload = function() {
             gtag('config', window._GA_ID);
+            setTimeout(function() { gtag('event', 'user_engagement', {engagement_time_msec: 10000}); }, 10000);
         };
     }
 
