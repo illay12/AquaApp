@@ -92,10 +92,12 @@ class AdminController extends Controller
         $an     = (int) $request->an;
         $format = $request->format;
 
+        $start = Carbon::createFromDate($an, $luna, 1)->startOfMonth()->startOfDay();
+        $end   = $start->copy()->endOfMonth()->endOfDay();
+
         $contoare = Contor::with('client')
             ->whereNotNull('index_nou')
-            ->whereMonth('updated_at', $luna)
-            ->whereYear('updated_at', $an)
+            ->whereBetween('updated_at', [$start, $end])
             ->orderByDesc('updated_at')
             ->get();
 
@@ -626,6 +628,8 @@ class AdminController extends Controller
 
     private function exportDiferenteXlsx(array $diferente, string $prefix, string $numeFisier1, string $numeFisier2)
     {
+        ini_set('memory_limit', '512M');
+
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setTitle('Diferente');
@@ -742,6 +746,8 @@ class AdminController extends Controller
 
     private function exportXlsx($contoare, string $prefix, int $luna, int $an)
     {
+        ini_set('memory_limit', '512M');
+
         $numeLuna = Carbon::createFromDate($an, $luna, 1)->locale('ro')->isoFormat('MMMM YYYY');
 
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
@@ -798,7 +804,7 @@ class AdminController extends Controller
             $sheet->setCellValue('F' . $row, $contor->adresa);
             $sheet->setCellValue('G' . $row, (int) $contor->index_vechi);
             $sheet->setCellValue('H' . $row, (int) $contor->index_nou);
-            $sheet->setCellValue('I' . $row, $contor->updated_at->format('d.m.Y H:i'));
+            $sheet->setCellValue('I' . $row, $contor->updated_at?->format('d.m.Y H:i') ?? '-');
 
             $stil = ($row % 2 === 0) ? $styleAlt : $styleData;
             $sheet->getStyle('A' . $row . ':I' . $row)->applyFromArray($stil);
