@@ -102,6 +102,8 @@ Route::prefix('transparenta')->name('transparenta.')->group(function () {
     Route::get('/guvernanta-corporativa', [InformatiiController::class, 'guvernantaCorporativa'])->name('guvernanta-corporativa');
     Route::get('/plan-integritate',       [InformatiiController::class, 'planIntegritate'])->name('plan-integritate');
     Route::get('/raport-audit',           [InformatiiController::class, 'raportAudit'])->name('raport-audit');
+    Route::get('/raport-comitet-audit',   [InformatiiController::class, 'raportComitetAudit'])->name('raport-comitet-audit');
+    Route::get('/raport-comitet-risc',    [InformatiiController::class, 'raportComitetRisc'])->name('raport-comitet-risc');
     Route::get('/raporturi-cnr',                   [InformatiiController::class, 'raporturiCnr'])->name('raporturi-cnr');
     Route::get('/contracte-mandat-administratori', [InformatiiController::class, 'contracteMandatAdministratori'])->name('contracte-mandat-administratori');
     Route::get('/obiectivul-politicii-publice',    [InformatiiController::class, 'obiectivulPoliticiiPublice'])->name('obiectivul-politicii-publice');

@@ -307,6 +307,34 @@ class InformatiiController extends Controller
         ]);
     }
 
+    public function raportComitetAudit()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Raport Comitet Audit',
+            'iconClasa'        => 'bi-clipboard2-check',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/raport comitet audit')),
+            'storageUrl'       => 'documente/raport%20comitet%20audit',
+            'culoareIcon'      => '#0077b6',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/raport-comitet-audit',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
+    public function raportComitetRisc()
+    {
+        return view('pages.documente-lista', [
+            'titlu'            => 'Raport Comitet Risc',
+            'iconClasa'        => 'bi-exclamation-triangle',
+            'ani'              => $this->citesteAniFisiere(storage_path('app/public/documente/raport comitet risc')),
+            'storageUrl'       => 'documente/raport%20comitet%20risc',
+            'culoareIcon'      => '#fd7e14',
+            'breadcrumbParent' => 'Transparență',
+            'breadcrumbUrl'    => '/transparenta/raport-comitet-risc',
+            'sidebar'          => 'components.sidebar-transparenta',
+        ]);
+    }
+
     private function citesteAniFisiere(string $cale): array
     {
         if (!is_dir($cale)) return [];
@@ -321,9 +349,10 @@ class InformatiiController extends Controller
             foreach (scandir($calean) as $f) {
                 if ($f === '.' || $f === '..') continue;
                 if (strtolower(pathinfo($f, PATHINFO_EXTENSION)) !== 'pdf') continue;
-                $fisiere[] = $f;
+                $fisiere[$f] = filemtime($calean . DIRECTORY_SEPARATOR . $f);
             }
-            sort($fisiere);
+            arsort($fisiere);
+            $fisiere = array_keys($fisiere);
             if (!empty($fisiere)) {
                 $ani[(int)$an] = $fisiere;
             }

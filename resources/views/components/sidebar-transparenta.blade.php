@@ -10,6 +10,8 @@
             ['/transparenta/rapoarte-evaluare',     'bi-clipboard-data',            'Rapoarte de evaluare'],
             ['/transparenta/raport-anual',          'bi-file-earmark-text',         'Raport anual activitate'],
             ['/transparenta/raport-audit',          'bi-search',                    'Raport audit extern'],
+            ['/transparenta/raport-comitet-audit',  'bi-clipboard2-check',           'Raport Comitet Audit'],
+            ['/transparenta/raport-comitet-risc',   'bi-exclamation-triangle',       'Raport Comitet Risc'],
             ['/transparenta/raporturi-cnr',                   'bi-file-earmark-bar-graph', 'Rapoarte CNR'],
             ['/transparenta/contracte-mandat-administratori', 'bi-file-earmark-person',    'Contracte mandat adm.'],
             ['/transparenta/cod-etica',             'bi-award',                     'Cod de etică'],

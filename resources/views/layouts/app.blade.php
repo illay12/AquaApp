@@ -383,7 +383,7 @@
                             <li><a class="dropdown-item {{ request()->is('transparenta/buget-investitii*') ? 'active' : '' }}" href="{{ url('/transparenta/buget-investitii') }}">
                                 <i class="bi bi-wallet2 text-aqua me-2"></i>Buget investiții</a></li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') || request()->is('transparenta/raport-anual*') || request()->is('transparenta/raport-audit*') || request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="#">
+                                <a class="dropdown-item {{ request()->is('transparenta/rapoarte-evaluare*') || request()->is('transparenta/raport-anual*') || request()->is('transparenta/raport-audit*') || request()->is('transparenta/raporturi-cnr*') || request()->is('transparenta/raport-comitet-audit*') || request()->is('transparenta/raport-comitet-risc*') ? 'active' : '' }}" href="#">
                                     <i class="bi bi-journal-text text-aqua me-2"></i>Rapoarte
                                 </a>
                                 <ul class="dropdown-menu">
@@ -395,6 +395,10 @@
                                         <i class="bi bi-search text-aqua me-2"></i>Raport audit extern</a></li>
                                     <li><a class="dropdown-item {{ request()->is('transparenta/raporturi-cnr*') ? 'active' : '' }}" href="{{ url('/transparenta/raporturi-cnr') }}">
                                         <i class="bi bi-file-earmark-bar-graph text-aqua me-2"></i>Rapoarte CNR</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/raport-comitet-audit*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-comitet-audit') }}">
+                                        <i class="bi bi-clipboard2-check text-aqua me-2"></i>Raport Comitet Audit</a></li>
+                                    <li><a class="dropdown-item {{ request()->is('transparenta/raport-comitet-risc*') ? 'active' : '' }}" href="{{ url('/transparenta/raport-comitet-risc') }}">
+                                        <i class="bi bi-exclamation-triangle text-aqua me-2"></i>Raport Comitet Risc</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -629,6 +633,12 @@
                                     </a>
                                     <a href="{{ url('/transparenta/raporturi-cnr') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-file-earmark-bar-graph text-aqua"></i> Rapoarte CNR
+                                    </a>
+                                    <a href="{{ url('/transparenta/raport-comitet-audit') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-clipboard2-check text-aqua"></i> Raport Comitet Audit
+                                    </a>
+                                    <a href="{{ url('/transparenta/raport-comitet-risc') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                        <i class="bi bi-exclamation-triangle text-aqua"></i> Raport Comitet Risc
                                     </a>
                                 </div>
                             </div>
