@@ -26,6 +26,10 @@
     .anunt-continut table { max-width: 100%; overflow-x: auto; display: block; }
     .fisier-link-card:hover { background: #e0f0ff !important; border-color: var(--aqua-primary) !important; }
     .recent-anunt-link:hover { background: var(--aqua-bg) !important; }
+    .fisier-preview-trigger { cursor: pointer; }
+    .fisier-download-btn { flex-shrink: 0; color: var(--aqua-gray); }
+    .fisier-download-btn:hover { color: var(--aqua-primary); background: #fff; }
+    #previewModal .modal-body { height: 75vh; }
 
     @media (max-width: 991.98px) {
         .anunt-show-section { padding: 1.25rem 0 2rem; }
@@ -94,6 +98,7 @@
                             <i class="bi bi-paperclip me-2"></i> Documente atașate
                         </h6>
                         @foreach($anunt->fisiere as $fisier)
+                        @if($fisier->tip === 'pdf')
                         <a href="{{ $fisier->url }}" target="_blank"
                            class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 text-decoration-none"
                            style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
@@ -108,6 +113,28 @@
                                 </div>
                             </div>
                         </a>
+                        @else
+                        <div class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2"
+                             style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);transition:all 0.2s;">
+                            <i class="bi {{ $fisier->icon }} fisier-icon"
+                               style="font-size:1.8rem;color:{{ $fisier->culoare_icon }};flex-shrink:0;"></i>
+                            <div class="fisier-preview-trigger"
+                                 data-url="{{ $fisier->url }}"
+                                 data-name="{{ $fisier->nume_original }}"
+                                 style="flex:1;overflow:hidden;color:var(--aqua-text);">
+                                <div style="font-size:0.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                    {{ $fisier->nume_original }}
+                                </div>
+                                <div style="font-size:0.75rem;color:var(--aqua-gray);">
+                                    {{ strtoupper($fisier->tip) }} &bull; {{ $fisier->marime_fomatata }}
+                                    &bull; <span class="text-aqua fw-bold">Previzualizare</span>
+                                </div>
+                            </div>
+                            <a href="{{ $fisier->url }}" class="btn btn-sm fisier-download-btn" title="Descarcă fișierul original">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                        @endif
                         @endforeach
                     </div>
                     @endif
@@ -174,6 +201,26 @@
         </div>
     </div>
 </section>
+
+{{-- MODAL PREVIZUALIZARE DOCUMENTE WORD/EXCEL --}}
+<div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h6 class="modal-title text-truncate mb-0" id="previewModalLabel"></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <iframe id="previewModalIframe" src="" style="width:100%;height:100%;border:0;" allowfullscreen></iframe>
+            </div>
+            <div class="modal-footer py-2">
+                <a id="previewModalDownload" href="#" class="btn btn-aqua btn-sm">
+                    <i class="bi bi-download me-1"></i> Descarcă fișierul original
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('scripts')
@@ -183,6 +230,31 @@
         btnPrint.addEventListener('click', function(e) {
             e.preventDefault();
             window.print();
+        });
+    }
+
+    var previewModalEl = document.getElementById('previewModal');
+    if (previewModalEl) {
+        var previewModal      = new bootstrap.Modal(previewModalEl);
+        var previewIframe     = document.getElementById('previewModalIframe');
+        var previewLabel      = document.getElementById('previewModalLabel');
+        var previewDownload   = document.getElementById('previewModalDownload');
+
+        document.querySelectorAll('.fisier-preview-trigger').forEach(function(trigger) {
+            trigger.addEventListener('click', function() {
+                var url  = trigger.getAttribute('data-url');
+                var name = trigger.getAttribute('data-name');
+
+                previewLabel.textContent  = name;
+                previewDownload.href      = url;
+                previewIframe.src         = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(url);
+                previewModal.show();
+            });
+        });
+
+        // Oprește redarea documentului în fundal după închiderea modalului
+        previewModalEl.addEventListener('hidden.bs.modal', function() {
+            previewIframe.src = '';
         });
     }
 </script>
