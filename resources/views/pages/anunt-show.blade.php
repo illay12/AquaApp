@@ -29,7 +29,15 @@
     .fisier-preview-trigger { cursor: pointer; }
     .fisier-download-btn { flex-shrink: 0; color: var(--aqua-gray); }
     .fisier-download-btn:hover { color: var(--aqua-primary); background: #fff; }
-    #previewModal .modal-body { height: 75vh; }
+    #previewModal .modal-content { overflow: hidden; }
+    #previewModal .modal-body { height: 75vh; overflow: auto; padding: 0; }
+    #previewModalContent { padding: 1.25rem 1.5rem; font-size: 0.92rem; line-height: 1.75; color: #333; }
+    #previewModalContent img { max-width: 100%; height: auto; border-radius: 4px; }
+    #previewModalContent table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+    #previewModalContent table, #previewModalContent th, #previewModalContent td { border: 1px solid #dee2e6; }
+    #previewModalContent th, #previewModalContent td { padding: 0.45rem 0.65rem; font-size: 0.85rem; }
+    #previewModalContent .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; }
+    #previewModalContent .xlsx-sheet-title { font-size: 0.85rem; font-weight: 700; color: var(--aqua-dark); margin: 0 0 0.5rem; }
 
     @media (max-width: 991.98px) {
         .anunt-show-section { padding: 1.25rem 0 2rem; }
@@ -56,6 +64,9 @@
         .fisier-link-card { padding: 0.75rem !important; gap: 0.65rem !important; }
         .fisier-link-card .fisier-icon { font-size: 1.4rem !important; }
         .anunt-meta-bar { gap: 0.5rem !important; }
+        #previewModal .modal-body { height: auto; flex: 1 1 auto; }
+        #previewModalContent { padding: 0.9rem 1rem; font-size: 0.85rem; }
+        #previewModalContent th, #previewModalContent td { font-size: 0.75rem; padding: 0.3rem 0.45rem; }
     }
     @media print {
         nav, footer, .col-lg-4 { display: none !important; }
@@ -121,6 +132,7 @@
                             <div class="fisier-preview-trigger"
                                  data-url="{{ $fisier->url }}"
                                  data-name="{{ $fisier->nume_original }}"
+                                 data-tip="{{ $fisier->tip }}"
                                  style="flex:1;overflow:hidden;color:var(--aqua-text);">
                                 <div style="font-size:0.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
                                     {{ $fisier->nume_original }}
@@ -211,7 +223,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
-                <iframe id="previewModalIframe" src="" style="width:100%;height:100%;border:0;" allowfullscreen></iframe>
+                <div id="previewModalLoading" class="d-flex flex-column align-items-center justify-content-center h-100 text-muted py-5">
+                    <div class="spinner-border mb-2" style="color:var(--aqua-primary);" role="status"></div>
+                    <div style="font-size:0.875rem;">Se încarcă previzualizarea...</div>
+                </div>
+                <div id="previewModalError" class="d-none text-center text-muted py-5 px-3">
+                    <i class="bi bi-exclamation-circle" style="font-size:2rem;"></i>
+                    <p class="mt-2 mb-0" style="font-size:0.875rem;">
+                        Previzualizarea nu este disponibilă pentru acest fișier.<br>Îl poți descărca mai jos.
+                    </p>
+                </div>
+                <div id="previewModalContent" class="d-none"></div>
             </div>
             <div class="modal-footer py-2">
                 <a id="previewModalDownload" href="#" class="btn btn-aqua btn-sm">
@@ -235,26 +257,88 @@
 
     var previewModalEl = document.getElementById('previewModal');
     if (previewModalEl) {
-        var previewModal      = new bootstrap.Modal(previewModalEl);
-        var previewIframe     = document.getElementById('previewModalIframe');
-        var previewLabel      = document.getElementById('previewModalLabel');
-        var previewDownload   = document.getElementById('previewModalDownload');
+        var previewModal    = new bootstrap.Modal(previewModalEl);
+        var previewLabel    = document.getElementById('previewModalLabel');
+        var previewDownload = document.getElementById('previewModalDownload');
+        var previewLoading  = document.getElementById('previewModalLoading');
+        var previewError    = document.getElementById('previewModalError');
+        var previewContent  = document.getElementById('previewModalContent');
+
+        var scriptCache = {};
+        function loadScript(src) {
+            if (!scriptCache[src]) {
+                scriptCache[src] = new Promise(function(resolve, reject) {
+                    var s = document.createElement('script');
+                    s.src = src;
+                    s.onload = resolve;
+                    s.onerror = reject;
+                    document.head.appendChild(s);
+                });
+            }
+            return scriptCache[src];
+        }
+
+        function renderDocx(buffer) {
+            return loadScript('https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js')
+                .then(function() { return mammoth.convertToHtml({ arrayBuffer: buffer }); })
+                .then(function(result) { previewContent.innerHTML = result.value; });
+        }
+
+        function renderXlsx(buffer) {
+            return loadScript('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js')
+                .then(function() {
+                    var workbook = XLSX.read(buffer, { type: 'array' });
+                    var html = '';
+                    workbook.SheetNames.forEach(function(sheetName, idx) {
+                        html += '<div class="xlsx-sheet-title">' + sheetName + '</div>';
+                        html += '<div class="table-responsive">'
+                              + XLSX.utils.sheet_to_html(workbook.Sheets[sheetName], { id: 'xlsx-sheet-' + idx })
+                              + '</div>';
+                    });
+                    previewContent.innerHTML = html;
+                });
+        }
 
         document.querySelectorAll('.fisier-preview-trigger').forEach(function(trigger) {
             trigger.addEventListener('click', function() {
                 var url  = trigger.getAttribute('data-url');
                 var name = trigger.getAttribute('data-name');
+                var tip  = trigger.getAttribute('data-tip');
 
-                previewLabel.textContent  = name;
-                previewDownload.href      = url;
-                previewIframe.src         = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(url);
+                previewLabel.textContent = name;
+                previewDownload.href     = url;
+
+                previewContent.classList.add('d-none');
+                previewContent.innerHTML = '';
+                previewError.classList.add('d-none');
+                previewLoading.classList.remove('d-none');
+
                 previewModal.show();
+
+                fetch(url)
+                    .then(function(res) {
+                        if (!res.ok) throw new Error('fetch-failed');
+                        return res.arrayBuffer();
+                    })
+                    .then(function(buffer) {
+                        if (tip === 'docx') return renderDocx(buffer);
+                        if (tip === 'xlsx') return renderXlsx(buffer);
+                        throw new Error('unsupported-type');
+                    })
+                    .then(function() {
+                        previewLoading.classList.add('d-none');
+                        previewContent.classList.remove('d-none');
+                    })
+                    .catch(function() {
+                        previewLoading.classList.add('d-none');
+                        previewError.classList.remove('d-none');
+                    });
             });
         });
 
-        // Oprește redarea documentului în fundal după închiderea modalului
+        // Curăță conținutul randat după închiderea modalului
         previewModalEl.addEventListener('hidden.bs.modal', function() {
-            previewIframe.src = '';
+            previewContent.innerHTML = '';
         });
     }
 </script>
