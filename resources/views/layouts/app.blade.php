@@ -633,9 +633,13 @@
 
                     <div style="padding:1rem 1.5rem;border-top:1px solid #e2e8f0;background:#f8fafc;">
                         <div style="font-size:0.75rem;color:#6c757d;margin-bottom:0.3rem;">
-                            <i class="bi bi-telephone-fill me-1" style="color:#0077b6;"></i> 0747022009
+                            <a href="tel:0747022009" style="color:#6c757d;text-decoration:none;">
+                                <i class="bi bi-telephone-fill me-1" style="color:#0077b6;"></i> 0747022009
+                            </a>
                             <span class="mx-2">·</span>
-                            <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0747 022 009
+                            <a href="tel:0747022009" style="color:#6c757d;text-decoration:none;">
+                                <i class="bi bi-alarm me-1" style="color:#0077b6;"></i> Avarii: 0747 022 009
+                            </a>
                         </div>
                         <div style="font-size:0.72rem;color:#9ca3af;">Lun–Vin: 07:30–16:00</div>
                     </div>

@@ -37,37 +37,10 @@ $categorieLabel = [
     .anunt-card-excerpt { font-size: 0.875rem; }
     .cat-badge { display:inline-block; padding:0.25em 0.75em; border-radius:20px; font-size:0.75rem; font-weight:700; white-space:nowrap; }
 
-    /* Sidebar mobile: dispecerat deasupra listei, categorii ascunse */
+    /* Sidebar mobile: dispecerat ascuns, categorii ascunse */
     @media (max-width: 991.98px) {
         .anunturi-section { padding: 1.25rem 0 2rem; }
-        .sidebar-anunturi { order: -1; margin-bottom: 0.5rem; }
         .sidebar-categorii { display: none; }
-        .dispecerat-card-anunturi { border-radius: 12px !important; border: 2px solid #dc3545 !important; }
-        .dispecerat-card-anunturi .card-body { padding: 0 !important; }
-        .dispecerat-card-anunturi .card-body a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 0.7rem 1rem;
-            text-decoration: none;
-            background: #fff;
-            border-radius: 10px;
-        }
-        .dispecerat-card-anunturi .disp-icon {
-            font-size: 1.2rem !important;
-            color: #dc3545;
-            position: absolute;
-            left: 1rem;
-        }
-        .dispecerat-card-anunturi .disp-text-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .dispecerat-card-anunturi .disp-text { font-size: 0.75rem; color: var(--aqua-gray); margin: 0; line-height: 1.2; }
-        .dispecerat-card-anunturi .disp-num { font-size: 1.1rem !important; font-weight: 800 !important; margin: 0 !important; white-space: nowrap; color: #dc3545 !important; line-height: 1.2; }
     }
     @media (max-width: 575.98px) {
         .anunt-card-title { font-size: 0.925rem; }
@@ -172,25 +145,14 @@ $categorieLabel = [
             {{-- SIDEBAR --}}
             <div class="col-lg-4 sidebar-anunturi">
 
-                {{-- Dispecerat --}}
-                <div class="card mb-3 dispecerat-card-anunturi" style="border-color:#f8d7da;">
+                {{-- Dispecerat — ascuns pe mobil/tabletă --}}
+                <div class="card mb-3 dispecerat-card-anunturi d-none d-lg-block" style="border-color:#f8d7da;">
                     <div class="card-body" style="background:#fff5f5;border-radius:12px;text-align:center;">
-                        {{-- desktop --}}
-                        <div class="d-none d-lg-block">
-                            <i class="bi bi-telephone-fill" style="font-size:2rem;color:#dc3545;"></i>
-                            <p class="fw-bold mt-2 mb-0" style="color:#dc3545;">Dispecerat avarii</p>
-                            <p style="font-size:1.8rem;font-weight:800;color:#dc3545;margin:0;">
-                                <a href="tel:+40747022009" style="color:inherit;text-decoration:none;">0747 022 009</a>
-                            </p>
-                        </div>
-                        {{-- mobil --}}
-                        <a href="tel:+40747022009" class="d-lg-none">
-                            <i class="bi bi-telephone-fill disp-icon"></i>
-                            <div class="disp-text-wrap">
-                                <p class="disp-text">Dispecerat avarii</p>
-                                <p class="disp-num">0747 022 009</p>
-                            </div>
-                        </a>
+                        <i class="bi bi-telephone-fill" style="font-size:2rem;color:#dc3545;"></i>
+                        <p class="fw-bold mt-2 mb-0" style="color:#dc3545;">Dispecerat avarii</p>
+                        <p style="font-size:1.8rem;font-weight:800;color:#dc3545;margin:0;">
+                            <a href="tel:+40747022009" style="color:inherit;text-decoration:none;">0747 022 009</a>
+                        </p>
                     </div>
                 </div>
 
