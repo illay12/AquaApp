@@ -285,7 +285,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('despre.pdd') }}">
                                             <i class="bi bi-file-earmark-text text-aqua me-2"></i>Aquaserv - PDD
                                         </a>
                                     </li>
@@ -492,7 +492,7 @@
                                     <a href="https://poim.aquaservtulcea.ro/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-box-arrow-up-right text-aqua"></i> Aquaserv - POIM
                                     </a>
-                                    <a href="#" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
+                                    <a href="{{ route('despre.pdd') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 1.5rem 0.65rem 3.2rem;text-decoration:none;color:#374151;font-size:0.82rem;font-weight:600;">
                                         <i class="bi bi-file-earmark-text text-aqua"></i> Aquaserv - PDD
                                     </a>
                                 </div>
