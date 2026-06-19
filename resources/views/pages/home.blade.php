@@ -14,8 +14,8 @@
                         <i class="bi bi-shield-check me-1"></i> Operator autorizat A.N.R.S.C.
                     </span>
                     <h1 style="font-family:'Merriweather',serif;font-size:clamp(1.35rem,5vw,2.1rem);font-weight:700;line-height:1.3;margin-bottom:0.8rem;">
-                        Împreună pentru apă
-                        <span style="color:#90e0ef;display:block;">sigură și mediu curat</span>
+                        Împreună pentru apă sigură
+                        <span style="color:#90e0ef;display:block;">și pentru mediu curat</span>
                     </h1>
                     <p class="d-none d-md-block" style="font-size:clamp(0.85rem,3vw,1rem);opacity:0.9;max-width:540px;line-height:1.6;margin-bottom:0;">
                         Furnizăm și prestăm servicii de alimentare cu apă potabilă și de canalizare
