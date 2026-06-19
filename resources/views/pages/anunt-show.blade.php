@@ -8,7 +8,7 @@
         <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Acasă</a></li>
             <li class="breadcrumb-item"><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
-            <li class="breadcrumb-item active">{{ Str::limit($anunt->titlu ?? 'Detalii anunț', 50) }}</li>
+            <li class="breadcrumb-item active breadcrumb-item-titlu">{{ Str::limit($anunt->titlu ?? 'Detalii anunț', 50) }}</li>
         </ol>
     </nav>
 @endsection
@@ -59,6 +59,7 @@
         .recent-anunturi-card { display: none; }
     }
     @media (max-width: 575.98px) {
+        .breadcrumb-item-titlu { display: none; }
         .anunt-show-title { font-size: 1.05rem; }
         .anunt-continut { font-size: 0.9rem !important; line-height: 1.75 !important; }
         .fisier-link-card { padding: 0.75rem !important; gap: 0.65rem !important; }
