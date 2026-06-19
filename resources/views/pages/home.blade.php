@@ -17,7 +17,7 @@
                         Împreună pentru apă sigură
                         <span style="color:#90e0ef;display:block;">și mediu curat</span>
                     </h1>
-                    <p style="font-size:clamp(0.85rem,3vw,1rem);opacity:0.9;max-width:540px;line-height:1.6;margin-bottom:0;">
+                    <p class="d-none d-md-block" style="font-size:clamp(0.85rem,3vw,1rem);opacity:0.9;max-width:540px;line-height:1.6;margin-bottom:0;">
                         Furnizăm și prestăm servicii de alimentare cu apă potabilă și de canalizare
                         pentru cetățenii și afacerile din județ.
                     </p>

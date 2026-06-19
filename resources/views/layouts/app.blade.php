@@ -124,6 +124,10 @@
             .navbar-nav .nav-link { border-bottom: none; padding: 0.6rem 1rem !important; }
             .page-hero h1 { font-size: 1.5rem; }
         }
+        /* Sigla — padding mai aerisit strict pe mobil */
+        @media (max-width: 767.98px) {
+            .navbar { padding: 1rem 0; }
+        }
         /* Dropdown active — override Bootstrap, must be last */
         a.dropdown-item.active, a.dropdown-item:active,
         .dropdown-item.active, .dropdown-item:active {
