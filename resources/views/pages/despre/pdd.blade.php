@@ -342,15 +342,15 @@
         {{-- DOCUMENT ORIGINAL --}}
         <div class="mb-5">
             <div class="d-flex align-items-center gap-3 p-3 pdd-doc-card" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(0,119,182,0.08);border:1px solid var(--aqua-border);">
-                <div style="width:48px;height:48px;background:#e7f0fa;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                    <i class="bi bi-file-earmark-word" style="font-size:1.5rem;color:#1d4ed8;"></i>
+                <div style="width:48px;height:48px;background:#fdecea;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <i class="bi bi-file-earmark-pdf" style="font-size:1.5rem;color:#dc2626;"></i>
                 </div>
                 <div class="pdd-doc-text" style="flex:1;min-width:0;">
                     <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">Comunicat de presă — document original</div>
-                    <div style="font-size:0.78rem;color:#6c757d;">DOC · semnarea Contractului de Finanțare, 18.06.2026</div>
+                    <div style="font-size:0.78rem;color:#6c757d;">PDF · semnarea Contractului de Finanțare, 18.06.2026</div>
                 </div>
-                <a href="{{ asset('storage/documente/pdd/comunicat-semnare-cf.doc') }}" class="btn btn-sm btn-aqua flex-shrink-0 pdd-doc-btn" download>
-                    <i class="bi bi-download me-1"></i> Descarcă
+                <a href="{{ asset('storage/documente/pdd/comunicat-semnare-cf.pdf') }}" class="btn btn-sm btn-aqua flex-shrink-0 pdd-doc-btn" target="_blank">
+                    <i class="bi bi-eye me-1"></i> Vezi documentul
                 </a>
             </div>
         </div>
