@@ -353,6 +353,11 @@
                     <i class="bi bi-eye me-1"></i> Vezi documentul
                 </a>
             </div>
+            <a href="https://www.facebook.com/MinisterulInvestitiilorsiProiectelorEuropene" target="_blank" rel="noopener"
+               class="d-inline-flex align-items-center gap-2 mt-3" style="font-size:0.82rem;color:#6c757d;text-decoration:none;">
+                <i class="bi bi-facebook" style="color:#0077b6;font-size:1rem;"></i>
+                Ministerul Investițiilor și Proiectelor Europene — pagina oficială de Facebook
+            </a>
         </div>
 
         {{-- DURATA + SEMNATURA --}}
