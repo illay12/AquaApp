@@ -127,6 +127,8 @@
         /* Sigla — padding mai aerisit strict pe mobil */
         @media (max-width: 767.98px) {
             .navbar { padding: 1rem 0; }
+            .navbar-brand span { font-size: 1.45rem; }
+            .navbar-brand small { font-size: 0.82rem !important; }
         }
         /* Dropdown active — override Bootstrap, must be last */
         a.dropdown-item.active, a.dropdown-item:active,
