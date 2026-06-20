@@ -123,6 +123,15 @@
         @media (max-width: 1199.98px) {
             .navbar-nav .nav-link { border-bottom: none; padding: 0.6rem 1rem !important; }
             .page-hero h1 { font-size: 1.5rem; }
+            /* Logo-ul nu mai dă wrap pe rândul de sub el — butonul de meniu rămâne pe același rând */
+            .navbar > .container { flex-wrap: nowrap; }
+            .navbar-toggler { flex-shrink: 0; }
+        }
+        .navbar-brand { min-width: 0; }
+        .navbar-brand-icon { flex-shrink: 0; }
+        .navbar-brand-text { min-width: 0; overflow: hidden; }
+        .navbar-brand-text span, .navbar-brand-text small {
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
         }
         /* Sigla — padding mai aerisit strict pe mobil */
         @media (max-width: 767.98px) {
@@ -212,10 +221,10 @@
     <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}">
-                <div style="width:60px;height:60px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                <div class="navbar-brand-icon" style="width:60px;height:60px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;">
                     <i class="bi bi-droplet-half text-white" style="font-size:1.85rem;"></i>
                 </div>
-                <div>
+                <div class="navbar-brand-text">
                     <span>Aquaserv Tulcea</span>
                     <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>
             </a>
