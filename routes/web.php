@@ -40,6 +40,8 @@ Route::view('/cookies', 'pages.cookies')->name('cookies');
 Route::view('/sitemap', 'pages.sitemap')->name('sitemap');
 Route::get('/sitemap.xml', [SitemapController::class, 'xml'])->name('sitemap.xml');
 
+Route::redirect('/anunturi-angajare', '/informatii/formulare', 301);
+
 /*
 |--------------------------------------------------------------------------
 | SERVICII
