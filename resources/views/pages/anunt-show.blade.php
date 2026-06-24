@@ -76,6 +76,23 @@
 </style>
 @endpush
 
+@php
+$categorieStyle = [
+    'anunturi' => 'background:#dbeafe;color:#1d4ed8;',
+    'avarie'   => 'background:#fee2e2;color:#b91c1c;',
+    'angajare' => 'background:#dcfce7;color:#15803d;',
+    'calitate' => 'background:#e0f2fe;color:#0369a1;',
+    'diverse'  => 'background:#f3e8ff;color:#7e22ce;',
+];
+$categorieLabel = [
+    'anunturi' => 'Anunțuri',
+    'avarie'   => 'Avarie',
+    'angajare' => 'Angajare',
+    'calitate' => 'Calitate apă',
+    'diverse'  => 'Diverse',
+];
+@endphp
+
 @section('content')
 <section class="anunt-show-section">
     <div class="container">
@@ -88,7 +105,10 @@
                     {{-- META --}}
                     <div class="d-flex flex-wrap align-items-center anunt-meta-bar gap-2 mb-3 pb-3"
                          style="border-bottom:1px solid var(--aqua-border);">
-                        <span class="badge-aqua">{{ $anunt->categorie ?? 'Anunț' }}</span>
+                        <span class="cat-badge"
+                              style="display:inline-block;padding:0.25em 0.75em;border-radius:20px;font-size:0.75rem;font-weight:700;white-space:nowrap;{{ $categorieStyle[$anunt->categorie ?? ''] ?? 'background:#f1f5f9;color:#475569;' }}">
+                            {{ $categorieLabel[$anunt->categorie ?? ''] ?? ($anunt->categorie ?? 'Anunț') }}
+                        </span>
                         <span class="text-muted" style="font-size:0.82rem;">
                             <i class="bi bi-calendar3 me-1"></i>
                             {{ isset($anunt->created_at) ? $anunt->created_at->format('d.m.Y') : '' }}
@@ -191,7 +211,10 @@
                                class="d-block p-3 text-decoration-none recent-anunt-link"
                                style="border-bottom:1px solid var(--aqua-border);color:var(--aqua-text);transition:background 0.15s;">
                                 <div style="font-size:0.75rem;color:var(--aqua-gray);margin-bottom:0.2rem;">
-                                    <span class="badge-aqua me-1">{{ $recent->categorie }}</span>
+                                    <span class="cat-badge me-1"
+                                          style="display:inline-block;padding:0.2em 0.65em;border-radius:20px;font-size:0.7rem;font-weight:700;white-space:nowrap;{{ $categorieStyle[$recent->categorie] ?? 'background:#f1f5f9;color:#475569;' }}">
+                                        {{ $categorieLabel[$recent->categorie] ?? $recent->categorie }}
+                                    </span>
                                     {{ $recent->created_at->format('d.m.Y') }}
                                 </div>
                                 <div style="font-size:0.875rem;font-weight:600;line-height:1.4;">
