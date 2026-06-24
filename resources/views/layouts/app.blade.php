@@ -98,6 +98,18 @@
         footer ul li a i { margin-right: 6px; }
         .footer-bottom { background: rgba(0,0,0,0.25); padding: 1rem 0; margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); }
         .footer-casierii-link:hover { background: rgba(255,255,255,0.15) !important; color: #fff !important; }
+        /* Footer accordion — doar mobil, ca să nu mai fie un scroll lung de linkuri */
+        .footer-col-icon { display: none; }
+        @media (max-width: 767.98px) {
+            footer { padding-top: 2rem; }
+            .footer-col-toggle { cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin-bottom: 0; }
+            .footer-col-icon { display: inline-block; font-size: 0.85rem; transition: transform 0.25s; }
+            .footer-col-toggle.active .footer-col-icon { transform: rotate(180deg); }
+            .footer-col-body { display: none; overflow: hidden; padding-top: 1rem; }
+            .footer-col-body.show { display: block; }
+            .footer-col { padding-bottom: 0.85rem; margin-bottom: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
+            .footer-col:last-child { border-bottom: none; margin-bottom: 0; }
+        }
         .btn-aqua { background: var(--aqua-primary); color: #fff !important; border: none; font-weight: 700 !important; font-size: 0.875rem !important; font-family: 'Nunito', sans-serif !important; text-transform: none !important; letter-spacing: normal !important; white-space: nowrap !important; border-radius: 8px; padding: 0.5rem 1.1rem !important; transition: background 0.2s, transform 0.15s; }
         .btn-aqua:hover { background: var(--aqua-dark); color: #fff; transform: translateY(-1px); }
         .btn-outline-aqua { border: 2px solid var(--aqua-primary); color: var(--aqua-primary); font-weight: 700; border-radius: 8px; padding: 0.5rem 1.4rem; background: transparent; transition: all 0.2s; }
@@ -687,65 +699,82 @@
     <footer>
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h5>Aquaserv S.A.</h5>
-                    <p style="font-size:0.875rem;line-height:1.7;">
-                        Operator regional de servicii de alimentare cu apă și canalizare,
-                        dedicat calității și siguranței apei pentru comunitate.
-                    </p>
-                    <ul>
-                        <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Rezervorului, nr. 2, Tulcea</a></li>
-                        <li><a href="tel:0240524310"><i class="bi bi-telephone-fill"></i> 0240 524 310</a></li>
-                        <li><a href="mailto:secretariat@aquaservtulcea.ro"><i class="bi bi-envelope-fill"></i> secretariat@aquaservtulcea.ro</a></li>
-                        <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 07:30 – 16:00</a></li>
-                    </ul>
+                <div class="col-lg-4 col-md-6 footer-col">
+                    <h5 class="footer-col-toggle" data-target="footerColInfo">
+                        Aquaserv S.A. <i class="bi bi-chevron-down footer-col-icon"></i>
+                    </h5>
+                    <div class="footer-col-body" id="footerColInfo">
+                        <p style="font-size:0.875rem;line-height:1.7;">
+                            Operator regional de servicii de alimentare cu apă și canalizare,
+                            dedicat calității și siguranței apei pentru comunitate.
+                        </p>
+                        <ul>
+                            <li><a href="#"><i class="bi bi-geo-alt-fill"></i> Str. Rezervorului, nr. 2, Tulcea</a></li>
+                            <li><a href="tel:0240524310"><i class="bi bi-telephone-fill"></i> 0240 524 310</a></li>
+                            <li><a href="mailto:secretariat@aquaservtulcea.ro"><i class="bi bi-envelope-fill"></i> secretariat@aquaservtulcea.ro</a></li>
+                            <li><a href="#"><i class="bi bi-clock-fill"></i> Lun–Vin: 07:30 – 16:00</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5>Link-uri rapide</h5>
-                    <ul>
-                        <li><a href="{{ url('/despre') }}">Despre noi</a></li>
-                        <li><a href="{{ url('/despre/structura-organizationala') }}">Structură Organizațională</a></li>
-                        <li><a href="{{ url('/despre/centre-operationale') }}">Centre Operaționale</a></li>
-                        <li><a href="{{ url('/informatii/hotarari-aga') }}">Hotărâri AGA</a></li>
-                        <li><a href="{{ url('/servicii') }}">Servicii</a></li>
-                        <li><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
-                        <li><a href="{{ url('/contact') }}">Contact</a></li>
-                        <li><a href="{{ url('/gdpr') }}">GDPR</a></li>
-                    </ul>
+                <div class="col-lg-2 col-md-6 footer-col">
+                    <h5 class="footer-col-toggle" data-target="footerColLinkuri">
+                        Link-uri rapide <i class="bi bi-chevron-down footer-col-icon"></i>
+                    </h5>
+                    <div class="footer-col-body" id="footerColLinkuri">
+                        <ul>
+                            <li><a href="{{ url('/despre') }}">Despre noi</a></li>
+                            <li><a href="{{ url('/despre/structura-organizationala') }}">Structură Organizațională</a></li>
+                            <li><a href="{{ url('/despre/centre-operationale') }}">Centre Operaționale</a></li>
+                            <li><a href="{{ url('/informatii/hotarari-aga') }}">Hotărâri AGA</a></li>
+                            <li><a href="{{ url('/servicii') }}">Servicii</a></li>
+                            <li><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
+                            <li><a href="{{ url('/contact') }}">Contact</a></li>
+                            <li><a href="{{ url('/gdpr') }}">GDPR</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Zona clienți</h5>
-                    <ul>
-                        <li><a href="{{ url('https://my.aquaservtulcea.ro/login') }}"><i class="bi bi-credit-card"></i> Plătește factura</a></li>
-                        <li><a href="{{ url('/client/index-contor') }}"><i class="bi bi-speedometer2"></i> Transmite index contor</a></li>
-                        <li><a href="{{ url('/contact/') }}"><i class="bi bi-exclamation-triangle"></i> Raportează avarie</a></li>                        <li><a href="{{ url('/informatii/formulare') }}"><i class="bi bi-download"></i> Formulare</a></li>
-                    </ul>
+                <div class="col-lg-3 col-md-6 footer-col">
+                    <h5 class="footer-col-toggle" data-target="footerColClienti">
+                        Zona clienți <i class="bi bi-chevron-down footer-col-icon"></i>
+                    </h5>
+                    <div class="footer-col-body" id="footerColClienti">
+                        <ul>
+                            <li><a href="{{ url('https://my.aquaservtulcea.ro/login') }}"><i class="bi bi-credit-card"></i> Plătește factura</a></li>
+                            <li><a href="{{ url('/client/index-contor') }}"><i class="bi bi-speedometer2"></i> Transmite index contor</a></li>
+                            <li><a href="{{ url('/contact/') }}"><i class="bi bi-exclamation-triangle"></i> Raportează avarie</a></li>
+                            <li><a href="{{ url('/informatii/formulare') }}"><i class="bi bi-download"></i> Formulare</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Program casierii</h5>
-                    <p style="font-size:0.875rem;margin-bottom:0.6rem;">
-                        <strong style="color:#fff;">Tulcea – Sediu central</strong><br>
-                        Lun–Vin: 07:30 – 17:00
-                    </p>
-                    <a href="{{ url('/program-casierii') }}"
-                       class="footer-casierii-link"
-                       style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:rgba(255,255,255,0.75);text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.35rem 0.8rem;margin-bottom:1rem;transition:all 0.2s;">
-                        <i class="bi bi-clock" style="color:var(--aqua-light);"></i> Program Casierii Județ
-                    </a>
-                    <p style="font-size:0.875rem;margin-bottom:0;">
-                        <strong style="color:#fff;">Dispecerat Avarii</strong><br>
-                        <a href="tel:0747022009" style="font-size:1.1rem;color:var(--aqua-light);text-decoration:none;">
-                            <i class="bi bi-telephone-fill"></i> 0747 022 009
+                <div class="col-lg-3 col-md-6 footer-col">
+                    <h5 class="footer-col-toggle" data-target="footerColProgram">
+                        Program casierii <i class="bi bi-chevron-down footer-col-icon"></i>
+                    </h5>
+                    <div class="footer-col-body" id="footerColProgram">
+                        <p style="font-size:0.875rem;margin-bottom:0.6rem;">
+                            <strong style="color:#fff;">Tulcea – Sediu central</strong><br>
+                            Lun–Vin: 07:30 – 17:00
+                        </p>
+                        <a href="{{ url('/program-casierii') }}"
+                           class="footer-casierii-link"
+                           style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:rgba(255,255,255,0.75);text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.35rem 0.8rem;margin-bottom:1rem;transition:all 0.2s;">
+                            <i class="bi bi-clock" style="color:var(--aqua-light);"></i> Program Casierii Județ
                         </a>
-                        <br>
-                        <br>
-                        <strong style="color:#fff;">Telecitire</strong><br>
-                        <a href="tel:0340131111" style="font-size:1.1rem;color:var(--aqua-light);text-decoration:none;">
-                            <i class="bi bi-telephone-fill"></i> 0340 131 111
-                        </a>
-                    </p>
-                    <div class="d-flex gap-2 mt-3">
-                        <a href="https://www.facebook.com/AquaservTulcea/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light"><i class="bi bi-facebook"></i></a>
+                        <p style="font-size:0.875rem;margin-bottom:0;">
+                            <strong style="color:#fff;">Dispecerat Avarii</strong><br>
+                            <a href="tel:0747022009" style="font-size:1.1rem;color:var(--aqua-light);text-decoration:none;">
+                                <i class="bi bi-telephone-fill"></i> 0747 022 009
+                            </a>
+                            <br>
+                            <br>
+                            <strong style="color:#fff;">Telecitire</strong><br>
+                            <a href="tel:0340131111" style="font-size:1.1rem;color:var(--aqua-light);text-decoration:none;">
+                                <i class="bi bi-telephone-fill"></i> 0340 131 111
+                            </a>
+                        </p>
+                        <div class="d-flex gap-2 mt-3">
+                            <a href="https://www.facebook.com/AquaservTulcea/" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light"><i class="bi bi-facebook"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -809,6 +838,14 @@
             el.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+            });
+        });
+        document.querySelectorAll('.footer-col-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                if (window.innerWidth > 767.98) return;
+                var body = document.getElementById(toggle.dataset.target);
+                toggle.classList.toggle('active');
+                body.classList.toggle('show');
             });
         });
     });
