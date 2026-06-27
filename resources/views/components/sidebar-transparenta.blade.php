@@ -16,12 +16,15 @@
             ['/transparenta/contracte-mandat-administratori', 'bi-file-earmark-person',    'Contracte mandat adm.'],
             ['/transparenta/cod-etica',             'bi-award',                     'Cod de etică'],
             ['/transparenta/componenta-ca',         'bi-people-fill',               'Componența CA'],
+            ['https://declaratii.integritate.eu/',  'bi-cash-coin',                 'Declarații de avere', true],
             ['/transparenta/guvernanta-corporativa','bi-building-check',            'Guvernanță corporativă'],
             ['/transparenta/plan-integritate',      'bi-shield-lock',               'Plan de integritate'],
-        ] as [$url, $icon, $label])
-        <a href="{{ url($url) }}"
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2 {{ request()->is(ltrim($url,'/')) ? 'active' : '' }}"
-           style="{{ request()->is(ltrim($url,'/')) ? 'background:var(--aqua-primary);border-color:var(--aqua-primary);color:#fff;' : '' }}">
+        ] as $item)
+        @php [$url, $icon, $label, $external] = array_pad($item, 4, false); @endphp
+        <a href="{{ $external ? $url : url($url) }}"
+           @if($external) target="_blank" rel="noopener" @endif
+           class="list-group-item list-group-item-action d-flex align-items-center gap-2 {{ !$external && request()->is(ltrim($url,'/')) ? 'active' : '' }}"
+           style="{{ !$external && request()->is(ltrim($url,'/')) ? 'background:var(--aqua-primary);border-color:var(--aqua-primary);color:#fff;' : '' }}">
             <i class="bi {{ $icon }}"></i> {{ $label }}
         </a>
         @endforeach
