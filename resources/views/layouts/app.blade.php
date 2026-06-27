@@ -366,6 +366,8 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item {{ request()->is('informatii/hotarari-aga*') ? 'active' : '' }}" href="{{ url('/informatii/hotarari-aga') }}">
                                 <i class="bi bi-people text-aqua me-2"></i>Hotărâri AGA</a></li>
+                            <li><a class="dropdown-item" href="https://declaratii.integritate.eu/" target="_blank" rel="noopener">
+                                <i class="bi bi-cash-coin text-aqua me-2"></i>Declarații de avere</a></li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item {{ request()->is('transparenta/cod-etica*') || request()->is('transparenta/componenta-ca*') || request()->is('transparenta/guvernanta-corporativa*') || request()->is('transparenta/plan-integritate*') || request()->is('transparenta/contracte-mandat-administratori*') ? 'active' : '' }}" href="#">
                                     <i class="bi bi-building-check text-aqua me-2"></i>Guvernanță
@@ -591,6 +593,9 @@
                             <div id="subTransparenta" style="display:none;background:#f8fafc;border-left:3px solid #caf0f8;">
                                 <a href="{{ url('/informatii/hotarari-aga') }}" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
                                     <i class="bi bi-people text-aqua"></i> Hotărâri AGA
+                                </a>
+                                <a href="https://declaratii.integritate.eu/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;text-decoration:none;color:#374151;font-size:0.85rem;font-weight:600;">
+                                    <i class="bi bi-cash-coin text-aqua"></i> Declarații de avere
                                 </a>
                                 {{-- Guvernanță sub-expandabil --}}
                                 <button data-submeniu="subGuvernanta" style="width:100%;display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1.5rem 0.7rem 2.5rem;background:transparent;border:none;color:#374151;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:left;">
