@@ -339,20 +339,41 @@
             </div>
         </div>
 
-        {{-- DOCUMENT ORIGINAL --}}
+        {{-- COMUNICATE DE PRESA (DOCUMENTE ORIGINALE) --}}
+        {{--
+            Pentru a adăuga un comunicat nou:
+            1. Urcă fișierul PDF în storage/app/public/documente/pdd/
+            2. Adaugă un rând nou în array-ul $comunicatePresa de mai jos
+            Cel mai recent comunicat trebuie pus primul în listă.
+        --}}
         <div class="mb-5">
-            <div class="d-flex align-items-center gap-3 p-3 pdd-doc-card" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(0,119,182,0.08);border:1px solid var(--aqua-border);">
-                <div style="width:48px;height:48px;background:#fdecea;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                    <i class="bi bi-file-earmark-pdf" style="font-size:1.5rem;color:#dc2626;"></i>
+            <h2 class="section-title mb-4">Comunicate de presă</h2>
+
+            @php $comunicatePresa = [
+                [
+                    'titlu' => 'Comunicat de presă — semnarea Contractului de Finanțare',
+                    'descriere' => 'PDF · semnarea Contractului de Finanțare, 18.06.2026',
+                    'fisier' => 'comunicat-semnare-cf.pdf',
+                ],
+            ]; @endphp
+
+            <div class="d-flex flex-column gap-3">
+                @foreach($comunicatePresa as $comunicat)
+                <div class="d-flex align-items-center gap-3 p-3 pdd-doc-card" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(0,119,182,0.08);border:1px solid var(--aqua-border);">
+                    <div style="width:48px;height:48px;background:#fdecea;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="bi bi-file-earmark-pdf" style="font-size:1.5rem;color:#dc2626;"></i>
+                    </div>
+                    <div class="pdd-doc-text" style="flex:1;min-width:0;">
+                        <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">{{ $comunicat['titlu'] }}</div>
+                        <div style="font-size:0.78rem;color:#6c757d;">{{ $comunicat['descriere'] }}</div>
+                    </div>
+                    <a href="{{ asset('storage/documente/pdd/' . $comunicat['fisier']) }}" class="btn btn-sm btn-aqua flex-shrink-0 pdd-doc-btn" target="_blank">
+                        <i class="bi bi-eye me-1"></i> Vezi documentul
+                    </a>
                 </div>
-                <div class="pdd-doc-text" style="flex:1;min-width:0;">
-                    <div style="font-weight:700;color:var(--aqua-dark);font-size:0.9rem;">Comunicat de presă — document original</div>
-                    <div style="font-size:0.78rem;color:#6c757d;">PDF · semnarea Contractului de Finanțare, 18.06.2026</div>
-                </div>
-                <a href="{{ asset('storage/documente/pdd/comunicat-semnare-cf.pdf') }}" class="btn btn-sm btn-aqua flex-shrink-0 pdd-doc-btn" target="_blank">
-                    <i class="bi bi-eye me-1"></i> Vezi documentul
-                </a>
+                @endforeach
             </div>
+
             <a href="https://www.facebook.com/MinisterulInvestitiilorsiProiectelorEuropene" target="_blank" rel="noopener"
                class="d-inline-flex align-items-center gap-2 mt-3" style="font-size:0.82rem;color:#6c757d;text-decoration:none;">
                 <i class="bi bi-facebook" style="color:#0077b6;font-size:1rem;"></i>
