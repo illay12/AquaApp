@@ -351,15 +351,16 @@
 
             @php $comunicatePresa = [
                 [
-                    'titlu' => 'Comunicat de presă — semnarea Contractului de Finanțare',
-                    'descriere' => 'PDF · semnarea Contractului de Finanțare, 18.06.2026',
-                    'fisier' => 'comunicat-semnare-cf.pdf',
-                ],
-                [
                     'titlu' => 'Comunicat de presă — semnarea Contractului CL5',
                     'descriere' => 'PDF · semnarea Contractului CL5, 16.07.2026',
                     'fisier' => 'comunicat-semnareCL5.pdf',
                 ],
+                [
+                    'titlu' => 'Comunicat de presă — semnarea Contractului de Finanțare',
+                    'descriere' => 'PDF · semnarea Contractului de Finanțare, 18.06.2026',
+                    'fisier' => 'comunicat-semnare-cf.pdf',
+                ],
+
             ]; @endphp
 
             <div class="d-flex flex-column gap-3">
