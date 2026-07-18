@@ -45,7 +45,7 @@
         .navbar { background:var(--aqua-nav-bg); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
         .navbar-brand span { font-family:'Roboto', sans-serif; font-size:1.15rem; font-weight:700; color:var(--aqua-dark); }
         .navbar-brand small { display:block; font-size:0.72rem; font-weight:600; color:var(--aqua-gray); text-transform:uppercase; letter-spacing:0.04em; }
-        .navbar-nav .nav-link { font-family:'Open Sans', sans-serif; font-weight:600; font-size:0.9rem; color:var(--aqua-text) !important; padding:1.1rem 1rem !important; text-transform:uppercase; letter-spacing:0.02em; border-radius:4px; }
+        .navbar-nav .nav-link { font-family:'Open Sans', sans-serif; font-weight:600; font-size:16px; color:var(--aqua-text) !important; padding:1.1rem 1rem !important; text-transform:uppercase; letter-spacing:0.02em; border-radius:4px; }
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { background:var(--aqua-nav-hover); color:var(--aqua-dark) !important; }
         .navbar-nav .dropdown-menu { border:none; border-top:3px solid var(--aqua-accent); box-shadow:0 8px 24px rgba(0,0,0,0.12); background:var(--aqua-nav-bg); }
         @media (min-width:992px) {
@@ -59,7 +59,8 @@
         .page-hero { position:relative; overflow:hidden; background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color:#fff; padding:3rem 0 2.5rem; }
         .page-hero::before { content:''; position:absolute; inset:0; opacity:0.5; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,90 900,0 1200,50 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M0,70 C400,20 800,100 1200,60 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E"); background-size:cover; background-position:bottom; }
         .page-hero .container { position:relative; z-index:1; }
-        .page-hero h1 { font-family:'Roboto', sans-serif; font-size:1.75rem; font-weight:500; margin-bottom:0.4rem; }
+        .page-hero h1 { font-family:'Roboto', sans-serif; font-size:36px; line-height:1.4em; font-weight:500; margin-bottom:0.4rem; }
+        @media (max-width:767.98px) { .page-hero h1 { font-size:1.5rem; } }
         .breadcrumb-item a { color: var(--aqua-light); }
         .breadcrumb-item.active { color: rgba(255,255,255,0.75); }
         .breadcrumb-item+.breadcrumb-item::before { color: rgba(255,255,255,0.5); }
