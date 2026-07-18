@@ -36,15 +36,15 @@
         .funding-band { background: var(--aqua-dark); color: rgba(255,255,255,0.9); font-size: 0.8rem; padding: 8px 0; text-align: center; }
 
         /* Sigle */
-        .logos-row { background:#fff; border-bottom:1px solid var(--aqua-border); padding: 1.25rem 0; }
-        .logos-track { display:flex; align-items:center; justify-content:center; gap:4rem; flex-wrap:wrap; }
-        .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
-        .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
-        .logo-placeholder { height:90px; width:180px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
+        .logos-row { background:#fff; border-bottom:1px solid var(--aqua-border); padding: 1.5rem 0; }
+        .logos-track { display:grid; grid-template-columns: repeat(3, 1fr); align-items:center; justify-items:center; gap:1.5rem; max-width:900px; margin:0 auto; }
+        .logo-slot { height:90px; width:100%; display:flex; align-items:center; justify-content:center; }
+        .logo-slot img { max-height:90px; max-width:100%; width:auto; object-fit:contain; }
+        .logo-placeholder { height:90px; width:100%; max-width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         @media (max-width:767.98px) {
-            .logos-track { gap:2rem; }
-            .logo-slot, .logo-slot img, .logo-placeholder { height:56px; }
-            .logo-placeholder { width:130px; }
+            .logos-track { grid-template-columns: repeat(3, 1fr); gap:0.75rem; }
+            .logo-slot, .logo-slot img { height:56px; max-height:56px; }
+            .logo-placeholder { height:56px; max-width:130px; }
         }
 
         /* Navbar */
