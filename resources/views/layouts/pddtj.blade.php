@@ -34,15 +34,15 @@
 
         /* Sigle */
         .logos-card { background:#fff; border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,0.14); padding:1.75rem 2rem; margin:0 auto; }
-        .logos-track { display:grid; grid-template-columns: repeat(3, 1fr); align-items:center; justify-items:center; gap:1.5rem; }
-        .logo-slot { height:90px; width:100%; display:flex; align-items:center; justify-content:center; }
-        .logo-slot img { max-height:90px; max-width:100%; width:auto; object-fit:contain; }
-        .logo-placeholder { height:90px; width:100%; max-width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
+        .logos-track { display:flex; align-items:center; justify-content:center; gap:5rem; flex-wrap:wrap; }
+        .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
+        .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
+        .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         @media (max-width:767.98px) {
             .logos-card { padding:1.1rem 1rem; }
-            .logos-track { grid-template-columns: repeat(3, 1fr); gap:0.75rem; }
+            .logos-track { gap:2rem; }
             .logo-slot, .logo-slot img { height:56px; max-height:56px; }
-            .logo-placeholder { height:56px; max-width:130px; }
+            .logo-placeholder { height:56px; width:130px; }
         }
 
         /* Navbar */
