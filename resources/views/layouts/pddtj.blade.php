@@ -37,7 +37,7 @@
 
         /* Sigle */
         .logos-row { background:#fff; border-bottom:1px solid var(--aqua-border); padding: 1.5rem 0; }
-        .logos-track { display:grid; grid-template-columns: repeat(3, 1fr); align-items:center; justify-items:center; gap:1.5rem; max-width:900px; margin:0 auto; }
+        .logos-track { display:grid; grid-template-columns: repeat(3, 1fr); align-items:center; justify-items:center; gap:1.5rem; }
         .logo-slot { height:90px; width:100%; display:flex; align-items:center; justify-content:center; }
         .logo-slot img { max-height:90px; max-width:100%; width:auto; object-fit:contain; }
         .logo-placeholder { height:90px; width:100%; max-width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
