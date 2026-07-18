@@ -20,6 +20,18 @@ use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
+| MICROSITE PDDTJ (pddtj.aquaservtulcea.ro)
+|--------------------------------------------------------------------------
+|
+| Trebuie inclus înaintea rutelor fără constrângere de domeniu de mai jos,
+| altfel ruta '/' a AquaApp ar intercepta și cererile către subdomeniul pddtj.
+|
+*/
+
+require __DIR__.'/pddtj.php';
+
+/*
+|--------------------------------------------------------------------------
 | PAGINI PRINCIPALE
 |--------------------------------------------------------------------------
 */

@@ -56,6 +56,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Domeniu microsite PDDTJ
+    |--------------------------------------------------------------------------
+    |
+    | Subdomeniul pe care cPanel îl configurează să pointeze către acest
+    | document root (public/), pentru microsite-ul proiectului PDDTJ.
+    | Poate fi suprascris în .env pentru testare locală (ex. pddtj.aquaapp.test).
+    |
+    */
+
+    'pddtj_domain' => env('PDDTJ_DOMAIN', 'pddtj.aquaservtulcea.ro'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |

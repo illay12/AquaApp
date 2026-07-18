@@ -21,5 +21,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+*.doc
+*.docx
 /.claude
 .claude
