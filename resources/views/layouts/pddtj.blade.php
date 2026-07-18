@@ -56,7 +56,9 @@
         .navbar-nav .dropdown-item:hover { background:var(--aqua-nav-hover); color:var(--aqua-dark); }
 
         /* Hero */
-        .page-hero { background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color:#fff; padding:2.75rem 0 2.25rem; }
+        .page-hero { position:relative; overflow:hidden; background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color:#fff; padding:3rem 0 2.5rem; }
+        .page-hero::before { content:''; position:absolute; inset:0; opacity:0.5; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,90 900,0 1200,50 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M0,70 C400,20 800,100 1200,60 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E"); background-size:cover; background-position:bottom; }
+        .page-hero .container { position:relative; z-index:1; }
         .page-hero h1 { font-family:'Roboto', sans-serif; font-size:1.75rem; font-weight:500; margin-bottom:0.4rem; }
         .breadcrumb-item a { color: var(--aqua-light); }
         .breadcrumb-item.active { color: rgba(255,255,255,0.75); }
@@ -162,31 +164,30 @@
     <footer>
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-5">
-                    <h5>Proiectul regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea</h5>
-                    <p style="font-size:0.85rem;color:rgba(255,255,255,0.75);line-height:1.7;">
-                        Proiect cofinanțat din Fondul European de Dezvoltare Regională (FEDR), în cadrul Programului Dezvoltare Durabilă și Tranziție Justă (PDDTJ). Beneficiar: S.C. Aquaserv S.A. Tulcea.
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Meniu</h5>
+                <div class="col-md-4">
+                    <h5>CONTACT</h5>
                     <ul>
-                        <li><a href="{{ route('pddtj.despre-pddtj') }}"><i class="bi bi-info-circle"></i>Despre PDDTJ</a></li>
-                        <li><a href="{{ route('pddtj.despre-proiect') }}"><i class="bi bi-file-earmark-text"></i>Despre proiect</a></li>
-                        <li><a href="{{ route('pddtj.contracte') }}"><i class="bi bi-file-earmark-check"></i>Contracte</a></li>
-                        <li><a href="{{ route('pddtj.comunicare') }}"><i class="bi bi-megaphone"></i>Comunicare</a></li>
-                        <li><a href="{{ route('pddtj.galerie') }}"><i class="bi bi-images"></i>Galerie</a></li>
-                        <li><a href="{{ route('pddtj.contact') }}"><i class="bi bi-geo-alt"></i>Contact</a></li>
+                        <li><i class="bi bi-geo-alt"></i>Adresa: Str. Rezervorului, nr. 2 (avize și autorizații, reclamații)</li>
+                        <li><i class="bi bi-telephone"></i>Telefon/Fax: 0240.524.310</li>
+                        <li><i class="bi bi-headset"></i>Telefon dispecerat: 0747.022.009</li>
+                        <li><i class="bi bi-envelope"></i>E-mail: secretariat@aquaservtulcea.ro</li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Contact</h5>
+                    <h5>LINK-URI UTILE</h5>
                     <ul>
-                        <li><i class="bi bi-geo-alt"></i>Str. Rezervorului, nr. 2, Tulcea</li>
-                        <li><i class="bi bi-telephone"></i>0240.524.310</li>
-                        <li><i class="bi bi-envelope"></i>secretariat@aquaservtulcea.ro</li>
-                        <li><a href="https://www.aquaservtulcea.ro/" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>www.aquaservtulcea.ro</a></li>
+                        <li><a href="https://www.aquaservtulcea.ro/" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Website Aquaserv Tulcea</a></li>
                     </ul>
+                    <p style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-top:0.75rem;">
+                        Pentru informații detaliate despre celelalte programe cofinanțate de Uniunea Europeană, vă invităm să vizitați
+                        <a href="https://mfe.gov.ro/" target="_blank" rel="noopener" style="color:var(--aqua-light);">mfe.gov.ro</a>.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5 style="border-bottom:none;padding-bottom:0;">Operatorul care furnizează și prestează servicii de alimentare cu apă și canalizare în județul Tulcea</h5>
+                    <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;margin:0;">
+                        Conținutul acestui material nu reprezintă în mod obligatoriu poziția oficială a Uniunii Europene sau a Guvernului României.
+                    </p>
                 </div>
             </div>
 
@@ -207,7 +208,7 @@
 
         <div class="footer-bottom text-center mt-4">
             <div class="container">
-                &copy; {{ date('Y') }} S.C. Aquaserv S.A. Tulcea — Conținutul acestui site nu reprezintă în mod necesar poziția oficială a Uniunii Europene.
+                &copy; {{ date('Y') }} S.C. Aquaserv S.A. Tulcea
             </div>
         </div>
     </footer>
