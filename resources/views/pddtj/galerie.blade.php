@@ -41,7 +41,7 @@
                     <div class="row g-3">
                         @foreach($galerie['poze'] as $poza)
                         <div class="col-6 col-md-3">
-                            <a href="{{ asset('storage/'.$poza) }}" target="_blank" class="d-block" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,119,182,0.10);">
+                            <a href="{{ asset('storage/'.$poza) }}" target="_blank" class="d-block" style="border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(61, 143, 135,0.10);">
                                 <img src="{{ asset('storage/'.$poza) }}" alt="{{ $galerie['titlu'] }}" style="width:100%;height:150px;object-fit:cover;display:block;">
                             </a>
                         </div>

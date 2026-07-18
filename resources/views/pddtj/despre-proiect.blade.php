@@ -19,9 +19,9 @@
         {{-- COMUNICAT DE PRESA + VALOARE TOTALA --}}
         <div class="row g-4 align-items-stretch mb-5">
             <div class="col-lg-7">
-                <div class="h-100 d-flex flex-column justify-content-center pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(0,119,182,0.08);border-left:5px solid var(--aqua-primary);">
+                <div class="h-100 d-flex flex-column justify-content-center pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border-left:5px solid var(--aqua-primary);">
                     <span class="badge-aqua mb-3" style="width:fit-content;"><i class="bi bi-calendar3 me-1"></i> Comunicat de presă · 18.06.2026</span>
-                    <p style="color:#374151;font-size:0.95rem;line-height:1.9;margin:0;">
+                    <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;margin:0;">
                         Joi, <strong>11 iunie 2026</strong>, a fost semnat Contractul de Finanțare pentru proiectul
                         <strong>„PROIECTUL REGIONAL DE DEZVOLTARE A INFRASTRUCTURII DE APĂ ȘI APĂ UZATĂ ÎN JUDEȚUL TULCEA"</strong>
                         (cod MySMIS 2021 – 333789), între SC Aquaserv SA Tulcea, în calitate de Beneficiar, Asociația de Dezvoltare
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="h-100 d-flex flex-column justify-content-center pdd-card-lg" style="background:linear-gradient(135deg,#023e8a,#0077b6,#00b4d8);border-radius:16px;padding:2rem;">
+                <div class="h-100 d-flex flex-column justify-content-center pdd-card-lg" style="background:linear-gradient(135deg,#002756,#3d8f87,#76b1a8);border-radius:16px;padding:2rem;">
                     <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:0.4rem;">Valoarea totală a investiției</div>
                     <div style="font-size:1.7rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem;">810.748.282,98 lei</div>
                     <div class="row g-2 text-center">
@@ -67,21 +67,21 @@
 
         {{-- STRUCTURA FINANTARII --}}
         <div class="mb-5">
-            <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
+            <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61, 143, 135,0.10);">
                 <div class="table-responsive">
                     <table class="table table-bordered table-stack-sm mb-0" style="font-size:0.875rem;">
                         <thead>
                             <tr>
-                                <th class="text-white fw-bold py-3 px-4" style="width:60%;background:linear-gradient(90deg,#023e8a,#0077b6);">Sursă de finanțare</th>
-                                <th class="text-white fw-bold py-3 px-4 text-end" style="background:#0077b6;">Valoare (lei)</th>
-                                <th class="text-white fw-bold py-3 px-4 text-center" style="white-space:nowrap;background:#0077b6;">Pondere</th>
+                                <th class="text-white fw-bold py-3 px-4" style="width:60%;background:linear-gradient(90deg,#002756,#3d8f87);">Sursă de finanțare</th>
+                                <th class="text-white fw-bold py-3 px-4 text-end" style="background:#3d8f87;">Valoare (lei)</th>
+                                <th class="text-white fw-bold py-3 px-4 text-center" style="white-space:nowrap;background:#3d8f87;">Pondere</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="background:#e0f2fe;">
+                            <tr style="background:#e3efed;">
                                 <td class="px-4 py-2">FEDR</td>
-                                <td class="px-4 py-2 text-end fw-bold" data-label="Valoare (lei)" style="color:#0369a1;">647.787.878,10</td>
-                                <td class="px-4 py-2 text-center fw-bold" data-label="Pondere" style="color:#0369a1;">79,9%</td>
+                                <td class="px-4 py-2 text-end fw-bold" data-label="Valoare (lei)" style="color:#2a6d66;">647.787.878,10</td>
+                                <td class="px-4 py-2 text-center fw-bold" data-label="Pondere" style="color:#2a6d66;">79,9%</td>
                             </tr>
                             <tr style="background:#f8fafc;">
                                 <td class="px-4 py-2">Bugetul de stat</td>
@@ -98,7 +98,7 @@
                                 <td class="px-4 py-2 text-end" data-label="Valoare (lei)">48.644.896,98</td>
                                 <td class="px-4 py-2 text-center" data-label="Pondere">6,0%</td>
                             </tr>
-                            <tr style="background:#f0f8ff;">
+                            <tr style="background:#eef2f1;">
                                 <td class="px-4 py-2 fw-bold" style="color:var(--aqua-dark);">Valoare totală</td>
                                 <td class="px-4 py-2 text-end fw-bold" data-label="Valoare (lei)" style="color:var(--aqua-dark);">810.748.282,98</td>
                                 <td class="px-4 py-2 text-center fw-bold" data-label="Pondere" style="color:var(--aqua-dark);">100%</td>
@@ -112,8 +112,8 @@
         {{-- OBIECTIVUL GENERAL --}}
         <div class="mb-5">
             <h2 class="section-title mb-4">Obiectivul general al proiectului</h2>
-            <div class="pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(0,119,182,0.08);border-left:5px solid var(--aqua-primary);">
-                <p style="color:#374151;font-size:0.925rem;line-height:1.9;margin:0;">
+            <div class="pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border-left:5px solid var(--aqua-primary);">
+                <p style="color:#4a4a4a;font-size:0.925rem;line-height:1.9;margin:0;">
                     Oferirea unei strategii regionale de dezvoltare a sectorului de apă și apă uzată, astfel încât să fie în
                     concordanță cu obiectivele generale negociate de România în cadrul procesului de aderare și post-aderare,
                     cu angajamentele de tranziție și obiectivele intermediare convenite între Comisia Europeană și Guvernul
@@ -128,8 +128,8 @@
         {{-- OBIECTIVE PRINCIPALE: APA + APA UZATA --}}
         <div class="row g-4 mb-5">
             <div class="col-lg-6">
-                <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                    <div class="px-4 py-3" style="background:linear-gradient(90deg,#023e8a,#0077b6);">
+                <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61, 143, 135,0.10);">
+                    <div class="px-4 py-3" style="background:linear-gradient(90deg,#002756,#3d8f87);">
                         <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                             <i class="bi bi-droplet-fill me-2"></i>Obiective principale — infrastructura de apă
                         </h5>
@@ -150,7 +150,7 @@
                                 <div style="width:28px;height:28px;min-width:28px;background:var(--aqua-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;">
                                     <i class="bi bi-check text-white" style="font-size:0.85rem;"></i>
                                 </div>
-                                <span style="font-size:0.85rem;color:#374151;line-height:1.6;">{{ $ob }}</span>
+                                <span style="font-size:0.85rem;color:#4a4a4a;line-height:1.6;">{{ $ob }}</span>
                             </li>
                             @endforeach
                         </ul>
@@ -158,8 +158,8 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                    <div class="px-4 py-3" style="background:linear-gradient(90deg,#0077b6,#00b4d8);">
+                <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61, 143, 135,0.10);">
+                    <div class="px-4 py-3" style="background:linear-gradient(90deg,#3d8f87,#76b1a8);">
                         <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                             <i class="bi bi-recycle me-2"></i>Obiective principale — infrastructura de apă uzată
                         </h5>
@@ -176,7 +176,7 @@
                                 <div style="width:28px;height:28px;min-width:28px;background:var(--aqua-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;">
                                     <i class="bi bi-check text-white" style="font-size:0.85rem;"></i>
                                 </div>
-                                <span style="font-size:0.85rem;color:#374151;line-height:1.6;">{{ $ob }}</span>
+                                <span style="font-size:0.85rem;color:#4a4a4a;line-height:1.6;">{{ $ob }}</span>
                             </li>
                             @endforeach
                         </ul>
@@ -187,13 +187,13 @@
                 <div class="mt-4" style="background:var(--aqua-bg);border-left:4px solid var(--aqua-primary);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;">
                     <p style="font-size:0.78rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;">Obiective specifice</p>
                     <ul style="margin:0;padding-left:1.1rem;">
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin-bottom:0.4rem;">Dezvoltarea unor sisteme de apă care să asigure condițiile de calitate conform Directivei 2184/2020 și OUG 7/2023</li>
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin-bottom:0.4rem;">Asigurarea continuității în furnizarea serviciului de alimentare cu apă</li>
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin-bottom:0.4rem;">Eliminarea deficiențelor actuale</li>
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin-bottom:0.4rem;">Creșterea ratei de conectare a consumatorilor la sistemul centralizat de alimentare cu apă</li>
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin-bottom:0.4rem;">Reducerea pierderilor de apă din sistem prin lucrări de reabilitare</li>
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin-bottom:0.4rem;">Funcționarea sistemelor cu costuri de exploatare minime</li>
-                        <li style="font-size:0.82rem;color:#374151;line-height:1.7;margin:0;">Asigurarea posibilității de extindere a acestor sisteme în viitor</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin-bottom:0.4rem;">Dezvoltarea unor sisteme de apă care să asigure condițiile de calitate conform Directivei 2184/2020 și OUG 7/2023</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin-bottom:0.4rem;">Asigurarea continuității în furnizarea serviciului de alimentare cu apă</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin-bottom:0.4rem;">Eliminarea deficiențelor actuale</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin-bottom:0.4rem;">Creșterea ratei de conectare a consumatorilor la sistemul centralizat de alimentare cu apă</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin-bottom:0.4rem;">Reducerea pierderilor de apă din sistem prin lucrări de reabilitare</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin-bottom:0.4rem;">Funcționarea sistemelor cu costuri de exploatare minime</li>
+                        <li style="font-size:0.82rem;color:#4a4a4a;line-height:1.7;margin:0;">Asigurarea posibilității de extindere a acestor sisteme în viitor</li>
                     </ul>
                 </div>
             </div>
@@ -203,8 +203,8 @@
         <div class="mb-5">
             <h2 class="section-title mb-4">Indicatorii proiectului</h2>
 
-            <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);margin-bottom:1.5rem;">
-                <div class="px-4 py-3" style="background:linear-gradient(90deg,#023e8a,#0077b6);">
+            <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61, 143, 135,0.10);margin-bottom:1.5rem;">
+                <div class="px-4 py-3" style="background:linear-gradient(90deg,#002756,#3d8f87);">
                     <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                         <i class="bi bi-bar-chart-fill me-2"></i>Indicatori de realizare
                     </h5>
@@ -212,7 +212,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-stack-sm mb-0" style="font-size:0.82rem;">
                         <thead>
-                            <tr style="background:#e0f2fe;">
+                            <tr style="background:#e3efed;">
                                 <th class="px-3 py-2" style="color:var(--aqua-dark);">Cod</th>
                                 <th class="px-3 py-2" style="color:var(--aqua-dark);">Indicator</th>
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);white-space:nowrap;">Țintă</th>
@@ -239,8 +239,8 @@
                 </div>
             </div>
 
-            <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="px-4 py-3" style="background:linear-gradient(90deg,#0077b6,#00b4d8);">
+            <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61, 143, 135,0.10);">
+                <div class="px-4 py-3" style="background:linear-gradient(90deg,#3d8f87,#76b1a8);">
                     <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                         <i class="bi bi-graph-up-arrow me-2"></i>Indicatori de rezultat
                     </h5>
@@ -248,7 +248,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-stack-sm mb-0" style="font-size:0.82rem;">
                         <thead>
-                            <tr style="background:#e0f2fe;">
+                            <tr style="background:#e3efed;">
                                 <th class="px-3 py-2" style="color:var(--aqua-dark);">Cod</th>
                                 <th class="px-3 py-2" style="color:var(--aqua-dark);">Indicator</th>
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);white-space:nowrap;">Țintă</th>
@@ -274,7 +274,7 @@
         {{-- INDICATORI SUPLIMENTARI DE REALIZARE --}}
         <div class="mb-5">
             <h2 class="section-title mb-4">Indicatori suplimentari de realizare</h2>
-            <div class="pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(0,119,182,0.08);">
+            <div class="pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);">
                 <div class="row g-3 pdd-indicatori-supl">
                     @php $indicatoriSuplimentari = [
                         ['Rezervoare de înmagazinare — noi', '5 buc'],
@@ -296,7 +296,7 @@
                     @foreach($indicatoriSuplimentari as $ind)
                     <div class="col-md-6">
                         <div class="d-flex justify-content-between align-items-center py-2 px-3" style="background:var(--aqua-bg);border-radius:8px;">
-                            <span style="font-size:0.82rem;color:#374151;">{{ $ind[0] }}</span>
+                            <span style="font-size:0.82rem;color:#4a4a4a;">{{ $ind[0] }}</span>
                             <strong style="font-size:0.85rem;color:var(--aqua-primary);white-space:nowrap;margin-left:0.75rem;">{{ $ind[1] }}</strong>
                         </div>
                     </div>
@@ -310,28 +310,28 @@
             <h2 class="section-title mb-4">Alte investiții</h2>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <div class="p-4 h-100" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,119,182,0.08);border-top:4px solid var(--aqua-primary);">
+                    <div class="p-4 h-100" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border-top:4px solid var(--aqua-primary);">
                         <h6 style="font-weight:800;color:var(--aqua-dark);margin-bottom:1rem;">
                             <i class="bi bi-gear-fill me-2" style="color:var(--aqua-primary);"></i>Echipamente de operare
                         </h6>
                         <ul style="margin:0;padding-left:1.1rem;">
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Extinderea sistemului SCADA regional</li>
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Utilaje de curățare a sistemului de canalizare</li>
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Utilaje de transport și echipamente de intervenție</li>
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Echipamente pentru detecție pierderi de apă și inspecții video</li>
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Mașini și barje transport nămol</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Extinderea sistemului SCADA regional</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Utilaje de curățare a sistemului de canalizare</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Utilaje de transport și echipamente de intervenție</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Echipamente pentru detecție pierderi de apă și inspecții video</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Mașini și barje transport nămol</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="p-4 h-100" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,119,182,0.08);border-top:4px solid var(--aqua-accent);">
+                    <div class="p-4 h-100" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border-top:4px solid var(--aqua-accent);">
                         <h6 style="font-weight:800;color:var(--aqua-dark);margin-bottom:1rem;">
                             <i class="bi bi-headset me-2" style="color:var(--aqua-accent);"></i>Servicii suport pentru operator
                         </h6>
                         <ul style="margin:0;padding-left:1.1rem;">
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Asistență tehnică pentru managementul proiectului</li>
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Asistență tehnică pentru supervizarea lucrărilor</li>
-                            <li style="font-size:0.85rem;color:#374151;line-height:1.7;">Auditul proiectului</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Asistență tehnică pentru managementul proiectului</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Asistență tehnică pentru supervizarea lucrărilor</li>
+                            <li style="font-size:0.85rem;color:#4a4a4a;line-height:1.7;">Auditul proiectului</li>
                         </ul>
                     </div>
                 </div>
@@ -353,8 +353,8 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="h-100 p-4 text-end" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,119,182,0.08);">
-                    <p style="margin:0;color:#374151;font-size:0.9rem;">Director General</p>
+                <div class="h-100 p-4 text-end" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);">
+                    <p style="margin:0;color:#4a4a4a;font-size:0.9rem;">Director General</p>
                     <p style="margin:0;font-weight:800;color:var(--aqua-dark);font-size:0.95rem;">Ing. Ifrim C. Valentin</p>
                 </div>
             </div>

@@ -195,23 +195,23 @@
             <div class="accordion" id="accordionCL">
                 @foreach($lucrari as $c)
                     @php($id = 'cl-'.strtolower(str_replace([' ', '.'], '', $c['cod'])))
-                    <div class="accordion-item mb-3" style="border-radius:12px!important;overflow:hidden;border:none;box-shadow:0 2px 16px rgba(0,119,182,0.09);">
+                    <div class="accordion-item mb-3" style="border-radius:12px!important;overflow:hidden;border:none;box-shadow:0 2px 16px rgba(61, 143, 135,0.09);">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $id }}"
-                                    style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
+                                    style="background:#eef2f1;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
                                 <span style="background:{{ !empty($c['nou']) ? 'var(--aqua-accent)' : 'var(--aqua-primary)' }};color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;white-space:nowrap;">{{ $c['cod'] }}</span>
                                 {{ $c['titlu'] }}
                                 @if(!empty($c['nou']))
-                                    <span class="badge-aqua ms-2" style="background:#00b4d8;">nou</span>
+                                    <span class="badge-aqua ms-2" style="background:var(--aqua-cta);">nou</span>
                                 @endif
                             </button>
                         </h2>
                         <div id="{{ $id }}" class="accordion-collapse collapse" data-bs-parent="#accordionCL">
-                            <div class="accordion-body" style="background:#fff;font-size:0.875rem;color:#374151;line-height:1.8;">
+                            <div class="accordion-body" style="background:#fff;font-size:0.875rem;color:#4a4a4a;line-height:1.8;">
                                 <div class="row g-3 mb-3">
-                                    <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['valoare'] }}</div></div></div>
-                                    <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['data'] }}</div></div></div>
-                                    <div class="col-md-4"><div style="background:#e0f2fe;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div><div style="font-weight:700;color:var(--aqua-primary);">{{ $c['durata'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#eef2f1;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['valoare'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#eef2f1;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['data'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#e3efed;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div><div style="font-weight:700;color:var(--aqua-primary);">{{ $c['durata'] }}</div></div></div>
                                 </div>
                                 @if($c['contractor'])
                                 <p><strong>Antreprenor:</strong> {{ $c['contractor'] }}</p>
@@ -245,20 +245,20 @@
             <div class="accordion" id="accordionCS">
                 @foreach($servicii as $c)
                     @php($id = 'cs-'.strtolower(str_replace([' ', '.'], '', $c['cod'])))
-                    <div class="accordion-item mb-3" style="border-radius:12px!important;overflow:hidden;border:none;box-shadow:0 2px 16px rgba(0,119,182,0.09);">
+                    <div class="accordion-item mb-3" style="border-radius:12px!important;overflow:hidden;border:none;box-shadow:0 2px 16px rgba(61, 143, 135,0.09);">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $id }}"
-                                    style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
+                                    style="background:#eef2f1;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
                                 <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;white-space:nowrap;">{{ $c['cod'] }}</span>
                                 {{ $c['titlu'] }}
                             </button>
                         </h2>
                         <div id="{{ $id }}" class="accordion-collapse collapse" data-bs-parent="#accordionCS">
-                            <div class="accordion-body" style="background:#fff;font-size:0.875rem;color:#374151;line-height:1.8;">
+                            <div class="accordion-body" style="background:#fff;font-size:0.875rem;color:#4a4a4a;line-height:1.8;">
                                 <div class="row g-3 mb-3">
-                                    <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['valoare'] }}</div></div></div>
-                                    <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['data'] }}</div></div></div>
-                                    <div class="col-md-4"><div style="background:#e0f2fe;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div><div style="font-weight:700;color:var(--aqua-primary);">{{ $c['durata'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#eef2f1;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['valoare'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#eef2f1;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['data'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#e3efed;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div><div style="font-weight:700;color:var(--aqua-primary);">{{ $c['durata'] }}</div></div></div>
                                 </div>
                                 @if($c['contractor'])
                                 <p><strong>Prestator:</strong> {{ $c['contractor'] }}</p>
@@ -280,20 +280,20 @@
             <div class="accordion" id="accordionCF">
                 @foreach($furnizare as $c)
                     @php($id = 'cf-'.strtolower(str_replace([' ', '.'], '', $c['cod'])))
-                    <div class="accordion-item mb-3" style="border-radius:12px!important;overflow:hidden;border:none;box-shadow:0 2px 16px rgba(0,119,182,0.09);">
+                    <div class="accordion-item mb-3" style="border-radius:12px!important;overflow:hidden;border:none;box-shadow:0 2px 16px rgba(61, 143, 135,0.09);">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $id }}"
-                                    style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
+                                    style="background:#eef2f1;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
                                 <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;white-space:nowrap;">{{ $c['cod'] }}</span>
                                 {{ $c['titlu'] }}
                             </button>
                         </h2>
                         <div id="{{ $id }}" class="accordion-collapse collapse" data-bs-parent="#accordionCF">
-                            <div class="accordion-body" style="background:#fff;font-size:0.875rem;color:#374151;line-height:1.8;">
+                            <div class="accordion-body" style="background:#fff;font-size:0.875rem;color:#4a4a4a;line-height:1.8;">
                                 <div class="row g-3 mb-3">
-                                    <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['valoare'] }}</div></div></div>
-                                    <div class="col-md-4"><div style="background:#f0f8ff;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['data'] }}</div></div></div>
-                                    <div class="col-md-4"><div style="background:#e0f2fe;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div><div style="font-weight:700;color:var(--aqua-primary);">{{ $c['durata'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#eef2f1;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['valoare'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#eef2f1;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div><div style="font-weight:700;color:var(--aqua-dark);">{{ $c['data'] }}</div></div></div>
+                                    <div class="col-md-4"><div style="background:#e3efed;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div><div style="font-weight:700;color:var(--aqua-primary);">{{ $c['durata'] }}</div></div></div>
                                 </div>
                                 @if($c['contractor'])
                                 <p><strong>Furnizor:</strong> {{ $c['contractor'] }}</p>

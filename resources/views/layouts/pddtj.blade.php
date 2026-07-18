@@ -10,21 +10,25 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Lato:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --aqua-primary: #0077b6;
-            --aqua-dark:    #023e8a;
-            --aqua-light:   #90e0ef;
-            --aqua-accent:  #00b4d8;
-            --aqua-bg:      #f0f8ff;
-            --aqua-text:    #1a1a2e;
-            --aqua-gray:    #6c757d;
-            --aqua-border:  #caf0f8;
+            --aqua-primary:  #3d8f87;
+            --aqua-dark:     #002756;
+            --aqua-dark2:    #001630;
+            --aqua-light:    #a8d5cd;
+            --aqua-accent:   #76b1a8;
+            --aqua-cta:      #ff7a5a;
+            --aqua-bg:       #eef2f1;
+            --aqua-nav-bg:   #eeeeee;
+            --aqua-nav-hover:#dddddd;
+            --aqua-text:     #333333;
+            --aqua-gray:     #6c757d;
+            --aqua-border:   #cfe3e0;
         }
         * { box-sizing: border-box; }
-        body { font-family: 'Nunito', sans-serif; font-size: 17px; color: var(--aqua-text); background:#fff; display:flex; flex-direction:column; min-height:100vh; }
+        body { font-family: 'Open Sans', sans-serif; font-size: 17px; color: var(--aqua-text); background:#fff; display:flex; flex-direction:column; min-height:100vh; }
         main { flex: 1; }
         p { font-size: 1.02rem; line-height: 1.75; }
 
@@ -38,41 +42,41 @@
         .logo-placeholder { height:56px; width:100%; max-width:150px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
 
         /* Navbar */
-        .navbar { background:#fff; border-bottom:3px solid var(--aqua-primary); box-shadow:0 2px 12px rgba(0,119,182,0.10); }
-        .navbar-brand span { font-family:'Merriweather', serif; font-size:1.15rem; font-weight:700; color:var(--aqua-dark); }
+        .navbar { background:var(--aqua-nav-bg); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+        .navbar-brand span { font-family:'Roboto', sans-serif; font-size:1.15rem; font-weight:700; color:var(--aqua-dark); }
         .navbar-brand small { display:block; font-size:0.72rem; font-weight:600; color:var(--aqua-gray); text-transform:uppercase; letter-spacing:0.04em; }
-        .navbar-nav .nav-link { font-weight:700; font-size:0.9rem; color:var(--aqua-text) !important; padding:1.1rem 1rem !important; text-transform:uppercase; letter-spacing:0.02em; border-bottom:3px solid transparent; }
-        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color:var(--aqua-primary) !important; border-bottom-color:var(--aqua-primary); }
-        .navbar-nav .dropdown-menu { border:none; border-top:3px solid var(--aqua-primary); box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+        .navbar-nav .nav-link { font-family:'Open Sans', sans-serif; font-weight:600; font-size:0.9rem; color:var(--aqua-text) !important; padding:1.1rem 1rem !important; text-transform:uppercase; letter-spacing:0.02em; border-radius:4px; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { background:var(--aqua-nav-hover); color:var(--aqua-dark) !important; }
+        .navbar-nav .dropdown-menu { border:none; border-top:3px solid var(--aqua-accent); box-shadow:0 8px 24px rgba(0,0,0,0.12); background:var(--aqua-nav-bg); }
         @media (min-width:992px) {
             .navbar-nav .nav-item.dropdown .dropdown-menu { display:block !important; opacity:0; visibility:hidden; transform:translateY(6px); pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
             .navbar-nav .nav-item.dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
         }
         .navbar-nav .dropdown-item { font-size:0.875rem; font-weight:600; padding:0.55rem 1.2rem; }
-        .navbar-nav .dropdown-item:hover { background:var(--aqua-bg); color:var(--aqua-primary); }
+        .navbar-nav .dropdown-item:hover { background:var(--aqua-nav-hover); color:var(--aqua-dark); }
 
         /* Hero */
         .page-hero { background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color:#fff; padding:2.75rem 0 2.25rem; }
-        .page-hero h1 { font-family:'Merriweather', serif; font-size:1.75rem; font-weight:700; margin-bottom:0.4rem; }
+        .page-hero h1 { font-family:'Roboto', sans-serif; font-size:1.75rem; font-weight:500; margin-bottom:0.4rem; }
         .breadcrumb-item a { color: var(--aqua-light); }
         .breadcrumb-item.active { color: rgba(255,255,255,0.75); }
         .breadcrumb-item+.breadcrumb-item::before { color: rgba(255,255,255,0.5); }
 
-        .section-title { font-family:'Merriweather', serif; font-size:1.35rem; font-weight:700; color:var(--aqua-dark); border-left:4px solid var(--aqua-accent); padding-left:0.75rem; margin-bottom:1.5rem; }
+        .section-title { font-family:'Roboto', sans-serif; font-size:1.35rem; font-weight:700; color:var(--aqua-dark); border-left:4px solid var(--aqua-accent); padding-left:0.75rem; margin-bottom:1.5rem; }
         .text-aqua { color: var(--aqua-primary) !important; }
         .badge-aqua { background:var(--aqua-primary); color:#fff; font-weight:700; border-radius:6px; font-size:0.72rem; padding:0.3em 0.65em; }
-        .btn-aqua { background:var(--aqua-primary); color:#fff !important; border:none; font-weight:700; font-size:0.875rem; border-radius:8px; padding:0.5rem 1.1rem; }
-        .btn-aqua:hover { background:var(--aqua-dark); color:#fff; }
+        .btn-aqua { background:var(--aqua-cta); color:#fff !important; border:none; font-weight:700; font-size:0.875rem; border-radius:8px; padding:0.5rem 1.1rem; }
+        .btn-aqua:hover { background:#e8613f; color:#fff; }
 
         /* Footer */
         footer { background: var(--aqua-dark); color: rgba(255,255,255,0.8); padding: 2.5rem 0 0; }
-        footer h5 { font-family:'Merriweather', serif; font-size:1rem; color:#fff; border-bottom:2px solid var(--aqua-accent); padding-bottom:0.6rem; margin-bottom:1.1rem; }
+        footer h5 { font-family:'Roboto', sans-serif; font-size:1rem; color:#fff; border-bottom:2px solid var(--aqua-accent); padding-bottom:0.6rem; margin-bottom:1.1rem; }
         footer ul { list-style:none; padding:0; margin:0; }
         footer ul li { margin-bottom:0.45rem; }
         footer ul li a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.875rem; }
         footer ul li a:hover { color:var(--aqua-light); }
         footer ul li a i { margin-right:6px; }
-        .footer-bottom { background:rgba(0,0,0,0.25); padding:1rem 0; margin-top:2rem; font-size:0.8rem; color:rgba(255,255,255,0.55); }
+        .footer-bottom { background:var(--aqua-dark2); padding:1rem 0; margin-top:2rem; font-size:0.8rem; color:rgba(255,255,255,0.6); }
         .footer-logos .logo-box { background:#fff; border-radius:8px; padding:0.5rem 0.9rem; display:flex; align-items:center; }
         .footer-logos img { max-height:36px; }
         .footer-logos .logo-placeholder { height:44px; max-width:130px; border-color:rgba(255,255,255,0.25); color:rgba(255,255,255,0.55); }
@@ -114,7 +118,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('pddtj.prezentare') }}">
-                <div style="width:44px;height:44px;background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <div style="width:44px;height:44px;background:linear-gradient(135deg,#3d8f87,#76b1a8);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                     <i class="bi bi-droplet-half text-white" style="font-size:1.3rem;"></i>
                 </div>
                 <div>

@@ -61,7 +61,7 @@
 
         <div class="d-flex flex-column gap-3">
             @foreach($comunicate as $comunicat)
-            <div class="d-flex align-items-center gap-3 p-3 comunicat-card" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(0,119,182,0.08);border:1px solid var(--aqua-border);">
+            <div class="d-flex align-items-center gap-3 p-3 comunicat-card" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border:1px solid var(--aqua-border);">
                 <div style="width:48px;height:48px;background:#fdecea;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                     <i class="bi bi-file-earmark-pdf" style="font-size:1.5rem;color:#dc2626;"></i>
                 </div>

@@ -15,11 +15,11 @@
 @section('content')
 <section style="padding:2.5rem 0 4rem;">
     <div class="container">
-        <div style="background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,119,182,0.08);border-left:5px solid var(--aqua-primary);">
+        <div style="background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border-left:5px solid var(--aqua-primary);">
             <div style="width:56px;height:56px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
                 <i class="bi bi-hourglass-split" style="font-size:1.4rem;color:var(--aqua-primary);"></i>
             </div>
-            <p style="color:#374151;font-size:0.95rem;line-height:1.9;margin:0;">
+            <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;margin:0;">
                 Conținutul acestei pagini este în curs de finalizare. Programul <strong>Dezvoltare Durabilă și Tranziție Justă
                 (PDDTJ)</strong> este programul operațional din care este cofinanțat, prin Fondul European de Dezvoltare
                 Regională (FEDR), „Proiectul regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea".
