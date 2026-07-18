@@ -36,10 +36,16 @@
         .funding-band { background: var(--aqua-dark); color: rgba(255,255,255,0.9); font-size: 0.8rem; padding: 8px 0; text-align: center; }
 
         /* Sigle */
-        .logos-row { background:#fff; border-bottom:1px solid var(--aqua-border); padding: 0.9rem 0; }
-        .logo-slot { height:56px; display:flex; align-items:center; justify-content:center; }
-        .logo-slot img { max-height:56px; max-width:100%; object-fit:contain; }
-        .logo-placeholder { height:56px; width:100%; max-width:150px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
+        .logos-row { background:#fff; border-bottom:1px solid var(--aqua-border); padding: 1.25rem 0; }
+        .logos-track { display:flex; align-items:center; justify-content:center; gap:4rem; flex-wrap:wrap; }
+        .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
+        .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
+        .logo-placeholder { height:90px; width:180px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
+        @media (max-width:767.98px) {
+            .logos-track { gap:2rem; }
+            .logo-slot, .logo-slot img, .logo-placeholder { height:56px; }
+            .logo-placeholder { width:130px; }
+        }
 
         /* Navbar */
         .navbar { background:var(--aqua-nav-bg); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
@@ -98,20 +104,18 @@
     {{-- SIGLE — vor fi înlocuite cu fișierele oficiale în public/images/pddtj/ --}}
     <div class="logos-row">
         <div class="container">
-            <div class="row g-3 justify-content-center justify-content-md-between align-items-center">
+            <div class="logos-track">
                 @foreach ([
                     ['file' => 'logo-ue.png',          'alt' => 'Cofinanțat de Uniunea Europeană', 'label' => 'Sigla UE'],
                     ['file' => 'logo-guvernul-ro.png', 'alt' => 'Guvernul României',                'label' => 'Guvernul României'],
                     ['file' => 'logo-pddtj.png',       'alt' => 'Dezvoltare Durabilă și Tranziție Justă', 'label' => 'Sigla PDDTJ'],
                 ] as $logo)
-                    <div class="col-4">
-                        <div class="logo-slot">
-                            @if(file_exists(public_path('images/pddtj/'.$logo['file'])))
-                                <img src="{{ asset('images/pddtj/'.$logo['file']) }}" alt="{{ $logo['alt'] }}">
-                            @else
-                                <div class="logo-placeholder">{{ $logo['label'] }}</div>
-                            @endif
-                        </div>
+                    <div class="logo-slot">
+                        @if(file_exists(public_path('images/pddtj/'.$logo['file'])))
+                            <img src="{{ asset('images/pddtj/'.$logo['file']) }}" alt="{{ $logo['alt'] }}">
+                        @else
+                            <div class="logo-placeholder">{{ $logo['label'] }}</div>
+                        @endif
                     </div>
                 @endforeach
             </div>
