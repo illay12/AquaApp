@@ -34,7 +34,7 @@
 
         /* Sigle */
         .logos-card { background:#fff; border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,0.14); padding:1.75rem 2rem; margin:0 auto; }
-        .logos-track { display:flex; align-items:center; justify-content:center; gap:5rem; flex-wrap:wrap; }
+        .logos-track { display:flex; align-items:center; justify-content:center; gap:9rem; flex-wrap:wrap; }
         .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
         .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
         /* UE și PDDTJ (extremele) primesc aceeași lățime fixă, ca sigla din mijloc (Guvernul) să cadă exact pe centru */
