@@ -87,8 +87,6 @@
 <style>
     .hero-subtitle { font-family:'Lato',sans-serif; font-size:22px; font-weight:600; color:var(--aqua-light); }
     @media (max-width:767.98px) { .hero-subtitle { font-size:1rem; } }
-    .page-hero h1 { text-align:center; }
-    .hero-subtitle { text-align:center; }
 </style>
 @endpush
 @endsection

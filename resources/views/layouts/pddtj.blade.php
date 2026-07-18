@@ -32,16 +32,14 @@
         main { flex: 1; }
         p { font-size: 1.02rem; line-height: 1.75; }
 
-        /* Bandă finanțare */
-        .funding-band { background: var(--aqua-dark); color: rgba(255,255,255,0.9); font-size: 0.8rem; padding: 8px 0; text-align: center; }
-
         /* Sigle */
-        .logos-row { background:#fff; border-bottom:1px solid var(--aqua-border); padding: 1.5rem 0; }
+        .logos-card { background:#fff; border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,0.14); padding:1.75rem 2rem; max-width:900px; margin:0 auto; }
         .logos-track { display:grid; grid-template-columns: repeat(3, 1fr); align-items:center; justify-items:center; gap:1.5rem; }
         .logo-slot { height:90px; width:100%; display:flex; align-items:center; justify-content:center; }
         .logo-slot img { max-height:90px; max-width:100%; width:auto; object-fit:contain; }
         .logo-placeholder { height:90px; width:100%; max-width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         @media (max-width:767.98px) {
+            .logos-card { padding:1.1rem 1rem; }
             .logos-track { grid-template-columns: repeat(3, 1fr); gap:0.75rem; }
             .logo-slot, .logo-slot img { height:56px; max-height:56px; }
             .logo-placeholder { height:56px; max-width:130px; }
@@ -62,14 +60,16 @@
         .navbar-nav .dropdown-item:hover { background:var(--aqua-nav-hover); color:var(--aqua-dark); }
 
         /* Hero */
-        .page-hero { position:relative; overflow:hidden; background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); color:#fff; padding:3rem 0 2.5rem; }
-        .page-hero::before { content:''; position:absolute; inset:0; opacity:0.5; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,90 900,0 1200,50 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M0,70 C400,20 800,100 1200,60 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E"); background-size:cover; background-position:bottom; }
-        .page-hero .container { position:relative; z-index:1; }
+        .hero-photo { position:relative; overflow:hidden; background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); padding:2.5rem 0; }
+        .hero-photo::before { content:''; position:absolute; inset:0; opacity:0.5; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,90 900,0 1200,50 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M0,70 C400,20 800,100 1200,60 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E"); background-size:cover; background-position:bottom; }
+        .hero-photo .container { position:relative; z-index:1; }
+        .page-hero { background:rgba(0,20,40,0.55); border-radius:16px; padding:2rem 2.25rem; margin-top:1.75rem; color:#fff; text-align:center; }
         .page-hero h1 { font-family:'Roboto', sans-serif; font-size:36px; line-height:1.4em; font-weight:500; margin-bottom:0.4rem; }
-        @media (max-width:767.98px) { .page-hero h1 { font-size:1.5rem; } }
+        @media (max-width:767.98px) { .page-hero h1 { font-size:1.5rem; } .page-hero { padding:1.25rem 1.25rem; } }
         .breadcrumb-item a { color: var(--aqua-light); }
         .breadcrumb-item.active { color: rgba(255,255,255,0.75); }
         .breadcrumb-item+.breadcrumb-item::before { color: rgba(255,255,255,0.5); }
+        .breadcrumb { justify-content:center; }
 
         .section-title { font-family:'Roboto', sans-serif; font-size:1.35rem; font-weight:700; color:var(--aqua-dark); border-left:4px solid var(--aqua-accent); padding-left:0.75rem; margin-bottom:1.5rem; }
         .text-aqua { color: var(--aqua-primary) !important; }
@@ -95,30 +95,32 @@
 </head>
 <body>
 
-    <div class="funding-band">
-        <div class="container px-3">
-            Proiect cofinanțat din Fondul European de Dezvoltare Regională (FEDR), în cadrul Programului Dezvoltare Durabilă și Tranziție Justă (PDDTJ)
-        </div>
-    </div>
-
-    {{-- SIGLE — vor fi înlocuite cu fișierele oficiale în public/images/pddtj/ --}}
-    <div class="logos-row">
+    <div class="hero-photo">
         <div class="container">
-            <div class="logos-track">
-                @foreach ([
-                    ['file' => 'logo-ue.png',          'alt' => 'Cofinanțat de Uniunea Europeană', 'label' => 'Sigla UE'],
-                    ['file' => 'logo-guvernul-ro.png', 'alt' => 'Guvernul României',                'label' => 'Guvernul României'],
-                    ['file' => 'logo-pddtj.png',       'alt' => 'Dezvoltare Durabilă și Tranziție Justă', 'label' => 'Sigla PDDTJ'],
-                ] as $logo)
-                    <div class="logo-slot">
-                        @if(file_exists(public_path('images/pddtj/'.$logo['file'])))
-                            <img src="{{ asset('images/pddtj/'.$logo['file']) }}" alt="{{ $logo['alt'] }}">
-                        @else
-                            <div class="logo-placeholder">{{ $logo['label'] }}</div>
-                        @endif
-                    </div>
-                @endforeach
+            {{-- SIGLE — vor fi înlocuite cu fișierele oficiale în public/images/pddtj/ --}}
+            <div class="logos-card">
+                <div class="logos-track">
+                    @foreach ([
+                        ['file' => 'logo-ue.png',          'alt' => 'Cofinanțat de Uniunea Europeană', 'label' => 'Sigla UE'],
+                        ['file' => 'logo-guvernul-ro.png', 'alt' => 'Guvernul României',                'label' => 'Guvernul României'],
+                        ['file' => 'logo-pddtj.png',       'alt' => 'Dezvoltare Durabilă și Tranziție Justă', 'label' => 'Sigla PDDTJ'],
+                    ] as $logo)
+                        <div class="logo-slot">
+                            @if(file_exists(public_path('images/pddtj/'.$logo['file'])))
+                                <img src="{{ asset('images/pddtj/'.$logo['file']) }}" alt="{{ $logo['alt'] }}">
+                            @else
+                                <div class="logo-placeholder">{{ $logo['label'] }}</div>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
+            @hasSection('page_hero')
+            <div class="page-hero">
+                @yield('page_hero')
+            </div>
+            @endif
         </div>
     </div>
 
@@ -147,14 +149,6 @@
             </div>
         </div>
     </nav>
-
-    @hasSection('page_hero')
-    <div class="page-hero">
-        <div class="container">
-            @yield('page_hero')
-        </div>
-    </div>
-    @endif
 
     <main>
         @yield('content')
