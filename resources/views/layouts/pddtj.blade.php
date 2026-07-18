@@ -37,11 +37,18 @@
         .logos-track { display:flex; align-items:center; justify-content:center; gap:5rem; flex-wrap:wrap; }
         .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
         .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
+        /* UE și PDDTJ (extremele) primesc aceeași lățime fixă, ca sigla din mijloc (Guvernul) să cadă exact pe centru */
+        .logos-track .logo-slot:first-child,
+        .logos-track .logo-slot:last-child { width:260px; height:90px; }
+        .logos-track .logo-slot:first-child img,
+        .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         @media (max-width:767.98px) {
             .logos-card { padding:1.1rem 1rem; }
             .logos-track { gap:2rem; }
             .logo-slot, .logo-slot img { height:56px; max-height:56px; }
+            .logos-track .logo-slot:first-child,
+            .logos-track .logo-slot:last-child { width:160px; height:56px; }
             .logo-placeholder { height:56px; width:130px; }
         }
 
