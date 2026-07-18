@@ -46,7 +46,7 @@
         }
 
         /* Navbar */
-        .navbar { background:var(--aqua-nav-bg); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+        .navbar { background:var(--aqua-nav-bg); box-shadow:0 1px 3px rgba(0,0,0,0.08); padding:1.25rem 0; }
         .navbar-brand span { font-family:'Roboto', sans-serif; font-size:1.15rem; font-weight:700; color:var(--aqua-dark); }
         .navbar-brand small { display:block; font-size:0.72rem; font-weight:600; color:var(--aqua-gray); text-transform:uppercase; letter-spacing:0.04em; }
         .navbar-nav .nav-link { font-family:'Open Sans', sans-serif; font-weight:600; font-size:16px; color:var(--aqua-text) !important; padding:1.1rem 1rem !important; text-transform:uppercase; letter-spacing:0.02em; border-radius:4px; }
@@ -127,7 +127,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('pddtj.prezentare') }}">
-                <img src="{{ asset('images/pddtj/logo-aquaserv.png') }}" alt="Aquaserv Tulcea" style="height:48px;width:auto;">
+                <img src="{{ asset('images/pddtj/logo-aquaserv.png') }}" alt="Aquaserv Tulcea" style="height:72px;width:auto;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pddtjNav">
                 <span class="navbar-toggler-icon"></span>
