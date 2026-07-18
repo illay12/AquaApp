@@ -120,14 +120,8 @@
 
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('pddtj.prezentare') }}">
-                <div style="width:44px;height:44px;background:linear-gradient(135deg,#3d8f87,#76b1a8);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                    <i class="bi bi-droplet-half text-white" style="font-size:1.3rem;"></i>
-                </div>
-                <div>
-                    <span>PDDTJ Tulcea</span>
-                    <small>Aquaserv S.A. Tulcea</small>
-                </div>
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('pddtj.prezentare') }}">
+                <img src="{{ asset('images/pddtj/logo-aquaserv.png') }}" alt="Aquaserv Tulcea" style="height:48px;width:auto;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pddtjNav">
                 <span class="navbar-toggler-icon"></span>
