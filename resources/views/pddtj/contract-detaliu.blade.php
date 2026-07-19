@@ -27,27 +27,23 @@
                 </h2>
 
                 <div style="font-size:0.95rem;color:#4a4a4a;line-height:1.8;">
-                    <p>
-                        Contractul are o valoare de <strong>{{ $contract['valoare'] }}</strong> și a fost semnat în data de
-                        <strong>{{ $contract['data'] }}</strong>@if($contract['contractor']), fiind atribuit
-                        {{ $tipAncora === 'servicii' ? 'prestatorului' : ($tipAncora === 'furnizare' ? 'furnizorului' : 'antreprenorului') }}
-                        <strong>{{ $contract['contractor'] }}</strong>@endif.
-                        Durata contractului este de <strong>{{ $contract['durata'] }}</strong>.
-                    </p>
-
-                    <p><strong>Obiectiv:</strong> {{ $contract['obiectiv'] }}</p>
+                    @foreach($contract['texte'] as $paragraf)
+                        <p>{{ $paragraf }}</p>
+                    @endforeach
 
                     @foreach($contract['grupe'] as $grupa)
                         @if($grupa['titlu'])
                             <p class="mb-2 mt-3"><strong>{{ $grupa['titlu'] }}:</strong></p>
-                        @else
-                            <p class="mb-2"><strong>Obiecte principale:</strong></p>
                         @endif
                         <ul style="margin:0;padding-left:1.25rem;">
                             @foreach($grupa['items'] as $item)
                                 <li>{{ $item }}</li>
                             @endforeach
                         </ul>
+                    @endforeach
+
+                    @foreach($contract['texte_final'] ?? [] as $paragraf)
+                        <p class="mt-3">{{ $paragraf }}</p>
                     @endforeach
 
                     <div class="mt-3 p-2" style="background:#d1fae5;border-radius:8px;font-size:0.85rem;color:#065f46;">
