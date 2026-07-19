@@ -190,7 +190,7 @@
         @endphp
 
         {{-- LUCRARI --}}
-        <div class="mb-5">
+        <div class="mb-5" id="lucrari">
             <h2 class="section-title mb-4">Contracte de lucrări</h2>
             <div class="accordion" id="accordionCL">
                 @foreach($lucrari as $c)
@@ -240,7 +240,7 @@
         </div>
 
         {{-- SERVICII --}}
-        <div class="mb-5">
+        <div class="mb-5" id="servicii">
             <h2 class="section-title mb-4">Contracte de servicii</h2>
             <div class="accordion" id="accordionCS">
                 @foreach($servicii as $c)
@@ -275,7 +275,7 @@
         </div>
 
         {{-- FURNIZARE --}}
-        <div class="mb-2">
+        <div class="mb-2" id="furnizare">
             <h2 class="section-title mb-4">Contracte de furnizare</h2>
             <div class="accordion" id="accordionCF">
                 @foreach($furnizare as $c)

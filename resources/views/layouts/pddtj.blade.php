@@ -66,6 +66,18 @@
         .navbar-nav .dropdown-item { font-size:0.875rem; font-weight:600; padding:0.55rem 1.2rem; }
         .navbar-nav .dropdown-item:hover { background:var(--aqua-nav-hover); color:var(--aqua-dark); }
 
+        /* Nested submenu (Contracte > Lucrări/Servicii/Furnizare) */
+        .dropdown-submenu { position:relative; }
+        .dropdown-submenu > .dropdown-item::after { content:''; display:inline-block; border-top:4px solid transparent; border-bottom:4px solid transparent; border-left:4px solid currentColor; margin-left:auto; float:right; margin-top:4px; }
+        @media (min-width:992px) {
+            .dropdown-submenu > .dropdown-menu { top:0; left:100%; margin-top:-3px; display:block !important; opacity:0; visibility:hidden; transform:translateX(6px); pointer-events:none; transition:opacity .2s ease,transform .2s ease,visibility .2s; }
+            .dropdown-submenu:hover > .dropdown-menu { opacity:1; visibility:visible; transform:translateX(0); pointer-events:auto; }
+        }
+        @media (max-width:991.98px) {
+            .dropdown-submenu > .dropdown-menu { position:static; display:none; padding-left:1rem; box-shadow:none; border-top:none; background:transparent; }
+            .dropdown-submenu.show > .dropdown-menu { display:block; }
+        }
+
         /* Hero */
         .hero-photo { position:relative; overflow:hidden; background:linear-gradient(135deg, var(--aqua-dark) 0%, var(--aqua-primary) 100%); padding:2.5rem 0; }
         .hero-photo::before { content:''; position:absolute; inset:0; opacity:0.5; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,90 900,0 1200,50 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M0,70 C400,20 800,100 1200,60 L1200,120 L0,120 Z' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E"); background-size:cover; background-position:bottom; }
@@ -148,7 +160,34 @@
                             <li><a class="dropdown-item" href="{{ route('pddtj.despre-proiect') }}"><i class="bi bi-file-earmark-text text-aqua me-2"></i>Despre proiect</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link {{ request()->routeIs('pddtj.contracte') ? 'active' : '' }}" href="{{ route('pddtj.contracte') }}">Contracte</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->routeIs('pddtj.contracte') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">Contracte</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#lucrari">Lucrări</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-1">CL-1</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-4">CL-4</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-8">CL-8</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-10">CL-10</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl5">CL5</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#servicii">Servicii</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cs-cs-1">CS-1</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cs-cs-2">CS-2</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#furnizare">Furnizare</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cf-cf-2">CF-2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('pddtj.comunicare') ? 'active' : '' }}" href="{{ route('pddtj.comunicare') }}">Comunicare</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('pddtj.galerie') ? 'active' : '' }}" href="{{ route('pddtj.galerie') }}">Galerie</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('pddtj.contact') ? 'active' : '' }}" href="{{ route('pddtj.contact') }}">Contact</a></li>
@@ -214,6 +253,27 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.dropdown-submenu > .dropdown-item').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        el.parentElement.classList.toggle('show');
+                    }
+                });
+            });
+
+            if (location.hash) {
+                var target = document.querySelector(location.hash);
+                if (target && target.classList.contains('accordion-collapse')) {
+                    new bootstrap.Collapse(target, { toggle: true });
+                    setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
+                }
+            }
+        });
+    </script>
     @stack('scripts')
 </body>
 </html>
