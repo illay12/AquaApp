@@ -34,15 +34,6 @@ class PddtjController extends Controller
     }
 
     /**
-     * Contracte — Lucrări / Servicii / Furnizare
-     * GET /contracte
-     */
-    public function contracte()
-    {
-        return view('pddtj.contracte', $this->contracteData());
-    }
-
-    /**
      * Detaliu contract individual (CL-1, CS-2, CF-2 etc.)
      * GET /contracte/detaliu/{cod}
      */
@@ -51,18 +42,17 @@ class PddtjController extends Controller
         $data = $this->contracteData();
 
         $tipuri = [
-            'lucrari'   => ['lista' => $data['lucrari'],   'label' => 'Contract de lucrări',  'ancora' => 'lucrari'],
-            'servicii'  => ['lista' => $data['servicii'],  'label' => 'Contract de servicii', 'ancora' => 'servicii'],
-            'furnizare' => ['lista' => $data['furnizare'], 'label' => 'Contract de furnizare', 'ancora' => 'furnizare'],
+            'lucrari'   => ['lista' => $data['lucrari'],   'label' => 'Contract de lucrări'],
+            'servicii'  => ['lista' => $data['servicii'],  'label' => 'Contract de servicii'],
+            'furnizare' => ['lista' => $data['furnizare'], 'label' => 'Contract de furnizare'],
         ];
 
         foreach ($tipuri as $tip) {
             foreach ($tip['lista'] as $contract) {
                 if (strtolower($contract['cod']) === strtolower($cod)) {
                     return view('pddtj.contract-detaliu', [
-                        'contract'    => $contract,
-                        'tipLabel'    => $tip['label'],
-                        'tipAncora'   => $tip['ancora'],
+                        'contract' => $contract,
+                        'tipLabel' => $tip['label'],
                     ]);
                 }
             }

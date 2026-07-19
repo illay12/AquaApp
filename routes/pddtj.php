@@ -27,7 +27,6 @@ Route::domain(config('app.pddtj_domain'))->name('pddtj.')->group(function () {
         Route::get('/despre-proiect', [PddtjController::class, 'despreProiect'])->name('despre-proiect');
     });
 
-    Route::get('/contracte',  [PddtjController::class, 'contracte'])->name('contracte');
     Route::get('/contracte/detaliu/{cod}', [PddtjController::class, 'contractDetaliu'])->name('contract-detaliu');
     Route::get('/comunicare', [PddtjController::class, 'comunicare'])->name('comunicare');
     Route::get('/galerie',    [PddtjController::class, 'galerie'])->name('galerie');

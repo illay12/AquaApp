@@ -7,7 +7,6 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{ route('pddtj.prezentare') }}">Prezentare</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('pddtj.contracte') }}#{{ $tipAncora }}">Contracte</a></li>
             <li class="breadcrumb-item active">{{ $contract['cod'] }}</li>
         </ol>
     </nav>
@@ -51,8 +50,8 @@
                     </div>
                 </div>
 
-                <a href="{{ route('pddtj.contracte') }}#{{ $tipAncora }}" class="btn btn-aqua mt-4">
-                    <i class="bi bi-arrow-left me-1"></i> Înapoi la toate contractele
+                <a href="{{ route('pddtj.prezentare') }}" class="btn btn-aqua mt-4">
+                    <i class="bi bi-arrow-left me-1"></i> Înapoi la Prezentare
                 </a>
 
             </div>

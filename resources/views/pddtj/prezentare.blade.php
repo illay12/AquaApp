@@ -40,8 +40,8 @@
             </div>
         </div>
 
-        {{-- 3 CARDURI: DESPRE PDDTJ / DESPRE PROIECT / DESPRE CONTRACTE --}}
-        <div class="row g-4 mt-3">
+        {{-- 2 CARDURI: DESPRE PDDTJ / DESPRE PROIECT --}}
+        <div class="row g-4 mt-3 justify-content-center">
             @php $carduri = [
                 [
                     'titlu' => 'Despre PDDTJ',
@@ -57,16 +57,9 @@
                     'icon' => 'bi-file-earmark-text',
                     'route' => 'pddtj.despre-proiect',
                 ],
-                [
-                    'titlu' => 'Despre contracte',
-                    'subtitlu' => 'Contracte proiect',
-                    'text' => 'Lucrările finanțate prin PDDTJ sunt realizate pe raza următoarelor unități administrativ-teritoriale: Tulcea, Mahmudia, Carcaliu, Babadag, Chilia Veche, Sulina, Crișan, Mila 23.',
-                    'icon' => 'bi-file-earmark-check',
-                    'route' => 'pddtj.contracte',
-                ],
             ]; @endphp
             @foreach($carduri as $card)
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="h-100 p-4" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(61,143,135,0.08);border-top:4px solid var(--aqua-accent);">
                     <div style="width:52px;height:52px;background:var(--aqua-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;">
                         <i class="bi {{ $card['icon'] }}" style="font-size:1.35rem;color:var(--aqua-primary);"></i>

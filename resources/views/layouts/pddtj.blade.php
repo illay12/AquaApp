@@ -161,10 +161,10 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->routeIs('pddtj.contracte') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">Contracte</a>
+                        <a class="nav-link dropdown-toggle {{ request()->routeIs('pddtj.contract-detaliu') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">Contracte</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#lucrari">Lucrări</a>
+                                <a class="dropdown-item" href="#">Lucrări</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-1') }}">CL-1</a></li>
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-4') }}">CL-4</a></li>
@@ -174,14 +174,14 @@
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#servicii">Servicii</a>
+                                <a class="dropdown-item" href="#">Servicii</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cs-1') }}">CS-1</a></li>
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cs-2') }}">CS-2</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
-                                <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#furnizare">Furnizare</a>
+                                <a class="dropdown-item" href="#">Furnizare</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cf-2') }}">CF-2</a></li>
                                 </ul>
