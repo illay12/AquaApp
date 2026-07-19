@@ -19,48 +19,21 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
 
-                <p style="font-size:0.8rem;font-weight:700;color:var(--aqua-accent);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.4rem;">{{ $tipLabel }}</p>
-                <h2 class="mb-4" style="font-family:'Roboto',sans-serif;font-size:1.4rem;font-weight:700;color:var(--aqua-dark);">
-                    <span style="background:{{ !empty($contract['nou']) ? 'var(--aqua-accent)' : 'var(--aqua-primary)' }};color:#fff;border-radius:8px;padding:3px 12px;font-size:0.85rem;margin-right:12px;font-weight:800;white-space:nowrap;">{{ $contract['cod'] }}</span>
-                    {{ $contract['titlu'] }}
+                <h2 class="mb-4" style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:600;line-height:1.3em;color:var(--aqua-dark);">
+                    {{ $contract['cod'] }}: {{ $contract['titlu'] }}
                     @if(!empty($contract['nou']))
-                        <span class="badge-aqua ms-2" style="background:var(--aqua-cta);">nou</span>
+                        <span class="badge-aqua ms-2 align-middle" style="background:var(--aqua-cta);font-size:0.9rem;">nou</span>
                     @endif
                 </h2>
 
-                <div class="p-4" style="background:#fff;border-radius:14px;box-shadow:0 4px 24px rgba(61,143,135,0.1);font-size:0.95rem;color:#4a4a4a;line-height:1.8;">
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-4">
-                            <div style="background:#eef2f1;border-radius:10px;padding:0.85rem 1.1rem;">
-                                <div style="font-size:0.72rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare contract</div>
-                                <div style="font-weight:700;color:var(--aqua-dark);">{{ $contract['valoare'] }}</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="background:#eef2f1;border-radius:10px;padding:0.85rem 1.1rem;">
-                                <div style="font-size:0.72rem;font-weight:700;color:#64748b;text-transform:uppercase;">Data semnării</div>
-                                <div style="font-weight:700;color:var(--aqua-dark);">{{ $contract['data'] }}</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="background:#e3efed;border-radius:10px;padding:0.85rem 1.1rem;">
-                                <div style="font-size:0.72rem;font-weight:700;color:#64748b;text-transform:uppercase;">Durată de execuție</div>
-                                <div style="font-weight:700;color:var(--aqua-primary);">{{ $contract['durata'] }}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if($contract['contractor'])
-                        <p>
-                            <strong>
-                                @if($tipAncora === 'servicii') Prestator:
-                                @elseif($tipAncora === 'furnizare') Furnizor:
-                                @else Antreprenor:
-                                @endif
-                            </strong>
-                            {{ $contract['contractor'] }}
-                        </p>
-                    @endif
+                <div style="font-size:0.95rem;color:#4a4a4a;line-height:1.8;">
+                    <p>
+                        Contractul are o valoare de <strong>{{ $contract['valoare'] }}</strong> și a fost semnat în data de
+                        <strong>{{ $contract['data'] }}</strong>@if($contract['contractor']), fiind atribuit
+                        {{ $tipAncora === 'servicii' ? 'prestatorului' : ($tipAncora === 'furnizare' ? 'furnizorului' : 'antreprenorului') }}
+                        <strong>{{ $contract['contractor'] }}</strong>@endif.
+                        Durata contractului este de <strong>{{ $contract['durata'] }}</strong>.
+                    </p>
 
                     <p><strong>Obiectiv:</strong> {{ $contract['obiectiv'] }}</p>
 
