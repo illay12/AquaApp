@@ -223,7 +223,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h5>Despre operator</h5>
+                    <h5>DESPRE OPERATOR</h5>
                     <p style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.7;margin:0 0 0.75rem;">
                         Operatorul care furnizează și prestează servicii de alimentare cu apă și canalizare în județul Tulcea.
                     </p>
