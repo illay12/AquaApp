@@ -15,24 +15,24 @@
         <h2 class="section-title mb-4">Prezentare</h2>
         <div class="row">
             <div class="col-lg-9">
-                <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;">
+                <p style="color:#4a4a4a;font-size:1.1rem;line-height:1.9;">
                     Proiectul regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea urmărește
                     oferirea unei strategii regionale de dezvoltare a sectorului de apă și apă uzată, în conformitate cu
                     angajamentele de tranziție asumate de România și cu Directiva 91/271/CEE privind colectarea și tratarea
                     apelor uzate urbane, respectiv Directiva 2184/2020 privind calitatea apei destinate consumului uman.
                 </p>
-                <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;">
+                <p style="color:#4a4a4a;font-size:1.1rem;line-height:1.9;">
                     Beneficiarul acestui proiect este <strong>S.C. Aquaserv S.A. Tulcea</strong>, Operatorul Regional al
                     serviciilor de alimentare cu apă și canalizare în județul Tulcea.
                 </p>
-                <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;">
+                <p style="color:#4a4a4a;font-size:1.1rem;line-height:1.9;">
                     Conform Contractului de Finanțare semnat la data de <strong>11 iunie 2026</strong> (cod MySMIS 2021 –
                     333789), încheiat cu Ministerul Investițiilor și Proiectelor Europene, valoarea totală a investiției este
                     de <strong>810.748.282,98 lei</strong>, din care Uniunea Europeană, prin Fondul European de Dezvoltare
                     Regională (FEDR), acordă o finanțare nerambursabilă reprezentând <strong>79,9%</strong> din valoarea
                     totală.
                 </p>
-                <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;">
+                <p style="color:#4a4a4a;font-size:1.1rem;line-height:1.9;">
                     Perioada de implementare a proiectului este de <strong>86 de luni</strong>, respectiv între
                     <strong>octombrie 2021</strong> și <strong>noiembrie 2028</strong>.
                 </p>
