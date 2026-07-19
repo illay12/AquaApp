@@ -23,27 +23,27 @@
             @endif
         </h2>
 
-        <div style="font-size:0.95rem;color:#4a4a4a;line-height:1.8;">
+        <div class="pdd-contract-body" style="font-size:1rem;color:#3f3f3f;line-height:1.85;">
             @foreach($contract['texte'] as $paragraf)
-                <p>{{ $paragraf }}</p>
+                <p>{!! $paragraf !!}</p>
             @endforeach
 
             @foreach($contract['grupe'] as $grupa)
                 @if($grupa['titlu'])
-                    <p class="mb-2 mt-3"><strong>{{ $grupa['titlu'] }}:</strong></p>
+                    <h3 style="font-family:'Roboto',sans-serif;font-size:1.05rem;font-weight:700;color:var(--aqua-dark);border-left:3px solid var(--aqua-accent);padding-left:0.75rem;margin:2rem 0 1rem;">{{ $grupa['titlu'] }}</h3>
                 @endif
-                <ul style="margin:0;padding-left:1.25rem;">
+                <ul class="pdd-lista-contract">
                     @foreach($grupa['items'] as $item)
-                        <li>{{ $item }}</li>
+                        <li><i class="bi bi-check-circle-fill"></i><span>{{ $item }}</span></li>
                     @endforeach
                 </ul>
             @endforeach
 
             @foreach($contract['texte_final'] ?? [] as $paragraf)
-                <p class="mt-3">{{ $paragraf }}</p>
+                <p class="mt-3">{!! $paragraf !!}</p>
             @endforeach
 
-            <div class="mt-3 p-2" style="background:#d1fae5;border-radius:8px;font-size:0.85rem;color:#065f46;">
+            <div class="mt-4 p-3" style="background:#d1fae5;border-radius:10px;font-size:0.88rem;color:#065f46;border-left:4px solid #10b981;">
                 <i class="bi bi-check-circle-fill me-1"></i> <strong>{{ $contract['status'] }}</strong>
             </div>
         </div>
@@ -54,4 +54,14 @@
 
     </div>
 </section>
+
+@push('styles')
+<style>
+    .pdd-lista-contract { list-style:none; margin:0 0 0.5rem; padding:0; }
+    .pdd-lista-contract li { display:flex; align-items:flex-start; gap:0.65rem; margin-bottom:0.65rem; }
+    .pdd-lista-contract li i { color:var(--aqua-primary); font-size:0.95rem; margin-top:0.3rem; flex-shrink:0; }
+    .pdd-lista-contract li span { flex:1; }
+    .pdd-contract-body strong { color:var(--aqua-dark); font-weight:700; }
+</style>
+@endpush
 @endsection

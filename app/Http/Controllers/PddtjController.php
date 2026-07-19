@@ -77,8 +77,8 @@ class PddtjController extends Controller
                 'durata' => '610 zile de la data emiterii Ordinului Administrativ de începere, din care 183 zile proiectare și 427 zile execuție',
                 'obiectiv' => 'Lucrări de proiectare și execuție pentru reabilitarea captărilor de apă brută din Tulcea și Mahmudia.',
                 'texte' => [
-                    'Valoarea contractului este de 30.953.720,62 lei, exclusiv TVA și a fost semnat în data de 15.12.2023.',
-                    'În urma procedurii de achiziție publică pentru atribuirea contractului CL1, oferta câștigătoare a fost atribuită S.C. CORAL S.R.L. Tulcea. Contractul are o durată de 610 zile de la data emiterii Ordinului Administrativ de începere din care 183 zile de proiectare și 427 zile execuție.',
+                    'Valoarea contractului este de <strong>30.953.720,62 lei, exclusiv TVA</strong> și a fost semnat în data de <strong>15.12.2023</strong>.',
+                    'În urma procedurii de achiziție publică pentru atribuirea contractului CL1, oferta câștigătoare a fost atribuită <strong>S.C. CORAL S.R.L. Tulcea</strong>. Contractul are o durată de 610 zile de la data emiterii Ordinului Administrativ de începere din care 183 zile de proiectare și 427 zile execuție.',
                     'Prin acest contract vor fi asigurate lucrări de proiectare și execuție pentru următoarele categorii de lucrări:',
                 ],
                 'grupe' => [
@@ -127,7 +127,7 @@ class PddtjController extends Controller
                 'durata' => '610 zile de la data emiterii Ordinului Administrativ de Începere, din care 180 zile proiectare și 430 zile execuție',
                 'obiectiv' => 'Lucrări de proiectare și execuție pentru extinderea și reabilitarea captărilor, stațiilor de tratare și complexelor de înmagazinare-pompare din Carcaliu și Babadag.',
                 'texte' => [
-                    'Contractul a fost semnat în data de 31.01.2024. În urma procedurii de achiziție publică pentru atribuirea contractului CL4, oferta câștigătoare a fost atribuită S.C. CORAL S.R.L. Tulcea, cu o valoare totală de 37.983.376,20 lei (exclusiv TVA) și o durată de 610 zile de la data emiterii Ordinului Administrativ de Începere, din care 180 zile proiectare și 430 zile execuție.',
+                    'Contractul a fost semnat în data de <strong>31.01.2024</strong>. În urma procedurii de achiziție publică pentru atribuirea contractului CL4, oferta câștigătoare a fost atribuită <strong>S.C. CORAL S.R.L. Tulcea</strong>, cu o valoare totală de <strong>37.983.376,20 lei (exclusiv TVA)</strong> și o durată de 610 zile de la data emiterii Ordinului Administrativ de Începere, din care 180 zile proiectare și 430 zile execuție.',
                     'Prin acest contract vor fi asigurate următoarele lucrări de proiectare și execuție:',
                 ],
                 'grupe' => [
@@ -201,7 +201,7 @@ class PddtjController extends Controller
                 'durata' => '17 luni (6 luni proiectare + 11 luni execuție) de la data emiterii ordinului administrativ de începere',
                 'obiectiv' => 'Extinderea și modernizarea infrastructurii publice de alimentare cu apă și de canalizare, pentru creșterea gradului de acces al populației la servicii sigure din punct de vedere calitativ și cantitativ, cu protejarea mediului și a resurselor de apă.',
                 'texte' => [
-                    'Contractul are o valoare de 17.694.733,16 lei fără TVA și a fost semnat în data de 23.05.2023. Acesta contract de tip proiectare și execuție a fost atribuit Asocierii S.C. NESS PROIECT EUROPE S.R.L. (lider) – S.C. I.G.U.T S.R.L. (asociat), iar durata preconizată de execuție a lucrărilor este de 17 luni (6 luni proiectare și 11 luni execuție) de la data emiterii ordinului administrativ de începere.',
+                    'Contractul are o valoare de <strong>17.694.733,16 lei fără TVA</strong> și a fost semnat în data de <strong>23.05.2023</strong>. Acesta contract de tip proiectare și execuție a fost atribuit <strong>Asocierii S.C. NESS PROIECT EUROPE S.R.L. (lider) – S.C. I.G.U.T S.R.L. (asociat)</strong>, iar durata preconizată de execuție a lucrărilor este de 17 luni (6 luni proiectare și 11 luni execuție) de la data emiterii ordinului administrativ de începere.',
                     'În cadrul contractului sunt propuse lucrări în treapta de epurare biologică pentru ambele stații de epurare.',
                     'În Aglomerarea Chilia Veche se vor realiza următoarele investiții:',
                 ],
@@ -245,7 +245,7 @@ class PddtjController extends Controller
                 'durata' => '20 de luni de la data ordinului administrativ privind începerea lucrărilor',
                 'obiectiv' => 'Extinderea și reabilitarea sistemului de alimentare cu apă și a sistemului de colectare a apelor uzate menajere în zone din intravilanul municipiului Tulcea.',
                 'texte' => [
-                    'Contractul are o valoare 60.935.705,84 lei fără TVA și a fost semnat în data de 09.11.2022. Acesta a fost atribuit asocierii S.C. NESS PROIECT EUROPE S.R.L. (lider) – CONSORZIO STABILE EBG GROUP (asociat), iar durata preconizată de execuție a lucrărilor este de 20 de luni de la data ordinului administrativ privind data de începere a lucrărilor.',
+                    'Contractul are o valoare <strong>60.935.705,84 lei fără TVA</strong> și a fost semnat în data de <strong>09.11.2022</strong>. Acesta a fost atribuit asocierii <strong>S.C. NESS PROIECT EUROPE S.R.L. (lider) – CONSORZIO STABILE EBG GROUP (asociat)</strong>, iar durata preconizată de execuție a lucrărilor este de 20 de luni de la data ordinului administrativ privind data de începere a lucrărilor.',
                     'Lucrările care se vor executa prin acest contract se desfășoară în zone din intravilanul localității Tulcea.',
                     'Prin contract se va asigura execuția următoarelor lucrări:',
                 ],
@@ -320,7 +320,7 @@ class PddtjController extends Controller
                 'durata' => '62 de luni de la data emiterii ordinului administrativ de începere',
                 'obiectiv' => 'Servicii de management și suport pentru Unitatea de Implementare a Proiectului și pentru Beneficiarul Aquaserv S.A. Tulcea, în vederea implementării în bune condiții a proiectului.',
                 'texte' => [
-                    'Contractul de servicii de Asistență tehnică și supervizare, inclusiv publicitate, pentru proiectul „Proiectul Regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea”, a fost semnat în data de 09.11.2022 și atribuit în urma licitației, asocierii formate din TADECO CONSULTING – Resourcing Environmental Consulting – Romanian Soft Company și are o valoare de 22.743.012,68 lei fără TVA. Durata contractului este de 62 de luni de la data emiterii ordinului administrativ de începere.',
+                    'Contractul de servicii de Asistență tehnică și supervizare, inclusiv publicitate, pentru proiectul „Proiectul Regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea”, a fost semnat în data de <strong>09.11.2022</strong> și atribuit în urma licitației, asocierii formate din <strong>TADECO CONSULTING – Resourcing Environmental Consulting – Romanian Soft Company</strong> și are o valoare de <strong>22.743.012,68 lei fără TVA</strong>. Durata contractului este de 62 de luni de la data emiterii ordinului administrativ de începere.',
                     'Durata serviciilor de supervizare va acoperi în totalitate durata proiectării și durata de execuție a lucrărilor din cadrul contractelor de lucrări, plus perioada de garanție. Supervizorul are obligația de a-și adapta programul, respectiv numărul de zile de activitate pentru experții săi, în funcție de stadiul lucrărilor, și în consecință în funcție de tipul de servicii ce trebuie prestate.',
                     'Obiectivul general al contractului de servicii: prin contractul de servicii de asistență tehnică și supervizare, inclusiv publicitate, Consultantul va furniza servicii de management și suport pentru Unitatea de Implementare a Proiectului și pentru Beneficiarul Aquaserv S.A. Tulcea, în vederea implementării în bune condiții a „Proiectului regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea”, astfel încât obiectivele asumate de către OR prin Contractul de finanțare să fie atinse în limitele de timp și de buget aprobate.',
                 ],
@@ -374,7 +374,7 @@ class PddtjController extends Controller
                 'durata' => '59 de luni de la emiterea Ordinului de Începere',
                 'obiectiv' => 'Auditarea cheltuielilor proiectului, inclusiv întocmirea de rapoarte trimestriale și anuale privind Proiectul Regional.',
                 'texte' => [
-                    'În data de 19.07.2023, Aquaserv S.A. Tulcea a semnat al doilea contract de servicii, respectiv CS2 – Servicii de audit financiar pentru proiectul Proiect Regional de Dezvoltare a Infrastructurii de Apă și Apă Uzată din Județul Tulcea, contract în valoare de 1.177.200 lei la care se adaugă TVA.',
+                    'În data de <strong>19.07.2023</strong>, Aquaserv S.A. Tulcea a semnat al doilea contract de servicii, respectiv CS2 – Servicii de audit financiar pentru proiectul Proiect Regional de Dezvoltare a Infrastructurii de Apă și Apă Uzată din Județul Tulcea, contract în valoare de <strong>1.177.200 lei la care se adaugă TVA</strong>.',
                     'Durata contractului este de 59 de luni de la emiterea Ordinului de Începere și are ca obiect:',
                 ],
                 'grupe' => [
@@ -398,7 +398,7 @@ class PddtjController extends Controller
                 'durata' => '6 luni de la emiterea Ordinului de Începere',
                 'obiectiv' => 'Furnizarea de echipamente operaționale: o barcă pentru transport persoane, cu peridoc inclus, și o barcă pentru transport materiale.',
                 'texte' => [
-                    'Contractul în valoare de 484.229,67 lei la care se adaugă TVA, a fost semnat în data de 28.11.2023 între S.C. Aquaserv S.A. Tulcea și S.C. Pagreima S.R.L., având o durată de 6 luni de la emiterea Ordinului de Începere și are ca obiect furnizarea de echipamente operaționale, respectiv:',
+                    'Contractul în valoare de <strong>484.229,67 lei la care se adaugă TVA</strong>, a fost semnat în data de <strong>28.11.2023</strong> între <strong>S.C. Aquaserv S.A. Tulcea și S.C. Pagreima S.R.L.</strong>, având o durată de 6 luni de la emiterea Ordinului de Începere și are ca obiect furnizarea de echipamente operaționale, respectiv:',
                 ],
                 'grupe' => [
                     ['titlu' => null, 'items' => [
