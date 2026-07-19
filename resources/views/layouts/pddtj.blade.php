@@ -223,7 +223,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h5 style="border-bottom:none;padding-bottom:0;">Operatorul care furnizează și prestează servicii de alimentare cu apă și canalizare în județul Tulcea</h5>
+                    <h5>Operatorul care furnizează și prestează servicii de alimentare cu apă și canalizare în județul Tulcea</h5>
                     <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;margin:0;">
                         Conținutul acestui material nu reprezintă în mod obligatoriu poziția oficială a Uniunii Europene sau a Guvernului României.
                     </p>
