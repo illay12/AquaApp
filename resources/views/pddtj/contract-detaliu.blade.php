@@ -16,7 +16,7 @@
 <section style="padding:2.5rem 0 4rem;">
     <div class="container">
 
-        <h2 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:600;line-height:1.3em;color:var(--aqua-dark);margin-bottom:2.5rem;">
+        <h2 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:600;line-height:1.3em;color:var(--aqua-dark);margin-bottom:4rem;">
             {{ $contract['cod'] }}: {{ $contract['titlu'] }}
             @if(!empty($contract['nou']))
                 <span class="badge-aqua ms-2 align-middle" style="background:var(--aqua-cta);font-size:0.9rem;">nou</span>
