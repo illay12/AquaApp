@@ -7,14 +7,46 @@ use Illuminate\Http\Request;
 
 class PddtjAdminController extends Controller
 {
-    // Contractele pentru care se poate încărca galerie foto (cod => titlu)
-    public const CONTRACTE_GALERIE = [
+    // Categoriile implicite de galerie (cod => titlu), folosite doar la prima
+    // rulare pentru a crea fișierul de configurare; ulterior lista se
+    // gestionează din admin (se pot adăuga contracte noi fără modificări de cod).
+    private const CONTRACTE_GALERIE_IMPLICIT = [
         'CL-1'  => 'Reabilitarea captărilor din Tulcea și Mahmudia',
         'CL-4'  => 'Extindere și reabilitare captări, tratare și înmagazinare — Carcaliu și Babadag',
+        'CL-5'  => 'Extindere și reabilitare captări, tratare și înmagazinare — Sulina, Crișan, Mila 23',
         'CL-8'  => 'Stație nouă de epurare Chilia Veche · extindere stație Sulina',
         'CL-10' => 'Extindere și reabilitare alimentare cu apă și canalizare — Tulcea (zona centrală)',
-        'CL5'   => 'Extindere și reabilitare captări, tratare și înmagazinare — Sulina, Crișan, Mila 23',
     ];
+
+    private static function categoriiGaleriePath(): string
+    {
+        return storage_path('app/galerie_pddtj_categorii.json');
+    }
+
+    /** Citește lista de categorii de galerie (cod => titlu), creând fișierul cu valorile implicite dacă nu există */
+    public static function categoriiGalerie(): array
+    {
+        $cale = self::categoriiGaleriePath();
+
+        if (!file_exists($cale)) {
+            self::salveazaCategoriiGalerie(self::CONTRACTE_GALERIE_IMPLICIT);
+            return self::CONTRACTE_GALERIE_IMPLICIT;
+        }
+
+        $continut = json_decode(file_get_contents($cale), true);
+        return is_array($continut) ? $continut : self::CONTRACTE_GALERIE_IMPLICIT;
+    }
+
+    private static function salveazaCategoriiGalerie(array $categorii): void
+    {
+        $dir = dirname(self::categoriiGaleriePath());
+        if (!is_dir($dir)) mkdir($dir, 0755, true);
+
+        file_put_contents(
+            self::categoriiGaleriePath(),
+            json_encode($categorii, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+        );
+    }
 
     private function comunicareBasePath(): string
     {
@@ -71,7 +103,7 @@ class PddtjAdminController extends Controller
         $comunicate = ComunicatPddtj::orderByDesc('data')->get();
 
         $galerii = [];
-        foreach (self::CONTRACTE_GALERIE as $cod => $titlu) {
+        foreach (self::categoriiGalerie() as $cod => $titlu) {
             $galerii[$cod] = [
                 'titlu' => $titlu,
                 'poze'  => $this->citestePoze($cod),
@@ -79,6 +111,29 @@ class PddtjAdminController extends Controller
         }
 
         return view('admin.pddtj', compact('comunicate', 'galerii'));
+    }
+
+    /** Adaugă o categorie nouă de galerie (ex: un contract CL nou) */
+    public function storeCategorieGalerie(Request $request)
+    {
+        $request->validate([
+            'cod'   => 'required|string|max:20|regex:/^[A-Za-z0-9\-]+$/',
+            'titlu' => 'required|string|max:255',
+        ], [
+            'cod.regex' => 'Codul poate conține doar litere, cifre și cratimă (ex: CL-15).',
+        ]);
+
+        $cod       = strtoupper(trim($request->input('cod')));
+        $categorii = self::categoriiGalerie();
+
+        if (array_key_exists($cod, $categorii)) {
+            return back()->with('error', 'Categoria „' . $cod . '” există deja.');
+        }
+
+        $categorii[$cod] = trim($request->input('titlu'));
+        self::salveazaCategoriiGalerie($categorii);
+
+        return redirect()->route('admin.pddtj.index')->with('success', 'Categoria „' . $cod . '” a fost adăugată. Poți încărca fotografii pentru ea din tabul Galerie.');
     }
 
     /*
@@ -170,7 +225,7 @@ class PddtjAdminController extends Controller
     {
         $request->validate([
             'cod'  => ['required', 'string', function ($attr, $val, $fail) {
-                if (!array_key_exists($val, self::CONTRACTE_GALERIE)) $fail('Contract invalid.');
+                if (!array_key_exists($val, self::categoriiGalerie())) $fail('Contract invalid.');
             }],
             'poza' => 'required|image|max:8192',
         ], [
@@ -194,7 +249,7 @@ class PddtjAdminController extends Controller
     {
         $request->validate([
             'cod'    => ['required', 'string', function ($attr, $val, $fail) {
-                if (!array_key_exists($val, self::CONTRACTE_GALERIE)) $fail('Contract invalid.');
+                if (!array_key_exists($val, self::categoriiGalerie())) $fail('Contract invalid.');
             }],
             'fisier' => 'required|string|max:255',
         ]);

@@ -264,6 +264,13 @@
                 {{-- ============ GALERIE ============ --}}
                 <div class="tab-pane fade" id="pane-galerie" role="tabpanel">
 
+                    <div class="d-flex justify-content-end mb-3">
+                        <button type="button" class="btn btn-sm fw-bold" style="background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;border-radius:8px;padding:0.45rem 1rem;"
+                                data-bs-toggle="modal" data-bs-target="#modalCategorieNoua">
+                            <i class="bi bi-folder-plus me-1"></i>Adaugă categorie nouă (contract)
+                        </button>
+                    </div>
+
                     <ul class="nav nav-tabs mb-4" role="tablist">
                         @foreach($galerii as $cod => $g)
                             @php $tabId = \Illuminate\Support\Str::slug($cod); @endphp
@@ -325,6 +332,40 @@
     </div>{{-- /.section-card --}}
 
 </div>{{-- /.main --}}
+
+{{-- MODAL: adaugă categorie nouă de galerie --}}
+<div class="modal fade" id="modalCategorieNoua" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius:14px;border:none;">
+            <div class="modal-header" style="background:linear-gradient(135deg, var(--aqua-dark), var(--aqua));border-radius:14px 14px 0 0;">
+                <h5 class="modal-title" style="color:#fff;font-weight:800;font-size:0.95rem;">
+                    <i class="bi bi-folder-plus me-2"></i>Adaugă categorie nouă de galerie
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ route('admin.pddtj.galerie.categorie.store') }}">
+                @csrf
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold" style="font-size:0.82rem;">Cod contract <span class="text-danger">*</span></label>
+                        <input type="text" name="cod" class="form-control" placeholder="ex: CL-15" maxlength="20" required>
+                        <div style="font-size:0.75rem;color:#64748b;margin-top:0.35rem;">Doar litere, cifre și cratimă.</div>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label fw-bold" style="font-size:0.82rem;">Titlu contract <span class="text-danger">*</span></label>
+                        <textarea name="titlu" class="form-control" rows="2" placeholder="ex: Reabilitare stație tratare X" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top:1px solid #e2e8f0;">
+                    <button type="button" class="btn btn-sm btn-light" data-bs-dismiss="modal" style="border-radius:8px;font-weight:600;">Anulează</button>
+                    <button type="submit" class="btn btn-sm fw-bold" style="background:#0077b6;color:#fff;border-radius:8px;padding:0.45rem 1.25rem;">
+                        <i class="bi bi-plus-circle me-1"></i>Adaugă categoria
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {{-- MODAL: adaugă comunicat --}}
 <div class="modal fade" id="modalComunicat" tabindex="-1" aria-hidden="true">

@@ -170,7 +170,7 @@
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-4') }}">CL-4</a></li>
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-8') }}">CL-8</a></li>
                                     <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-10') }}">CL-10</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl5') }}">CL5</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-5') }}">CL-5</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">

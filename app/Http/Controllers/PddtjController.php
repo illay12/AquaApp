@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\ComunicatPddtj;
-use App\Http\Controllers\PddtjAdminController;
 
 class PddtjController extends Controller
 {
@@ -284,7 +283,7 @@ class PddtjController extends Controller
                 'status' => 'Autorizație de construire nr. 93 din 22.06.2023 · în implementare',
             ],
             [
-                'cod' => 'CL5',
+                'cod' => 'CL-5',
                 'titlu' => 'TL-CL-05: Extinderea și reabilitarea captărilor de apă, stațiilor de tratare și rezervoarelor de înmagazinare în Sulina, Crișan și Mila 23',
                 'valoare' => '39.900.000 lei fără TVA',
                 'contractor' => 'Asocierea S.C. DINAMIC CONSTRUCT S.R.L. (lider ofertant) – S.C. GAZ CONTROL S.R.L. (ofertant), cu ALLPLAN PROIECT (subcontractant) și ARCIF AG, S.C. ARCON AG (terți susținători)',
@@ -449,7 +448,7 @@ class PddtjController extends Controller
         $basePath = storage_path('app/public/galerie/pddtj');
 
         $galerii = [];
-        foreach (PddtjAdminController::CONTRACTE_GALERIE as $cod => $titlu) {
+        foreach (PddtjAdminController::categoriiGalerie() as $cod => $titlu) {
             $cale = $basePath . DIRECTORY_SEPARATOR . $cod;
             $poze = [];
 
