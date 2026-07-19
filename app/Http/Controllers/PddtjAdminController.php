@@ -136,6 +136,33 @@ class PddtjAdminController extends Controller
         return redirect()->route('admin.pddtj.index')->with('success', 'Categoria „' . $cod . '” a fost adăugată. Poți încărca fotografii pentru ea din tabul Galerie.');
     }
 
+    /** Șterge o categorie de galerie — permis doar dacă nu are nicio fotografie încărcată */
+    public function destroyCategorieGalerie(Request $request)
+    {
+        $request->validate([
+            'cod' => 'required|string',
+        ]);
+
+        $cod       = $request->input('cod');
+        $categorii = self::categoriiGalerie();
+
+        if (!array_key_exists($cod, $categorii)) {
+            return back()->with('error', 'Categoria „' . $cod . '” nu există.');
+        }
+
+        if (count($this->citestePoze($cod)) > 0) {
+            return back()->with('error', 'Categoria „' . $cod . '” are fotografii încărcate — șterge-le mai întâi pe acelea.');
+        }
+
+        unset($categorii[$cod]);
+        self::salveazaCategoriiGalerie($categorii);
+
+        $dir = $this->galerieBasePath() . DIRECTORY_SEPARATOR . $cod;
+        if (is_dir($dir)) rmdir($dir);
+
+        return redirect()->route('admin.pddtj.index')->with('success', 'Categoria „' . $cod . '” a fost ștearsă.');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | COMUNICARE (comunicate de presă — bază de date + PDF pe disc)

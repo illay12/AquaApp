@@ -318,6 +318,17 @@
                                         <i class="bi bi-images" style="font-size:2.5rem;display:block;margin-bottom:0.75rem;"></i>
                                         <div style="font-size:0.875rem;">Nicio fotografie încărcată pentru {{ $cod }}.</div>
                                     </div>
+
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <form method="POST" action="{{ route('admin.pddtj.galerie.categorie.destroy') }}" onsubmit="return confirm('Ștergi categoria „{{ $cod }}”? Nu poate fi anulat.')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="cod" value="{{ $cod }}">
+                                            <button type="submit" class="btn btn-sm" style="background:#fef2f2;color:#dc2626;border:1px solid #fca5a5;border-radius:8px;font-size:0.8rem;padding:0.45rem 0.9rem;">
+                                                <i class="bi bi-trash3 me-1"></i>Șterge categoria {{ $cod }}
+                                            </button>
+                                        </form>
+                                    </div>
                                 @endif
 
                             </div>

@@ -237,5 +237,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/pddtj/galerie/upload',      [PddtjAdminController::class, 'uploadPoza'])->name('pddtj.galerie.upload');
         Route::post('/pddtj/galerie/sterge',      [PddtjAdminController::class, 'stergePoza'])->name('pddtj.galerie.sterge');
         Route::post('/pddtj/galerie/categorie',   [PddtjAdminController::class, 'storeCategorieGalerie'])->name('pddtj.galerie.categorie.store');
+        Route::delete('/pddtj/galerie/categorie', [PddtjAdminController::class, 'destroyCategorieGalerie'])->name('pddtj.galerie.categorie.destroy');
     });
 });
