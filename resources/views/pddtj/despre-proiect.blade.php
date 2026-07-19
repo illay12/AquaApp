@@ -16,50 +16,29 @@
 <section style="padding:2.5rem 0 4rem;">
     <div class="container">
 
-        {{-- COMUNICAT DE PRESA + VALOARE TOTALA --}}
-        <div class="row g-4 align-items-stretch mb-5">
-            <div class="col-lg-7">
-                <div class="h-100 d-flex flex-column justify-content-center pdd-card-lg" style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(61, 143, 135,0.08);border-left:5px solid var(--aqua-primary);">
-                    <span class="badge-aqua mb-3" style="width:fit-content;"><i class="bi bi-calendar3 me-1"></i> Comunicat de presă · 18.06.2026</span>
-                    <p style="color:#4a4a4a;font-size:0.95rem;line-height:1.9;margin:0;">
-                        Joi, <strong>11 iunie 2026</strong>, a fost semnat Contractul de Finanțare pentru proiectul
-                        <strong>„PROIECTUL REGIONAL DE DEZVOLTARE A INFRASTRUCTURII DE APĂ ȘI APĂ UZATĂ ÎN JUDEȚUL TULCEA"</strong>
-                        (cod MySMIS 2021 – 333789), între SC Aquaserv SA Tulcea, în calitate de Beneficiar, Asociația de Dezvoltare
-                        Intercomunitară „Dezvoltare durabilă a serviciilor de apă și canalizare din județul Tulcea" și Ministerul
-                        Investițiilor și Proiectelor Europene, în calitate de Autoritate de Management pentru
-                        <strong>Programul Dezvoltare Durabilă și Tranziție Justă (PDDTJ)</strong>.
-                    </p>
+        {{-- VALOARE TOTALA --}}
+        <div class="mb-5">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-4 pdd-valoare-totala" style="background:linear-gradient(135deg,#002756,#3d8f87,#76b1a8);border-radius:16px;padding:2rem;">
+                <div>
+                    <div style="font-size:0.75rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:0.4rem;">Valoarea totală a investiției</div>
+                    <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1.15;">810.748.282,98 lei</div>
                 </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="h-100 d-flex flex-column justify-content-center pdd-card-lg" style="background:linear-gradient(135deg,#002756,#3d8f87,#76b1a8);border-radius:16px;padding:2rem;">
-                    <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:0.4rem;">Valoarea totală a investiției</div>
-                    <div style="font-size:1.7rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem;">810.748.282,98 lei</div>
-                    <div class="row g-2 text-center">
-                        <div class="col-6">
-                            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 0.5rem;">
-                                <div style="font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;">79,9%</div>
-                                <div style="font-size:0.68rem;color:rgba(255,255,255,0.8);margin-top:2px;">FEDR</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 0.5rem;">
-                                <div style="font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;">12,2%</div>
-                                <div style="font-size:0.68rem;color:rgba(255,255,255,0.8);margin-top:2px;">Buget de stat</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 0.5rem;">
-                                <div style="font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;">1,9%</div>
-                                <div style="font-size:0.68rem;color:rgba(255,255,255,0.8);margin-top:2px;">Buget local</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 0.5rem;">
-                                <div style="font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;">6,0%</div>
-                                <div style="font-size:0.68rem;color:rgba(255,255,255,0.8);margin-top:2px;">Cofinanțare beneficiar</div>
-                            </div>
-                        </div>
+                <div class="d-flex flex-wrap gap-2 pdd-valoare-procente">
+                    <div class="text-center" style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 1.25rem;">
+                        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;">79,9%</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:2px;white-space:nowrap;">FEDR</div>
+                    </div>
+                    <div class="text-center" style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 1.25rem;">
+                        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;">12,2%</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:2px;white-space:nowrap;">Buget de stat</div>
+                    </div>
+                    <div class="text-center" style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 1.25rem;">
+                        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;">1,9%</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:2px;white-space:nowrap;">Buget local</div>
+                    </div>
+                    <div class="text-center" style="background:rgba(255,255,255,0.12);border-radius:12px;padding:0.75rem 1.25rem;">
+                        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;">6,0%</div>
+                        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:2px;white-space:nowrap;">Cofinanțare beneficiar</div>
                     </div>
                 </div>
             </div>
@@ -407,6 +386,9 @@
             margin-bottom: 0.15rem;
         }
         .pdd-indicatori-supl .col-md-6 > div { font-size: 0.8rem; padding: 0.6rem 0.75rem !important; }
+        .pdd-valoare-totala { padding: 1.5rem !important; }
+        .pdd-valoare-procente { width: 100%; }
+        .pdd-valoare-procente > div { flex: 1 1 calc(50% - 0.5rem); padding: 0.6rem 0.5rem !important; }
     }
 </style>
 @endpush
