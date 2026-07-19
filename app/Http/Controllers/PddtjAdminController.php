@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ComunicatPddtj;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PddtjAdminController extends Controller
 {
@@ -172,12 +173,13 @@ class PddtjAdminController extends Controller
     public function storeComunicat(Request $request)
     {
         $request->validate([
-            'data'   => 'required|date',
+            'data'   => 'required|date_format:d/m/Y',
             'titlu'  => 'required|string|max:500',
             'fisier' => 'required|file|mimes:pdf|max:20480',
         ], [
-            'fisier.mimes' => 'Doar fișiere PDF sunt acceptate.',
-            'fisier.max'   => 'Fișierul nu poate depăși 20 MB.',
+            'data.date_format' => 'Data trebuie introdusă în formatul zz/ll/aaaa.',
+            'fisier.mimes'     => 'Doar fișiere PDF sunt acceptate.',
+            'fisier.max'       => 'Fișierul nu poate depăși 20 MB.',
         ]);
 
         $file = $request->file('fisier');
@@ -188,7 +190,7 @@ class PddtjAdminController extends Controller
         $file->move($dest, $numeSigur);
 
         ComunicatPddtj::create([
-            'data'   => $request->input('data'),
+            'data'   => Carbon::createFromFormat('d/m/Y', $request->input('data'))->format('Y-m-d'),
             'titlu'  => $request->input('titlu'),
             'fisier' => $numeSigur,
         ]);
@@ -201,15 +203,16 @@ class PddtjAdminController extends Controller
         $comunicat = ComunicatPddtj::findOrFail($id);
 
         $request->validate([
-            'data'   => 'required|date',
+            'data'   => 'required|date_format:d/m/Y',
             'titlu'  => 'required|string|max:500',
             'fisier' => 'nullable|file|mimes:pdf|max:20480',
         ], [
-            'fisier.mimes' => 'Doar fișiere PDF sunt acceptate.',
-            'fisier.max'   => 'Fișierul nu poate depăși 20 MB.',
+            'data.date_format' => 'Data trebuie introdusă în formatul zz/ll/aaaa.',
+            'fisier.mimes'     => 'Doar fișiere PDF sunt acceptate.',
+            'fisier.max'       => 'Fișierul nu poate depăși 20 MB.',
         ]);
 
-        $comunicat->data  = $request->input('data');
+        $comunicat->data  = Carbon::createFromFormat('d/m/Y', $request->input('data'))->format('Y-m-d');
         $comunicat->titlu = $request->input('titlu');
 
         if ($request->hasFile('fisier')) {

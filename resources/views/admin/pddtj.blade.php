@@ -228,7 +228,7 @@
                                                     <div class="modal-body p-4">
                                                         <div class="mb-3">
                                                             <label class="form-label fw-bold" style="font-size:0.82rem;">Data <span class="text-danger">*</span></label>
-                                                            <input type="date" name="data" class="form-control" value="{{ $c->data->format('Y-m-d') }}" required>
+                                                            <input type="text" name="data" class="form-control data-ro" placeholder="zz/ll/aaaa" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" value="{{ $c->data->format('d/m/Y') }}" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label fw-bold" style="font-size:0.82rem;">Titlu <span class="text-danger">*</span></label>
@@ -393,7 +393,7 @@
                 <div class="modal-body p-4">
                     <div class="mb-3">
                         <label class="form-label fw-bold" style="font-size:0.82rem;">Data <span class="text-danger">*</span></label>
-                        <input type="date" name="data" class="form-control" value="{{ now()->format('Y-m-d') }}" required>
+                        <input type="text" name="data" class="form-control data-ro" placeholder="zz/ll/aaaa" pattern="\d{2}/\d{2}/\d{4}" maxlength="10" value="{{ now()->format('d/m/Y') }}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold" style="font-size:0.82rem;">Titlu <span class="text-danger">*</span></label>
@@ -455,5 +455,15 @@
 @endforeach
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.data-ro').forEach(function (input) {
+        input.addEventListener('input', function () {
+            let v = input.value.replace(/\D/g, '').slice(0, 8);
+            if (v.length > 4) v = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
+            else if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
+            input.value = v;
+        });
+    });
+</script>
 </body>
 </html>
