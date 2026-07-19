@@ -14,6 +14,7 @@ use App\Http\Controllers\FisierController;
 use App\Http\Controllers\CalitateaApeiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumenteAdminController;
+use App\Http\Controllers\PddtjAdminController;
 use App\Http\Controllers\SearchController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\SitemapController;
@@ -228,5 +229,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/documente',         [DocumenteAdminController::class, 'index'])->name('documente.index');
         Route::post('/documente/upload', [DocumenteAdminController::class, 'upload'])->name('documente.upload');
         Route::post('/documente/sterge', [DocumenteAdminController::class, 'sterge'])->name('documente.sterge');
+
+        Route::get('/pddtj',                     [PddtjAdminController::class, 'index'])->name('pddtj.index');
+        Route::post('/pddtj/comunicare',          [PddtjAdminController::class, 'storeComunicat'])->name('pddtj.comunicare.store');
+        Route::put('/pddtj/comunicare/{id}',      [PddtjAdminController::class, 'updateComunicat'])->name('pddtj.comunicare.update');
+        Route::delete('/pddtj/comunicare/{id}',   [PddtjAdminController::class, 'destroyComunicat'])->name('pddtj.comunicare.destroy');
+        Route::post('/pddtj/galerie/upload',      [PddtjAdminController::class, 'uploadPoza'])->name('pddtj.galerie.upload');
+        Route::post('/pddtj/galerie/sterge',      [PddtjAdminController::class, 'stergePoza'])->name('pddtj.galerie.sterge');
     });
 });

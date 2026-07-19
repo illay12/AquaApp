@@ -16,19 +16,6 @@
 <section style="padding:2.5rem 0 4rem;">
     <div class="container">
 
-        {{--
-            Pentru a adăuga poze noi:
-            1. Urcă fișierele în storage/app/public/galerie/pddtj/<cod-contract>/
-            2. Adaugă calea fiecărei poze în array-ul 'poze' al contractului corespunzător de mai jos
-        --}}
-        @php $galerii = [
-            ['cod' => 'CL-1',  'titlu' => 'Reabilitarea captărilor din Tulcea și Mahmudia', 'poze' => []],
-            ['cod' => 'CL-4',  'titlu' => 'Extindere și reabilitare captări, tratare și înmagazinare — Carcaliu și Babadag', 'poze' => []],
-            ['cod' => 'CL-8',  'titlu' => 'Stație nouă de epurare Chilia Veche · extindere stație Sulina', 'poze' => []],
-            ['cod' => 'CL-10', 'titlu' => 'Extindere și reabilitare alimentare cu apă și canalizare — Tulcea (zona centrală)', 'poze' => []],
-            ['cod' => 'CL5',   'titlu' => 'Extindere și reabilitare captări, tratare și înmagazinare — Sulina, Crișan, Mila 23', 'poze' => []],
-        ]; @endphp
-
         <div class="d-flex flex-column gap-5">
             @foreach($galerii as $galerie)
             <div>

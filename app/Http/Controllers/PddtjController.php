@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ComunicatPddtj;
+use App\Http\Controllers\PddtjAdminController;
+
 class PddtjController extends Controller
 {
     /**
@@ -432,7 +435,9 @@ class PddtjController extends Controller
      */
     public function comunicare()
     {
-        return view('pddtj.comunicare');
+        $comunicate = ComunicatPddtj::orderByDesc('data')->get();
+
+        return view('pddtj.comunicare', compact('comunicate'));
     }
 
     /**
@@ -441,7 +446,26 @@ class PddtjController extends Controller
      */
     public function galerie()
     {
-        return view('pddtj.galerie');
+        $basePath = storage_path('app/public/galerie/pddtj');
+
+        $galerii = [];
+        foreach (PddtjAdminController::CONTRACTE_GALERIE as $cod => $titlu) {
+            $cale = $basePath . DIRECTORY_SEPARATOR . $cod;
+            $poze = [];
+
+            if (is_dir($cale)) {
+                foreach (scandir($cale) as $f) {
+                    if ($f === '.' || $f === '..') continue;
+                    if (!in_array(strtolower(pathinfo($f, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp'])) continue;
+                    $poze[] = 'galerie/pddtj/' . $cod . '/' . $f;
+                }
+                sort($poze);
+            }
+
+            $galerii[] = ['cod' => $cod, 'titlu' => $titlu, 'poze' => $poze];
+        }
+
+        return view('pddtj.galerie', compact('galerii'));
     }
 
     /**
