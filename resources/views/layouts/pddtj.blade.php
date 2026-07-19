@@ -19,7 +19,7 @@
             --aqua-dark2:    #001630;
             --aqua-light:    #a8d5cd;
             --aqua-accent:   #76b1a8;
-            --aqua-cta:      #ff7a5a;
+            --aqua-cta:      #4a90c9;
             --aqua-bg:       #eef2f1;
             --aqua-nav-bg:   #eeeeee;
             --aqua-nav-hover:#dddddd;
@@ -94,7 +94,7 @@
         .text-aqua { color: var(--aqua-primary) !important; }
         .badge-aqua { background:var(--aqua-primary); color:#fff; font-weight:700; border-radius:6px; font-size:0.72rem; padding:0.3em 0.65em; }
         .btn-aqua { background:var(--aqua-cta); color:#fff !important; border:none; font-weight:700; font-size:0.875rem; border-radius:8px; padding:0.5rem 1.1rem; }
-        .btn-aqua:hover { background:#e8613f; color:#fff; }
+        .btn-aqua:hover { background:#3a78ab; color:#fff; }
 
         /* Footer */
         footer { background: var(--aqua-dark); color: rgba(255,255,255,0.8); padding: 2.5rem 0 0; }
