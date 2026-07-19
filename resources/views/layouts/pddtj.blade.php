@@ -60,8 +60,8 @@
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { background:var(--aqua-nav-hover); color:var(--aqua-dark) !important; }
         .navbar-nav .dropdown-menu { border:none; border-top:3px solid var(--aqua-accent); box-shadow:0 8px 24px rgba(0,0,0,0.12); background:var(--aqua-nav-bg); }
         @media (min-width:992px) {
-            .navbar-nav .nav-item.dropdown .dropdown-menu { display:block !important; opacity:0; visibility:hidden; transform:translateY(6px); pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
-            .navbar-nav .nav-item.dropdown:hover .dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
+            .navbar-nav .nav-item.dropdown > .dropdown-menu { display:block !important; opacity:0; visibility:hidden; transform:translateY(6px); pointer-events:none; transition:opacity .2s,transform .2s,visibility .2s; }
+            .navbar-nav .nav-item.dropdown:hover > .dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
         }
         .navbar-nav .dropdown-item { font-size:0.875rem; font-weight:600; padding:0.55rem 1.2rem; }
         .navbar-nav .dropdown-item:hover { background:var(--aqua-nav-hover); color:var(--aqua-dark); }
