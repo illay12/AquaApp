@@ -166,24 +166,24 @@
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#lucrari">Lucrări</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-1">CL-1</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-4">CL-4</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-8">CL-8</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl-10">CL-10</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cl-cl5">CL5</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-1') }}">CL-1</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-4') }}">CL-4</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-8') }}">CL-8</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl-10') }}">CL-10</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cl5') }}">CL5</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#servicii">Servicii</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cs-cs-1">CS-1</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cs-cs-2">CS-2</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cs-1') }}">CS-1</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cs-2') }}">CS-2</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
                                 <a class="dropdown-item" href="{{ route('pddtj.contracte') }}#furnizare">Furnizare</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('pddtj.contracte') }}#cf-cf-2">CF-2</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pddtj.contract-detaliu', 'cf-2') }}">CF-2</a></li>
                                 </ul>
                             </li>
                         </ul>
