@@ -44,7 +44,6 @@ Route::get('/despre', [DespreController::class, 'index'])->name('despre');
 Route::get('/despre/centre-operationale', fn() => view('pages.despre.centre-operationale'))->name('despre.centre-operationale');
 Route::get('/despre/structura-organizationala', fn() => view('pages.despre.structura-organizationala'))->name('despre.structura-organizationala');
 Route::get('/despre/pos', fn() => view('pages.despre.pos'))->name('despre.pos');
-Route::get('/despre/pdd', fn() => view('pages.despre.pdd'))->name('despre.pdd');
 
 Route::get('/program-casierii', [InformatiiController::class, 'programCasierii'])->name('program-casierii');
 
