@@ -44,12 +44,12 @@
         .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         @media (max-width:767.98px) {
-            .logos-card { padding:1.1rem 1rem; }
-            .logos-track { gap:2rem; }
-            .logo-slot, .logo-slot img { height:56px; max-height:56px; }
+            .logos-card { padding:0.9rem 0.85rem; }
+            .logos-track { gap:0.6rem; flex-wrap:nowrap; }
+            .logo-slot, .logo-slot img { height:42px; max-height:42px; }
             .logos-track .logo-slot:first-child,
-            .logos-track .logo-slot:last-child { width:160px; height:56px; }
-            .logo-placeholder { height:56px; width:130px; }
+            .logos-track .logo-slot:last-child { width:95px; height:42px; }
+            .logo-placeholder { height:42px; width:95px; font-size:0.6rem; }
         }
 
         /* Navbar */
@@ -84,7 +84,12 @@
         .hero-photo .container { position:relative; z-index:1; }
         .page-hero { background:rgba(0,20,40,0.55); border-radius:14px; padding:1.1rem 2.25rem; margin:2.75rem auto 0; color:#fff; text-align:center; }
         .page-hero h1 { font-family:'Roboto', sans-serif; font-size:36px; line-height:1.4em; font-weight:500; margin-bottom:0.4rem; }
-        @media (max-width:767.98px) { .page-hero h1 { font-size:1.5rem; } .page-hero { padding:0.9rem 1.25rem; margin-top:1.75rem; } }
+        @media (max-width:767.98px) {
+            .page-hero h1 { font-size:1.35rem; }
+            .page-hero { padding:0.9rem 1.25rem; margin-top:1.5rem; }
+            .navbar-brand img { height:52px !important; }
+            .hero-photo { padding:1.5rem 0; }
+        }
         .breadcrumb-item a { color: var(--aqua-light); }
         .breadcrumb-item.active { color: rgba(255,255,255,0.75); }
         .breadcrumb-item+.breadcrumb-item::before { color: rgba(255,255,255,0.5); }
