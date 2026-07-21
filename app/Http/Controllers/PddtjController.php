@@ -305,7 +305,7 @@ class PddtjController extends Controller
                         'Rezervoare de înmagazinare noi (V = 2 × 250 mc) și stație de pompare nouă pentru distribuție',
                     ]],
                 ],
-                'status' => 'Semnat · detalii suplimentare în curs de actualizare',
+                'status' => 'Semnat · în derulare',
                 'nou' => true,
             ],
         ];
