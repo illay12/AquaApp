@@ -113,9 +113,6 @@
         footer ul li a:hover { color:var(--aqua-light); }
         footer ul li a i { margin-right:6px; }
         .footer-bottom { background:var(--aqua-dark2); padding:1rem 0; margin-top:2rem; font-size:0.8rem; color:rgba(255,255,255,0.6); }
-        .footer-logos .logo-box { background:#fff; border-radius:8px; padding:0.5rem 0.9rem; display:flex; align-items:center; }
-        .footer-logos img { max-height:36px; }
-        .footer-logos .logo-placeholder { height:44px; max-width:130px; border-color:rgba(255,255,255,0.25); color:rgba(255,255,255,0.55); }
     </style>
 
     @stack('styles')
@@ -238,20 +235,6 @@
                     <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.6;margin:0;">
                         Conținutul acestui material nu reprezintă în mod obligatoriu poziția oficială a Uniunii Europene sau a Guvernului României.
                     </p>
-                </div>
-            </div>
-
-            <div class="row mt-4 pt-3" style="border-top:1px solid rgba(255,255,255,0.12);">
-                <div class="col-12">
-                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start footer-logos">
-                        @foreach (['logo-ue.png' => 'Cofinanțat de Uniunea Europeană', 'logo-guvernul-ro.png' => 'Guvernul României', 'logo-pddtj.png' => 'Dezvoltare Durabilă și Tranziție Justă'] as $file => $alt)
-                            @if(file_exists(public_path('images/pddtj/'.$file)))
-                                <div class="logo-box"><img src="{{ asset('images/pddtj/'.$file) }}" alt="{{ $alt }}"></div>
-                            @else
-                                <div class="logo-placeholder">{{ $alt }}</div>
-                            @endif
-                        @endforeach
-                    </div>
                 </div>
             </div>
         </div>

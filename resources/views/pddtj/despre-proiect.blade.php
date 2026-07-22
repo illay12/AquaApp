@@ -201,17 +201,17 @@
                             <tr>
                                 <td class="px-3 py-2 fw-bold" style="color:var(--aqua-primary);">RCO31</td>
                                 <td class="px-3 py-2" data-label="Indicator">Lungimea conductelor noi sau optimizate pentru rețeaua publică de colectare a apelor uzate</td>
-                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">112.000 km</td>
+                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">112 km</td>
                             </tr>
                             <tr style="background:#f8fafc;">
                                 <td class="px-3 py-2 fw-bold" style="color:var(--aqua-primary);">RCO30</td>
                                 <td class="px-3 py-2" data-label="Indicator">Lungimea conductelor noi sau optimizate pentru sistemele de distribuție din rețeaua publică de alimentare cu apă</td>
-                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">133.000 km</td>
+                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">133 km</td>
                             </tr>
                             <tr>
                                 <td class="px-3 py-2 fw-bold" style="color:var(--aqua-primary);">RCO32</td>
                                 <td class="px-3 py-2" data-label="Indicator">Capacități noi sau optimizate pentru tratarea apelor uzate</td>
-                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">2.645.000 e.l.</td>
+                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">2.645 l.e.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -237,12 +237,12 @@
                             <tr>
                                 <td class="px-3 py-2 fw-bold" style="color:var(--aqua-primary);">RCR41</td>
                                 <td class="px-3 py-2" data-label="Indicator">Populația racordată la rețele publice îmbunătățite de alimentare cu apă</td>
-                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">92.504.000 persoane</td>
+                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">92.504 persoane</td>
                             </tr>
                             <tr style="background:#f8fafc;">
                                 <td class="px-3 py-2 fw-bold" style="color:var(--aqua-primary);">RCR42</td>
                                 <td class="px-3 py-2" data-label="Indicator">Populația racordată cel puțin la instalații publice secundare de tratare a apelor uzate</td>
-                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">8.187.000 persoane</td>
+                                <td class="px-3 py-2 text-center fw-bold" data-label="Țintă" style="white-space:nowrap;">8.187 persoane</td>
                             </tr>
                         </tbody>
                     </table>
