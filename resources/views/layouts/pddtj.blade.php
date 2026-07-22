@@ -43,12 +43,15 @@
         .logos-track .logo-slot:first-child img,
         .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
+        /* Sigla din mijloc (Guvernul) e un sigiliu rotund care umple cadrul, deci pare vizual mai mare decât celelalte două — o micșorăm puțin ca să pară de aceeași mărime */
+        .logos-track .logo-slot:nth-child(2) img { height:72px; }
         @media (max-width:767.98px) {
             .logos-card { padding:0.9rem 0.85rem; }
             .logos-track { gap:0.6rem; flex-wrap:nowrap; }
             .logo-slot, .logo-slot img { height:42px; max-height:42px; }
             .logos-track .logo-slot:first-child,
             .logos-track .logo-slot:last-child { width:95px; height:42px; }
+            .logos-track .logo-slot:nth-child(2) img { height:34px; }
             .logo-placeholder { height:42px; width:95px; font-size:0.6rem; }
         }
 
