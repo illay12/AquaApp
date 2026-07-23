@@ -32,21 +32,28 @@
         main { flex: 1; }
         p { font-size: 1.02rem; line-height: 1.75; }
 
-        /* Sigle — toate trei la exact aceeași înălțime (cerință oficială); centrul (Guvernul) rămâne perfect centrat
-           printr-un grid cu coloanele laterale egale (1fr), indiferent cât de late sunt siglele UE/PDDTJ la acea înălțime */
+        /* Sigle */
         .logos-card { background:#fff; border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,0.14); padding:1.75rem 2rem; margin:0 auto; }
-        .logos-track { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; column-gap:6rem; }
-        .logo-slot { height:90px; display:flex; align-items:center; }
-        .logo-slot img { height:80px; width:auto; max-width:none; object-fit:contain; }
-        .logos-track .logo-slot:first-child { justify-self:end; }
-        .logos-track .logo-slot:nth-child(2) { justify-self:center; }
-        .logos-track .logo-slot:last-child { justify-self:start; }
+        .logos-track { display:flex; align-items:center; justify-content:center; gap:11rem; flex-wrap:wrap; }
+        .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
+        .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
+        /* UE și PDDTJ (extremele) primesc aceeași lățime fixă, ca sigla din mijloc (Guvernul) să cadă exact pe centru */
+        .logos-track .logo-slot:first-child,
+        .logos-track .logo-slot:last-child { width:260px; height:90px; }
+        .logos-track .logo-slot:first-child img,
+        .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
+        /* Sigla din mijloc (Guvernul) e un sigiliu rotund care umple cadrul, deci pare vizual mai mare decât celelalte două — o micșorăm puțin ca să pară de aceeași mărime */
+        .logos-track .logo-slot:nth-child(2) img { height:72px; }
+        /* Sigla UE (prima) e o siglă lată/joasă, care în cutia de 260x90 cu object-fit:contain ieșea mult mai scundă decât celelalte — îi fixăm înălțimea ca să fie identică, lățimea rezultată se centrează liber în cutie */
+        .logos-track .logo-slot:first-child img { width:auto; height:72px; max-width:none; }
         @media (max-width:767.98px) {
             .logos-card { padding:0.9rem 0.85rem; }
-            .logos-track { column-gap:0.6rem; }
-            .logo-slot { height:42px; }
-            .logo-slot img { height:38px; max-width:none; }
+            .logos-track { gap:0.6rem; flex-wrap:nowrap; }
+            .logo-slot, .logo-slot img { height:42px; max-height:42px; }
+            .logos-track .logo-slot:first-child,
+            .logos-track .logo-slot:last-child { width:95px; height:42px; }
+            .logos-track .logo-slot:nth-child(2) img { height:34px; }
             .logo-placeholder { height:42px; width:95px; font-size:0.6rem; }
         }
 
