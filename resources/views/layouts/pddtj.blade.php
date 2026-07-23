@@ -34,12 +34,12 @@
 
         /* Sigle */
         .logos-card { background:#fff; border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,0.14); padding:1.75rem 2rem; margin:0 auto; }
-        .logos-track { display:flex; align-items:center; justify-content:center; gap:11rem; flex-wrap:wrap; }
+        .logos-track { display:flex; align-items:center; justify-content:center; gap:6rem; flex-wrap:wrap; }
         .logo-slot { height:90px; display:flex; align-items:center; justify-content:center; }
         .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
-        /* UE și PDDTJ (extremele) primesc aceeași lățime fixă, ca sigla din mijloc (Guvernul) să cadă exact pe centru */
+        /* UE și PDDTJ (extremele) primesc aceeași lățime fixă (suficientă cât să încapă sigla mărită fără să iasă din cutie), ca distanța până la marginea cardului să fie identică în ambele părți și sigla din mijloc să cadă exact pe centru */
         .logos-track .logo-slot:first-child,
-        .logos-track .logo-slot:last-child { width:260px; height:90px; }
+        .logos-track .logo-slot:last-child { width:345px; height:90px; }
         .logos-track .logo-slot:first-child img,
         .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
