@@ -44,7 +44,7 @@
         .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         /* Sigla din mijloc (Guvernul) e un sigiliu rotund care umple cadrul, deci pare vizual mai mare decât celelalte două — o micșorăm puțin ca să pară de aceeași mărime */
-        .logos-track .logo-slot:nth-child(2) img { height:72px; }
+        .logos-track .logo-slot:nth-child(2) img { height:69px; }
         /* Sigla UE (prima) e o siglă lată/joasă, care în cutia de 260x90 cu object-fit:contain ieșea mult mai scundă decât celelalte — îi fixăm înălțimea ca să fie identică, lățimea rezultată se centrează liber în cutie */
         .logos-track .logo-slot:first-child img { width:auto; height:72px; max-width:none; }
         /* Sigla PDDTJ (ultima) are un chenar transparent intern mai mare în fișier, deci la aceeași înălțime de canvas pare puțin mai mică — o mărim ușor ca să fie la fel cu mijlocul */
