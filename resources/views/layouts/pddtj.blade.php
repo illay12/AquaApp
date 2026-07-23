@@ -57,6 +57,9 @@
             .logos-track .logo-slot:last-child { width:95px; height:42px; }
             .logos-track .logo-slot:nth-child(2) img { height:34px; }
             .logo-placeholder { height:42px; width:95px; font-size:0.6rem; }
+            /* Pe mobil, siglele UE/PDDTJ trebuie să încapă în cutia mică (95x42), nu să folosească dimensiunile fixe de desktop */
+            .logos-track .logo-slot:first-child img,
+            .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         }
 
         /* Navbar */
