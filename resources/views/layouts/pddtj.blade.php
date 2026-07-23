@@ -45,8 +45,8 @@
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
         /* Sigla din mijloc (Guvernul) e un sigiliu rotund care umple cadrul, deci pare vizual mai mare decât celelalte două — o micșorăm puțin ca să pară de aceeași mărime */
         .logos-track .logo-slot:nth-child(2) img { height:72px; }
-        /* Sigla UE (prima) e o siglă lată/joasă, care în cutia de 260x90 cu object-fit:contain ieșea mult mai scundă decât celelalte — îi fixăm înălțimea ca să fie identică, lățimea rezultată se centrează liber în cutie */
-        .logos-track .logo-slot:first-child img { width:auto; height:72px; max-width:none; }
+        /* Sigla UE (prima) conține și text lângă steag, deci e un banner lat — la înălțime egală cu celelalte, lățimea rezultată ar domina vizual; alegem un echilibru între cele două */
+        .logos-track .logo-slot:first-child img { width:auto; height:56px; max-width:none; }
         @media (max-width:767.98px) {
             .logos-card { padding:0.9rem 0.85rem; }
             .logos-track { gap:0.6rem; flex-wrap:nowrap; }
