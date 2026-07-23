@@ -39,7 +39,7 @@
         .logo-slot img { height:90px; width:auto; max-width:none; object-fit:contain; }
         /* UE și PDDTJ (extremele) primesc fiecare o lățime de cutie potrivită exact siglei proprii (fără spațiu liber în interior), ca distanța până la marginea cardului să fie aceeași în ambele părți */
         .logos-track .logo-slot:first-child { width:345px; height:90px; }
-        .logos-track .logo-slot:last-child { width:322px; height:90px; }
+        .logos-track .logo-slot:last-child { width:345px; height:90px; }
         .logos-track .logo-slot:first-child img,
         .logos-track .logo-slot:last-child img { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
         .logo-placeholder { height:90px; width:220px; border:1.5px dashed var(--aqua-border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--aqua-gray); text-align:center; padding:0.25rem; text-transform:uppercase; letter-spacing:0.03em; }
@@ -48,7 +48,7 @@
         /* Sigla UE (prima) e o siglă lată/joasă, care în cutia de 260x90 cu object-fit:contain ieșea mult mai scundă decât celelalte — îi fixăm înălțimea ca să fie identică, lățimea rezultată se centrează liber în cutie */
         .logos-track .logo-slot:first-child img { width:auto; height:72px; max-width:none; }
         /* Sigla PDDTJ (ultima) are un chenar transparent intern mai mare în fișier, deci la aceeași înălțime de canvas pare puțin mai mică — o mărim ușor ca să fie la fel cu mijlocul */
-        .logos-track .logo-slot:last-child img { width:auto; height:125px; max-width:none; }
+        .logos-track .logo-slot:last-child img { width:345px; height:125px; max-width:none; }
         @media (max-width:767.98px) {
             .logos-card { padding:0.9rem 0.85rem; }
             .logos-track { gap:0.6rem; flex-wrap:nowrap; }
