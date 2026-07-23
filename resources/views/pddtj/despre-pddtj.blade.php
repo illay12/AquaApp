@@ -19,11 +19,11 @@
         <div class="pdd-contract-body" style="font-size:1rem;color:#3f3f3f;line-height:1.85;">
 
             <p>
-                Prin prezentul „Proiect regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea, în perioada 2021-2027”, se propune a se continua conformarea sectorului de apă-apă uzată în cadrul Programului Dezvoltare Durabilă și Tranziție Justă, <strong>RSO2.5_Promovarea accesului la apă și a gestionării durabile a apelor</strong>.
+                Prin prezentul „Proiect regional de dezvoltare a infrastructurii de apă și apă uzată în județul Tulcea, în perioada 2021-2027”, se propune a se continua conformarea sectorului de apă-apă uzată în cadrul Programului Dezvoltare Durabilă și Tranziție Justă, <strong>RSO2.5. Promovarea accesului sigur la apă, a gestionării durabile a apelor, inclusiv a gestionării integrate a apelor și a rezilienței în domeniul apei</strong>.
             </p>
 
             <p>
-                Prioritățile de Dezvoltare Durabilă și Tranziție Justă 2021-2027 (<strong>PDDTJ</strong>) este un program multifond, cofinanțat atât din FEDR cât și din FC, fiind aprobat de Comisia Europeană prin <strong>Decizia nr. C(2022) 8703/24.11.2022</strong> și implementat de Ministerul Investițiilor și Proiectelor Europene prin Autoritatea de Management pentru Programul Dezvoltare Durabilă și Tranziție Justă.
+                Programul de Dezvoltare Durabilă și Tranziție Justă 2021-2027 (<strong>PDDTJ</strong>), prin Prioritățile de Dezvoltare Durabilă, este un program multifond, cofinanțat atât din FEDR cât și din FC, fiind aprobat de Comisia Europeană prin <strong>Decizia nr. C(2022) 8703/24.11.2022</strong> și implementat de Ministerul Investițiilor și Proiectelor Europene prin Autoritatea de Management pentru Programul Dezvoltare Durabilă și Tranziție Justă.
             </p>
 
             <p>Investițiile propuse trebuie să se încadreze, după cum urmează, în obiectivul de politică, obiectivul specific și domeniul de aplicare a fondurilor:</p>
@@ -31,7 +31,7 @@
             <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61, 143, 135,0.10);margin:1.5rem 0 2rem;">
                 <div class="px-4 py-3" style="background:linear-gradient(90deg,#002756,#3d8f87);">
                     <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
-                        Prioritatea 1. Dezvoltarea infrastructurii de apă și apă uzată și tranziția la o economie circulară
+                        Prioritatea P1. Dezvoltarea infrastructurii de apă și apă uzată și tranziția la o economie circulară
                     </h5>
                 </div>
                 <div class="table-responsive">
@@ -45,7 +45,7 @@
                             </tr>
                             <tr style="background:#f8fafc;">
                                 <td class="px-4 py-3 fw-bold" style="color:var(--aqua-dark);background:#eef2f1;">Obiectivul specific</td>
-                                <td class="px-4 py-3"><strong style="color:var(--aqua-primary);">RSO2.5</strong>_Promovarea accesului la apă și a gestionării durabile a apelor</td>
+                                <td class="px-4 py-3"><strong style="color:var(--aqua-primary);">RSO2.5.</strong> Promovarea accesului sigur la apă, a gestionării durabile a apelor, inclusiv a gestionării integrate a apelor și a rezilienței în domeniul apei</td>
                             </tr>
                             <tr>
                                 <td class="px-4 py-3 fw-bold" style="color:var(--aqua-dark);background:#eef2f1;">Fondurile asociate</td>
