@@ -48,7 +48,7 @@
         /* Sigla UE (prima) e o siglă lată/joasă, care în cutia de 260x90 cu object-fit:contain ieșea mult mai scundă decât celelalte — îi fixăm înălțimea ca să fie identică, lățimea rezultată se centrează liber în cutie */
         .logos-track .logo-slot:first-child img { width:auto; height:72px; max-width:none; }
         /* Sigla PDDTJ (ultima) are un chenar transparent intern mai mare în fișier, deci la aceeași înălțime de canvas pare puțin mai mică — o mărim ușor ca să fie la fel cu mijlocul */
-        .logos-track .logo-slot:last-child img { width:auto; height:104px; max-width:none; }
+        .logos-track .logo-slot:last-child img { width:auto; height:125px; max-width:none; }
         @media (max-width:767.98px) {
             .logos-card { padding:0.9rem 0.85rem; }
             .logos-track { gap:0.6rem; flex-wrap:nowrap; }
@@ -155,7 +155,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('pddtj.prezentare') }}">
-                <img src="{{ asset('images/pddtj/logo-aquaserv.png') }}" alt="Aquaserv Tulcea" style="height:72px;width:auto;">
+                <img src="{{ asset('images/pddtj/logo-aquaserv.png') }}" alt="Aquaserv Tulcea" style="height:60px;width:auto;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pddtjNav">
                 <span class="navbar-toggler-icon"></span>
