@@ -220,7 +220,7 @@ let dateCurente = { codClient:'', telefon:'', email:'', contorId:null, serieCont
 
 function esteInPerioadaCitire() {
     const azi = new Date().getDate();
-    return azi >= 0 && azi <= 30;
+    return azi >= 0 && azi <= 31;
 }
 
 // ── Modal ──────────────────────────────────────────────────────────────────

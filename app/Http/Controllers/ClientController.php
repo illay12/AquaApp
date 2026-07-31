@@ -114,7 +114,7 @@ class ClientController extends Controller
     {
         $zi = (int) now()->format('d');
         
-        //if ($zi <= 30 || $zi >= 0)
+        //if ($zi <= 31 || $zi >= 0)
             if (false) {
             $mesaj = 'Transmiterea indexului este posibilă doar în perioada 10–20 a fiecărei luni.';
             if ($request->expectsJson() || $request->ajax()) {
