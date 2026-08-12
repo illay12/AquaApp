@@ -281,6 +281,7 @@ tinymce.init({
         ],
         toolbar:
             'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
+        toolbar_mode: 'wrap',
     },
 
     image_advtab: true,

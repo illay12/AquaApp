@@ -222,6 +222,7 @@ tinymce.init({
         theme: 'silver',
         plugins: ['advlist','autolink','lists','link','searchreplace','fullscreen','table','wordcount','image'],
         toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
+        toolbar_mode: 'wrap',
     },
 
     image_advtab: true,
