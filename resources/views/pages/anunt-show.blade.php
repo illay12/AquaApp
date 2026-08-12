@@ -29,6 +29,12 @@
     .fisier-preview-trigger { cursor: pointer; }
     .fisier-download-btn { flex-shrink: 0; color: var(--aqua-gray); }
     .fisier-download-btn:hover { color: var(--aqua-primary); background: #fff; }
+    .fisier-galerie-thumb {
+        width: 100px; height: 100px; border-radius: 10px; overflow: hidden;
+        border: 1px solid var(--aqua-border); flex-shrink: 0; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .fisier-galerie-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fisier-galerie-thumb:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,119,182,0.25); }
     #previewModal .modal-content { overflow: hidden; }
     #previewModal .modal-body { height: 75vh; overflow: auto; padding: 0; }
     #previewModalContent { padding: 1.25rem 1.5rem; font-size: 0.92rem; line-height: 1.75; color: #333; }
@@ -64,6 +70,7 @@
         .anunt-continut { font-size: 0.9rem !important; line-height: 1.75 !important; }
         .fisier-link-card { padding: 0.75rem !important; gap: 0.65rem !important; }
         .fisier-link-card .fisier-icon { font-size: 1.4rem !important; }
+        .fisier-galerie-thumb { width: 80px; height: 80px; }
         .anunt-meta-bar { gap: 0.5rem !important; }
         #previewModal .modal-body { height: auto; flex: 1 1 auto; }
         #previewModalContent { padding: 0.9rem 1rem; font-size: 0.85rem; }
@@ -129,7 +136,26 @@ $categorieLabel = [
                         <h6 class="fw-bold mb-3" style="color:var(--aqua-dark);font-size:0.875rem;">
                             <i class="bi bi-paperclip me-2"></i> Fișiere atașate
                         </h6>
-                        @foreach($anunt->fisiere as $fisier)
+                        @php
+                            $poze      = $anunt->fisiere->whereIn('tip', ['jpg', 'png']);
+                            $documente = $anunt->fisiere->whereNotIn('tip', ['jpg', 'png']);
+                        @endphp
+
+                        @if($poze->count() > 0)
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            @foreach($poze as $fisier)
+                            <div class="fisier-preview-trigger fisier-galerie-thumb"
+                                 data-url="{{ $fisier->url }}"
+                                 data-name="{{ $fisier->nume_original }}"
+                                 data-tip="{{ $fisier->tip }}"
+                                 title="Previzualizare">
+                                <img src="{{ $fisier->url }}" alt="Imagine atașată" loading="lazy">
+                            </div>
+                            @endforeach
+                        </div>
+                        @endif
+
+                        @foreach($documente as $fisier)
                         @if($fisier->tip === 'pdf')
                         <a href="{{ $fisier->url }}" target="_blank"
                            class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 text-decoration-none"
@@ -145,29 +171,6 @@ $categorieLabel = [
                                 </div>
                             </div>
                         </a>
-                        @elseif(in_array($fisier->tip, ['jpg', 'png'], true))
-                        <div class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 fisier-preview-trigger"
-                             data-url="{{ $fisier->url }}"
-                             data-name="{{ $fisier->nume_original }}"
-                             data-tip="{{ $fisier->tip }}"
-                             style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);transition:all 0.2s;cursor:pointer;">
-                            <img src="{{ $fisier->url }}" alt="{{ $fisier->nume_original }}" loading="lazy"
-                                 style="width:60px;height:60px;object-fit:cover;border-radius:8px;flex-shrink:0;border:1px solid var(--aqua-border);background:#fff;">
-                            <div style="flex:1;overflow:hidden;">
-                                <div style="font-size:0.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                                    {{ $fisier->nume_original }}
-                                </div>
-                                <div style="font-size:0.75rem;color:var(--aqua-gray);">
-                                    {{ strtoupper($fisier->tip) }} &bull; {{ $fisier->marime_fomatata }}
-                                    &bull; <span class="text-aqua fw-bold">Previzualizare</span>
-                                </div>
-                            </div>
-                            <a href="{{ $fisier->url }}" download="{{ $fisier->nume_original }}"
-                               class="btn btn-sm fisier-download-btn" title="Descarcă imaginea"
-                               onclick="event.stopPropagation();">
-                                <i class="bi bi-download"></i>
-                            </a>
-                        </div>
                         @else
                         <div class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2"
                              style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);transition:all 0.2s;">
