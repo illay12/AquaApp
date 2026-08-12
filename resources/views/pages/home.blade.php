@@ -4,6 +4,15 @@
 
 @section('content')
 
+    {{-- FLAG FIX – SECETĂ / DECALOG APĂ (doar pe homepage) --}}
+    <button type="button" class="decalog-flag" data-bs-toggle="offcanvas" data-bs-target="#decalogOffcanvas" aria-controls="decalogOffcanvas">
+        <i class="bi bi-droplet-half"></i>
+        <span class="decalog-flag__text">
+            <span>Consumă apă</span>
+            <span>responsabil</span>
+        </span>
+    </button>
+
     {{-- HERO SECTION --}}
     <section style="background:linear-gradient(135deg, #023e8a 0%, #0077b6 60%, #00b4d8 100%); color:#fff; padding:2rem 0 1.5rem; position:relative; overflow:hidden;">
         <div style="position:absolute;inset:0;background:url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'40\' cy=\'40\' r=\'8\'/%3E%3C/g%3E%3C/svg%3E');"></div>
@@ -269,8 +278,80 @@
         </div>
     </section>
 
+    {{-- DECALOG APĂ – OFFCANVAS (glisează din lateral) --}}
+    <div class="offcanvas offcanvas-end decalog-offcanvas" tabindex="-1" id="decalogOffcanvas" aria-labelledby="decalogOffcanvasLabel">
+        <div class="offcanvas-header" style="background:linear-gradient(90deg, #023e8a, #0077b6);color:#fff;">
+            <h5 class="offcanvas-title" id="decalogOffcanvasLabel" style="font-family:'Merriweather',serif;font-size:1.05rem;">
+                <i class="bi bi-droplet-half me-2"></i> Decalog pentru un consum responsabil de apă
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Închide"></button>
+        </div>
+        <div class="offcanvas-body p-0" style="background:#f0f8ff;">
+            <img src="{{ asset('images/decalog/decalog-consum-responsabil-apa.jpg') }}"
+                 alt="Decalog pentru un consum responsabil de apă – Aquaserv Tulcea"
+                 class="img-fluid d-block w-100">
+            <div class="p-3 text-center border-top bg-white">
+                <a href="{{ asset('images/decalog/decalog-consum-responsabil-apa.jpg') }}" download class="btn btn-outline-aqua btn-sm">
+                    <i class="bi bi-download me-1"></i> Descarcă imaginea
+                </a>
+            </div>
+        </div>
+    </div>
+
     @push('styles')
     <style>
+        /* ── FLAG DECALOG APĂ (fix, lateral) ── */
+        .decalog-flag {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 1035;
+            background: linear-gradient(135deg, #dc3545, #b91c1c);
+            color: #fff;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            padding: 1rem 0.55rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.55rem;
+            box-shadow: -4px 4px 18px rgba(220,53,69,0.4);
+            cursor: pointer;
+            transition: padding-right 0.25s ease, box-shadow 0.25s ease;
+        }
+        .decalog-flag:hover {
+            padding-right: 0.9rem;
+            box-shadow: -6px 6px 24px rgba(220,53,69,0.5);
+        }
+        .decalog-flag i { font-size: 1.35rem; }
+        .decalog-flag__text {
+            display: flex;
+            flex-direction: row;
+            gap: 0.35rem;
+        }
+        .decalog-flag__text span {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        @media (max-width: 575.98px) {
+            .decalog-flag {
+                top: auto;
+                bottom: 1.25rem;
+                transform: none;
+                padding: 0.65rem 0.4rem;
+                border-radius: 10px 0 0 10px;
+            }
+            .decalog-flag i { font-size: 1.1rem; }
+            .decalog-flag span { font-size: 0.68rem; }
+        }
+        .decalog-offcanvas { width: 420px; max-width: 92vw; }
+        .decalog-offcanvas .offcanvas-body { overflow-y: auto; }
+
         /* ── HERO DROPLET ── */
         .hero-droplet-wrap {
             position: relative;
