@@ -130,7 +130,7 @@ $categorieLabel = [
                             <i class="bi bi-paperclip me-2"></i> Fișiere atașate
                         </h6>
                         @foreach($anunt->fisiere as $fisier)
-                        @if(in_array($fisier->tip, ['pdf', 'jpg', 'png'], true))
+                        @if($fisier->tip === 'pdf')
                         <a href="{{ $fisier->url }}" target="_blank"
                            class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 text-decoration-none"
                            style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
@@ -145,6 +145,29 @@ $categorieLabel = [
                                 </div>
                             </div>
                         </a>
+                        @elseif(in_array($fisier->tip, ['jpg', 'png'], true))
+                        <div class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 fisier-preview-trigger"
+                             data-url="{{ $fisier->url }}"
+                             data-name="{{ $fisier->nume_original }}"
+                             data-tip="{{ $fisier->tip }}"
+                             style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);transition:all 0.2s;cursor:pointer;">
+                            <img src="{{ $fisier->url }}" alt="{{ $fisier->nume_original }}" loading="lazy"
+                                 style="width:60px;height:60px;object-fit:cover;border-radius:8px;flex-shrink:0;border:1px solid var(--aqua-border);background:#fff;">
+                            <div style="flex:1;overflow:hidden;">
+                                <div style="font-size:0.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                                    {{ $fisier->nume_original }}
+                                </div>
+                                <div style="font-size:0.75rem;color:var(--aqua-gray);">
+                                    {{ strtoupper($fisier->tip) }} &bull; {{ $fisier->marime_fomatata }}
+                                    &bull; <span class="text-aqua fw-bold">Previzualizare</span>
+                                </div>
+                            </div>
+                            <a href="{{ $fisier->url }}" download="{{ $fisier->nume_original }}"
+                               class="btn btn-sm fisier-download-btn" title="Descarcă imaginea"
+                               onclick="event.stopPropagation();">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
                         @else
                         <div class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2"
                              style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);transition:all 0.2s;">
@@ -338,6 +361,24 @@ $categorieLabel = [
                 previewLoading.classList.remove('d-none');
 
                 previewModal.show();
+
+                if (tip === 'jpg' || tip === 'png') {
+                    var img = new Image();
+                    img.className = 'd-block mx-auto';
+                    img.alt = name;
+                    img.onload = function() {
+                        previewContent.innerHTML = '';
+                        previewContent.appendChild(img);
+                        previewLoading.classList.add('d-none');
+                        previewContent.classList.remove('d-none');
+                    };
+                    img.onerror = function() {
+                        previewLoading.classList.add('d-none');
+                        previewError.classList.remove('d-none');
+                    };
+                    img.src = url;
+                    return;
+                }
 
                 fetch(url)
                     .then(function(res) {
