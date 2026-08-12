@@ -149,11 +149,11 @@
                                 Trage fișierele aici sau <span style="color:#0077b6;font-weight:700;">click pentru a selecta</span>
                             </div>
                             <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.2rem;">
-                                PDF, Word (.docx), Excel (.xlsx) — max. 10 MB per fișier
+                                PDF, Word (.docx), Excel (.xlsx), JPG, PNG — max. 10 MB per fișier
                             </div>
                         </div>
                         <input type="file" id="fisiere-input" name="fisiere[]"
-                               multiple accept=".pdf,.docx,.xlsx"
+                               multiple accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png"
                                class="d-none" onchange="afiseazaFisiere(this.files)">
                         @error('fisiere.*')
                             <div class="text-danger mt-1" style="font-size:0.875rem;">{{ $message }}</div>
@@ -261,6 +261,9 @@ const iconeTip = {
     pdf:  { icon: 'bi-file-earmark-pdf',   color: '#dc2626' },
     docx: { icon: 'bi-file-earmark-word',  color: '#1d4ed8' },
     xlsx: { icon: 'bi-file-earmark-excel', color: '#059669' },
+    jpg:  { icon: 'bi-file-earmark-image', color: '#d97706' },
+    jpeg: { icon: 'bi-file-earmark-image', color: '#d97706' },
+    png:  { icon: 'bi-file-earmark-image', color: '#d97706' },
 };
 
 function afiseazaFisiere(files) {

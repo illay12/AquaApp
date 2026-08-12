@@ -26,12 +26,14 @@ class FisierController extends Controller
             'pdf'  => 'application/pdf',
             'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'jpg'  => 'image/jpeg',
+            'png'  => 'image/png',
         ];
 
         $mime = $mimeTypes[$fisier->tip] ?? 'application/octet-stream';
 
-        // PDF se deschide în browser, docx/xlsx se descarcă (browserul nu le poate afișa)
-        if ($fisier->tip === 'pdf') {
+        // PDF și imaginile se deschid în browser, docx/xlsx se descarcă (browserul nu le poate afișa)
+        if (in_array($fisier->tip, ['pdf', 'jpg', 'png'], true)) {
             return response()->file(
                 Storage::disk('public')->path($fisier->cale),
                 ['Content-Type' => $mime, 'Content-Disposition' => 'inline; filename="' . $fisier->nume_original . '"']

@@ -35,6 +35,8 @@ class DispeceratController extends Controller
             'application/pdf'                                                          => 'pdf',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'docx',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'       => 'xlsx',
+            'image/jpeg'                                                              => 'jpg',
+            'image/png'                                                               => 'png',
         ];
 
         foreach ($request->file('fisiere') as $fisier) {
@@ -219,14 +221,14 @@ class DispeceratController extends Controller
             'titlu'     => 'required|string|min:5|max:500',
             'continut'  => 'required|string|min:10',
             'categorie' => 'required|string|in:' . implode(',', $categorii),
-            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx|max:10240',
+            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx,jpg,jpeg,png|max:10240',
         ], [
             'titlu.required'     => 'Titlul este obligatoriu.',
             'titlu.min'          => 'Titlul trebuie să aibă cel puțin 5 caractere.',
             'continut.required'  => 'Conținutul este obligatoriu.',
             'continut.min'       => 'Conținutul trebuie să aibă cel puțin 10 caractere.',
             'categorie.required' => 'Categoria este obligatorie.',
-            'fisiere.*.extensions' => 'Sunt permise doar PDF, Word (.docx) și Excel (.xlsx).',
+            'fisiere.*.extensions' => 'Sunt permise doar PDF, Word (.docx), Excel (.xlsx), JPG și PNG.',
             'fisiere.*.max'      => 'Fiecare fișier poate avea maxim 10 MB.',
         ]);
 
@@ -277,14 +279,14 @@ class DispeceratController extends Controller
             'titlu'     => 'required|string|min:5|max:500',
             'continut'  => 'required|string|min:10',
             'categorie' => 'required|string|in:' . implode(',', $categorii),
-            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx|max:10240',
+            'fisiere.*' => 'nullable|file|extensions:pdf,docx,xlsx,jpg,jpeg,png|max:10240',
         ], [
             'titlu.required'       => 'Titlul este obligatoriu.',
             'titlu.min'            => 'Titlul trebuie să aibă cel puțin 5 caractere.',
             'continut.required'    => 'Conținutul este obligatoriu.',
             'continut.min'         => 'Conținutul trebuie să aibă cel puțin 10 caractere.',
             'categorie.required'   => 'Categoria este obligatorie.',
-            'fisiere.*.extensions' => 'Sunt permise doar PDF, Word (.docx) și Excel (.xlsx).',
+            'fisiere.*.extensions' => 'Sunt permise doar PDF, Word (.docx), Excel (.xlsx), JPG și PNG.',
             'fisiere.*.max'        => 'Fiecare fișier poate avea maxim 10 MB.',
         ]);
 

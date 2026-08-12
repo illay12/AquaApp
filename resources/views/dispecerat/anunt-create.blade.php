@@ -185,7 +185,7 @@
                                         color:#94a3b8;
                                         margin-top:0.3rem;">
 
-                                PDF, Word (.docx), Excel (.xlsx)
+                                PDF, Word (.docx), Excel (.xlsx), JPG, PNG
                                 — max. 10 MB per fișier
 
                             </div>
@@ -196,9 +196,15 @@
                                id="fisiere-input"
                                name="fisiere[]"
                                multiple
-                               accept=".pdf,.docx,.xlsx"
+                               accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png"
                                class="d-none"
                                onchange="adaugaFisiere(this.files)">
+
+                        @error('fisiere.*')
+                        <div class="text-danger mt-2" style="font-size:0.85rem;">
+                            <i class="bi bi-exclamation-circle me-1"></i>{{ $message }}
+                        </div>
+                        @enderror
 
                         <div id="fisiere-preview"
                              class="mt-2">
@@ -317,7 +323,16 @@ docx:
 { icon:'bi-file-earmark-word',color:'#1d4ed8' },
 
 xlsx:
-{ icon:'bi-file-earmark-excel',color:'#059669' }
+{ icon:'bi-file-earmark-excel',color:'#059669' },
+
+jpg:
+{ icon:'bi-file-earmark-image',color:'#d97706' },
+
+jpeg:
+{ icon:'bi-file-earmark-image',color:'#d97706' },
+
+png:
+{ icon:'bi-file-earmark-image',color:'#d97706' }
 
 };
 

@@ -53,6 +53,7 @@ class AnuntFisier extends Model
             'pdf'  => 'bi-file-earmark-pdf',
             'docx' => 'bi-file-earmark-word',
             'xlsx' => 'bi-file-earmark-excel',
+            'jpg', 'png' => 'bi-file-earmark-image',
             default => 'bi-file-earmark',
         };
     }
@@ -68,6 +69,7 @@ class AnuntFisier extends Model
             'pdf'  => '#dc2626',
             'docx' => '#1d4ed8',
             'xlsx' => '#059669',
+            'jpg', 'png' => '#d97706',
             default => '#64748b',
         };
     }

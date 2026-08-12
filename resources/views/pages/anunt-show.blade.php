@@ -127,10 +127,10 @@ $categorieLabel = [
                     @if(isset($anunt->fisiere) && $anunt->fisiere->count() > 0)
                     <div class="mt-4 pt-3" style="border-top:1px solid var(--aqua-border);">
                         <h6 class="fw-bold mb-3" style="color:var(--aqua-dark);font-size:0.875rem;">
-                            <i class="bi bi-paperclip me-2"></i> Documente atașate
+                            <i class="bi bi-paperclip me-2"></i> Fișiere atașate
                         </h6>
                         @foreach($anunt->fisiere as $fisier)
-                        @if($fisier->tip === 'pdf')
+                        @if(in_array($fisier->tip, ['pdf', 'jpg', 'png'], true))
                         <a href="{{ $fisier->url }}" target="_blank"
                            class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 text-decoration-none"
                            style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
