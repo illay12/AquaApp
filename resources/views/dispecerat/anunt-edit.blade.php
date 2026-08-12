@@ -213,7 +213,17 @@ tinymce.init({
     language: 'ro', height: 420, menubar: false,
     plugins: ['advlist','autolink','lists','link','searchreplace','fullscreen','table','wordcount','image'],
     toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
+    toolbar_mode: 'wrap',
     content_style: 'body { font-family: Nunito, sans-serif; font-size: 15px; line-height: 1.8; }',
+
+    // Fără acest override, TinyMCE comută pe interfața redusă „mobile" pe telefon,
+    // unde butonul de imagine (deci și upload-ul de screenshot-uri) nu mai apare.
+    mobile: {
+        theme: 'silver',
+        plugins: ['advlist','autolink','lists','link','searchreplace','fullscreen','table','wordcount','image'],
+        toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
+    },
+
     image_advtab: true,
     image_uploadtab: true,
     automatic_uploads: true,

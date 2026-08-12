@@ -267,6 +267,21 @@ tinymce.init({
 
     toolbar:
         'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
+    toolbar_mode: 'wrap',
+
+    // Fără acest override, TinyMCE comută pe interfața redusă „mobile" pe telefon,
+    // unde butonul de imagine (deci și upload-ul de screenshot-uri) nu mai apare.
+    mobile: {
+        theme: 'silver',
+        plugins: [
+            'advlist','autolink','lists',
+            'link','searchreplace',
+            'fullscreen','table',
+            'wordcount','image'
+        ],
+        toolbar:
+            'undo redo | blocks | bold italic underline | bullist numlist | link image | table | removeformat | fullscreen',
+    },
 
     image_advtab: true,
     image_uploadtab: true,
