@@ -69,6 +69,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    |
+    | Subdomeniul pe care cPanel îl configurează să pointeze către acest
+    | document root (public/), pentru microsite-ul proiectului POIM.
+    | Poate fi suprascris în .env pentru testare locală (ex. poim.aquaapp.test).
+    |
+    */
+
+    'poim_domain' => env('POIM_DOMAIN', 'poim.aquaservtulcea.ro'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |

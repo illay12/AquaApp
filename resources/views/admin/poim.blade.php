@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestionare PDDTJ – AquaServ Admin</title>
+    <title>Gestionare POIM – AquaServ Admin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
@@ -83,12 +83,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.pddtj.index') }}" class="activ">
+            <a href="{{ route('admin.pddtj.index') }}">
                 <i class="bi bi-droplet-half"></i> PDDTJ
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.poim.index') }}">
+            <a href="{{ route('admin.poim.index') }}" class="activ">
                 <i class="bi bi-droplet-half"></i> POIM
             </a>
         </li>
@@ -110,9 +110,9 @@
     {{-- TOPBAR --}}
     <div class="topbar">
         <div>
-            <h4 style="font-weight:800;color:#0f172a;margin:0;">Gestionare PDDTJ</h4>
+            <h4 style="font-weight:800;color:#0f172a;margin:0;">Gestionare POIM</h4>
             <p style="color:#6c757d;font-size:0.82rem;margin:0;">
-                Comunicate de presă și galerie foto — pddtj.aquaservtulcea.ro
+                Comunicate de presă și galerie foto — poim.aquaservtulcea.ro
             </p>
         </div>
         <div style="font-size:0.82rem;color:#6c757d;">
@@ -149,7 +149,7 @@
     <div class="section-card">
         <div class="section-header">
             <i class="bi bi-droplet-half" style="color:#0077b6;font-size:1.1rem;"></i>
-            <h6>PDDTJ — Comunicare &amp; Galerie</h6>
+            <h6>POIM — Comunicare &amp; Galerie</h6>
         </div>
         <div class="section-body">
 
@@ -198,8 +198,8 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center gap-2 flex-shrink-0">
-                                            @if(file_exists(storage_path('app/public/documente/pddtj/'.$c->fisier)))
-                                                <a href="{{ asset('storage/documente/pddtj/'.$c->fisier) }}" target="_blank" class="btn btn-sm" style="background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;border-radius:6px;font-size:0.78rem;">
+                                            @if(file_exists(storage_path('app/public/documente/poim/'.$c->fisier)))
+                                                <a href="{{ asset('storage/documente/poim/'.$c->fisier) }}" target="_blank" class="btn btn-sm" style="background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;border-radius:6px;font-size:0.78rem;">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
                                             @endif
@@ -207,7 +207,7 @@
                                                     data-bs-toggle="modal" data-bs-target="#modalEditComunicat{{ $c->id }}">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
-                                            <form method="POST" action="{{ route('admin.pddtj.comunicare.destroy', $c->id) }}" onsubmit="return confirm('Ștergi comunicatul „{{ $c->titlu }}"?')">
+                                            <form method="POST" action="{{ route('admin.poim.comunicare.destroy', $c->id) }}" onsubmit="return confirm('Ștergi comunicatul „{{ $c->titlu }}"?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm" style="background:#fef2f2;color:#dc2626;border:1px solid #fca5a5;border-radius:6px;font-size:0.78rem;">
@@ -227,7 +227,7 @@
                                                     </h5>
                                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                                                 </div>
-                                                <form method="POST" action="{{ route('admin.pddtj.comunicare.update', $c->id) }}" enctype="multipart/form-data">
+                                                <form method="POST" action="{{ route('admin.poim.comunicare.update', $c->id) }}" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="modal-body p-4">
@@ -272,7 +272,7 @@
                     <div class="d-flex justify-content-end mb-3">
                         <button type="button" class="btn btn-sm fw-bold" style="background:#f0f9ff;color:#0369a1;border:1px solid #bae6fd;border-radius:8px;padding:0.45rem 1rem;"
                                 data-bs-toggle="modal" data-bs-target="#modalCategorieNoua">
-                            <i class="bi bi-folder-plus me-1"></i>Adaugă categorie nouă (contract)
+                            <i class="bi bi-folder-plus me-1"></i>Adaugă categorie nouă
                         </button>
                     </div>
 
@@ -307,8 +307,8 @@
                                         @foreach($g['poze'] as $poza)
                                             <div class="col-6 col-md-3">
                                                 <div class="poza-thumb">
-                                                    <img src="{{ asset('storage/galerie/pddtj/'.$cod.'/'.$poza) }}" alt="{{ $g['titlu'] }}">
-                                                    <form method="POST" action="{{ route('admin.pddtj.galerie.sterge') }}" onsubmit="return confirm('Ștergi această fotografie?')">
+                                                    <img src="{{ asset('storage/galerie/poim/'.$cod.'/'.$poza) }}" alt="{{ $g['titlu'] }}">
+                                                    <form method="POST" action="{{ route('admin.poim.galerie.sterge') }}" onsubmit="return confirm('Ștergi această fotografie?')">
                                                         @csrf
                                                         <input type="hidden" name="cod" value="{{ $cod }}">
                                                         <input type="hidden" name="fisier" value="{{ $poza }}">
@@ -325,7 +325,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end mt-3">
-                                        <form method="POST" action="{{ route('admin.pddtj.galerie.categorie.destroy') }}" onsubmit="return confirm('Ștergi categoria „{{ $cod }}”? Nu poate fi anulat.')">
+                                        <form method="POST" action="{{ route('admin.poim.galerie.categorie.destroy') }}" onsubmit="return confirm('Ștergi categoria „{{ $cod }}”? Nu poate fi anulat.')">
                                             @csrf
                                             @method('DELETE')
                                             <input type="hidden" name="cod" value="{{ $cod }}">
@@ -359,17 +359,17 @@
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <form method="POST" action="{{ route('admin.pddtj.galerie.categorie.store') }}">
+            <form method="POST" action="{{ route('admin.poim.galerie.categorie.store') }}">
                 @csrf
                 <div class="modal-body p-4">
                     <div class="mb-3">
-                        <label class="form-label fw-bold" style="font-size:0.82rem;">Cod contract <span class="text-danger">*</span></label>
-                        <input type="text" name="cod" class="form-control" placeholder="ex: CL-15" maxlength="20" required>
+                        <label class="form-label fw-bold" style="font-size:0.82rem;">Cod categorie <span class="text-danger">*</span></label>
+                        <input type="text" name="cod" class="form-control" placeholder="ex: SANTIER" maxlength="20" required>
                         <div style="font-size:0.75rem;color:#64748b;margin-top:0.35rem;">Doar litere, cifre și cratimă.</div>
                     </div>
                     <div class="mb-1">
-                        <label class="form-label fw-bold" style="font-size:0.82rem;">Titlu contract <span class="text-danger">*</span></label>
-                        <textarea name="titlu" class="form-control" rows="2" placeholder="ex: Reabilitare stație tratare X" required></textarea>
+                        <label class="form-label fw-bold" style="font-size:0.82rem;">Titlu categorie <span class="text-danger">*</span></label>
+                        <textarea name="titlu" class="form-control" rows="2" placeholder="ex: Fotografii șantier X" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer" style="border-top:1px solid #e2e8f0;">
@@ -393,7 +393,7 @@
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <form method="POST" action="{{ route('admin.pddtj.comunicare.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.poim.comunicare.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body p-4">
                     <div class="mb-3">
@@ -423,7 +423,7 @@
     </div>
 </div>
 
-{{-- MODALE: adaugă fotografie — una per contract --}}
+{{-- MODALE: adaugă fotografie — una per categorie --}}
 @foreach($galerii as $cod => $g)
     @php $tabId = \Illuminate\Support\Str::slug($cod); @endphp
     <div class="modal fade" id="modalPoza-{{ $tabId }}" tabindex="-1" aria-hidden="true">
@@ -435,7 +435,7 @@
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form method="POST" action="{{ route('admin.pddtj.galerie.upload') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.poim.galerie.upload') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="cod" value="{{ $cod }}">
                     <div class="modal-body p-4">

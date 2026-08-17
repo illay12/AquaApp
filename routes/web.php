@@ -15,6 +15,7 @@ use App\Http\Controllers\CalitateaApeiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumenteAdminController;
 use App\Http\Controllers\PddtjAdminController;
+use App\Http\Controllers\PoimAdminController;
 use App\Http\Controllers\SearchController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\SitemapController;
@@ -30,6 +31,18 @@ use App\Http\Controllers\SitemapController;
 */
 
 require __DIR__.'/pddtj.php';
+
+/*
+|--------------------------------------------------------------------------
+| MICROSITE POIM (poim.aquaservtulcea.ro)
+|--------------------------------------------------------------------------
+|
+| Trebuie inclus înaintea rutelor fără constrângere de domeniu de mai jos,
+| altfel ruta '/' a AquaApp ar intercepta și cererile către subdomeniul poim.
+|
+*/
+
+require __DIR__.'/poim.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -237,5 +250,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/pddtj/galerie/sterge',      [PddtjAdminController::class, 'stergePoza'])->name('pddtj.galerie.sterge');
         Route::post('/pddtj/galerie/categorie',   [PddtjAdminController::class, 'storeCategorieGalerie'])->name('pddtj.galerie.categorie.store');
         Route::delete('/pddtj/galerie/categorie', [PddtjAdminController::class, 'destroyCategorieGalerie'])->name('pddtj.galerie.categorie.destroy');
+
+        Route::get('/poim',                     [PoimAdminController::class, 'index'])->name('poim.index');
+        Route::post('/poim/comunicare',          [PoimAdminController::class, 'storeComunicat'])->name('poim.comunicare.store');
+        Route::put('/poim/comunicare/{id}',      [PoimAdminController::class, 'updateComunicat'])->name('poim.comunicare.update');
+        Route::delete('/poim/comunicare/{id}',   [PoimAdminController::class, 'destroyComunicat'])->name('poim.comunicare.destroy');
+        Route::post('/poim/galerie/upload',      [PoimAdminController::class, 'uploadPoza'])->name('poim.galerie.upload');
+        Route::post('/poim/galerie/sterge',      [PoimAdminController::class, 'stergePoza'])->name('poim.galerie.sterge');
+        Route::post('/poim/galerie/categorie',   [PoimAdminController::class, 'storeCategorieGalerie'])->name('poim.galerie.categorie.store');
+        Route::delete('/poim/galerie/categorie', [PoimAdminController::class, 'destroyCategorieGalerie'])->name('poim.galerie.categorie.destroy');
     });
 });

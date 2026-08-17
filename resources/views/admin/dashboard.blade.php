@@ -115,6 +115,11 @@
                 <i class="bi bi-droplet-half"></i> PDDTJ
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.poim.index') }}">
+                <i class="bi bi-droplet-half"></i> POIM
+            </a>
+        </li>
     </ul>
     <div style="position:absolute;bottom:1.5rem;left:0;right:0;padding:0 1.25rem;">
         <form method="POST" action="{{ route('admin.logout') }}">
