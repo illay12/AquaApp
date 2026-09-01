@@ -533,8 +533,7 @@
                                 'icon'    => 'bi-journal-text',
                                 'culoare' => '#144e61',
                                 'hover'   => '#144e61',
-                                'url'     => asset('storage/documente/structura_organizationala/
-                                                    ROF_Regulament_de_organizare_si_functionare_Aquaserv _15_06_2023.pdf'),
+                                'url'     => asset('storage/documente/structura_organizationala/ROF_Regulament_de_organizare_si_functionare_Aquaserv _15_06_2023.pdf'),
                             ],
                             [
                                 'titlu'   => 'Plan Management 2020–2024',
