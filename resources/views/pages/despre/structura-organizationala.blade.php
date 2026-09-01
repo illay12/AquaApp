@@ -512,20 +512,37 @@
                                 'url'     => asset('storage/documente/structura_organizationala/Regulamentul-serviciului-de-apa-si-canalizare-bun.pdf'),
                             ],
                             [
-                                'titlu'   => 'Plan Management 2020–2024',
-                                'desc'    => 'Planul de management al companiei pentru perioada 2020–2024',
-                                'icon'    => 'bi-clipboard2-check',
-                                'culoare' => '#0096c7',
-                                'hover'   => '#0096c7',
-                                'url'     => asset('storage/documente/structura_organizationala/PLAN-MANAGEMENT-2020-2024.pdf'),
-                            ],
-                            [
                                 'titlu'   => 'Plan Administrare AQUASERV 2025–2029',
                                 'desc'    => 'Planul de administrare al S.C. AQUASERV S.A. pentru perioada 2025–2029',
                                 'icon'    => 'bi-building-gear',
                                 'culoare' => '#00b4d8',
                                 'hover'   => '#00b4d8',
                                 'url'     => asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2025-2029.pdf'),
+                            ],
+                            [
+                                'titlu'   => 'Cod Etic al S.C. AQUASERV S.A. Tulcea',
+                                'desc'    => 'Cod Etic al S.C. AQUASERV S.A. Tulcea',
+                                'icon'    => 'bi-clipboard2-check',
+                                'culoare' => '#00c735',
+                                'hover'   => '#00c735',
+                                'url'     => asset('storage/documente/structura_organizationala/Codul_etic_Aquaserv_29_02_2013.pdf'),
+                            ],
+                                                        [
+                                'titlu'   => 'Regulament de Organizare si Functionare Aquaserv',
+                                'desc'    => 'Regulament de Organizare si Functionare Aquaserv',
+                                'icon'    => 'bi-journal-text',
+                                'culoare' => '#144e61',
+                                'hover'   => '#144e61',
+                                'url'     => asset('storage/documente/structura_organizationala/
+                                                    ROF_Regulament_de_organizare_si_functionare_Aquaserv _15_06_2023.pdf'),
+                            ],
+                            [
+                                'titlu'   => 'Plan Management 2020–2024',
+                                'desc'    => 'Planul de management al companiei pentru perioada 2020–2024',
+                                'icon'    => 'bi-clipboard2-check',
+                                'culoare' => '#0096c7',
+                                'hover'   => '#0096c7',
+                                'url'     => asset('storage/documente/structura_organizationala/PLAN-MANAGEMENT-2020-2024.pdf'),
                             ],
 
                         ];
