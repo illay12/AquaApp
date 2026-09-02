@@ -51,6 +51,23 @@
                     </div>
                 </div>
 
+                {{-- MODALITATI DE FACTURARE --}}
+                <div class="mb-4">
+                    <a href="https://my.aquaservtulcea.ro/pagina/informatii-clienti-1" target="_blank" rel="noopener"
+                       style="display:flex;align-items:center;gap:0.85rem;padding:0.9rem 1.25rem;text-decoration:none;color:inherit;border-radius:10px;border:1.5px solid var(--aqua-border);transition:background 0.14s;"
+                       onmouseover="this.style.background='#e8f4fd';this.style.borderColor='var(--aqua-primary)'"
+                       onmouseout="this.style.background='';this.style.borderColor='var(--aqua-border)'">
+                        <div style="width:40px;height:40px;min-width:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;background:var(--aqua-primary);">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <div style="flex:1;min-width:0;">
+                            <div style="font-weight:600;font-size:0.88rem;color:var(--aqua-dark);">Modalități de Facturare</div>
+                            <div style="font-size:0.75rem;color:#64748b;">Informații pentru clienți</div>
+                        </div>
+                        <i class="bi bi-box-arrow-up-right" style="color:var(--aqua-primary);font-size:0.9rem;"></i>
+                    </a>
+                </div>
+
                 <p style="font-size:0.95rem;">
                     Prețurile și tarifele pentru serviciile de alimentare cu apă și canalizare vor fi ajustate,
                     iar noile valori se vor regăsi pe <strong>factura emisă în luna ianuarie 2026</strong>, astfel:
