@@ -525,7 +525,7 @@
                                 'icon'    => 'bi-clipboard2-check',
                                 'culoare' => '#00c735',
                                 'hover'   => '#00c735',
-                                'url'     => asset('storage/documente/structura_organizationala/Codul_etic_Aquaserv_29_02_2013.pdf'),
+                                'url'     => asset('storage/documente/structura_organizationala/Codul_etic_Aquaserv_2019.pdf'),
                             ],
                                                         [
                                 'titlu'   => 'Regulament de Organizare si Functionare Aquaserv',
