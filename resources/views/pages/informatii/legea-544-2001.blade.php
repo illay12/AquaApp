@@ -160,8 +160,11 @@
                         'Rapoarte' => [
                             'icon' => 'bi-bar-chart-line',
                             'docs' => [
-                                ['Raport-de-evaluare.pdf',                   'Raport de evaluare'],
+                                ['Buletin-informativ-2025.pdf',              'Buletin informativ 2025'],
+                                ['Raport-de-evaluare-2025.pdf',              'Raport de evaluare 2025'],
                                 ['Buletin-informativ-2020.pdf',              'Buletin informativ 2020'],
+                                ['Raport-de-evaluare.pdf',                   'Raport de evaluare 2020'],
+                                
                             ],
                         ],
                     ] as $categorie => $grup)
