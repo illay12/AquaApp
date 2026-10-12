@@ -147,15 +147,29 @@
                     <h4 class="d-flex align-items-center gap-2 mb-3" style="font-family:'Merriweather',serif;font-size:1.05rem;color:var(--aqua-dark);">
                         <i class="bi bi-file-earmark-arrow-down text-aqua"></i> Documente și formulare
                     </h4>
+                    @foreach([
+                        'Formulare' => [
+                            'icon' => 'bi-ui-checks',
+                            'docs' => [
+                                ['Lista-documente-oficiu.pdf',               'Listă documente oficiu'],
+                                ['Reclamatie-administrativa.pdf',            'Reclamație administrativă'],
+                                ['Reclamatie-administrativa2.pdf',           'Reclamație administrativă (varianta 2)'],
+                                ['Solicitare-informatii-de-interes-public.pdf', 'Solicitare informații de interes public'],
+                            ],
+                        ],
+                        'Rapoarte' => [
+                            'icon' => 'bi-bar-chart-line',
+                            'docs' => [
+                                ['Raport-de-evaluare.pdf',                   'Raport de evaluare'],
+                                ['Buletin-informativ-2020.pdf',              'Buletin informativ 2020'],
+                            ],
+                        ],
+                    ] as $categorie => $grup)
+                    <h5 class="d-flex align-items-center gap-2 mb-2 {{ $loop->first ? '' : 'mt-4' }}" style="font-size:0.85rem;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:0.05em;">
+                        <i class="bi {{ $grup['icon'] }} text-aqua"></i> {{ $categorie }}
+                    </h5>
                     <div class="list-group" style="border-radius:10px;overflow:hidden;">
-                        @foreach([
-                            ['Raport-de-evaluare.pdf',                   'Raport de evaluare'],
-                            ['Lista-documente-oficiu.pdf',               'Listă documente oficiu'],
-                            ['Reclamatie-administrativa.pdf',            'Reclamație administrativă'],
-                            ['Reclamatie-administrativa2.pdf',           'Reclamație administrativă (varianta 2)'],
-                            ['Solicitare-informatii-de-interes-public.pdf', 'Solicitare informații de interes public'],
-                            ['Buletin-informativ-2020.pdf',              'Buletin informativ 2020'],
-                        ] as [$fisier, $titlu])
+                        @foreach($grup['docs'] as [$fisier, $titlu])
                         <a href="{{ asset('storage/documente/legea504/' . $fisier) }}" target="_blank"
                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                             <span>
@@ -169,6 +183,7 @@
                         </a>
                         @endforeach
                     </div>
+                    @endforeach
                 </div>
 
             </div>
