@@ -185,9 +185,9 @@
 
     @stack('styles')
 
-    @if(env('GOOGLE_ANALYTICS_ID'))
+    @if(config('services.google_analytics.id'))
     <script nonce="@nonce">
-        window._GA_ID = '{{ env('GOOGLE_ANALYTICS_ID') }}';
+        window._GA_ID = '{{ config('services.google_analytics.id') }}';
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -196,10 +196,10 @@
         (function() {
             var s = document.createElement('script');
             s.async = true;
-            s.src = 'https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}';
+            s.src = 'https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.id') }}';
             document.head.appendChild(s);
         })();
-        gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
+        gtag('config', '{{ config('services.google_analytics.id') }}');
         setTimeout(function() { gtag('event', 'user_engagement', {engagement_time_msec: 10000}); }, 10000);
         @endif
     </script>
