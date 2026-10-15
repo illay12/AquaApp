@@ -36,11 +36,12 @@ class SecurityHeaders
         } else {
             $csp = implode('; ', [
                 "default-src 'self'",
-                "script-src 'self' 'nonce-{$nonce}' cdn.jsdelivr.net www.googletagmanager.com",
+                "script-src 'self' 'nonce-{$nonce}' cdn.jsdelivr.net *.googletagmanager.com",
                 "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com",
                 "font-src 'self' fonts.gstatic.com cdn.jsdelivr.net",
                 "img-src * data: blob:",
-                "connect-src 'self' cdn.jsdelivr.net www.google-analytics.com region1.google-analytics.com stats.g.doubleclick.net",
+                // GA4 trimite în UE și pe region1.analytics.google.com — lista recomandată de Google
+                "connect-src 'self' cdn.jsdelivr.net *.google-analytics.com *.analytics.google.com *.googletagmanager.com stats.g.doubleclick.net",
                 "frame-src maps.google.com www.google.com",
                 "object-src 'none'",
                 "frame-ancestors 'self'",
