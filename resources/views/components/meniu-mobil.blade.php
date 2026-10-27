@@ -77,74 +77,7 @@
     ];
 @endphp
 
-<div id="mobileMenu" class="mm" aria-hidden="true">
-    <div id="overlayMeniu" class="mm__overlay"></div>
-
-    <aside id="mobileDrawer" class="mm__panel" role="dialog" aria-modal="true" aria-label="Meniu" tabindex="-1">
-        <div class="mm__head">
-            <a href="{{ url('/') }}" class="mm__brand">
-                <span class="mm__brand-icon"><i class="bi bi-droplet-half"></i></span>
-                <span>Aquaserv Tulcea<small>Servicii apă și canal</small></span>
-            </a>
-            <button type="button" id="btnInchideMeniu" class="mm__close" aria-label="Închide meniul">
-                <i class="bi bi-x-lg"></i>
-            </button>
-        </div>
-
-        <div class="mm__body">
-            <button type="button" id="btnSearchMobil" class="mm__search">
-                <i class="bi bi-search"></i> Caută pe site
-            </button>
-
-            <nav aria-label="Meniu principal">
-                @foreach($mmSectiuni as $i => $sec)
-                    @php $areActiv = collect($sec['grupuri'])->flatten(1)->contains(fn ($l) => $l[2]); @endphp
-                    <div class="mm-sec {{ $areActiv ? 'is-open is-current' : '' }}">
-                        <button type="button" class="mm-sec__btn" aria-expanded="{{ $areActiv ? 'true' : 'false' }}" aria-controls="mmSec{{ $i }}">
-                            <span>{{ $sec['titlu'] }}</span>
-                            <i class="bi bi-chevron-down"></i>
-                        </button>
-                        <div class="mm-sec__panel" id="mmSec{{ $i }}">
-                            <div class="mm-sec__inner">
-                                @foreach($sec['grupuri'] as $grup => $linkuri)
-                                    @if($grup !== '')
-                                        <div class="mm-grp">{{ $grup }}</div>
-                                    @endif
-                                    @foreach($linkuri as $l)
-                                        <a href="{{ $l[1] }}" class="mm-link {{ $l[2] ? 'is-active' : '' }}"
-                                           @if($l[2]) aria-current="page" @endif
-                                           @if($l[3] ?? false) target="_blank" rel="noopener noreferrer" @endif>
-                                            {{ $l[0] }}
-                                            @if($l[3] ?? false)<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>@endif
-                                        </a>
-                                    @endforeach
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach($mmSimple as $l)
-                    <a href="{{ $l[1] }}" class="mm-top {{ $l[2] ? 'is-active' : '' }}" @if($l[2]) aria-current="page" @endif>
-                        {{ $l[0] }} <i class="bi bi-chevron-right"></i>
-                    </a>
-                @endforeach
-            </nav>
-        </div>
-
-        <div class="mm__foot">
-            <div class="mm__quick">
-                <a href="{{ url('/client/index-contor') }}"><i class="bi bi-speedometer2"></i> Transmite indexul</a>
-                <a href="https://my.aquaservtulcea.ro/" class="is-dark"><i class="bi bi-person-circle"></i> Contul meu</a>
-            </div>
-            <a href="tel:0747022009" class="mm__call">
-                <span class="mm__call-icon"><i class="bi bi-telephone-fill"></i></span>
-                <span><small>Avarii 24/7</small><strong>0747 022 009</strong></span>
-            </a>
-        </div>
-    </aside>
-</div>
-
+{{-- Stilurile stau ÎNAINTEA markup-ului: altfel browserul poate afișa o clipă meniul nestilizat (lista de linkuri) la fiecare încărcare --}}
 <style>
     .mm { position: fixed; inset: 0; z-index: 10000; visibility: hidden; pointer-events: none; transition: visibility 0s linear .32s; }
     .mm.is-open { visibility: visible; pointer-events: auto; transition-delay: 0s; }
@@ -223,3 +156,72 @@
         .mm, .mm *, .mm__panel, .mm__overlay { transition: none !important; }
     }
 </style>
+
+<div id="mobileMenu" class="mm" aria-hidden="true">
+    <div id="overlayMeniu" class="mm__overlay"></div>
+
+    <aside id="mobileDrawer" class="mm__panel" role="dialog" aria-modal="true" aria-label="Meniu" tabindex="-1">
+        <div class="mm__head">
+            <a href="{{ url('/') }}" class="mm__brand">
+                <span class="mm__brand-icon"><i class="bi bi-droplet-half"></i></span>
+                <span>Aquaserv Tulcea<small>Servicii apă și canal</small></span>
+            </a>
+            <button type="button" id="btnInchideMeniu" class="mm__close" aria-label="Închide meniul">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <div class="mm__body">
+            <button type="button" id="btnSearchMobil" class="mm__search">
+                <i class="bi bi-search"></i> Caută pe site
+            </button>
+
+            <nav aria-label="Meniu principal">
+                @foreach($mmSectiuni as $i => $sec)
+                    @php $areActiv = collect($sec['grupuri'])->flatten(1)->contains(fn ($l) => $l[2]); @endphp
+                    <div class="mm-sec {{ $areActiv ? 'is-open is-current' : '' }}">
+                        <button type="button" class="mm-sec__btn" aria-expanded="{{ $areActiv ? 'true' : 'false' }}" aria-controls="mmSec{{ $i }}">
+                            <span>{{ $sec['titlu'] }}</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <div class="mm-sec__panel" id="mmSec{{ $i }}">
+                            <div class="mm-sec__inner">
+                                @foreach($sec['grupuri'] as $grup => $linkuri)
+                                    @if($grup !== '')
+                                        <div class="mm-grp">{{ $grup }}</div>
+                                    @endif
+                                    @foreach($linkuri as $l)
+                                        <a href="{{ $l[1] }}" class="mm-link {{ $l[2] ? 'is-active' : '' }}"
+                                           @if($l[2]) aria-current="page" @endif
+                                           @if($l[3] ?? false) target="_blank" rel="noopener noreferrer" @endif>
+                                            {{ $l[0] }}
+                                            @if($l[3] ?? false)<i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>@endif
+                                        </a>
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                @foreach($mmSimple as $l)
+                    <a href="{{ $l[1] }}" class="mm-top {{ $l[2] ? 'is-active' : '' }}" @if($l[2]) aria-current="page" @endif>
+                        {{ $l[0] }} <i class="bi bi-chevron-right"></i>
+                    </a>
+                @endforeach
+            </nav>
+        </div>
+
+        <div class="mm__foot">
+            <div class="mm__quick">
+                <a href="{{ url('/client/index-contor') }}"><i class="bi bi-speedometer2"></i> Transmite indexul</a>
+                <a href="https://my.aquaservtulcea.ro/" class="is-dark"><i class="bi bi-person-circle"></i> Contul meu</a>
+            </div>
+            <a href="tel:0747022009" class="mm__call">
+                <span class="mm__call-icon"><i class="bi bi-telephone-fill"></i></span>
+                <span><small>Avarii 24/7</small><strong>0747 022 009</strong></span>
+            </a>
+        </div>
+    </aside>
+</div>
+

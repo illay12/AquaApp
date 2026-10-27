@@ -4,31 +4,6 @@
      @include('components.cookie-banner')
 ═══════════════════════════════════════════════════════ --}}
 @unless(request()->cookie('cookie_consent'))
-<div id="cookie-banner" aria-live="polite" aria-label="Banner consimțământ cookies">
-    <div class="cb-inner">
-        <div class="cb-text">
-            <div class="cb-title">
-                <i class="bi bi-shield-lock-fill"></i>
-                Folosim cookie-uri
-            </div>
-            <p class="cb-desc">
-                Acest site folosește cookie-uri tehnice necesare și cookie-uri de analiză (Google Analytics)
-                pentru a înțelege cum este utilizat site-ul. Puteți accepta sau refuza cookie-urile de analiză.
-                <a href="{{ url('/gdpr') }}" target="_blank">Politică confidențialitate</a> ·
-                <a href="{{ url('/cookies') }}" target="_blank">Politică cookies</a>.
-            </p>
-        </div>
-        <div class="cb-actions">
-            <button id="cb-refuse" class="cb-btn cb-btn-outline" aria-label="Refuză cookie-urile opționale">
-                Refuză
-            </button>
-            <button id="cb-accept" class="cb-btn cb-btn-primary" aria-label="Acceptă toate cookie-urile">
-                <i class="bi bi-check-lg me-1"></i> Acceptă
-            </button>
-        </div>
-    </div>
-</div>
-
 <style>
 #cookie-banner {
     position: fixed;
@@ -114,6 +89,32 @@
     .cb-btn { flex: 1; justify-content: center; }
 }
 </style>
+
+<div id="cookie-banner" aria-live="polite" aria-label="Banner consimțământ cookies">
+    <div class="cb-inner">
+        <div class="cb-text">
+            <div class="cb-title">
+                <i class="bi bi-shield-lock-fill"></i>
+                Folosim cookie-uri
+            </div>
+            <p class="cb-desc">
+                Acest site folosește cookie-uri tehnice necesare și cookie-uri de analiză (Google Analytics)
+                pentru a înțelege cum este utilizat site-ul. Puteți accepta sau refuza cookie-urile de analiză.
+                <a href="{{ url('/gdpr') }}" target="_blank">Politică confidențialitate</a> ·
+                <a href="{{ url('/cookies') }}" target="_blank">Politică cookies</a>.
+            </p>
+        </div>
+        <div class="cb-actions">
+            <button id="cb-refuse" class="cb-btn cb-btn-outline" aria-label="Refuză cookie-urile opționale">
+                Refuză
+            </button>
+            <button id="cb-accept" class="cb-btn cb-btn-primary" aria-label="Acceptă toate cookie-urile">
+                <i class="bi bi-check-lg me-1"></i> Acceptă
+            </button>
+        </div>
+    </div>
+</div>
+
 
 <script nonce="@nonce">
 (function() {

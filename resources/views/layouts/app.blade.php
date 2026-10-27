@@ -41,6 +41,8 @@
             --site-line:      #e5edf3;
         }
         * { box-sizing: border-box; }l,
+        /* meniul mobil e ascuns din <head> – nu poate apărea nestilizat nici o fracțiune de secundă */
+        .mm:not(.is-open) { visibility: hidden; }
         body { font-family: 'Nunito', sans-serif; font-size: 17px; color: var(--aqua-text); background-color: #ffffff; display: flex; flex-direction: column; min-height: 100vh; overflow-wrap: break-word; }
         /* cuvintele foarte lungi (ex. titluri fără spații, linkuri) nu mai lățesc pagina pe mobil */
         h1, h2, h3, h4, h5, h6 { overflow-wrap: anywhere; }
