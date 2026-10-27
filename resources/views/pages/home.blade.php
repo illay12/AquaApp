@@ -101,7 +101,7 @@
                 <div class="dl-status__state">
                     <span class="dl-status__dot"></span>
                     <div>
-                        <span class="dl-eyebrow">Rețeaua acum</span>
+                        <span class="dl-eyebrow">Rețeaua de apă acum</span>
                         <strong>{{ $areAvarii ? 'Lucrări în desfășurare' : 'Totul funcționează normal' }}</strong>
                     </div>
                 </div>
@@ -324,7 +324,7 @@
         @keyframes dlPulse { 0% { box-shadow: 0 0 0 0 rgba(239,68,68,.5); } 100% { box-shadow: 0 0 0 12px rgba(239,68,68,0); } }
         .dl-status { scroll-margin-top: 96px; } /* sub headerul fix */
 
-        /* Etichetă avarie în colțul pozei → duce la „Rețeaua acum” */
+        /* Etichetă avarie în colțul pozei → duce la „Rețeaua de apă acum” */
         .dl-hero__top { position: absolute; top: 1.5rem; left: 0; right: 0; z-index: 2; }
         .dl-alert-pill {
             display: inline-flex; align-items: center; gap: .55rem; min-height: 40px; padding: .4rem 1rem .4rem .85rem;
