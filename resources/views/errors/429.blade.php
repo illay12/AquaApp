@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --p:#0077b6; --dk:#023e8a; --ac:#00b4d8; --bg:#f0f8ff; --bd:#caf0f8; }
+        :root { --p:#0077b6; --dk:#06395f; --ac:#00b4d8; --bg:#f0f8ff; --bd:#caf0f8; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100%; overflow: hidden; }
         body {
@@ -92,7 +92,7 @@
         .btn-home {
             display: inline-flex; align-items: center; gap: .45rem;
             background: var(--p); color: #fff; font-weight: 800; font-size: .9rem;
-            padding: .65rem 1.75rem; border-radius: 9px; text-decoration: none;
+            padding: .7rem 1.75rem; border-radius: 999px; text-decoration: none;
             box-shadow: 0 4px 14px rgba(0,119,182,.3);
             transition: background .2s, transform .15s;
         }

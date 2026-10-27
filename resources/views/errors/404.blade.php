@@ -10,7 +10,7 @@
     <style>
         :root {
             --p:  #0077b6;
-            --dk: #023e8a;
+            --dk: #06395f;
             --ac: #00b4d8;
             --bg: #f0f8ff;
             --bd: #caf0f8;
@@ -104,7 +104,7 @@
             font-family: 'Merriweather', serif;
             font-size: clamp(5.5rem, 11vw, 8.5rem);
             font-weight: 700; line-height: 1; letter-spacing: -.04em;
-            background: linear-gradient(135deg, #023e8a 0%, #0077b6 55%, #00b4d8 100%);
+            background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -137,7 +137,7 @@
             display: inline-flex; align-items: center; gap: .45rem;
             background: var(--p); color: #fff !important;
             font-weight: 800; font-size: .92rem;
-            padding: .65rem 1.75rem; border-radius: 9px;
+            padding: .7rem 1.75rem; border-radius: 999px;
             text-decoration: none;
             box-shadow: 0 4px 14px rgba(0,119,182,.3);
             transition: background .2s, transform .15s, box-shadow .2s;
@@ -160,9 +160,9 @@
         }
         .link-card {
             display: flex; align-items: center; gap: .6rem;
-            background: #fff; border: 1.5px solid var(--bd); border-radius: 11px;
+            background: #fff; border: 1.5px solid var(--bd); border-radius: 16px;
             padding: .65rem .9rem; text-decoration: none; color: #1a1a2e;
-            font-weight: 700; font-size: .82rem;
+            font-weight: 700; font-size: .95rem; min-height: 52px;
             transition: all .2s; box-shadow: 0 1px 4px rgba(0,119,182,.05);
             position: relative;
         }

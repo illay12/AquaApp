@@ -56,7 +56,7 @@
                     Stații de epurare în operare
                 </h4>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" style="font-size:0.875rem;">
+                    <table class="table table-bordered table-hover table-stack" style="font-size:0.875rem;">
                         <thead style="background:var(--aqua-primary);color:#fff;">
                             <tr>
                                 <th>Stație epurare</th>

@@ -1,18 +1,17 @@
 @if ($paginator->hasPages())
 <nav>
-    <ul class="pagination pagination-sm justify-content-center mb-0" style="gap:0.25rem;">
+    <ul class="pagination justify-content-center flex-wrap mb-0" style="gap:0.35rem;">
 
         {{-- Buton Previous --}}
         @if ($paginator->onFirstPage())
             <li class="page-item disabled">
-                <span class="page-link" style="border-radius:8px;border-color:#e2e8f0;color:#94a3b8;">
+                <span class="page-link">
                     <i class="bi bi-chevron-left"></i>
                 </span>
             </li>
         @else
             <li class="page-item">
-                <a class="page-link" href="{{ $paginator->previousPageUrl() }}"
-                   style="border-radius:8px;border-color:#caf0f8;color:var(--aqua-primary);">
+                <a class="page-link" href="{{ $paginator->previousPageUrl() }}">
                     <i class="bi bi-chevron-left"></i>
                 </a>
             </li>
@@ -22,7 +21,7 @@
         @foreach ($elements as $element)
             @if (is_string($element))
                 <li class="page-item disabled">
-                    <span class="page-link" style="border-radius:8px;border-color:#e2e8f0;">{{ $element }}</span>
+                    <span class="page-link">{{ $element }}</span>
                 </li>
             @endif
 
@@ -30,15 +29,13 @@
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
                         <li class="page-item active">
-                            <span class="page-link"
-                                  style="border-radius:8px;background:var(--aqua-primary);border-color:var(--aqua-primary);">
+                            <span class="page-link">
                                 {{ $page }}
                             </span>
                         </li>
                     @else
                         <li class="page-item">
-                            <a class="page-link" href="{{ $url }}"
-                               style="border-radius:8px;border-color:#caf0f8;color:var(--aqua-primary);">
+                            <a class="page-link" href="{{ $url }}">
                                 {{ $page }}
                             </a>
                         </li>
@@ -50,14 +47,13 @@
         {{-- Buton Next --}}
         @if ($paginator->hasMorePages())
             <li class="page-item">
-                <a class="page-link" href="{{ $paginator->nextPageUrl() }}"
-                   style="border-radius:8px;border-color:#caf0f8;color:var(--aqua-primary);">
+                <a class="page-link" href="{{ $paginator->nextPageUrl() }}">
                     <i class="bi bi-chevron-right"></i>
                 </a>
             </li>
         @else
             <li class="page-item disabled">
-                <span class="page-link" style="border-radius:8px;border-color:#e2e8f0;color:#94a3b8;">
+                <span class="page-link">
                     <i class="bi bi-chevron-right"></i>
                 </span>
             </li>

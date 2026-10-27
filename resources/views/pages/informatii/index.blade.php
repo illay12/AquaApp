@@ -98,7 +98,7 @@
                     'icon'  => 'bi-journal-text',
                     'titlu' => 'Legislație',
                     'desc'  => 'Acte normative, regulamente și documente legislative relevante pentru serviciile de apă și canal.',
-                    'color' => '#023e8a',
+                    'color' => '#06395f',
                 ],
                 [
                     'url'   => '/informatii/formulare',
@@ -140,7 +140,7 @@
                     'icon'  => 'bi-clock',
                     'titlu' => 'Program casierii',
                     'desc'  => 'Orarul și locațiile casieriilor AquaServ din județul Tulcea unde puteți achita facturile.',
-                    'color' => '#023e8a',
+                    'color' => '#06395f',
                 ],
             ] as $item)
             <div class="col-12 col-md-6 col-lg-4">

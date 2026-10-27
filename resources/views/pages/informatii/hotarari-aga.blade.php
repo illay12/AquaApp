@@ -19,18 +19,18 @@
     .aga-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
     .aga-tab {
         padding: 0.6rem 1.4rem;
-        border-radius: 8px;
+        border-radius: 999px;
         font-size: 0.875rem; font-weight: 700;
         cursor: pointer; border: 2px solid transparent;
         text-decoration: none; transition: all 0.18s;
         display: inline-flex; align-items: center; gap: 6px;
     }
-    .aga-tab.active { background: var(--aqua-primary); color: #fff; border-color: var(--aqua-primary); }
-    .aga-tab:not(.active) { background: #f0f8ff; color: var(--aqua-primary); border-color: #cce5f5; }
-    .aga-tab:not(.active):hover { background: #ddeeff; border-color: var(--aqua-primary); }
+    .aga-tab.active { background: var(--site-ink); color: #fff; border-color: var(--site-ink); }
+    .aga-tab:not(.active) { background: #f1f6fa; color: var(--site-ink); border-color: transparent; }
+    .aga-tab:not(.active):hover { background: #e6f0f7; }
 
     /* ── Accordion an ── */
-    .year-accordion { border: 1.5px solid #e2e8f0; border-radius: 12px; overflow: hidden; margin-bottom: 0.75rem; }
+    .year-accordion { border: 1px solid var(--site-line); border-radius: 16px; overflow: hidden; margin-bottom: 0.75rem; }
     .year-header {
         display: flex; align-items: center; justify-content: space-between;
         padding: 0.9rem 1.25rem;
@@ -38,10 +38,10 @@
         transition: background 0.16s;
         user-select: none;
     }
-    .year-header:hover { background: #eef4fb; }
-    .year-header.open { background: var(--aqua-primary); color: #fff; }
-    .year-header.open .year-badge { background: rgba(255,255,255,0.2); color: #fff; }
-    .year-header.open .year-chevron { color: #fff; transform: rotate(180deg); }
+    .year-header:hover { background: #f1f8fc; }
+    .year-header.open { background: #f1f8fc; color: var(--site-ink); }
+    .year-header.open .year-badge { background: #fff; color: var(--aqua-primary); }
+    .year-header.open .year-chevron { color: var(--aqua-primary); transform: rotate(180deg); }
     .year-label { font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; }
     .year-badge {
         font-size: 0.7rem; font-weight: 700;
@@ -122,12 +122,12 @@
                         <div class="year-header {{ $loop->first ? 'open' : '' }}"
 >
                             <div class="year-label">
-                                <i class="bi bi-calendar3" style="color:{{ $loop->first ? '#fff' : 'var(--aqua-primary)' }};"></i>
+                                <i class="bi bi-calendar3" style="color:var(--aqua-primary);"></i>
                                 {{ $an }}
-                                <span class="year-badge">{{ count($fisiere) }} documente</span>
+                                <span class="year-badge">{{ count($fisiere) }} {{ count($fisiere) == 1 ? 'document' : 'documente' }}</span>
                             </div>
                             <i class="bi bi-chevron-down year-chevron"
-                               style="{{ $loop->first ? 'transform:rotate(180deg);color:#fff;' : '' }}"></i>
+                               style="{{ $loop->first ? 'transform:rotate(180deg);color:var(--aqua-primary);' : '' }}"></i>
                         </div>
                         <div class="year-body {{ $loop->first ? 'open' : '' }}">
                             @foreach($fisiere as $fisier)
@@ -152,12 +152,12 @@
                         <div class="year-header {{ $loop->first ? 'open' : '' }}"
 >
                             <div class="year-label">
-                                <i class="bi bi-calendar3" style="color:{{ $loop->first ? '#fff' : 'var(--aqua-primary)' }};"></i>
+                                <i class="bi bi-calendar3" style="color:var(--aqua-primary);"></i>
                                 {{ $an }}
-                                <span class="year-badge">{{ count($fisiere) }} documente</span>
+                                <span class="year-badge">{{ count($fisiere) }} {{ count($fisiere) == 1 ? 'document' : 'documente' }}</span>
                             </div>
                             <i class="bi bi-chevron-down year-chevron"
-                               style="{{ $loop->first ? 'transform:rotate(180deg);color:#fff;' : '' }}"></i>
+                               style="{{ $loop->first ? 'transform:rotate(180deg);color:var(--aqua-primary);' : '' }}"></i>
                         </div>
                         <div class="year-body {{ $loop->first ? 'open' : '' }}">
                             @foreach($fisiere as $fisier)
@@ -205,8 +205,8 @@ function toggleAn(header) {
         header.classList.add('open');
         body.classList.add('open');
         chevron.style.transform = 'rotate(180deg)';
-        chevron.style.color = '#fff';
-        icon.style.color = '#fff';
+        chevron.style.color = 'var(--aqua-primary)';
+        icon.style.color = 'var(--aqua-primary)';
     }
 }
 

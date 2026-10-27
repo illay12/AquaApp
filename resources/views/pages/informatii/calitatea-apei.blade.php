@@ -41,7 +41,7 @@
 }
 .year-btn:hover { background: var(--aqua-bg); }
 .year-accordion.open .year-btn {
-    background: linear-gradient(90deg, #023e8a, #0077b6);
+    background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
 }
 .year-badge {
     background: var(--aqua-primary);

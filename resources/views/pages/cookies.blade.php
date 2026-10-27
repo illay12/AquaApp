@@ -2,45 +2,18 @@
 
 @section('title', 'Politică Cookies')
 
+@section('page_hero')
+    <h1>Politică de utilizare a cookie-urilor</h1>
+    <p class="mb-3" style="max-width:600px;font-size:1rem;line-height:1.6;">Informații despre ce sunt cookie-urile, cum le folosim pe site-ul S.C. AQUASERV S.A. și cum le puteți controla.</p>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Acasă</a></li>
+            <li class="breadcrumb-item active">Cookies</li>
+        </ol>
+    </nav>
+@endsection
+
 @section('content')
-
-    {{-- HERO --}}
-    <section style="background:linear-gradient(135deg, #023e8a 0%, #0077b6 60%, #00b4d8 100%); color:#fff; padding:2rem 0 1.5rem; position:relative; overflow:hidden;">
-        <div style="position:absolute;inset:0;background:url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'40\' cy=\'40\' r=\'8\'/%3E%3C/g%3E%3C/svg%3E');"></div>
-        <div class="container position-relative">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <span class="badge" style="background:rgba(255,255,255,0.18);color:#fff;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;padding:0.45em 1em;border-radius:20px;margin-bottom:0.6rem;display:inline-block;">
-                        <i class="bi bi-cookie me-1"></i> Directiva UE 2009/136/CE
-                    </span>
-                    <h1 style="font-family:'Merriweather',serif;font-size:clamp(1.35rem,5vw,2.1rem);font-weight:700;line-height:1.3;margin-bottom:0.8rem;">
-                        Politică de utilizare
-                        <span style="color:#90e0ef;display:block;">a cookie-urilor</span>
-                    </h1>
-                    <p style="font-size:clamp(0.85rem,3vw,1rem);opacity:0.9;max-width:580px;line-height:1.6;margin-bottom:0;">
-                        Informații despre ce sunt cookie-urile, cum le folosim pe site-ul S.C. AQUASERV S.A.
-                        și cum le puteți controla.
-                    </p>
-                </div>
-                <div class="col-lg-4 d-none d-lg-flex justify-content-center">
-                    <div style="width:180px;height:180px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.2);">
-                        <i class="bi bi-cookie" style="font-size:5rem;color:rgba(255,255,255,0.7);"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- BREADCRUMB --}}
-    <div style="background:#f0f8ff;border-bottom:1px solid var(--aqua-border);padding:0.6rem 0;">
-        <div class="container">
-            <nav style="font-size:0.82rem;color:#6c757d;">
-                <a href="{{ url('/') }}" style="color:var(--aqua-primary);text-decoration:none;">Acasă</a>
-                <span class="mx-2">›</span>
-                <span>Politică Cookies</span>
-            </nav>
-        </div>
-    </div>
 
     {{-- MAIN --}}
     <section style="padding:3rem 0 5rem;">
@@ -49,7 +22,7 @@
 
         {{-- NAV LATERAL --}}
         <div class="col-lg-3 d-none d-lg-block">
-            <div class="card" style="position:sticky;top:1.5rem;border-color:var(--aqua-border);">
+            <div class="card" style="position:sticky;top:110px;border-color:var(--aqua-border);">
                 <div class="card-body p-0">
                     <div style="padding:1rem 1.25rem;background:var(--aqua-bg);border-bottom:1px solid var(--aqua-border);border-radius:12px 12px 0 0;">
                         <h6 style="font-family:'Merriweather',serif;font-size:0.82rem;font-weight:700;color:var(--aqua-dark);margin:0;">
@@ -167,7 +140,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-sm" style="font-size:0.85rem;">
+                        <table class="table table-sm table-stack" style="font-size:0.85rem;">
                             <thead style="background:var(--aqua-bg);">
                                 <tr>
                                     <th style="color:var(--aqua-dark);font-weight:700;border-color:var(--aqua-border);">Nume cookie</th>
@@ -266,7 +239,7 @@
 
             {{-- 7. CONTACT --}}
             <div class="card" id="contact">
-                <div class="card-body" style="background:linear-gradient(90deg,#023e8a,#0077b6);border-radius:12px;padding:1.75rem;">
+                <div class="card-body" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);border-radius:12px;padding:1.75rem;">
                     <div class="row align-items-center g-3">
                         <div class="col-auto">
                             <div style="width:56px;height:56px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.3);">
@@ -317,9 +290,6 @@
     .ck-browser-btn i { font-size:1.5rem; }
     @media (max-width: 575px) {
         .ck-card-head { flex-wrap:wrap; }
-        .table-responsive { font-size:0.78rem; }
-        .table-responsive thead th:last-child,
-        .table-responsive tbody td:last-child { display:none; }
     }
 </style>
 @endpush

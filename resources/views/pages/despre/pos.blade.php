@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="h-100 d-flex flex-column justify-content-center" style="background:linear-gradient(135deg,#023e8a,#0077b6,#00b4d8);border-radius:16px;padding:2rem;">
+                <div class="h-100 d-flex flex-column justify-content-center" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);border-radius:16px;padding:2rem;">
                     <div class="row g-3 text-center">
                         <div class="col-6">
                             <div style="background:rgba(255,255,255,0.12);border-radius:12px;padding:1rem 0.5rem;">
@@ -145,7 +145,7 @@
                         <h6 style="font-weight:800;color:var(--aqua-dark);margin-bottom:0.5rem;">Acoperire teritorială</h6>
                         <p style="font-size:0.85rem;color:#374151;line-height:1.7;margin:0;">
                             Proiectul este prima etapă din Master Planul județului Tulcea. Lucrările sunt localizate în aglomerările
-                            urbane Tulcea, Sulina, Isaccea și Mãcin, cu o populație de aproximativ <strong>106.000 locuitori</strong>.
+                            urbane Tulcea, Sulina, Isaccea și Măcin, cu o populație de aproximativ <strong>106.000 locuitori</strong>.
                         </p>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
         <div class="row g-4 mb-5">
             <div class="col-lg-5">
                 <div class="h-100" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                    <div class="px-4 py-3" style="background:linear-gradient(90deg,#023e8a,#0077b6);">
+                    <div class="px-4 py-3" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">
                         <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                             <i class="bi bi-bullseye me-2"></i>Obiectivele proiectului
                         </h5>
@@ -238,7 +238,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="h-100" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                    <div class="px-4 py-3" style="background:linear-gradient(90deg,#0077b6,#00b4d8);">
+                    <div class="px-4 py-3" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">
                         <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                             <i class="bi bi-grid me-2"></i>Componentele proiectului
                         </h5>
@@ -249,7 +249,7 @@
                                 ['loc'=>'Aglomerarea Tulcea',  'icon'=>'bi-geo-alt-fill', 'desc'=>'Extinderea și reabilitarea sistemelor de alimentare cu apă și canalizare, a stației de tratare și construcția unei stații de epurare pentru 100.000 l.e.'],
                                 ['loc'=>'Aglomerarea Sulina',  'icon'=>'bi-geo-alt-fill', 'desc'=>'Extinderea și reabilitarea sistemelor de alimentare cu apă și canalizare.'],
                                 ['loc'=>'Aglomerarea Isaccea', 'icon'=>'bi-geo-alt-fill', 'desc'=>'Extinderea și reabilitarea sistemelor de alimentare cu apă și canalizare și construcția unei stații de epurare pentru 5.000 l.e.'],
-                                ['loc'=>'Aglomerarea Mãcin',   'icon'=>'bi-geo-alt-fill', 'desc'=>'Extinderea și reabilitarea sistemelor de alimentare cu apă și canalizare și construcția unei stații de epurare pentru 10.000 l.e.'],
+                                ['loc'=>'Aglomerarea Măcin',   'icon'=>'bi-geo-alt-fill', 'desc'=>'Extinderea și reabilitarea sistemelor de alimentare cu apă și canalizare și construcția unei stații de epurare pentru 10.000 l.e.'],
                                 ['loc'=>'Asistență tehnică',   'icon'=>'bi-person-gear',  'desc'=>'Management de proiect și supervizarea lucrărilor pentru durabilitatea investițiilor propuse.'],
                             ]; @endphp
                             @foreach($componente as $i => $c)
@@ -292,10 +292,10 @@
                 <div class="tab-pane fade show active" id="tab-estimate">
                     <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
                         <div class="table-responsive">
-                            <table class="table table-bordered mb-0" style="font-size:0.875rem;">
+                            <table class="table table-bordered mb-0 table-stack" style="font-size:0.875rem;">
                                 <thead>
                                     <tr>
-                                        <th class="text-white fw-bold py-3 px-4" style="width:60%;background:linear-gradient(90deg,#023e8a,#0077b6);">Sursă de finanțare</th>
+                                        <th class="text-white fw-bold py-3 px-4" style="width:60%;background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">Sursă de finanțare</th>
                                         <th class="text-white fw-bold py-3 px-4 text-end" style="background:#0077b6;">Valoare (lei)</th>
                                         <th class="text-white fw-bold py-3 px-4 text-center" style="white-space:nowrap;background:#0077b6;">Pondere</th>
                                     </tr>
@@ -382,10 +382,10 @@
                     </p>
                     <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
                         <div class="table-responsive">
-                            <table class="table table-bordered mb-0" style="font-size:0.875rem;">
+                            <table class="table table-bordered mb-0 table-stack" style="font-size:0.875rem;">
                                 <thead>
                                     <tr>
-                                        <th class="text-white fw-bold py-3 px-4" style="width:60%;background:linear-gradient(90deg,#0077b6,#00b4d8);">Sursă de finanțare – Etapa I</th>
+                                        <th class="text-white fw-bold py-3 px-4" style="width:60%;background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">Sursă de finanțare – Etapa I</th>
                                         <th class="text-white fw-bold py-3 px-4 text-end" style="background:#00b4d8;">Valoare (lei)</th>
                                         <th class="text-white fw-bold py-3 px-4 text-center" style="white-space:nowrap;background:#00b4d8;">Pondere</th>
                                     </tr>
@@ -459,7 +459,7 @@
                 <p style="color:#374151;font-size:0.925rem;line-height:1.9;margin-bottom:1rem;">
                     Conform aprobării Comisiei Europene din 27.05.2008 și a Ordinului Ministerului Mediului din 25.08.2008, s-a încheiat
                     <strong>Contractul de Finanțare nr. 91802/09.10.2008</strong>, finalizat la 30.06.2016. Beneficiarul contractului este
-                    AQUASERV SA Tulcea – Operator Regional pentru aglomerările: Tulcea, Mãcin, Isaccea, Sulina.
+                    AQUASERV SA Tulcea – Operator Regional pentru aglomerările: Tulcea, Măcin, Isaccea, Sulina.
                 </p>
                 <p style="color:#374151;font-size:0.925rem;line-height:1.9;margin:0;">
                     Proiectul include investiții pentru îmbunătățirea procesului de captare, tratare și distribuție a apei potabile și pentru colectarea și
@@ -471,21 +471,21 @@
             {{-- Valori financiare --}}
             <div class="row g-3 mb-4">
                 <div class="col-md-4">
-                    <div class="text-center p-3 h-100" style="background:linear-gradient(135deg,#023e8a,#0077b6);border-radius:14px;">
+                    <div class="text-center p-3 h-100" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);border-radius:14px;">
                         <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:0.4rem;">Valoarea Totală a Proiectului</div>
                         <div style="font-size:1.2rem;font-weight:800;color:#fff;line-height:1.2;">113.786.589 Euro</div>
                         <div style="font-size:0.85rem;color:rgba(255,255,255,0.9);font-weight:600;">419.371.852 Lei, fără TVA</div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="text-center p-3 h-100" style="background:linear-gradient(135deg,#0077b6,#00b4d8);border-radius:14px;">
+                    <div class="text-center p-3 h-100" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);border-radius:14px;">
                         <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:0.4rem;">Valoarea Totală Eligibilă Etapa I</div>
                         <div style="font-size:1.2rem;font-weight:800;color:#fff;line-height:1.2;">333.494.303 lei</div>
                         <div style="font-size:0.85rem;color:rgba(255,255,255,0.9);font-weight:600;">fără TVA</div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="text-center p-3 h-100" style="background:linear-gradient(135deg,#00b4d8,#0096c7);border-radius:14px;">
+                    <div class="text-center p-3 h-100" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);border-radius:14px;">
                         <div style="font-size:0.7rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:0.4rem;">Valoare Plătită cu Actualizări</div>
                         <div style="font-size:1.2rem;font-weight:800;color:#fff;line-height:1.2;">325.990.211,72 lei</div>
                         <div style="font-size:0.85rem;color:rgba(255,255,255,0.9);font-weight:600;">fără TVA</div>
@@ -503,13 +503,13 @@
 
             {{-- Furnizare apa --}}
             <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);margin-bottom:1.5rem;">
-                <div class="px-4 py-3" style="background:linear-gradient(90deg,#023e8a,#0077b6);">
+                <div class="px-4 py-3" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">
                     <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                         <i class="bi bi-droplet-fill me-2"></i>Indicatori – furnizare apă
                     </h5>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered mb-0" style="font-size:0.82rem;">
+                    <table class="table table-bordered mb-0 table-stack" style="font-size:0.82rem;">
                         <thead>
                             <tr style="background:#e0f2fe;">
                                 <th class="px-3 py-2" style="color:var(--aqua-dark);">Indicator</th>
@@ -518,7 +518,7 @@
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Tulcea</th>
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Isaccea</th>
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Sulina</th>
-                                <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Mãcin</th>
+                                <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Măcin</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -551,13 +551,13 @@
 
             {{-- Epurare ape uzate --}}
             <div style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="px-4 py-3" style="background:linear-gradient(90deg,#0077b6,#00b4d8);">
+                <div class="px-4 py-3" style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">
                     <h5 class="mb-0 text-white fw-bold" style="font-size:0.95rem;">
                         <i class="bi bi-recycle me-2"></i>Indicatori – epurarea apei uzate
                     </h5>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered mb-0" style="font-size:0.82rem;">
+                    <table class="table table-bordered mb-0 table-stack" style="font-size:0.82rem;">
                         <thead>
                             <tr style="background:#e0f2fe;">
                                 <th class="px-3 py-2" style="color:var(--aqua-dark);">Indicator</th>
@@ -566,7 +566,7 @@
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Tulcea</th>
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Isaccea</th>
                                 <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Sulina</th>
-                                <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Mãcin</th>
+                                <th class="px-3 py-2 text-center" style="color:var(--aqua-dark);">Măcin</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -681,7 +681,7 @@
                         <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cl3"
                                 style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
                             <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL3</span>
-                            Extinderea și reabilitarea capacităților de tratare — Sulina, Mãcin și Isaccea
+                            Extinderea și reabilitarea capacităților de tratare — Sulina, Măcin și Isaccea
                         </button>
                     </h2>
                     <div id="cl3" class="accordion-collapse collapse" data-bs-parent="#accordionCL">
@@ -695,7 +695,7 @@
                             <p><strong>Notă:</strong> Contract fazat — CL3 Sulina a fost fazat și recepționat în Faza II (POIM 2014–2020).</p>
                             <div class="row g-3 mt-1">
                                 <div class="col-md-6">
-                                    <p class="fw-bold mb-1" style="color:var(--aqua-dark);">Mãcin</p>
+                                    <p class="fw-bold mb-1" style="color:var(--aqua-dark);">Măcin</p>
                                     <ul style="margin:0;padding-left:1.25rem;">
                                         <li>Front captare puțuri existente</li>
                                         <li>Stație captare apă brută + stație clorinare</li>
@@ -714,7 +714,7 @@
                                 </div>
                             </div>
                             <div class="mt-3 p-2" style="background:#d1fae5;border-radius:8px;font-size:0.8rem;color:#065f46;">
-                                <i class="bi bi-check-circle-fill me-1"></i> <strong>Finalizat (Mãcin și Isaccea)</strong> — PVRT nr. 8734/1/11.09.2017 și PVRF nr. 5556/1/24.05.2019
+                                <i class="bi bi-check-circle-fill me-1"></i> <strong>Finalizat (Măcin și Isaccea)</strong> — PVRT nr. 8734/1/11.09.2017 și PVRF nr. 5556/1/24.05.2019
                             </div>
                         </div>
                     </div>
@@ -760,7 +760,7 @@
                         <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cl5"
                                 style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
                             <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL5</span>
-                            Stații de epurare — Aglomerările Mãcin și Isaccea
+                            Stații de epurare — Aglomerările Măcin și Isaccea
                         </button>
                     </h2>
                     <div id="cl5" class="accordion-collapse collapse" data-bs-parent="#accordionCL">
@@ -771,10 +771,10 @@
                                 <div class="col-md-4"><div style="background:#e0f2fe;border-radius:10px;padding:0.75rem 1rem;"><div style="font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;">Valoare plătită cu actualizare</div><div style="font-weight:700;color:var(--aqua-primary);">8.958.950,54 lei fără TVA</div></div></div>
                             </div>
                             <p><strong>Antreprenor:</strong> SC CORAL S.R.L. Tulcea (Lider), SC ADISS S.R.L. Baia Mare, SC ESCALIA Baia Mare</p>
-                            <p><strong>Obiectiv:</strong> Construcția a două noi stații de epurare ape menajere în formă compactă, plus linie de prelucrare a nămolului, pentru Mãcin și Isaccea.</p>
+                            <p><strong>Obiectiv:</strong> Construcția a două noi stații de epurare ape menajere în formă compactă, plus linie de prelucrare a nămolului, pentru Măcin și Isaccea.</p>
                             <div class="row g-3 mt-1">
                                 <div class="col-md-6">
-                                    <p class="fw-bold mb-1" style="color:var(--aqua-dark);">Mãcin</p>
+                                    <p class="fw-bold mb-1" style="color:var(--aqua-dark);">Măcin</p>
                                     <ul style="margin:0;padding-left:1.25rem;">
                                         <li>Stație pompare apă brută</li>
                                         <li>Stație epurare: 2 linii × 6 module + 2 decantoare primare/linie (inox)</li>
@@ -975,7 +975,7 @@
                         <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cl10"
                                 style="background:#f0f8ff;color:var(--aqua-dark);font-size:0.9rem;border-radius:12px!important;">
                             <span style="background:var(--aqua-primary);color:#fff;border-radius:8px;padding:2px 10px;font-size:0.78rem;margin-right:12px;font-weight:800;">CL10</span>
-                            Reabilitarea și extinderea rețelelor de distribuție și canalizare — Mãcin și Isaccea
+                            Reabilitarea și extinderea rețelelor de distribuție și canalizare — Măcin și Isaccea
                         </button>
                     </h2>
                     <div id="cl10" class="accordion-collapse collapse" data-bs-parent="#accordionCL">

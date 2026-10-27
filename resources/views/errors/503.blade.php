@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --p:#0077b6; --dk:#023e8a; --ac:#00b4d8; --bg:#f0f8ff; --bd:#caf0f8; }
+        :root { --p:#0077b6; --dk:#06395f; --ac:#00b4d8; --bg:#f0f8ff; --bd:#caf0f8; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100%; overflow: hidden; }
         body {
@@ -59,7 +59,7 @@
         }
         .icon-wrap {
             width: 80px; height: 80px; border-radius: 50%;
-            background: linear-gradient(135deg, #023e8a, #0077b6);
+            background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 1.5rem; font-size: 2rem; color: #fff;
             animation: spin-slow 6s linear infinite;
@@ -71,7 +71,7 @@
         .code {
             font-family: 'Merriweather', serif;
             font-size: 4rem; font-weight: 700; line-height: 1;
-            background: linear-gradient(135deg, #023e8a 0%, #0077b6 55%, #00b4d8 100%);
+            background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
             margin-bottom: .5rem;
         }
@@ -86,7 +86,7 @@
         .btn-contact {
             display: inline-flex; align-items: center; gap: .45rem;
             background: var(--p); color: #fff; font-weight: 800; font-size: .9rem;
-            padding: .65rem 1.75rem; border-radius: 9px; text-decoration: none;
+            padding: .7rem 1.75rem; border-radius: 999px; text-decoration: none;
             box-shadow: 0 4px 14px rgba(0,119,182,.3);
             transition: background .2s, transform .15s;
         }

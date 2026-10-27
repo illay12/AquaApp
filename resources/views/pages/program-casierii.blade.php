@@ -14,170 +14,79 @@
 
 @push('styles')
 <style>
-/* ═══════════════════════════════════════
-   PAGE
-═══════════════════════════════════════ */
-.pc-page { background: #f7f9fc; padding: 3rem 0 5rem; }
-@media(max-width:767px) { .pc-page { padding: 1.5rem 0 3rem; } }
+/* ═════════ PROGRAM CASIERII – stil „Delta” ═════════ */
+.pc-page { background: #fff; padding: 1.75rem 0 4rem; }
+@media(max-width:767px) { .pc-page { padding: 1rem 0 3rem; } }
 
-/* ═══════════════════════════════════════
-   BANNER INFO
-═══════════════════════════════════════ */
+/* Banner plată online */
 .pc-banner {
-    background: #eef6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    font-size: 0.9rem;
-    color: #1e40af;
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;
+    padding: 1.1rem 1.25rem; margin-bottom: 1.75rem;
+    border-radius: 18px; background: #eef6fb; color: var(--site-ink);
+    font-size: .95rem; font-weight: 600; line-height: 1.5;
 }
-.pc-banner i { font-size: 1.1rem; flex-shrink: 0; }
-.pc-banner a { color: #1d4ed8; font-weight: 700; text-decoration: none; }
+.pc-banner i { font-size: 1.25rem; color: var(--aqua-primary); flex-shrink: 0; }
+.pc-banner span { flex: 1; min-width: 200px; }
+.pc-banner a {
+    display: inline-flex; align-items: center; gap: .35rem; margin-top: .35rem;
+    color: var(--aqua-primary); font-weight: 800; text-decoration: none;
+}
 .pc-banner a:hover { text-decoration: underline; }
 
-/* ═══════════════════════════════════════
-   GRID CASIERII
-═══════════════════════════════════════ */
-.pc-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
+/* Grid */
+.pc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-bottom: 2rem; }
 @media(max-width:991px) { .pc-grid { grid-template-columns: repeat(2, 1fr); } }
-@media(max-width:575px)  { .pc-grid { grid-template-columns: 1fr; } }
+@media(max-width:575px)  { .pc-grid { grid-template-columns: 1fr; gap: .8rem; } }
 
-/* ═══════════════════════════════════════
-   CARD CASIERIE
-═══════════════════════════════════════ */
-.pc-card {
-    background: #fff;
-    border: 1px solid #e4e9f0;
-    border-radius: 14px;
-    overflow: hidden;
-    transition: box-shadow .2s, transform .2s;
-}
-.pc-card:hover {
-    box-shadow: 0 8px 28px rgba(0,119,182,.1);
-    transform: translateY(-2px);
-}
-@media(max-width:575px) {
-    .pc-card:hover { transform: none; }
-    .pc-card { border-radius: 12px; }
-}
+/* Card casierie */
+.pc-card { background: #fff; border: 1px solid var(--site-line); border-radius: 20px; overflow: hidden; transition: box-shadow .25s; }
+@media(hover:hover) { .pc-card:hover { box-shadow: 0 20px 40px -26px rgba(13,34,54,.4); } }
+@media(max-width:575px) { .pc-card { border-radius: 16px; } }
 
-/* Header card */
-.pc-card-head {
-    background: linear-gradient(135deg, #023e8a, #0077b6);
-    padding: .85rem 1.1rem;
-    display: flex; align-items: center; gap: .65rem;
-}
-.pc-card-head.tulcea { background: linear-gradient(135deg, #012a6b, #0077b6); }
-.pc-card-head.isaccea { background: linear-gradient(135deg, #0077b6, #00b4d8); }
-.pc-card-head.macin   { background: linear-gradient(135deg, #0077b6, #0096c7); }
-.pc-card-head.sulina  { background: linear-gradient(135deg, #0096c7, #00b4d8); }
-.pc-card-head.babadag { background: linear-gradient(135deg, #023e8a, #0096c7); }
-
+.pc-card-head { padding: 1.15rem 1.25rem .4rem; display: flex; align-items: center; gap: .8rem; background: transparent; }
 .pc-card-ico {
-    width: 34px; height: 34px; border-radius: 9px;
-    background: rgba(255,255,255,.15);
+    width: 42px; height: 42px; border-radius: 13px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: .95rem; color: #fff; flex-shrink: 0;
+    background: #e9f3fa; color: var(--aqua-primary); font-size: 1.05rem;
 }
-.pc-card-name {
-    font-weight: 800; color: #fff; font-size: .9rem; line-height: 1.2;
-}
-.pc-card-sub {
-    font-size: .7rem; color: rgba(255,255,255,.65); margin-top: 1px;
-}
+.pc-card.featured .pc-card-ico { background: var(--site-deep); color: #fff; }
+.pc-card-name { font-family: 'Merriweather', serif; font-weight: 700; color: var(--site-ink); font-size: 1.05rem; line-height: 1.25; }
+.pc-card-sub { font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #8a9aab; margin-top: 2px; }
 
-/* Body card */
-.pc-card-body { padding: 1rem 1.1rem; }
+.pc-card-body { padding: .6rem 1.25rem 1.25rem; }
+.pc-row { display: flex; align-items: flex-start; gap: .6rem; padding: .3rem 0; font-size: .92rem; color: #4a5b6d; line-height: 1.45; }
+.pc-row i { font-size: .85rem; color: #a8b8c7; margin-top: 3px; flex-shrink: 0; }
+.pc-row a { color: var(--site-ink); text-decoration: none; font-weight: 800; overflow-wrap: break-word; min-width: 0; }
+.pc-row a:hover { color: var(--aqua-primary); }
 
-.pc-row {
-    display: flex; align-items: flex-start; gap: .5rem;
-    padding: .22rem 0; font-size: .85rem; color: #444; line-height: 1.45;
-}
-.pc-row i { font-size: .78rem; color: #bbb; margin-top: 3px; flex-shrink: 0; }
-.pc-row a { color: var(--aqua-primary); text-decoration: none; font-weight: 700; }
-.pc-row a:hover { text-decoration: underline; }
-
-/* Orar badge */
-.pc-orar {
-    margin-top: .75rem;
-    background: #f0f8ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 9px;
-    overflow: hidden;
-}
-.pc-orar-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: .5rem .8rem;
-    border-bottom: 1px solid #dbeafe;
-    font-size: .82rem;
-}
+/* Orar */
+.pc-orar { margin-top: .9rem; border-radius: 14px; background: #f6fafd; overflow: hidden; }
+.pc-orar-row { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .65rem .95rem; border-bottom: 1px solid #e8f0f6; font-size: .9rem; }
 .pc-orar-row:last-child { border-bottom: none; }
-.pc-orar-zile { color: #555; font-weight: 600; }
-.pc-orar-ore  { color: var(--aqua-primary); font-weight: 900; font-size: .88rem; }
-.pc-orar-inchis { color: #dc2626; font-weight: 800; font-size: .82rem; }
+.pc-orar-zile { color: #4a5b6d; font-weight: 600; }
+.pc-orar-ore { color: var(--site-ink); font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pc-orar-inchis { color: #c53030; font-weight: 800; font-size: .82rem; letter-spacing: .04em; }
 
-/* ═══════════════════════════════════════
-   CARD SPECIAL — Tulcea (mai mare, primul)
-═══════════════════════════════════════ */
-.pc-card.featured {
-    border-color: #bfdbfe;
-    grid-column: span 1;
-}
-@media(max-width:991px) {
-    .pc-card.featured { grid-column: span 2; }
-}
-@media(max-width:575px) {
-    .pc-card.featured { grid-column: span 1; }
-}
+.pc-card.featured { grid-column: span 1; }
+@media(max-width:991px) { .pc-card.featured { grid-column: span 2; } }
+@media(max-width:575px) { .pc-card.featured { grid-column: span 1; } }
 
-/* ═══════════════════════════════════════
-   MODALITATI PLATA
-═══════════════════════════════════════ */
-.pc-pay {
-    background: #fff;
-    border: 1px solid #e4e9f0;
-    border-radius: 14px;
-    overflow: hidden;
-}
-.pc-pay-head {
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid #f0f4f8;
-    font-weight: 800; font-size: .95rem; color: #111;
-    display: flex; align-items: center; gap: .5rem;
-}
-.pc-pay-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-}
+/* Modalități de plată */
+.pc-pay { background: #fff; border: 1px solid var(--site-line); border-radius: 20px; overflow: hidden; }
+.pc-pay-head { padding: 1.15rem 1.25rem; border-bottom: 1px solid var(--site-line); font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.1rem; color: var(--site-ink); display: flex; align-items: center; gap: .6rem; }
+.pc-pay-head i { color: var(--aqua-primary); }
+.pc-pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 @media(max-width:767px) { .pc-pay-grid { grid-template-columns: repeat(2, 1fr); } }
 @media(max-width:400px) { .pc-pay-grid { grid-template-columns: 1fr; } }
-
-.pc-pay-item {
-    display: flex; align-items: flex-start; gap: .65rem;
-    padding: 1rem 1.1rem;
-    border-right: 1px solid #f0f4f8;
-    border-bottom: 1px solid #f0f4f8;
-    font-size: .82rem; color: #444; line-height: 1.4;
-}
+.pc-pay-item { display: flex; align-items: flex-start; gap: .7rem; padding: 1.05rem 1.2rem; border-right: 1px solid var(--site-line); border-bottom: 1px solid var(--site-line); font-size: .9rem; color: #4a5b6d; line-height: 1.45; }
 .pc-pay-item:nth-child(3n) { border-right: none; }
 @media(max-width:767px) {
     .pc-pay-item:nth-child(2n) { border-right: none; }
-    .pc-pay-item:nth-child(3n) { border-right: 1px solid #f0f4f8; }
+    .pc-pay-item:nth-child(3n) { border-right: 1px solid var(--site-line); }
 }
-.pc-pay-item i {
-    font-size: 1rem; margin-top: 1px; flex-shrink: 0;
-    color: var(--aqua-primary);
-}
+@media(max-width:400px) { .pc-pay-item { border-right: none !important; } }
+.pc-pay-item i { font-size: 1.1rem; margin-top: 1px; flex-shrink: 0; color: var(--aqua-primary); }
+.pc-pay-item strong { color: var(--site-ink); }
 </style>
 @endpush
 
@@ -209,7 +118,7 @@
             <div class="pc-card-body">
                 <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Str. Tudor Vladimirescu, nr. 2</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240511369">0240.511.369</a></div>
-                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:contractare.facturare@aquaservtulcea.ro">contractare.facturare@aquaservtulcea.ro</a></div>
+                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:contractare.facturare@aquaservtulcea.ro">contractare.facturare<wbr>@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>
@@ -239,7 +148,7 @@
             <div class="pc-card-body">
                 <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Strada Mircea Vodă, Nr. 18</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><span><a href="tel:0240540302">0240.540.302</a> / <a href="tel:0754013201">0754 013 201</a></span></div>
-                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.isaccea@aquaservtulcea.ro">centru.isaccea@aquaservtulcea.ro</a></div>
+                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.isaccea@aquaservtulcea.ro">centru.isaccea<wbr>@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>
@@ -269,7 +178,7 @@
             <div class="pc-card-body">
                 <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Str. 1 Decembrie 1918, Nr. 32</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240571180">0240.571.180</a></div>
-                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.macin@aquaservtulcea.ro">centru.macin@aquaservtulcea.ro</a></div>
+                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.macin@aquaservtulcea.ro">centru.macin<wbr>@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>
@@ -299,7 +208,7 @@
             <div class="pc-card-body">
                 <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Strada I, Nr. 142</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240543147">0240.543.147</a></div>
-                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.sulina@aquaservtulcea.ro">centru.sulina@aquaservtulcea.ro</a></div>
+                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.sulina@aquaservtulcea.ro">centru.sulina<wbr>@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>
@@ -329,7 +238,7 @@
             <div class="pc-card-body">
                 <div class="pc-row"><i class="bi bi-geo-alt-fill"></i><span>Strada Republicii, Nr. 83</span></div>
                 <div class="pc-row"><i class="bi bi-telephone-fill"></i><a href="tel:0240562340">0240.562.340</a></div>
-                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.babadag@aquaservtulcea.ro">centru.babadag@aquaservtulcea.ro</a></div>
+                <div class="pc-row"><i class="bi bi-envelope-fill"></i><a href="mailto:centru.babadag@aquaservtulcea.ro">centru.babadag<wbr>@aquaservtulcea.ro</a></div>
                 <div class="pc-orar">
                     <div class="pc-orar-row">
                         <span class="pc-orar-zile">Luni – Joi</span>

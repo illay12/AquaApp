@@ -23,31 +23,26 @@
         @php [$url, $icon, $label, $external] = array_pad($item, 4, false); @endphp
         <a href="{{ $external ? $url : url($url) }}"
            @if($external) target="_blank" rel="noopener" @endif
-           class="list-group-item list-group-item-action d-flex align-items-center gap-2 {{ !$external && request()->is(ltrim($url,'/')) ? 'active' : '' }}"
-           style="{{ !$external && request()->is(ltrim($url,'/')) ? 'background:var(--aqua-primary);border-color:var(--aqua-primary);color:#fff;' : '' }}">
+           class="list-group-item list-group-item-action d-flex align-items-center gap-2 {{ !$external && request()->is(ltrim($url,'/')) ? 'active' : '' }}">
             <i class="bi {{ $icon }}"></i> {{ $label }}
         </a>
         @endforeach
     </div>
 </div>
 
-<div class="card mb-4" style="border-color:#f8d7da;">
-    <div class="card-body" style="background:#fff5f5;border-radius:12px;text-align:center;">
-        <p class="fw-bold mb-1" style="color:#dc3545;font-size:0.9rem;">
-            <i class="bi bi-telephone-fill me-1"></i> Dispecerat avarii 24/7
-        </p>
-        <p style="font-size:1.7rem;font-weight:800;color:#dc3545;margin:0;">0747 022 009</p>
-    </div>
-</div>
+<a href="tel:0747022009" class="side-call mb-4">
+    <span class="side-call__icon"><i class="bi bi-telephone-fill"></i></span>
+    <span><small>Dispecerat avarii 24/7</small><strong>0747 022 009</strong></span>
+</a>
 
 <div class="card">
     <div class="card-header"><i class="bi bi-link-45deg me-2"></i> Link-uri utile</div>
     <div class="list-group list-group-flush">
-        <a href="https://www.anrsc.ro" target="_blank" class="list-group-item list-group-item-action" style="font-size:0.875rem;">
-            <i class="bi bi-box-arrow-up-right text-aqua me-2"></i> A.N.R.S.C.
+        <a href="https://www.anrsc.ro" target="_blank" class="list-group-item list-group-item-action">
+            <i class="bi bi-box-arrow-up-right me-2"></i> A.N.R.S.C.
         </a>
-        <a href="{{ url('/gdpr') }}" class="list-group-item list-group-item-action" style="font-size:0.875rem;">
-            <i class="bi bi-shield-lock text-aqua me-2"></i> Politică GDPR
+        <a href="{{ url('/gdpr') }}" class="list-group-item list-group-item-action">
+            <i class="bi bi-shield-lock me-2"></i> Politică GDPR
         </a>
     </div>
 </div>

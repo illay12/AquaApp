@@ -13,6 +13,27 @@
     </nav>
 @endsection
 
+@push('styles')
+<style>
+    /* Carduri de tarife pe mobil (înlocuiesc tabelele cu 5–7 coloane) */
+    .tf-mcards { display: grid; grid-template-columns: minmax(0, 1fr); gap: .7rem; }
+    .tf-mcard { min-width: 0; border: 1px solid var(--site-line); border-radius: 16px; padding: .95rem 1rem 1rem; background: #fff; }
+    .tf-mcard__head { display: flex; align-items: flex-start; gap: .6rem; margin-bottom: .75rem; }
+    .tf-mcard__nr { flex-shrink: 0; min-width: 26px; height: 26px; padding: 0 .4rem; border-radius: 999px; background: #eef5fa; color: #5f7184; font-size: .75rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+    .tf-mcard__name { flex: 1; min-width: 0; font-weight: 800; font-size: .95rem; line-height: 1.35; color: var(--site-ink); }
+    .tf-mcard__um { flex-shrink: 0; max-width: 38%; text-align: right; font-size: .75rem; font-weight: 700; color: #8a9aab; margin-top: 2px; overflow-wrap: anywhere; }
+    .tf-mcard__sub { font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #8a9aab; margin: .8rem 0 .45rem; }
+    .tf-mcard__sub:first-of-type { margin-top: 0; }
+    .tf-mcard__prices { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 0; border-radius: 12px; overflow: hidden; background: var(--site-line); }
+    .tf-mcard__prices > div { background: #f8fbfd; padding: .55rem .7rem; min-width: 0; }
+    .tf-mcard__prices dt { font-size: .74rem; font-weight: 700; color: #8a9aab; text-transform: uppercase; letter-spacing: .03em; line-height: 1.3; overflow-wrap: anywhere; }
+    .tf-mcard__prices dd { margin: 0; font-weight: 700; font-size: .95rem; color: var(--site-ink); font-variant-numeric: tabular-nums; }
+    .tf-mcard__prices dd small { font-size: .7rem; color: #8a9aab; font-weight: 700; }
+    .tf-mcard__prices .is-main dd { color: var(--aqua-primary); font-weight: 800; }
+    .tf-mcard__prices .is-urg dd { color: #c53030; font-weight: 800; }
+</style>
+@endpush
+
 @section('content')
 <section style="padding:3.5rem 0;">
     <div class="container">
@@ -78,7 +99,7 @@
                     <i class="bi bi-droplet-fill text-aqua me-2"></i> Prețuri servicii apă și canalizare
                 </h4>
                 <div class="table-responsive mb-4">
-                    <table class="table table-bordered" style="font-size:0.9rem;">
+                    <table class="table table-bordered table-stack" style="font-size:0.9rem;">
                         <thead style="background:var(--aqua-primary);color:#fff;">
                             <tr>
                                 <th style="width:50%;">Servicii furnizate / prestate</th>
@@ -187,34 +208,23 @@
                     </table>
                 </div>
 
-                {{-- Mobile table --}}
-                <div class="table-responsive d-block d-md-none">
-                    <table class="table table-bordered" style="font-size:0.82rem;">
-                        <thead style="background:var(--aqua-primary);color:#fff;">
-                            <tr>
-                                <th style="width:5%;">Nr.</th>
-                                <th>Denumire</th>
-                                <th class="text-center">U/M</th>
-                                <th class="text-center">Fără TVA (lei)</th>
-                                <th class="text-center">Cu TVA (lei)</th>
-                                <th class="text-center">Urg. 20% fără TVA (lei)</th>
-                                <th class="text-center">Urg. 20% cu TVA (lei)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($tarife_avize as [$nr, $denumire, $um, $faraTV, $cuTV, $urgFara, $urgCu])
-                            <tr>
-                                <td class="text-center">{{ $nr }}</td>
-                                <td>{{ $denumire }}</td>
-                                <td class="text-center" style="white-space:nowrap;">{{ $um }}</td>
-                                <td class="text-center">{{ $faraTV }}</td>
-                                <td class="text-center fw-bold" style="color:var(--aqua-primary);">{{ $cuTV }}</td>
-                                <td class="text-center">{{ $urgFara }}</td>
-                                <td class="text-center fw-bold" style="color:#dc3545;">{{ $urgCu }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                {{-- Mobil: carduri în loc de tabel (7 coloane nu încap pe telefon) --}}
+                <div class="tf-mcards d-md-none">
+                    @foreach($tarife_avize as [$nr, $denumire, $um, $faraTV, $cuTV, $urgFara, $urgCu])
+                    <div class="tf-mcard">
+                        <div class="tf-mcard__head">
+                            <span class="tf-mcard__nr">{{ $nr }}</span>
+                            <span class="tf-mcard__name">{{ $denumire }}</span>
+                            <span class="tf-mcard__um">{{ $um }}</span>
+                        </div>
+                        <dl class="tf-mcard__prices">
+                            <div><dt>Fără TVA</dt><dd>{{ $faraTV }}</dd></div>
+                            <div class="is-main"><dt>Cu TVA</dt><dd>{{ $cuTV }} <small>lei</small></dd></div>
+                            <div><dt>Urgență fără TVA</dt><dd>{{ $urgFara }}</dd></div>
+                            <div class="is-urg"><dt>Urgență cu TVA</dt><dd>{{ $urgCu }} <small>lei</small></dd></div>
+                        </dl>
+                    </div>
+                    @endforeach
                 </div>
 
                 <div class="mt-3 p-3" style="background:#f8f9fa;border-radius:8px;font-size:0.82rem;color:#374151;">
@@ -561,36 +571,24 @@
                     ]],
                 ];
                 @endphp
-                <div class="table-responsive d-block d-md-none">
-                    <table class="table table-bordered" style="font-size:0.82rem;">
-                        <thead style="background:var(--aqua-primary);color:#fff;">
-                            <tr>
-                                <th>Denumire / U/M</th>
-                                <th class="text-center">Fără TVA (lei)</th>
-                                <th class="text-center">Cu TVA (lei)</th>
-                                <th class="text-center">Urg. 20% fără TVA (lei)</th>
-                                <th class="text-center">Urg. 20% cu TVA (lei)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($utilaje_mob as [$nr, $den, $randuri])
-                            <tr style="background:var(--aqua-bg);">
-                                <td colspan="5" class="fw-bold" style="color:var(--aqua-dark);font-size:0.8rem;">
-                                    {{ $nr }}. {{ $den }}
-                                </td>
-                            </tr>
-                            @foreach($randuri as [$um, $f, $c, $uf, $uc])
-                            <tr>
-                                <td class="ps-3" style="color:#64748b;">{{ $um }}</td>
-                                <td class="text-center">{{ $f }}</td>
-                                <td class="text-center fw-bold" style="color:var(--aqua-primary);">{{ $c }}</td>
-                                <td class="text-center">{{ $uf }}</td>
-                                <td class="text-center fw-bold" style="color:#dc3545;">{{ $uc }}</td>
-                            </tr>
-                            @endforeach
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="tf-mcards d-md-none">
+                    @foreach($utilaje_mob as [$nr, $den, $randuri])
+                    <div class="tf-mcard">
+                        <div class="tf-mcard__head">
+                            <span class="tf-mcard__nr">{{ $nr }}</span>
+                            <span class="tf-mcard__name">{{ $den }}</span>
+                        </div>
+                        @foreach($randuri as [$um, $f, $c, $uf, $uc])
+                        <div class="tf-mcard__sub">{{ $um }}</div>
+                        <dl class="tf-mcard__prices">
+                            <div><dt>Fără TVA</dt><dd>{{ $f }}</dd></div>
+                            <div class="is-main"><dt>Cu TVA</dt><dd>{{ $c }} <small>lei</small></dd></div>
+                            <div><dt>Urgență fără TVA</dt><dd>{{ $uf }}</dd></div>
+                            <div class="is-urg"><dt>Urgență cu TVA</dt><dd>{{ $uc }} <small>lei</small></dd></div>
+                        </dl>
+                        @endforeach
+                    </div>
+                    @endforeach
                 </div>
 
                 <div class="mt-3 p-3" style="background:#f8f9fa;border-radius:8px;font-size:0.82rem;color:#374151;">
@@ -632,9 +630,8 @@
                 <div class="card mb-4">
                     <div class="card-header"><i class="bi bi-grid me-2"></i> Facturare</div>
                     <div class="list-group list-group-flush">
-                        <a href="{{ url('/facturare/tarife-si-taxe') }}"
-                           class="list-group-item list-group-item-action d-flex align-items-center gap-2 active"
-                           style="background:var(--aqua-primary);border-color:var(--aqua-primary);">
+                        <a href="{{ url('/informatii/tarife') }}"
+                           class="list-group-item list-group-item-action d-flex align-items-center gap-2 active">
                             <i class="bi bi-cash-coin"></i> Tarife și taxe
                         </a>
                         <a href="{{ url('https://my.aquaservtulcea.ro/login') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
@@ -649,14 +646,10 @@
                     </div>
                 </div>
 
-                <div class="card mb-4" style="border-color:#f8d7da;">
-                    <div class="card-body text-center" style="background:#fff5f5;border-radius:12px;">
-                        <p class="fw-bold mb-1" style="color:#dc3545;font-size:0.9rem;">
-                            <i class="bi bi-telephone-fill me-1"></i> Dispecerat avarii 24/7
-                        </p>
-                        <p style="font-size:1.7rem;font-weight:800;color:#dc3545;margin:0;">0747 022 009</p>
-                    </div>
-                </div>
+                <a href="tel:0747022009" class="side-call mb-4">
+                    <span class="side-call__icon"><i class="bi bi-telephone-fill"></i></span>
+                    <span><small>Dispecerat avarii 24/7</small><strong>0747 022 009</strong></span>
+                </a>
             </div>
 
         </div>

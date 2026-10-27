@@ -11,6 +11,12 @@ class HomeController extends Controller
     {
         $anunturi = Anunt::latest()->take(6)->get();
 
-        return view('pages.home', compact('anunturi'));
+        // Bara de stare (mobil): avariile anunțate în ultimele 48h
+        $avariiRecente = Anunt::categorie('avarie')
+            ->where('created_at', '>=', now()->subHours(48))
+            ->latest()
+            ->get(['id', 'titlu', 'slug', 'created_at']);
+
+        return view('pages.home', compact('anunturi', 'avariiRecente'));
     }
 }

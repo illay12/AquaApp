@@ -14,8 +14,15 @@
     </nav>
 @endsection
 
+@push('styles')
+<style>
+    /* Pe telefon tabelul gol nu are loc — ascundem capul de tabel, rămâne mesajul */
+    @media (max-width: 767.98px) { .avere-thead { display: none; } }
+</style>
+@endpush
+
 @section('content')
-<div class="container py-5">
+<div class="container py-4 py-md-5">
 
     <div class="row mb-4">
         <div class="col-12">
@@ -35,7 +42,7 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0" style="font-size:0.9rem;">
-                    <thead style="background:var(--aqua-bg);">
+                    <thead class="avere-thead">
                         <tr>
                             <th class="px-4 py-3" style="width:40px;">#</th>
                             <th class="px-4 py-3">Nume și prenume</th>

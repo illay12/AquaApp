@@ -83,7 +83,7 @@
                         </div>
 
                         <button id="btnIdentifica" class="btn btn-aqua w-100"
-                                style="padding:0.875rem;font-size:1rem;font-weight:700;border-radius:10px;min-height:52px;">
+                                style="padding:0.875rem;font-size:1rem;font-weight:700;min-height:52px;">
                             <span id="btnText"><i class="bi bi-search me-2"></i>Verifică datele</span>
                             <span id="btnSpinner" style="display:none;"><span class="spinner-border spinner-border-sm me-2"></span>Se verifică...</span>
                         </button>
@@ -125,21 +125,22 @@
                                 <h5 class="mb-0 fw-bold" style="color:var(--aqua-dark);font-size:0.95rem;">Introducere index</h5>
                             </div>
 
-                            <div id="rezumatContor" class="p-3 mb-3"
-                                 style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;font-size:0.82rem;"></div>
+                            <div class="ic-loc">
+                                <i class="bi bi-geo-alt"></i>
+                                <div><strong id="rezumatSerie"></strong><span id="rezumatAdresa"></span></div>
+                            </div>
 
                             <div class="mb-3">
-                                <label class="form-label fw-bold mb-1" style="font-size:0.82rem;">Index nou <span class="text-danger">*</span></label>
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text" style="background:#f0f8ff;border-color:#caf0f8;">
-                                        <i class="bi bi-123" style="color:var(--aqua-primary);font-size:1.2rem;"></i>
-                                    </span>
-                                    <input type="number" id="inputIndexNou" class="form-control"
-                                           placeholder="" step="1" min="0" inputmode="numeric"
-                                           style="border-color:#caf0f8;font-weight:800;font-size:1.75rem;text-align:center;">
-                                    <span class="input-group-text" style="background:#f0f8ff;border-color:#caf0f8;color:#6c757d;font-weight:700;font-size:0.9rem;">m³</span>
+                                <div class="ic-label">
+                                    <label for="inputIndexNou">Index nou <span class="text-danger">*</span></label>
+                                    <span>Anterior: <strong id="rezumatContor"></strong></span>
                                 </div>
-                                <div id="consumEstimat" style="display:none;margin-top:0.5rem;font-size:0.85rem;color:#059669;text-align:center;font-weight:600;">
+                                <div class="ic-index">
+                                    <input type="number" id="inputIndexNou"
+                                           placeholder="0" step="1" min="0" inputmode="numeric" aria-describedby="consumEstimat">
+                                    <span class="ic-index__um">m³</span>
+                                </div>
+                                <div id="consumEstimat" style="display:none;margin-top:0.6rem;font-size:0.9rem;color:#059669;text-align:center;font-weight:700;">
                                     <i class="bi bi-graph-up me-1"></i>Consum estimat: <strong id="valConsum"></strong> m³
                                 </div>
                             </div>
@@ -149,12 +150,11 @@
                             </div>
 
                             <div class="d-flex gap-2">
-                                <button type="button" id="btnRevin" class="btn btn-outline-secondary"
-                                        style="border-radius:10px;padding:0.75rem 1.1rem;font-size:1rem;">
+                                <button type="button" id="btnRevin" class="ic-back" aria-label="Înapoi la contoare">
                                     <i class="bi bi-arrow-left"></i>
                                 </button>
                                 <button id="btnTrimite" class="btn btn-aqua flex-fill"
-                                        style="padding:0.875rem;font-size:1rem;font-weight:700;border-radius:10px;min-height:52px;">
+                                        style="padding:0.875rem;font-size:1rem;font-weight:700;min-height:52px;">
                                     <span id="btnTrimiteText"><i class="bi bi-send-fill me-2"></i>Transmite indexul</span>
                                     <span id="btnTrimiteSpinner" style="display:none;"><span class="spinner-border spinner-border-sm me-2"></span>Se trimite...</span>
                                 </button>
@@ -172,8 +172,8 @@
                              style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;">
                             <i class="bi bi-calendar-check" style="color:var(--aqua-primary);font-size:1.1rem;flex-shrink:0;"></i>
                             <div>
-                                <div style="font-weight:700;font-size:0.75rem;color:var(--aqua-dark);">Perioadă</div>
-                                <div style="font-size:0.72rem;color:#6c757d;">10–20 ale lunii</div>
+                                <div style="font-weight:800;font-size:0.9rem;color:var(--site-ink);">Perioadă</div>
+                                <div style="font-size:0.88rem;color:#5f7184;">10–20 ale lunii</div>
                             </div>
                         </div>
                     </div>
@@ -182,8 +182,8 @@
                              style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;">
                             <i class="bi bi-telephone" style="color:var(--aqua-primary);font-size:1.1rem;flex-shrink:0;"></i>
                             <div>
-                                <div style="font-weight:700;font-size:0.75rem;color:var(--aqua-dark);">Relații clienți</div>
-                                <div style="font-size:0.72rem;color:#6c757d;">0240 511 369</div>
+                                <div style="font-weight:800;font-size:0.9rem;color:var(--site-ink);">Relații clienți</div>
+                                <a href="tel:0240511369" style="display:block;font-size:0.88rem;color:#5f7184;text-decoration:none;white-space:nowrap;">0240 511 369</a>
                             </div>
                         </div>
                     </div>
@@ -206,6 +206,37 @@
 </div>
 
 @endsection
+
+@push('styles')
+<style>
+    /* Pasul 3 – contorul ales + câmpul de index */
+    .ic-loc { display: flex; gap: .6rem; align-items: flex-start; padding: .8rem 1rem; margin-bottom: 1rem; border-radius: 14px; background: #f5f9fc; font-size: .92rem; line-height: 1.4; color: var(--site-ink); }
+    .ic-loc > i { color: var(--aqua-primary); margin-top: .1rem; }
+    .ic-loc strong { display: block; font-size: .78rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--aqua-gray); }
+    .ic-label { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .45rem; }
+    .ic-label label { font-size: .9rem; font-weight: 800; color: var(--site-ink); margin: 0; }
+    .ic-label span { font-size: .85rem; color: var(--aqua-gray); }
+    .ic-label strong { color: var(--site-ink); }
+    .ic-index {
+        display: flex; align-items: center; border: 2px solid var(--site-line); border-radius: 16px; background: #fff;
+        transition: border-color .2s, box-shadow .2s;
+    }
+    .ic-index:focus-within { border-color: var(--aqua-primary); box-shadow: 0 0 0 4px rgba(0,119,182,.12); }
+    .ic-index input {
+        flex: 1; min-width: 0; height: 68px; padding: 0 0 0 3.25rem; border: 0; outline: 0; background: transparent;
+        font-size: 2rem; font-weight: 800; text-align: center; color: var(--site-ink); font-variant-numeric: tabular-nums;
+        -moz-appearance: textfield; appearance: textfield;
+    }
+    .ic-index input::placeholder { color: #cbd5e1; }
+    .ic-index input::-webkit-outer-spin-button, .ic-index input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .ic-index__um { width: 3.25rem; text-align: center; font-weight: 800; color: var(--aqua-gray); }
+    .ic-back {
+        flex-shrink: 0; width: 52px; min-height: 52px; display: grid; place-items: center;
+        border: 1px solid var(--site-line); border-radius: 999px; background: #fff; color: var(--site-ink); font-size: 1.15rem;
+    }
+    .ic-back:hover { background: #f5f9fc; }
+</style>
+@endpush
 
 @push('scripts')
 <script nonce="@nonce">
@@ -335,6 +366,7 @@ function afiseazaContoare(contoare) {
     lista.innerHTML = '';
 
     contoare.forEach(c => {
+        c.adresa = curataAdresa(c.adresa);
         const trimis = c.index_nou !== null;
         const card   = document.createElement('div');
 
@@ -363,16 +395,25 @@ function afiseazaContoare(contoare) {
     document.getElementById('pas2').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+// „Strada X, Nr. 20, Bloc. , Scara. , Etaj. , Apt. , GRINDU, TL, Romania” → „Strada X, Nr. 20, GRINDU, TL”
+function curataAdresa(adresa) {
+    return String(adresa || '')
+        .split(',')
+        .map(p => p.trim())
+        .filter(p => p && !/^(nr|bloc|bl|scara|sc|etaj|et|apt|ap)\.?$/i.test(p) && !/^rom[aâ]nia$/i.test(p))
+        .join(', ');
+}
+
 function construiesteCardNormal(serie, adresa, vechi) {
     return '<div style="display:flex;align-items:center;gap:0.75rem;">' +
         '<div style="width:38px;height:38px;min-width:38px;background:#f0f8ff;border-radius:10px;display:flex;align-items:center;justify-content:center;">' +
             '<i class="bi bi-speedometer2" style="font-size:1.1rem;color:var(--aqua-primary);"></i></div>' +
         '<div style="flex:1;min-width:0;">' +
             '<div style="font-weight:800;font-size:0.875rem;color:var(--aqua-dark);">' + esc(serie) + '</div>' +
-            '<div style="font-size:0.75rem;color:#6c757d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + esc(adresa) + '</div>' +
+            '<div style="font-size:0.85rem;color:#5f7184;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + esc(adresa) + '</div>' +
         '</div>' +
         '<div style="text-align:right;flex-shrink:0;">' +
-            '<div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;">Index anterior</div>' +
+            '<div style="font-size:0.7rem;color:#7b8a9a;text-transform:uppercase;font-weight:700;">Index anterior</div>' +
             '<div style="font-weight:800;font-size:1rem;color:var(--aqua-primary);">' + esc(vechi) + ' <span style="font-size:0.65rem;font-weight:400;">m³</span></div>' +
         '</div></div>';
 }
@@ -383,7 +424,7 @@ function construiesteCardTrimis(serie, adresa, vechi, nou) {
             '<i class="bi bi-check-circle-fill" style="font-size:1.1rem;color:#16a34a;"></i></div>' +
         '<div style="flex:1;min-width:0;">' +
             '<div style="font-weight:800;font-size:0.875rem;color:#15803d;">' + esc(serie) + '</div>' +
-            '<div style="font-size:0.75rem;color:#6c757d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + esc(adresa) + '</div>' +
+            '<div style="font-size:0.85rem;color:#5f7184;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><i class="bi bi-geo-alt me-1"></i>' + esc(adresa) + '</div>' +
             '<div style="font-size:0.7rem;color:#0077b6;margin-top:2px;"><i class="bi bi-arrow-repeat me-1"></i>Apasă pentru a retrimite</div>' +
         '</div>' +
         '<div style="text-align:right;flex-shrink:0;">' +
@@ -410,15 +451,10 @@ function selecteazaContor(card, c) {
     dateCurente.serieContor        = c.serie_contor;
     dateCurente.indexNouExistent   = c.index_nou;
 
-    document.getElementById('rezumatContor').innerHTML =
-        '<div style="display:flex;flex-wrap:wrap;gap:1rem;">' +
-            '<div><div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">Serie</div>' +
-            '<div style="font-weight:700;color:var(--aqua-dark);">' + esc(c.serie_contor) + '</div></div>' +
-            '<div style="flex:1;min-width:90px;"><div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">Adresă</div>' +
-            '<div style="font-weight:700;color:var(--aqua-dark);">' + esc(c.adresa) + '</div></div>' +
-            '<div><div style="font-size:0.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:0.04em;">Index anterior</div>' +
-            '<div style="font-weight:700;color:var(--aqua-primary);">' + esc(c.index_vechi) + ' m³</div></div>' +
-        '</div>';
+    // Adresa întreagă (pe card e trunchiată) – utilă celor cu mai mulți contori
+    document.getElementById('rezumatSerie').textContent  = 'Contor ' + c.serie_contor;
+    document.getElementById('rezumatAdresa').textContent = c.adresa;
+    document.getElementById('rezumatContor').textContent = c.index_vechi + ' m³';
 
     document.getElementById('eroareIndex').style.display  = 'none';
     document.getElementById('consumEstimat').style.display = 'none';
@@ -546,14 +582,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnRevin').addEventListener('click', revinLaPas2);
     document.getElementById('btnTrimite').addEventListener('click', validezSiConfirm);
     document.getElementById('modalBackdrop').addEventListener('click', inchideModal);
-
-    // Scroll automat la formular
-    const card = document.querySelector('.card');
-    if (card) {
-        setTimeout(() => {
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 200);
-    }
 
     document.getElementById('inputIndexNou').addEventListener('input', function () {
         const val = parseInt(this.value);

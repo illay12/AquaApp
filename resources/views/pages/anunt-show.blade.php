@@ -2,39 +2,101 @@
 
 @section('title', $anunt->titlu ?? 'Anunț')
 
+@php
+$catLabel = [
+    'anunturi' => 'Anunț',
+    'avarie'   => 'Avarie',
+    'angajare' => 'Angajare',
+    'calitate' => 'Calitate apă',
+    'diverse'  => 'Diverse',
+];
+$catColor = [
+    'anunturi' => '#90e0ef',
+    'avarie'   => '#ff9b9b',
+    'angajare' => '#8ee6c0',
+    'calitate' => '#90e0ef',
+    'diverse'  => '#c9b8ff',
+];
+$catColorDark = [
+    'anunturi' => '#0077b6',
+    'avarie'   => '#d64545',
+    'angajare' => '#15936b',
+    'calitate' => '#0aa2c0',
+    'diverse'  => '#7c5cd6',
+];
+$cat = $anunt->categorie ?? '';
+@endphp
+
 @section('page_hero')
-    <h1><i class="bi bi-megaphone-fill me-2"></i> Anunțuri</h1>
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Acasă</a></li>
             <li class="breadcrumb-item"><a href="{{ url('/anunturi') }}">Anunțuri</a></li>
-            <li class="breadcrumb-item active breadcrumb-item-titlu">{{ Str::limit($anunt->titlu ?? 'Detalii anunț', 50) }}</li>
         </ol>
     </nav>
+    <div class="as-hero-meta">
+        <span class="as-hero-cat" style="--c:{{ $catColor[$cat] ?? '#cbd5e1' }};">{{ $catLabel[$cat] ?? ($cat ?: 'Anunț') }}</span>
+        @isset($anunt->created_at)
+            <time datetime="{{ $anunt->created_at->toDateString() }}">{{ $anunt->created_at->locale('ro')->translatedFormat('j F Y') }}</time>
+        @endisset
+    </div>
+    <h1 class="as-hero-title">{{ $anunt->titlu ?? 'Anunț' }}</h1>
 @endsection
 
 @push('styles')
 <style>
-    .anunt-show-section { padding: 2rem 0 3rem; }
-    .anunt-show-title { font-family:'Merriweather',serif; font-size:1.5rem; font-weight:700; color:var(--aqua-dark); line-height:1.4; margin-bottom:1.25rem; }
-    .anunt-continut p  { margin-bottom: 1.2rem; }
-    .anunt-continut ul, .anunt-continut ol { padding-left: 1.5rem; margin-bottom: 1.2rem; }
+    /* Hero articol */
+    .as-hero-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: .6rem; font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.75); }
+    .as-hero-cat { display: inline-flex; align-items: center; gap: .4rem; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--c); }
+    .as-hero-cat::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+    .page-hero h1.as-hero-title { font-size: clamp(1.4rem, 3vw, 2.2rem); max-width: 40ch; }
+
+    .anunt-show-section { padding: 1.75rem 0 4rem; }
+
+    /* Textul articolului — lățime de citire confortabilă */
+    .anunt-continut { font-size: 1.05rem; line-height: 1.8; color: #26384a; max-width: 68ch; overflow-wrap: anywhere; }
+    .anunt-continut p  { margin-bottom: 1.15rem; font-size: inherit; line-height: inherit; }
+    .anunt-continut ul, .anunt-continut ol { padding-left: 1.4rem; margin-bottom: 1.15rem; }
     .anunt-continut li { margin-bottom: 0.4rem; }
-    .anunt-continut strong { color: var(--aqua-dark); }
-    .anunt-continut img { max-width: 100%; height: auto; border-radius: 4px; }
+    .anunt-continut strong { color: var(--site-ink); }
+    .anunt-continut a { color: var(--aqua-primary); font-weight: 700; }
+    .anunt-continut img { max-width: 100%; height: auto; border-radius: 14px; }
     .anunt-continut p > img:only-child { display: block; margin: 1rem auto; }
-    .anunt-continut table { max-width: 100%; overflow-x: auto; display: block; }
-    .fisier-link-card:hover { background: #e0f0ff !important; border-color: var(--aqua-primary) !important; }
-    .recent-anunt-link:hover { background: var(--aqua-bg) !important; }
-    .fisier-preview-trigger { cursor: pointer; }
-    .fisier-download-btn { flex-shrink: 0; color: var(--aqua-gray); }
-    .fisier-download-btn:hover { color: var(--aqua-primary); background: #fff; }
-    .fisier-galerie-thumb {
-        width: 100px; height: 100px; border-radius: 10px; overflow: hidden;
-        border: 1px solid var(--aqua-border); flex-shrink: 0; transition: transform 0.2s, box-shadow 0.2s;
+    .anunt-continut table { max-width: 100%; overflow-x: auto; display: block; font-size: .9rem; }
+
+    /* Fișiere */
+    .as-files { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--site-line); max-width: 68ch; }
+    .as-label { font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #6b7a8c; margin-bottom: .9rem; }
+    .fisier-link-card {
+        display: flex; align-items: center; gap: .9rem; padding: .85rem 1rem; margin-bottom: .6rem;
+        border-radius: 14px; background: #f6fafd; border: 1px solid transparent; color: var(--site-ink); text-decoration: none;
+        transition: background .2s, border-color .2s;
     }
-    .fisier-galerie-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .fisier-galerie-thumb:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,119,182,0.25); }
+    .fisier-link-card:hover { background: #eef6fb; border-color: var(--site-line); color: var(--site-ink); }
+    .fisier-link-card .fisier-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .fisier-name { font-size: .92rem; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fisier-meta { font-size: .78rem; color: #6b7a8c; font-weight: 600; }
+    .fisier-preview-trigger { cursor: pointer; }
+    .fisier-download-btn { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; color: #6b7a8c; display: inline-flex; align-items: center; justify-content: center; }
+    .fisier-download-btn:hover { color: var(--aqua-primary); background: #fff; }
+    .as-gallery { width: 100%; }
+    .fisier-galerie-thumb {
+        position: relative; width: 110px; aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: #eef3f7;
+        flex-shrink: 0; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    /* imaginea absolută: dimensiunea ei naturală nu mai poate deforma miniatura */
+    .fisier-galerie-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fisier-galerie-thumb:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(13,34,54,.4); }
+
+    .as-actions { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--site-line); max-width: 68ch; }
+
+    /* Sidebar + recente */
+    .as-side { position: sticky; top: 110px; }
+    .as-recent a { display: block; padding: .9rem 0; border-bottom: 1px solid var(--site-line); color: var(--site-ink); text-decoration: none; }
+    .as-recent a:hover .as-recent__title { color: var(--aqua-primary); }
+    .as-recent__meta { font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--c); margin-bottom: .2rem; }
+    .as-recent__meta time { color: #8a9aab; margin-left: .4rem; letter-spacing: 0; text-transform: none; font-weight: 600; }
+    .as-recent__title { font-size: .95rem; font-weight: 700; line-height: 1.4; transition: color .2s; overflow-wrap: anywhere; }
     #previewModal .modal-content { overflow: hidden; }
     #previewModal .modal-body { height: 75vh; overflow: auto; padding: 0; }
     #previewModalContent { padding: 1.25rem 1.5rem; font-size: 0.92rem; line-height: 1.75; color: #333; }
@@ -46,32 +108,17 @@
     #previewModalContent .xlsx-sheet-title { font-size: 0.85rem; font-weight: 700; color: var(--aqua-dark); margin: 0 0 0.5rem; }
 
     @media (max-width: 991.98px) {
-        .anunt-show-section { padding: 1.25rem 0 2rem; }
-        .anunt-show-row { --bs-gutter-y: 1rem; }
-        .anunt-show-title { font-size: 1.2rem; margin-bottom: 1rem; }
-        .anunt-show-article { padding: 1rem !important; }
-        /* Dispecerat compact orizontal pe mobil */
-        .disp-sidebar-card .card-body {
-            display: flex !important;
-            align-items: center;
-            gap: 0.75rem;
-            text-align: left !important;
-            padding: 0.75rem 1rem !important;
-        }
-        .disp-sidebar-card .disp-icon { font-size: 1.4rem !important; flex-shrink: 0; }
-        .disp-sidebar-card .disp-num  { font-size: 1.2rem !important; margin: 0 !important; }
-        .disp-sidebar-card .disp-label { margin: 0 !important; font-size: 0.82rem; }
-        /* Anunțuri recente ascunse pe mobil — nu aglomera */
-        .recent-anunturi-card { display: none; }
+        .as-side { position: static; }
     }
-    @media (max-width: 575.98px) {
-        .breadcrumb-item-titlu { display: none; }
-        .anunt-show-title { font-size: 1.05rem; }
-        .anunt-continut { font-size: 0.9rem !important; line-height: 1.75 !important; }
-        .fisier-link-card { padding: 0.75rem !important; gap: 0.65rem !important; }
-        .fisier-link-card .fisier-icon { font-size: 1.4rem !important; }
-        .fisier-galerie-thumb { width: 80px; height: 80px; }
-        .anunt-meta-bar { gap: 0.5rem !important; }
+    @media (max-width: 767.98px) {
+        .page-hero h1.as-hero-title { font-size: 1.35rem; line-height: 1.3; }
+        .as-hero-meta { font-size: .8rem; }
+        .anunt-show-section { padding: 1rem 0 3rem; }
+        .anunt-continut { font-size: 1rem; line-height: 1.75; }
+        .as-files { margin-top: 1.5rem; }
+        .fisier-galerie-thumb { width: calc(33.333% - .34rem); }
+        .as-actions { margin-top: 1.75rem; }
+        .as-actions .btn { width: 100%; }
         #previewModal .modal-body { height: auto; flex: 1 1 auto; }
         #previewModalContent { padding: 0.9rem 1rem; font-size: 0.85rem; }
         #previewModalContent th, #previewModalContent td { font-size: 0.75rem; padding: 0.3rem 0.45rem; }
@@ -83,66 +130,29 @@
 </style>
 @endpush
 
-@php
-$categorieStyle = [
-    'anunturi' => 'background:#dbeafe;color:#1d4ed8;',
-    'avarie'   => 'background:#fee2e2;color:#b91c1c;',
-    'angajare' => 'background:#dcfce7;color:#15803d;',
-    'calitate' => 'background:#e0f2fe;color:#0369a1;',
-    'diverse'  => 'background:#f3e8ff;color:#7e22ce;',
-];
-$categorieLabel = [
-    'anunturi' => 'Anunțuri',
-    'avarie'   => 'Avarie',
-    'angajare' => 'Angajare',
-    'calitate' => 'Calitate apă',
-    'diverse'  => 'Diverse',
-];
-@endphp
-
 @section('content')
 <section class="anunt-show-section">
     <div class="container">
-        <div class="row g-3 g-lg-5 anunt-show-row">
+        <div class="row g-4 g-xl-5">
 
-            {{-- CONTINUT ANUNT --}}
+            {{-- ARTICOL --}}
             <div class="col-lg-8">
-                <article class="card anunt-show-article p-4 p-lg-5">
-
-                    {{-- META --}}
-                    <div class="d-flex flex-wrap align-items-center anunt-meta-bar gap-2 mb-3 pb-3"
-                         style="border-bottom:1px solid var(--aqua-border);">
-                        <span class="cat-badge"
-                              style="display:inline-block;padding:0.25em 0.75em;border-radius:20px;font-size:0.75rem;font-weight:700;white-space:nowrap;{{ $categorieStyle[$anunt->categorie ?? ''] ?? 'background:#f1f5f9;color:#475569;' }}">
-                            {{ $categorieLabel[$anunt->categorie ?? ''] ?? ($anunt->categorie ?? 'Anunț') }}
-                        </span>
-                        <span class="text-muted" style="font-size:0.82rem;">
-                            <i class="bi bi-calendar3 me-1"></i>
-                            {{ isset($anunt->created_at) ? $anunt->created_at->format('d.m.Y') : '' }}
-                        </span>
-                    </div>
-
-                    {{-- TITLU --}}
-                    <h1 class="anunt-show-title">{{ $anunt->titlu ?? 'Titlu anunț' }}</h1>
-
-                    {{-- CONTINUT --}}
-                    <div class="anunt-continut" style="font-size:0.95rem;line-height:1.9;color:#333;">
+                <article>
+                    <div class="anunt-continut">
                         {!! $anunt->continut ?? '' !!}
                     </div>
 
-                    {{-- FISIERE ATASATE --}}
+                    {{-- FIȘIERE ATAȘATE --}}
                     @if(isset($anunt->fisiere) && $anunt->fisiere->count() > 0)
-                    <div class="mt-4 pt-3" style="border-top:1px solid var(--aqua-border);">
-                        <h6 class="fw-bold mb-3" style="color:var(--aqua-dark);font-size:0.875rem;">
-                            <i class="bi bi-paperclip me-2"></i> Fișiere atașate
-                        </h6>
+                    <div class="as-files">
+                        <div class="as-label">Fișiere atașate</div>
                         @php
                             $poze      = $anunt->fisiere->whereIn('tip', ['jpg', 'png']);
                             $documente = $anunt->fisiere->whereNotIn('tip', ['jpg', 'png']);
                         @endphp
 
                         @if($poze->count() > 0)
-                        <div class="d-flex flex-wrap gap-2 mb-3">
+                        <div class="as-gallery d-flex flex-wrap gap-2 mb-3">
                             @foreach($poze as $fisier)
                             <div class="fisier-preview-trigger fisier-galerie-thumb"
                                  data-url="{{ $fisier->url }}"
@@ -157,39 +167,29 @@ $categorieLabel = [
 
                         @foreach($documente as $fisier)
                         @if($fisier->tip === 'pdf')
-                        <a href="{{ $fisier->url }}" target="_blank"
-                           class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2 text-decoration-none"
-                           style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);color:var(--aqua-text);transition:all 0.2s;">
-                            <i class="bi {{ $fisier->icon }} fisier-icon"
-                               style="font-size:1.8rem;color:{{ $fisier->culoare_icon }};flex-shrink:0;"></i>
-                            <div style="flex:1;overflow:hidden;">
-                                <div style="font-size:0.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                                    {{ $fisier->nume_original }}
-                                </div>
-                                <div style="font-size:0.75rem;color:var(--aqua-gray);">
-                                    {{ strtoupper($fisier->tip) }} &bull; {{ $fisier->marime_fomatata }}
-                                </div>
+                        <a href="{{ $fisier->url }}" target="_blank" class="fisier-link-card">
+                            <i class="bi {{ $fisier->icon }} fisier-icon" style="color:{{ $fisier->culoare_icon }};"></i>
+                            <div style="flex:1;min-width:0;">
+                                <div class="fisier-name">{{ $fisier->nume_original }}</div>
+                                <div class="fisier-meta">{{ strtoupper($fisier->tip) }} · {{ $fisier->marime_fomatata }}</div>
                             </div>
+                            <i class="bi bi-box-arrow-up-right" style="color:#8a9aab;"></i>
                         </a>
                         @else
-                        <div class="d-flex align-items-center fisier-link-card gap-3 p-3 mb-2"
-                             style="background:var(--aqua-bg);border-radius:10px;border:1px solid var(--aqua-border);transition:all 0.2s;">
-                            <i class="bi {{ $fisier->icon }} fisier-icon"
-                               style="font-size:1.8rem;color:{{ $fisier->culoare_icon }};flex-shrink:0;"></i>
+                        <div class="fisier-link-card">
+                            <i class="bi {{ $fisier->icon }} fisier-icon" style="color:{{ $fisier->culoare_icon }};"></i>
                             <div class="fisier-preview-trigger"
                                  data-url="{{ $fisier->url }}"
                                  data-name="{{ $fisier->nume_original }}"
                                  data-tip="{{ $fisier->tip }}"
-                                 style="flex:1;overflow:hidden;color:var(--aqua-text);">
-                                <div style="font-size:0.875rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                                    {{ $fisier->nume_original }}
-                                </div>
-                                <div style="font-size:0.75rem;color:var(--aqua-gray);">
-                                    {{ strtoupper($fisier->tip) }} &bull; {{ $fisier->marime_fomatata }}
-                                    &bull; <span class="text-aqua fw-bold">Previzualizare</span>
+                                 style="flex:1;min-width:0;">
+                                <div class="fisier-name">{{ $fisier->nume_original }}</div>
+                                <div class="fisier-meta">
+                                    {{ strtoupper($fisier->tip) }} · {{ $fisier->marime_fomatata }}
+                                    · <span class="text-aqua fw-bold">Previzualizare</span>
                                 </div>
                             </div>
-                            <a href="{{ $fisier->url }}" class="btn btn-sm fisier-download-btn" title="Descarcă fișierul original">
+                            <a href="{{ $fisier->url }}" class="fisier-download-btn" title="Descarcă fișierul original" aria-label="Descarcă">
                                 <i class="bi bi-download"></i>
                             </a>
                         </div>
@@ -198,67 +198,41 @@ $categorieLabel = [
                     </div>
                     @endif
 
-                    {{-- NAVIGARE --}}
-                    <div class="d-flex justify-content-between align-items-center mt-4 pt-3"
-                         style="border-top:1px solid var(--aqua-border);">
-                        <a href="{{ url('/anunturi') }}" class="btn btn-outline-aqua btn-sm">
-                            <i class="bi bi-arrow-left me-1"></i> Înapoi la anunțuri
+                    <div class="as-actions">
+                        <a href="{{ url('/anunturi') }}" class="btn btn-outline-aqua">
+                            <i class="bi bi-arrow-left me-2"></i> Toate anunțurile
                         </a>
-                        <a href="#" id="btn-print" class="btn btn-sm btn-light d-none d-md-inline-flex" title="Printează">
+                        <a href="#" id="btn-print" class="btn btn-outline-aqua d-none d-md-inline-flex" title="Printează" aria-label="Printează">
                             <i class="bi bi-printer"></i>
                         </a>
                     </div>
-
                 </article>
             </div>
 
-            {{-- SIDEBAR --}}
-            <div class="col-lg-4">
+            {{-- SIDEBAR (doar desktop) --}}
+            <aside class="col-lg-4 d-none d-lg-block">
+                <div class="as-side">
+                    <a href="tel:+40747022009" class="side-call mb-4">
+                        <span class="side-call__icon"><i class="bi bi-telephone-fill"></i></span>
+                        <span><small>Dispecerat avarii 24/7</small><strong>0747 022 009</strong></span>
+                    </a>
 
-                {{-- Dispecerat --}}
-                <div class="card mb-3 disp-sidebar-card" style="border-color:#f8d7da;">
-                    <div class="card-body text-center" style="background:#fff5f5;border-radius:12px;">
-                        <i class="bi bi-telephone-fill disp-icon" style="font-size:2rem;color:#dc3545;"></i>
-                        <p class="fw-bold mt-2 mb-0 disp-label" style="color:#dc3545;">Dispecerat avarii 24/7</p>
-                        <p class="disp-num" style="font-size:1.8rem;font-weight:800;color:#dc3545;margin:0;">
-                            <a href="tel:+40747022009" style="color:inherit;text-decoration:none;">0747 022 009</a>
-                        </p>
-                    </div>
+                    @if(($anunturiRecente ?? collect())->isNotEmpty())
+                        <div class="as-label">Alte anunțuri</div>
+                        <div class="as-recent">
+                            @foreach($anunturiRecente->take(4) as $recent)
+                                <a href="{{ url('/anunturi/' . $recent->slug) }}" style="--c:{{ $catColorDark[$recent->categorie] ?? '#64748b' }};">
+                                    <div class="as-recent__meta">
+                                        {{ $catLabel[$recent->categorie] ?? $recent->categorie }}
+                                        <time datetime="{{ $recent->created_at->toDateString() }}">{{ $recent->created_at->format('d.m.Y') }}</time>
+                                    </div>
+                                    <div class="as-recent__title">{{ Str::limit($recent->titlu, 90) }}</div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
-
-                {{-- Anunțuri recente --}}
-                <div class="card recent-anunturi-card">
-                    <div class="card-header">
-                        <i class="bi bi-clock-history me-2"></i> Anunțuri recente
-                    </div>
-                    <div class="card-body p-0">
-                        @forelse($anunturiRecente ?? [] as $recent)
-                            <a href="{{ url('/anunturi/' . $recent->slug) }}"
-                               class="d-block p-3 text-decoration-none recent-anunt-link"
-                               style="border-bottom:1px solid var(--aqua-border);color:var(--aqua-text);transition:background 0.15s;">
-                                <div style="font-size:0.75rem;color:var(--aqua-gray);margin-bottom:0.2rem;">
-                                    <span class="cat-badge me-1"
-                                          style="display:inline-block;padding:0.2em 0.65em;border-radius:20px;font-size:0.7rem;font-weight:700;white-space:nowrap;{{ $categorieStyle[$recent->categorie] ?? 'background:#f1f5f9;color:#475569;' }}">
-                                        {{ $categorieLabel[$recent->categorie] ?? $recent->categorie }}
-                                    </span>
-                                    {{ $recent->created_at->format('d.m.Y') }}
-                                </div>
-                                <div style="font-size:0.875rem;font-weight:600;line-height:1.4;">
-                                    {{ Str::limit($recent->titlu, 80) }}
-                                </div>
-                            </a>
-                        @empty
-                        @endforelse
-                    </div>
-                    <div class="card-footer text-center p-2">
-                        <a href="{{ url('/anunturi') }}" style="font-size:0.85rem;"
-                           class="text-aqua text-decoration-none fw-bold">
-                            Toate anunțurile <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
+            </aside>
 
         </div>
     </div>

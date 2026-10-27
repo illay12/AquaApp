@@ -20,7 +20,7 @@
         {{-- INTRO --}}
         <div class="row justify-content-center mb-4">
             <div class="col-lg-8 text-center">
-                <p class="section-title text-center" style="border-left:none;padding-left:0;border-bottom:3px solid var(--aqua-accent);display:inline-block;padding-bottom:0.4rem;">
+                <p class="section-title text-center mb-0">
                     Rețeaua noastră operațională
                 </p>
                 <p style="color:#6c757d;font-size:0.95rem;margin-top:0.75rem;">
@@ -34,13 +34,13 @@
         <div class="row g-3 justify-content-center mb-5">
             @php
             $centre = [
-                ['id'=>'tulcea',  'icon'=>'bi-building-fill',     'culoare'=>'#0077b6'],
-                ['id'=>'macin',   'icon'=>'bi-water',              'culoare'=>'#0096c7'],
-                ['id'=>'sulina',  'icon'=>'bi-tsunami',            'culoare'=>'#00b4d8'],
-                ['id'=>'isaccea', 'icon'=>'bi-droplet-half',       'culoare'=>'#48cae4'],
-                ['id'=>'babadag', 'icon'=>'bi-building',           'culoare'=>'#023e8a'],
+                ['id'=>'tulcea',  'icon'=>'bi-building-fill',     'culoare'=>'#06395f'],
+                ['id'=>'macin',   'icon'=>'bi-water',              'culoare'=>'#06395f'],
+                ['id'=>'sulina',  'icon'=>'bi-tsunami',            'culoare'=>'#06395f'],
+                ['id'=>'isaccea', 'icon'=>'bi-droplet-half',       'culoare'=>'#06395f'],
+                ['id'=>'babadag', 'icon'=>'bi-building',           'culoare'=>'#06395f'],
             ];
-            $numeAfisate = ['tulcea'=>'Tulcea','macin'=>'Mãcin','sulina'=>'Sulina','isaccea'=>'Isaccea','babadag'=>'Babadag'];
+            $numeAfisate = ['tulcea'=>'Tulcea','macin'=>'Măcin','sulina'=>'Sulina','isaccea'=>'Isaccea','babadag'=>'Babadag'];
             @endphp
 
             @foreach($centre as $c)
@@ -48,12 +48,12 @@
                 <a href="#centru-{{ $c['id'] }}" class="d-block text-decoration-none"
                    class="centru-nav-card"
                    data-culoare="{{ $c['culoare'] }}"
-                   style="padding:1.25rem 0.75rem;border-radius:14px;background:#fff;border:2px solid var(--aqua-border);text-align:center;transition:all 0.25s;">
+                   style="padding:1.25rem 0.75rem;border-radius:18px;background:#fff;border:1px solid var(--site-line);text-align:center;transition:all 0.25s;">
                     <div style="width:48px;height:48px;border-radius:50%;background:{{ $c['culoare'] }};display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;">
                         <i class="bi {{ $c['icon'] }} text-white" style="font-size:1.2rem;"></i>
                     </div>
                     <div style="font-weight:800;font-size:0.875rem;color:var(--aqua-dark);">{{ $numeAfisate[$c['id']] }}</div>
-                    <div style="font-size:0.7rem;color:#94a3b8;margin-top:2px;">Vezi detalii →</div>
+                    <div style="font-size:0.85rem;font-weight:700;color:var(--aqua-primary);margin-top:2px;">Vezi detalii →</div>
                 </a>
             </div>
             @endforeach
@@ -90,10 +90,10 @@
         $nrJudet = count($puncteLucru) - $nrDelta;
         @endphp
 
-        <div class="mb-5" style="border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,119,182,0.13);">
+        <div class="mb-5" style="border-radius:20px;overflow:hidden;border:1px solid var(--site-line);">
             {{-- Header --}}
             <div class="py-4 px-4 px-md-5 d-flex flex-wrap align-items-center justify-content-between gap-3"
-                 style="background:linear-gradient(135deg,#023e8a 0%,#0077b6 60%,#00b4d8 100%);">
+                 style="background:radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);">
                 <div class="d-flex align-items-center gap-3">
                     <div style="width:52px;height:52px;background:rgba(255,255,255,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <i class="bi bi-geo-alt-fill text-white" style="font-size:1.5rem;"></i>
@@ -121,11 +121,11 @@
                  style="background:#f8fafc;border-bottom:1px solid var(--aqua-border);">
                 <span style="font-size:0.78rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Legendă:</span>
                 <span class="d-flex align-items-center gap-2" style="font-size:0.82rem;color:#0369a1;font-weight:600;">
-                    <span style="width:18px;height:18px;background:linear-gradient(135deg,#e0f2fe,#38bdf8);border:2px solid #0284c7;border-radius:5px;display:inline-block;flex-shrink:0;"></span>
+                    <span style="width:18px;height:18px;background:#e4f2fa;border:1px solid #b9dcef;border-radius:5px;display:inline-block;flex-shrink:0;"></span>
                     Localitate din Delta Dunării
                 </span>
-                <span class="d-flex align-items-center gap-2" style="font-size:0.82rem;color:#166534;font-weight:600;">
-                    <span style="width:18px;height:18px;background:linear-gradient(135deg,#dcfce7,#4ade80);border:2px solid #16a34a;border-radius:5px;display:inline-block;flex-shrink:0;"></span>
+                <span class="d-flex align-items-center gap-2" style="font-size:0.82rem;color:#4a5b6d;font-weight:600;">
+                    <span style="width:18px;height:18px;background:#f4f6f8;border:1px solid #dfe6ec;border-radius:5px;display:inline-block;flex-shrink:0;"></span>
                     Altă localitate din județ
                 </span>
             </div>
@@ -137,13 +137,13 @@
                     <div class="col-6 col-sm-4 col-md-3 col-xl-2">
                         <div class="h-100 d-flex flex-column align-items-center justify-content-center text-center p-3"
                             style="border-radius:12px;
-                                    background:{{ $p['delta'] ? 'linear-gradient(135deg,#e0f2fe,#38bdf8)' : 'linear-gradient(135deg,#dcfce7,#4ade80)' }};
-                                    border:2px solid {{ $p['delta'] ? '#0284c7' : '#16a34a' }};
+                                    background:{{ $p['delta'] ? '#e9f5fb' : '#f6f8fa' }};
+                                    border:1px solid {{ $p['delta'] ? '#cfe6f3' : '#e5edf3' }};
                                     min-height:80px;
                                     transition:transform 0.2s,box-shadow 0.2s;"
                             class="localitate-card">
-                            <i class="bi bi-geo-alt-fill mb-1" style="font-size:1.1rem;color:{{ $p['delta'] ? '#0369a1' : '#166534' }};"></i>
-                            <div style="font-size:0.82rem;font-weight:700;color:{{ $p['delta'] ? '#0c4a6e' : '#14532d' }};line-height:1.3;">{{ $p['nume'] }}</div>
+                            <i class="bi bi-geo-alt-fill mb-1" style="font-size:1.1rem;color:{{ $p['delta'] ? '#0a7fb8' : '#a8b8c7' }};"></i>
+                            <div style="font-size:0.82rem;font-weight:700;color:#0d2236;line-height:1.3;">{{ $p['nume'] }}</div>
                             @if($p['delta'])
                             <div style="font-size:0.65rem;color:#0369a1;margin-top:3px;font-weight:600;opacity:0.8;">Delta Dunării</div>
                             @endif
@@ -158,8 +158,8 @@
              CENTRU TULCEA
         ══════════════════════════════════════ --}}
         <div id="centru-tulcea" class="mb-5" style="scroll-margin-top:90px;">
-            <div class="card" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#023e8a,#0077b6);">
+            <div class="card" style="border-radius:16px;overflow:hidden;">
+                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:#06395f;">
                     <div style="width:42px;height:42px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <i class="bi bi-building-fill text-white" style="font-size:1.2rem;"></i>
                     </div>
@@ -203,7 +203,7 @@
                                 ]; @endphp
                                 @foreach($beneficiiTulcea as $b)
                                 <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:10px;height:100%;">
+                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:14px;height:100%;">
                                         <div style="width:36px;height:36px;min-width:36px;background:var(--aqua-primary);border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                             <i class="bi {{ $b['icon'] }} text-white" style="font-size:0.9rem;"></i>
                                         </div>
@@ -225,14 +225,14 @@
              CENTRU MACIN
         ══════════════════════════════════════ --}}
         <div id="centru-macin" class="mb-5" style="scroll-margin-top:90px;">
-            <div class="card" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#0077b6,#0096c7);">
+            <div class="card" style="border-radius:16px;overflow:hidden;">
+                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:#06395f;">
                     <div style="width:42px;height:42px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <i class="bi bi-water text-white" style="font-size:1.2rem;"></i>
                     </div>
                     <div>
-                        <h4 class="mb-0 text-white fw-bold" style="font-size:1.1rem;">Centrul Operațional Mãcin</h4>
-                        <small style="color:rgba(255,255,255,0.7);font-size:0.75rem;">Orașul Mãcin, Comuna Carcaliu</small>
+                        <h4 class="mb-0 text-white fw-bold" style="font-size:1.1rem;">Centrul Operațional Măcin</h4>
+                        <small style="color:rgba(255,255,255,0.7);font-size:0.75rem;">Orașul Măcin, Comuna Carcaliu</small>
                     </div>
                 </div>
                 <div class="card-body p-4">
@@ -267,7 +267,7 @@
                                 ]; @endphp
                                 @foreach($beneficiMacin as $b)
                                 <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:10px;height:100%;">
+                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:14px;height:100%;">
                                         <div style="width:36px;height:36px;min-width:36px;background:#0096c7;border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                             <i class="bi {{ $b['icon'] }} text-white" style="font-size:0.9rem;"></i>
                                         </div>
@@ -289,8 +289,8 @@
              CENTRU SULINA
         ══════════════════════════════════════ --}}
         <div id="centru-sulina" class="mb-5" style="scroll-margin-top:90px;">
-            <div class="card" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#0096c7,#00b4d8);">
+            <div class="card" style="border-radius:16px;overflow:hidden;">
+                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:#06395f;">
                     <div style="width:42px;height:42px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <i class="bi bi-tsunami text-white" style="font-size:1.2rem;"></i>
                     </div>
@@ -327,8 +327,8 @@
                                 ]; @endphp
                                 @foreach($beneficiiSulina as $b)
                                 <div class="col-md-6">
-                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:10px;height:100%;">
-                                        <div style="width:36px;height:36px;min-width:36px;background:#00b4d8;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:14px;height:100%;">
+                                        <div style="width:36px;height:36px;min-width:36px;background:var(--aqua-primary);border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                             <i class="bi {{ $b['icon'] }} text-white" style="font-size:0.9rem;"></i>
                                         </div>
                                         <div>
@@ -349,8 +349,8 @@
              CENTRU ISACCEA
         ══════════════════════════════════════ --}}
         <div id="centru-isaccea" class="mb-5" style="scroll-margin-top:90px;">
-            <div class="card" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#00b4d8,#48cae4);">
+            <div class="card" style="border-radius:16px;overflow:hidden;">
+                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:#06395f;">
                     <div style="width:42px;height:42px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <i class="bi bi-droplet-half text-white" style="font-size:1.2rem;"></i>
                     </div>
@@ -390,7 +390,7 @@
                                 ]; @endphp
                                 @foreach($beneficiiIsaccea as $b)
                                 <div class="col-md-6">
-                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:10px;height:100%;">
+                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:14px;height:100%;">
                                         <div style="width:36px;height:36px;min-width:36px;background:#48cae4;border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                             <i class="bi {{ $b['icon'] }} text-white" style="font-size:0.9rem;"></i>
                                         </div>
@@ -412,8 +412,8 @@
              CENTRU BABADAG
         ══════════════════════════════════════ --}}
         <div id="centru-babadag" class="mb-5" style="scroll-margin-top:90px;">
-            <div class="card" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,119,182,0.10);">
-                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:linear-gradient(90deg,#023e8a,#0369a1);">
+            <div class="card" style="border-radius:16px;overflow:hidden;">
+                <div class="card-header py-3 px-4 d-flex align-items-center gap-3" style="background:#06395f;">
                     <div style="width:42px;height:42px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                         <i class="bi bi-building text-white" style="font-size:1.2rem;"></i>
                     </div>
@@ -444,7 +444,7 @@
                                 ]; @endphp
                                 @foreach($beneficiiBabadag as $b)
                                 <div class="col-md-6">
-                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:10px;height:100%;">
+                                    <div class="d-flex gap-3 p-3" style="background:var(--aqua-bg);border-radius:14px;height:100%;">
                                         <div style="width:36px;height:36px;min-width:36px;background:#0369a1;border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                             <i class="bi {{ $b['icon'] }} text-white" style="font-size:0.9rem;"></i>
                                         </div>
@@ -459,7 +459,7 @@
                         </div>
                         <div class="tab-pane fade" id="babadag-situatie">
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
-                                Serviciul public de alimentare cu apă și canalizare al orașului era efectuat de către SP EDIL PREST Babadag. În prezent, orașul Babadag a intrat în ADI, alături de celelalte 4 aglomerări urbane: Tulcea, Mãcin, Isaccea și Sulina.
+                                Serviciul public de alimentare cu apă și canalizare al orașului era efectuat de către SP EDIL PREST Babadag. În prezent, orașul Babadag a intrat în ADI, alături de celelalte 4 aglomerări urbane: Tulcea, Măcin, Isaccea și Sulina.
                             </p>
                             <p style="font-size:0.9rem;color:#374151;line-height:1.8;">
                                 Rețeaua de apă potabilă are o lungime de <strong>66 km</strong>, iar rețeaua de canalizare de <strong>6 km</strong>. Alimentarea cu apă se asigură din <strong>16 foraje subterane</strong>: frontul subteran Satu Nou cu 12 foraje de mare adâncime (110–120 m) și frontul subteran Ghiol cu 4 foraje cu adâncime medie (55 m). Apele menajere colectate sunt trimise la stația de epurare a orașului, cu o capacitate de <strong>25 l/s</strong>, evacuându-se gravitațional prin intermediul conductelor de PREMO și azbociment.

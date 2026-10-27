@@ -29,7 +29,7 @@
                 ['bi-clipboard-data-fill','Monitorizarea calității apei',null,'#0096c7',
                     'Monitorizăm permanent calitatea apei potabile distribuite prin rețea, efectuând analize fizico-chimice și bacteriologice conform standardelor europene în vigoare.',
                     ['Analize fizico-chimice','Analize bacteriologice','Buletine de analiză','Conformitate standarde UE']],
-                ['bi-briefcase-fill','Prestații către terți',null,'#023e8a',
+                ['bi-briefcase-fill','Prestații către terți',null,'#06395f',
                     'Oferim servicii specializate către terți: intervenții pe rețele de apă și canal, lucrări de construcție și reparații, vidanjare, precum și alte prestații tehnice la cerere.',
                     ['Intervenții rețele','Lucrări construcție-montaj','Vidanjare','Alte prestații tehnice']],
                 ['bi-truck','Închirieri de utilaje',null,'#0077b6',
