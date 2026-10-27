@@ -73,7 +73,7 @@
 
     /* ── Organigrama cards ── */
     .org-card-primary {
-        background: linear-gradient(135deg, #023e8a 0%, #0077b6 100%);
+        background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
         border-radius: 14px;
         padding: 1.4rem 1.5rem;
         display: flex; align-items: center; gap: 1.25rem;
@@ -97,7 +97,7 @@
     }
     .org-btn-primary {
         background: #fff;
-        color: #023e8a;
+        color: #06395f;
         font-weight: 700;
         font-size: 0.8rem;
         padding: 0.55rem 1.1rem;
@@ -164,7 +164,7 @@
         margin-bottom: 1.25rem;
     }
     .sidebar-nav-header {
-        background: linear-gradient(90deg, #023e8a, #0077b6);
+        background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
         padding: 0.9rem 1.2rem;
         font-weight: 800;
         color: #fff;
@@ -195,7 +195,7 @@
     .sidebar-nav-link i { color: var(--aqua-primary); width: 16px; text-align: center; font-size: 0.9rem; }
 
     .sidebar-contact-card {
-        background: linear-gradient(145deg, #012f70, #0077b6);
+        background: radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%);
         border-radius: 14px;
         padding: 1.35rem;
         overflow: hidden;
@@ -301,10 +301,10 @@
                 <div class="section-gap">
                     <h2 class="section-title">ADI – Asociația de Dezvoltare Intercomunitară</h2>
                     <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
-                        Asociația de Dezvoltare Intercomunitară <strong style="color:var(--aqua-dark);">„ECOTID"</strong> este structura asociativă constituită de unitățile administrativ-teritoriale din județul Tulcea în scopul înființării, organizării, reglementării, finanțării, monitorizării și gestionării în comun a serviciilor de alimentare cu apă și canalizare.
+                        Asociația de Dezvoltare Intercomunitară este structura asociativă constituită de unitățile administrativ-teritoriale din județul Tulcea în scopul înființării, organizării, reglementării, finanțării, monitorizării și gestionării în comun a serviciilor de alimentare cu apă și canalizare.
                     </p>
                     <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
-                        ADI „ECOTID" a delegat gestiunea serviciilor de apă și canalizare către <strong style="color:var(--aqua-dark);">S.C. Aquaserv S.A. Tulcea</strong> în baza unui contract de delegare a gestiunii, în conformitate cu legislația în vigoare privind serviciile comunitare de utilități publice.
+                        ADI a delegat gestiunea serviciilor de apă și canalizare către <strong style="color:var(--aqua-dark);">S.C. Aquaserv S.A. Tulcea</strong> în baza unui contract de delegare a gestiunii, în conformitate cu legislația în vigoare privind serviciile comunitare de utilități publice.
                     </p>
 
                     <div class="row g-3">
@@ -336,7 +336,7 @@
                 <div class="section-gap">
                     <h2 class="section-title">AGA – Adunarea Generală a Acționarilor</h2>
                     <p style="font-size:1.05rem;color:#64748b;margin-bottom:1.25rem;line-height:1.75;">
-                        Adunarea Generală a Acționarilor este organul suprem de decizie al S.C. AQUASERV S.A. Tulcea, alcătuit din reprezentanții unităților administrativ-teritoriale membre ale Asociației de Dezvoltare Intercomunitară (ADI) „ECOTID". AGA aprobă strategia companiei, bilanțul contabil, distribuirea profitului și numirea membrilor Consiliului de Administrație.
+                        Adunarea Generală a Acționarilor este organul suprem de decizie al S.C. AQUASERV S.A. Tulcea, alcătuit din reprezentanții unităților administrativ-teritoriale membre ale Asociației de Dezvoltare Intercomunitară (ADI). AGA aprobă strategia companiei, bilanțul contabil, distribuirea profitului și numirea membrilor Consiliului de Administrație.
                     </p>
                     <div class="org-card-primary">
                         <div class="org-icon-box" style="background:rgba(255,255,255,0.15);">
@@ -392,15 +392,15 @@
                                 'functie' => 'Director General',
                                 'nume'    => 'Valentin C. Ifrim',
                                 'icon'    => 'bi-person-badge-fill',
-                                'bg'      => 'linear-gradient(135deg,#023e8a,#0055a0)',
-                                'accent'  => '#023e8a',
+                                'bg'      => 'radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%)',
+                                'accent'  => '#06395f',
                                 'cv'      => asset('storage/documente/cv-uri/CV-VALENTIN-C.-IFRIM.pdf'),
                             ],
                             [
                                 'functie' => 'Director Economic',
                                 'nume'    => 'Selda Georgiana Matei',
                                 'icon'    => 'bi-graph-up-arrow',
-                                'bg'      => 'linear-gradient(135deg,#0077b6,#0096c7)',
+                                'bg'      => 'radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%)',
                                 'accent'  => '#0077b6',
                                 'cv'      => asset('storage/documente/cv-uri/CV-MATEI-SELDA.pdf'),
                             ],
@@ -408,7 +408,7 @@
                                 'functie' => 'Inginer Șef',
                                 'nume'    => 'George Ilie',
                                 'icon'    => 'bi-wrench-adjustable-circle',
-                                'bg'      => 'linear-gradient(135deg,#0096c7,#00b4d8)',
+                                'bg'      => 'radial-gradient(120% 160% at 100% 0%,#0a6aa8 0%,#06395f 60%)',
                                 'accent'  => '#0096c7',
                                 'cv'      => asset('storage/documente/structura_organizationala/PLAN-ADMINISTRARE-AQUASERV-2020-2024.pdf')
                             ],
