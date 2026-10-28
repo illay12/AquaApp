@@ -54,7 +54,8 @@ $cat = $anunt->categorie ?? '';
     .anunt-show-section { padding: 1.75rem 0 4rem; }
 
     /* Textul articolului — lățime de citire confortabilă */
-    .anunt-continut { font-size: 1.05rem; line-height: 1.8; color: #26384a; max-width: 68ch; overflow-wrap: anywhere; }
+    .anunt-continut { font-size: 1.05rem; line-height: 1.8; color: #26384a; max-width: 68ch; overflow-wrap: anywhere; padding: 2rem 2.25rem; border-radius: 20px; background: #f5f9fc; border: 1px solid #e6eef5; }
+    .anunt-continut > :last-child { margin-bottom: 0; }
     .anunt-continut p  { margin-bottom: 1.15rem; font-size: inherit; line-height: inherit; }
     .anunt-continut ul, .anunt-continut ol { padding-left: 1.4rem; margin-bottom: 1.15rem; }
     .anunt-continut li { margin-bottom: 0.4rem; }
@@ -92,7 +93,10 @@ $cat = $anunt->categorie ?? '';
 
     /* Sidebar + recente */
     .as-side { position: sticky; top: 110px; }
-    .as-recent a { display: block; padding: .9rem 0; border-bottom: 1px solid var(--site-line); color: var(--site-ink); text-decoration: none; }
+    /* lista „Alte anunțuri” pe un fundal subtil, ca textul să se citească mai ușor */
+    .as-recent { padding: .25rem 1.25rem; border-radius: 18px; background: #f5f9fc; border: 1px solid #e6eef5; }
+    .as-recent a { display: block; padding: .9rem 0; border-bottom: 1px solid #e2eaf1; color: var(--site-ink); text-decoration: none; }
+    .as-recent a:last-child { border-bottom: 0; }
     .as-recent a:hover .as-recent__title { color: var(--aqua-primary); }
     .as-recent__meta { font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--c); margin-bottom: .2rem; }
     .as-recent__meta time { color: #8a9aab; margin-left: .4rem; letter-spacing: 0; text-transform: none; font-weight: 600; }
@@ -114,7 +118,7 @@ $cat = $anunt->categorie ?? '';
         .page-hero h1.as-hero-title { font-size: 1.35rem; line-height: 1.3; }
         .as-hero-meta { font-size: .8rem; }
         .anunt-show-section { padding: 1rem 0 3rem; }
-        .anunt-continut { font-size: 1rem; line-height: 1.75; }
+        .anunt-continut { font-size: 1rem; line-height: 1.75; padding: 1.25rem 1.1rem; border-radius: 16px; }
         .as-files { margin-top: 1.5rem; }
         .fisier-galerie-thumb { width: calc(33.333% - .34rem); }
         .as-actions { margin-top: 1.75rem; }
