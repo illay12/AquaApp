@@ -58,7 +58,7 @@
         .navbar { background: rgba(255,255,255,0.97); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--site-line); padding: 0; z-index: 1030; transition: box-shadow .25s ease; }
         .navbar.is-scrolled { box-shadow: 0 10px 30px -18px rgba(6,57,95,0.35); }
         .navbar-brand img { height: 64px; }
-        .navbar-brand-icon { background: linear-gradient(140deg, #0a6aa8, var(--site-deep)) !important; border-radius: 16px !important; box-shadow: 0 8px 18px -8px rgba(6,57,95,.55); }
+        .navbar-brand-logo { width: auto; }
         .navbar-brand span { font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700; color: var(--site-ink); line-height: 1.2; letter-spacing: -.01em; }
         .navbar-brand small { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--aqua-gray); display: block; letter-spacing: 0.04em; text-transform: uppercase; }
         .navbar-brand-text small { color: var(--aqua-primary) !important; }
@@ -303,7 +303,7 @@
             .navbar-toggler { flex-shrink: 0; }
         }
         .navbar-brand { min-width: 0; }
-        .navbar-brand-icon { flex-shrink: 0; }
+        .navbar-brand-logo { flex-shrink: 0; }
         .navbar-brand-text { min-width: 0; overflow: hidden; }
         .navbar-brand-text span, .navbar-brand-text small {
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
@@ -311,11 +311,10 @@
         /* Header compact pe mobil (~64px) — sticky, deci ocupă cât mai puțin ecran */
         @media (max-width: 767.98px) {
             .navbar { padding: 0.55rem 0; }
-            .navbar-brand { gap: 0.6rem !important; padding: 0; margin-right: 0.5rem; }
-            .navbar-brand-icon { width: 44px !important; height: 44px !important; }
-            .navbar-brand-icon i { font-size: 1.35rem !important; }
-            .navbar-brand span { font-size: 1.1rem; }
-            .navbar-brand small { font-size: 0.66rem !important; }
+            .navbar-brand { gap: 0.85rem !important; padding: 0; margin-right: 0.5rem; }
+            .navbar-brand .navbar-brand-logo { height: 44px; }
+            .navbar-brand span { font-size: 1.22rem; }
+            .navbar-brand small { font-size: 0.72rem !important; }
             .navbar-toggler i { font-size: 1.6rem !important; }
         }
         /* Dropdown active — override Bootstrap, must be last */
@@ -396,9 +395,8 @@
     <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}">
-                <div class="navbar-brand-icon" style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;">
-                    <i class="bi bi-droplet-half text-white" style="font-size:1.55rem;"></i>
-                </div>
+                <img src="{{ asset('images/logo/picatura.png') }}" class="navbar-brand-logo" width="108" height="168" alt="">
+
                 <div class="navbar-brand-text">
                     <span>Aquaserv Tulcea</span>
                     <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>

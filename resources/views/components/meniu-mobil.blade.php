@@ -97,7 +97,7 @@
     .mm__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 68px; padding: .6rem .75rem .6rem 1.25rem; border-bottom: 1px solid var(--site-line); }
     .mm__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--site-ink); font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.05rem; line-height: 1.15; }
     .mm__brand small { display: block; font-family: 'Nunito', sans-serif; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--aqua-primary); }
-    .mm__brand-icon { width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center; border-radius: 13px; color: #fff; font-size: 1.2rem; background: linear-gradient(140deg, #0a6aa8, var(--site-deep)); }
+    .mm__brand-logo { height: 42px; width: auto; flex-shrink: 0; }
     .mm__close { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; border: 0; border-radius: 50%; background: #f1f5f9; color: var(--site-ink); font-size: 1.1rem; }
 
     .mm__body { flex: 1; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 1rem 1.25rem 1.5rem; }
@@ -163,7 +163,7 @@
     <aside id="mobileDrawer" class="mm__panel" role="dialog" aria-modal="true" aria-label="Meniu" tabindex="-1">
         <div class="mm__head">
             <a href="{{ url('/') }}" class="mm__brand">
-                <span class="mm__brand-icon"><i class="bi bi-droplet-half"></i></span>
+                <img src="{{ asset('images/logo/picatura.png') }}" class="mm__brand-logo" width="108" height="168" alt="">
                 <span>Aquaserv Tulcea<small>Servicii apă și canal</small></span>
             </a>
             <button type="button" id="btnInchideMeniu" class="mm__close" aria-label="Închide meniul">
