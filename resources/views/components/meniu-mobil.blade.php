@@ -95,8 +95,9 @@
     .mm :focus-visible { outline: 2px solid var(--aqua-primary); outline-offset: 2px; }
 
     .mm__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 68px; padding: .6rem .75rem .6rem 1.25rem; border-bottom: 1px solid var(--site-line); }
-    .mm__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--site-ink); font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.05rem; line-height: 1.15; }
-    .mm__brand small { display: block; font-family: 'Nunito', sans-serif; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--aqua-primary); }
+    .mm__brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; font-family: 'Arial Black', Arial, 'Helvetica Neue', sans-serif; font-weight: 900; font-size: 1.05rem; line-height: 1.02; text-transform: uppercase; text-align: center; color: #e30613; }
+    .mm__brand:hover { color: #e30613; }
+    .mm__brand span span { display: block; }
     .mm__brand-logo { height: 42px; width: auto; flex-shrink: 0; }
     .mm__close { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; border: 0; border-radius: 50%; background: #f1f5f9; color: var(--site-ink); font-size: 1.1rem; }
 
@@ -164,7 +165,7 @@
         <div class="mm__head">
             <a href="{{ url('/') }}" class="mm__brand">
                 <img src="{{ asset('images/logo/picatura.png') }}" class="mm__brand-logo" width="108" height="168" alt="">
-                <span>Aquaserv Tulcea<small>Servicii apă și canal</small></span>
+                <span><span>Aquaserv</span><span>Tulcea</span></span>
             </a>
             <button type="button" id="btnInchideMeniu" class="mm__close" aria-label="Închide meniul">
                 <i class="bi bi-x-lg"></i>

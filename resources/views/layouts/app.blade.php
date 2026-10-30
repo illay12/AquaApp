@@ -59,9 +59,9 @@
         .navbar.is-scrolled { box-shadow: 0 10px 30px -18px rgba(6,57,95,0.35); }
         .navbar-brand img { height: 64px; }
         .navbar-brand-logo { width: auto; }
-        .navbar-brand span { font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700; color: var(--site-ink); line-height: 1.2; letter-spacing: -.01em; }
-        .navbar-brand small { font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--aqua-gray); display: block; letter-spacing: 0.04em; text-transform: uppercase; }
-        .navbar-brand-text small { color: var(--aqua-primary) !important; }
+        /* Titlul ca în logo-ul oficial: „AQUASERV / TULCEA” cu roșu */
+        .navbar-brand-text { font-family: 'Arial Black', Arial, 'Helvetica Neue', sans-serif; font-weight: 900; text-transform: uppercase; color: #e30613; text-align: center; line-height: 1.02; }
+        .navbar-brand-text span { font-size: 1.4rem; letter-spacing: .01em; }
         .navbar-nav .nav-link { position: relative; font-weight: 700; font-size: 0.95rem; color: var(--site-ink) !important; padding: 1.5rem 1rem !important; transition: color 0.2s; }
         .navbar-nav .nav-link::before { content: ""; position: absolute; left: 1rem; right: 1rem; bottom: 1.05rem; height: 2px; border-radius: 2px; background: var(--aqua-primary); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
         .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--aqua-primary) !important; }
@@ -288,13 +288,12 @@
         @media (min-width: 1200px) and (max-width: 1399px) {
             .navbar-nav .nav-link { padding: 1.5rem 0.6rem !important; font-size: .9rem; }
             .navbar-nav .nav-link::before { left: .6rem; right: .6rem; }
-            .navbar-brand span { font-size: 1.1rem; }
+            .navbar-brand-text span { font-size: 1.2rem; }
         }
         @media (min-width: 1200px) and (max-width: 1280px) {
             .navbar-nav .nav-link { font-size: 0.82rem !important; padding: 1.5rem 0.45rem !important; }
             .navbar-nav .nav-link::before { left: .45rem; right: .45rem; }
-            .navbar-brand span { font-size: 1rem; }
-            .navbar-brand small { font-size: 0.65rem; }
+            .navbar-brand-text span { font-size: 1.05rem; }
         }
         @media (max-width: 1199.98px) {
             .navbar-nav .nav-link { border-bottom: none; padding: 0.6rem 1rem !important; }
@@ -305,7 +304,7 @@
         .navbar-brand { min-width: 0; }
         .navbar-brand-logo { flex-shrink: 0; }
         .navbar-brand-text { min-width: 0; overflow: hidden; }
-        .navbar-brand-text span, .navbar-brand-text small {
+        .navbar-brand-text span {
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
         }
         /* Header compact pe mobil (~64px) — sticky, deci ocupă cât mai puțin ecran */
@@ -313,8 +312,7 @@
             .navbar { padding: 0.55rem 0; }
             .navbar-brand { gap: 0.85rem !important; padding: 0; margin-right: 0.5rem; }
             .navbar-brand .navbar-brand-logo { height: 44px; }
-            .navbar-brand span { font-size: 1.22rem; }
-            .navbar-brand small { font-size: 0.72rem !important; }
+            .navbar-brand-text span { font-size: 1.15rem; }
             .navbar-toggler i { font-size: 1.6rem !important; }
         }
         /* Dropdown active — override Bootstrap, must be last */
@@ -396,10 +394,10 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ url('/') }}">
                 <img src="{{ asset('images/logo/picatura.png') }}" class="navbar-brand-logo" width="108" height="168" alt="">
-
                 <div class="navbar-brand-text">
-                    <span>Aquaserv Tulcea</span>
-                    <small style="color:#00b4d8;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Servicii apă și canal</small>                 </div>
+                    <span>Aquaserv</span>
+                    <span>Tulcea</span>
+                </div>
             </a>
 
             <button class="navbar-toggler border-0 d-xl-none" type="button" id="btnDeschideMeniu" aria-label="Deschide meniul" aria-controls="mobileMenu" aria-expanded="false" style="padding:0.4rem 0.6rem;">
