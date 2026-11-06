@@ -452,10 +452,10 @@
                                 Document curent
                             </div>
                             <div style="font-weight:800;color:#fff;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                                ORGANIGRAMA nr.566 / 23.09.2025
+                                ORGANIGRAMA nr.586 / 27.07.2026
                             </div>
                         </div>
-                            <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
+                            <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.586_27.07.2026.pdf') }}"
                             target="_blank" class="org-btn-primary">
                             <i class="bi bi-download"></i> Descarcă
                         </a>
@@ -471,10 +471,10 @@
                                 Versiune anterioară
                             </div>
                             <div style="font-weight:700;color:#64748b;font-size:0.875rem;">
-                                Organigrama nr.429 / 14.07.2025
+                                Organigrama nr.566 / 23.09.2025
                             </div>
                         </div>
-                            <a href="{{ asset('storage/documente/structura_organizationala/Organigrama-nr.429-14.07.2025.pdf') }}"
+                            <a href="{{ asset('storage/documente/structura_organizationala/ORGANIGRAMA-nr.566_23.09.2025.pdf') }}"
                             target="_blank" class="org-btn-secondary">
                             <i class="bi bi-download"></i> Descarcă
                         </a>
