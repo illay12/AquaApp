@@ -38,7 +38,7 @@
                         [
                             ['Legea nr. 241/2006','Legea serviciului de alimentare cu apă și de canalizare, cu modificările ulterioare.','http://legislatie.just.ro/Public/DetaliiDocument/73044'],
                             ['Legea nr. 224/2015','Pentru modificarea și completarea Legii serviciului de alimentare cu apă și de canalizare nr. 241/2006.','http://legislatie.just.ro/Public/DetaliiDocument/73044'],
-                            ['Ordinul ANRSC nr. 88/2007','Pentru aprobarea Regulamentului-cadru al serviciului de alimentare cu apă și de canalizare.','http://legislatie.just.ro/Public/DetaliiDocument/82'],
+                            ['Ordinul ANRSC nr. 88/2007','Pentru aprobarea Regulamentului-cadru al serviciului de alimentare cu apă și de canalizare.','https://legislatie.just.ro/Public/DetaliiDocumentAfis/82043'],
                             ['Ordinul ANRSC nr. 90/2007','Pentru aprobarea Contractului-cadru de furnizare/prestare a serviciului de alimentare cu apă și de canalizare.','http://legislatie.just.ro/Public/DetaliiDocument/82045'],
                             ['OUG nr. 68/2007','Privind răspunderea de mediu cu referire la prevenirea și repararea prejudiciului asupra mediului.','http://legislatie.just.ro/Public/DetaliiDocument/83294'],
                         ]
